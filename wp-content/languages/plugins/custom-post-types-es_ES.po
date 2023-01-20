@@ -1,0 +1,536 @@
+# Translation of Plugins - Custom post types - Stable (latest release) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - Custom post types - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2021-08-19 17:16:12+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: es\n"
+"Project-Id-Version: Plugins - Custom post types - Stable (latest release)\n"
+
+#: inc/functions.php:282 inc/functions.php:683
+msgid "Slug"
+msgstr "Slug"
+
+#: inc/PostType.class.php:69
+msgid "%s reverted to draft."
+msgstr "%s devuelto a borrador"
+
+#: inc/PostType.class.php:71
+msgid "%s updated."
+msgstr "%s actualizado"
+
+#: inc/PostType.class.php:70
+msgid "%s scheduled."
+msgstr "%s programado"
+
+#: inc/PostType.class.php:68
+msgid "%s published privately."
+msgstr "%s publicado de forma privada"
+
+#: inc/PostType.class.php:67
+msgid "%s published."
+msgstr "%s publicado"
+
+#: inc/PostType.class.php:63
+msgid "Use as featured image"
+msgstr "Usar como imagen destacada"
+
+#: inc/PostType.class.php:59
+msgid "Uploaded to this %s"
+msgstr "Subido a este %s"
+
+#: inc/PostType.class.php:58
+msgid "Insert into %s"
+msgstr "Insertar en %s"
+
+#: inc/PostType.class.php:57
+msgid "%s Attributes"
+msgstr "Atributos de %s"
+
+#: inc/PostType.class.php:56
+msgid "%s Archives"
+msgstr "Archivos de %s"
+
+#: custom-post-types.php:159
+msgid "Advanced view"
+msgstr "Vista avanzada"
+
+#: inc/PostType.class.php:62
+msgid "Remove featured image"
+msgstr "Eliminar imagen destacada"
+
+#: inc/PostType.class.php:61
+msgid "Set featured image"
+msgstr "Establecer imagen destacada"
+
+#: inc/functions.php:251
+msgid "The archives text."
+msgstr "El texto de los archivos."
+
+#: inc/functions.php:255
+msgid "ex: Product archives"
+msgstr "Ej.: Archivos del producto"
+
+#: inc/functions.php:250
+msgid "Archivies"
+msgstr "Archivos"
+
+#: inc/functions.php:235 inc/functions.php:652
+msgid "The all items text."
+msgstr "El texto de todos los elementos."
+
+#: inc/functions.php:239
+msgid "ex: All products"
+msgstr "Ej.: Todos los productos"
+
+#: inc/functions.php:234 inc/functions.php:651
+msgid "All items"
+msgstr "Todos los elementos"
+
+#: inc/functions.php:219 inc/functions.php:620 inc/functions.php:636
+msgid "The parent item text."
+msgstr "El texto del elemento padre."
+
+#: inc/functions.php:223
+msgid "ex: Parent product"
+msgstr "Ej.: Producto padre"
+
+#: inc/functions.php:218 inc/functions.php:619 inc/functions.php:635
+msgid "Parent item"
+msgstr "Elemento padre"
+
+#: inc/functions.php:203
+msgid "The not found in trash text."
+msgstr "El texto de «no encontrado en papelera»."
+
+#: inc/functions.php:207
+msgid "ex: No product found in trash"
+msgstr "Ej.: No se encontraron productos en la papelera."
+
+#: inc/functions.php:202
+msgid "Not found in trash"
+msgstr "No encontrado en papelera"
+
+#: inc/functions.php:187 inc/functions.php:604
+msgid "The not found text."
+msgstr "El texto «no se encontró»"
+
+#: inc/functions.php:191
+msgid "ex: No product found"
+msgstr "Ej.: El producto no se encontró"
+
+#: inc/functions.php:186 inc/functions.php:603
+msgid "Not found"
+msgstr "No se encontró"
+
+#: inc/functions.php:171 inc/functions.php:588
+msgid "The search item text."
+msgstr "El texto «buscar elementos»."
+
+#: inc/functions.php:175
+msgid "ex: Search products"
+msgstr "Ej.: Buscar productos"
+
+#: inc/functions.php:170 inc/functions.php:587
+msgid "Search items"
+msgstr "Buscar elementos"
+
+#: inc/functions.php:155
+msgid "The view items text."
+msgstr "El texto «ver elementos»."
+
+#: inc/functions.php:159
+msgid "ex: View products"
+msgstr "Ej.: Ver productos"
+
+#: inc/functions.php:154
+msgid "View items"
+msgstr "Ver elementos"
+
+#: inc/functions.php:139 inc/functions.php:556
+msgid "The view item text."
+msgstr "El texto «ver elemento»."
+
+#: inc/functions.php:143
+msgid "ex: View product"
+msgstr "Ej.: Ver producto"
+
+#: inc/functions.php:138 inc/functions.php:555
+msgid "View item"
+msgstr "Ver elemento"
+
+#: inc/functions.php:123
+msgid "The new item text."
+msgstr "El texto «nuevo elemento»."
+
+#: inc/functions.php:127
+msgid "ex: New product"
+msgstr "Ej.: Nuevo producto"
+
+#: inc/functions.php:122
+msgid "New item"
+msgstr "Nuevo elemento"
+
+#: inc/functions.php:107 inc/functions.php:524
+msgid "The edit item text."
+msgstr "El texto «editar elemento»."
+
+#: inc/functions.php:111
+msgid "ex: Edit product"
+msgstr "Ej.: Editar producto"
+
+#: inc/functions.php:106 inc/functions.php:523
+msgid "Edit item"
+msgstr "Editar artículo"
+
+#: inc/functions.php:91 inc/functions.php:508
+msgid "The add new item text."
+msgstr "El texto «añadir nuevo elemento»."
+
+#: inc/functions.php:95
+msgid "ex: Add new product"
+msgstr "Ej.: Añadir un nuevo producto"
+
+#: inc/functions.php:90 inc/functions.php:507
+msgid "Add new item"
+msgstr "Añadir un nuevo elemento"
+
+#: custom-post-types.php:595
+msgid "WordPress documentation"
+msgstr "Documentación de WordPress"
+
+#: inc/functions.php:1505
+msgid "Post date"
+msgstr "Fecha de publicación"
+
+#: inc/functions.php:1504
+msgid "Post author"
+msgstr "Autor del artículo"
+
+#: inc/functions.php:1503
+msgid "Post image"
+msgstr "Imagen de la publicación"
+
+#: inc/functions.php:1502
+msgid "Post excerpt"
+msgstr "Extracto del artículo"
+
+#: inc/functions.php:1501
+msgid "Post content"
+msgstr "Contenido del artículo"
+
+#: inc/functions.php:1500
+msgid "Post title"
+msgstr "Título del artículo"
+
+#: inc/functions.php:1432
+msgid "Custom templates"
+msgstr "Plantillas personalizadas"
+
+#: inc/functions.php:1447
+msgid "Create and manage custom templates."
+msgstr "Crea y gestiona plantillas personalizadas."
+
+#: inc/functions.php:1440
+msgid "View template"
+msgstr "Ver plantilla"
+
+#: inc/functions.php:1439
+msgid "Edit template"
+msgstr "Editar plantilla"
+
+#: inc/functions.php:1438
+msgid "New template"
+msgstr "Nueva plantilla"
+
+#: inc/functions.php:1437
+msgid "Add new template"
+msgstr "Añadir nueva plantilla"
+
+#: inc/functions.php:1436
+msgid "Add template"
+msgstr "Añadir plantilla"
+
+#: inc/functions.php:1429 inc/functions.php:1433 inc/functions.php:1434
+#: inc/functions.php:1435
+msgid "Template"
+msgstr "Plantilla"
+
+#: inc/functions.php:1444
+msgid "No template in the trash."
+msgstr "No hay plantillas en la papelera."
+
+#: inc/functions.php:1443
+msgid "No template available."
+msgstr "No hay plantillas disponibles."
+
+#: inc/functions.php:1442
+msgid "Search template"
+msgstr "Buscar plantilla"
+
+#: inc/functions.php:1236
+msgctxt "Dashboard menu"
+msgid "Custom post types"
+msgstr "Tipos de contenido personalizados"
+
+#: inc/functions.php:911 inc/functions.php:1332 inc/functions.php:1407
+#: inc/functions.php:1468
+msgid "Used by"
+msgstr "Usado por"
+
+#: inc/functions.php:1264 inc/functions.php:1316
+msgid "Count"
+msgstr "Cantidad"
+
+#: inc/Taxonomy.class.php:46
+msgid "%s name"
+msgstr "Nombre de %s"
+
+#: inc/Taxonomy.class.php:44
+msgid "Update %s"
+msgstr "Actualizar %s"
+
+#: inc/PostType.class.php:54 inc/Taxonomy.class.php:47
+#: inc/Taxonomy.class.php:48
+msgid "Parent %s"
+msgstr "Superior %s"
+
+#: inc/PostType.class.php:49 inc/PostType.class.php:50
+#: inc/Taxonomy.class.php:43
+msgid "View %s"
+msgstr "Ver %s"
+
+#: inc/PostType.class.php:47 inc/Taxonomy.class.php:42
+msgid "Edit %s"
+msgstr "Editar %s"
+
+#: inc/Taxonomy.class.php:45
+msgid "Add %s"
+msgstr "Añadir %s"
+
+#: inc/PostType.class.php:46
+msgid "Add New %s"
+msgstr "Añadir nuevo %s"
+
+#: inc/functions.php:700 inc/functions.php:832
+msgid "Choose for which POST TYPE use this taxonomy."
+msgstr "Elija para qué TIPO DE CONTENIDO utiliza esta taxonomía."
+
+#: inc/Fields.class.php:536 inc/functions.php:29
+msgid "Posts"
+msgstr "Entradas"
+
+#: inc/functions.php:699 inc/functions.php:831
+msgid "Assignment"
+msgstr "Asignación"
+
+#: inc/functions.php:364 inc/functions.php:737 inc/functions.php:848
+msgid "Administrators only"
+msgstr "Solo administradores"
+
+#: inc/PostType.class.php:60
+msgid "Featured image"
+msgstr "Imagen destacada"
+
+#: inc/functions.php:311
+msgid "Excerpt"
+msgstr "Extracto"
+
+#: inc/Fields.class.php:61 inc/Fields.class.php:65 inc/Fields.class.php:315
+#: inc/Fields.class.php:319 inc/Fields.class.php:515 inc/Fields.class.php:519
+#: inc/Fields.class.php:559 inc/Fields.class.php:563 inc/functions.php:352
+#: inc/functions.php:369 inc/functions.php:373 inc/functions.php:390
+#: inc/functions.php:394 inc/functions.php:411 inc/functions.php:415
+#: inc/functions.php:432 inc/functions.php:436 inc/functions.php:457
+#: inc/functions.php:725 inc/functions.php:742 inc/functions.php:746
+#: inc/functions.php:763 inc/functions.php:767 inc/functions.php:853
+#: inc/functions.php:857
+msgid "NO"
+msgstr "NO"
+
+#: inc/Fields.class.php:64 inc/Fields.class.php:318 inc/Fields.class.php:518
+#: inc/Fields.class.php:562 inc/functions.php:348 inc/functions.php:351
+#: inc/functions.php:372 inc/functions.php:393 inc/functions.php:414
+#: inc/functions.php:435 inc/functions.php:453 inc/functions.php:456
+#: inc/functions.php:721 inc/functions.php:724 inc/functions.php:745
+#: inc/functions.php:766 inc/functions.php:856
+msgid "YES"
+msgstr "SÍ"
+
+#: inc/functions.php:385 inc/functions.php:758
+msgid "Hierarchical"
+msgstr "Jerárquico"
+
+#: inc/functions.php:59 inc/functions.php:476
+msgid "Singular name."
+msgstr "Nombre singular."
+
+#: inc/functions.php:63
+msgid "ex: Product"
+msgstr "ej: Producto"
+
+#: inc/functions.php:314
+msgid "Custom fields"
+msgstr "Campos personalizados"
+
+#: inc/functions.php:1302
+msgid "Create and manage custom taxonomies."
+msgstr "Crea y gestiona taxonomías personalizadas."
+
+#: inc/functions.php:1297
+msgid "Search taxonomy"
+msgstr "Buscar taxonomia"
+
+#: inc/functions.php:1295
+msgid "View taxonomy"
+msgstr "Ver taxonomía"
+
+#: inc/functions.php:1294
+msgid "Edit taxonomy"
+msgstr "Editar taxonomía"
+
+#: inc/functions.php:1293
+msgid "New taxonomy"
+msgstr "Nueva taxonomia"
+
+#: inc/functions.php:1292
+msgid "Add new taxonomy"
+msgstr "Añadir nueva taxonomía"
+
+#: inc/functions.php:1291
+msgid "Add taxonomy"
+msgstr "Añadir taxonomia"
+
+#: inc/Fields.class.php:575 inc/functions.php:1284 inc/functions.php:1288
+#: inc/functions.php:1289 inc/functions.php:1290
+msgid "Taxonomy"
+msgstr "Taxonomía"
+
+#: inc/functions.php:1287
+msgid "Custom taxonomies"
+msgstr "Taxonomias personalizadas"
+
+#: inc/functions.php:1247
+msgid "No post type available."
+msgstr "Ningún tipo de contenido disponible."
+
+#: inc/functions.php:1246
+msgid "Search post type"
+msgstr "Buscar tipo de contenido"
+
+#: inc/functions.php:1244
+msgid "View post type"
+msgstr "Ver tipo de contenido"
+
+#: inc/functions.php:1243
+msgid "Edit post type"
+msgstr "Editar tipo de contenido"
+
+#: inc/functions.php:1242
+msgid "New post type"
+msgstr "Nuevo tipo de contenido"
+
+#: inc/functions.php:1241
+msgid "Add new post type"
+msgstr "Añadir nuevo tipo de contenido"
+
+#: inc/functions.php:1240
+msgid "Add post type"
+msgstr "Añadir tipo de contenido"
+
+#: inc/functions.php:1234
+msgid "Post types"
+msgstr "Tipos de contenido"
+
+#: inc/Fields.class.php:531 inc/functions.php:1233 inc/functions.php:1237
+#: inc/functions.php:1239
+msgid "Post type"
+msgstr "Tipo de contenido"
+
+#: inc/PostType.class.php:51 inc/Taxonomy.class.php:49
+msgid "Search %s"
+msgstr "Buscar %s"
+
+#: inc/functions.php:717
+msgid "If set to \"YES\" it will be shown in the frontend and will have a permalink and a archive template."
+msgstr "Si se establece en «SÍ», se mostrará en la portada y tendrá un enlace permanente y una plantilla de archivo."
+
+#: inc/functions.php:759
+msgid "If set to \"YES\" it will be possible to set a parent TAXONOMY (as for the posts categories)."
+msgstr "Si se establece en «SÍ», será posible establecer una TAXONOMÍA principal (como para las categorías de artículos)."
+
+#: inc/functions.php:365 inc/functions.php:738 inc/functions.php:849
+msgid "If set to \"YES\" only the administrators can create / modify these contents, if \"NO\" all the roles with the minimum capacity of \"edit_posts\"."
+msgstr "Si se establece en «SÍ», solo los administradores pueden crear / modificar estos contenidos, si eliges «NO» todos los perfiles con la capacidad mínima de «edit_posts»."
+
+#: inc/functions.php:327
+msgid "Menu icon"
+msgstr "Icono del menú"
+
+#: inc/functions.php:386
+msgid "If set to \"YES\" it will be possible to set a parent POST TYPE (as for pages)."
+msgstr "Si se establece en «SÍ», será posible establecer un TIPO DE CONTENIDO principal (como para las páginas)."
+
+#: inc/functions.php:1299
+msgid "No taxonomy in the trash."
+msgstr "No hay ninguna taxonomía en la papelera."
+
+#: inc/functions.php:1298
+msgid "No taxonomy available."
+msgstr "No hay ninguna taxonomía disponible."
+
+#: inc/functions.php:1251
+msgid "Create and manage custom post types."
+msgstr "Crea y administra tipos de contenido personalizados."
+
+#: inc/functions.php:344
+msgid "If set to \"YES\" it will be shown in the frontend and will have a permalink and a single template."
+msgstr "Si se establece en «SÍ» se mostrará en la portada y tendrá un enlace permanente una plantilla de entrada única."
+
+#: inc/functions.php:1248
+msgid "No post type in the trash."
+msgstr "No hay ningún tipo de contenido en la papelera."
+
+#: inc/PostType.class.php:14
+msgid "Post type created with the \"Custom post type\" plugin."
+msgstr "Tipo de contenido creado con el plugin «Custom post type»."
+
+#. Plugin Name of the plugin
+msgid "Custom post types"
+msgstr "Custom post types"
+
+#: custom-post-types.php:538
+msgid "Support"
+msgstr "Soporte"
+
+#: inc/Fields.class.php:56
+msgid "Required"
+msgstr "Obligatorio"
+
+#: inc/functions.php:869
+msgid "Fields list"
+msgstr "Lista de campos"
+
+#: inc/functions.php:802 inc/functions.php:1400
+msgid "SIDEBAR"
+msgstr "BARRA LATERAL"
+
+#: inc/functions.php:793 inc/functions.php:1395
+msgid "Position"
+msgstr "Posición"
+
+#: inc/functions.php:1381
+msgid "Fields"
+msgstr "Campo"
+
+#: inc/functions.php:891 inc/functions.php:912
+msgid "Choose for which POST TYPE use this template."
+msgstr "Elige en qué tipo de contenido usar este campo."
+
+#: inc/functions.php:1372
+msgid "Create and manage custom field groups."
+msgstr "Crea y gestiona grupos de campos personalizados."

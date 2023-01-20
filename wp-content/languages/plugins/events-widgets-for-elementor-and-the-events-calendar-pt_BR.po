@@ -1,0 +1,455 @@
+# Translation of Plugins - Events Widgets For Elementor And The Events Calendar - Development (trunk) in Portuguese (Brazil)
+# This file is distributed under the same license as the Plugins - Events Widgets For Elementor And The Events Calendar - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2022-12-28 11:37:35+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/4.0.0-alpha.3\n"
+"Language: pt_BR\n"
+"Project-Id-Version: Plugins - Events Widgets For Elementor And The Events Calendar - Development (trunk)\n"
+
+#: events-widgets-for-elementor-and-the-events-calendar.php:135
+msgid " must be installed and activated for using \"<strong>Events Widgets For Elementor And The Events Calendar</strong>\" "
+msgstr " deve ser instalado e ativado para usar \"<strong>Events Widgets para Elementor e The Events Calendar</strong>\" "
+
+#: events-widgets-for-elementor-and-the-events-calendar.php:122
+msgid "In order to use Events Widgets For Elementor And The Events Calendar plugin, Please first install the latest version of"
+msgstr "Para usar o Events Widgets para Elementor e The Events Calendar plugin, primeiro instale a versão mais recente do"
+
+#: widgets/ectbe-widget.php:655
+msgid "Buy Pro"
+msgstr "Comprar versão Pro"
+
+#: widgets/ectbe-widget.php:618
+msgid "Please share your valuable feedback"
+msgstr "Compartilhe seu valioso feedback"
+
+#: widgets/ectbe-widget.php:80
+msgid "Events Widgets Settings"
+msgstr "Configurações do Events Widgets"
+
+#: events-widgets-for-elementor-and-the-events-calendar.php:135
+msgid "Elementor Page Builder"
+msgstr "Elementor Page Builder"
+
+#: events-widgets-for-elementor-and-the-events-calendar.php:121
+msgid "%1$s %2$s"
+msgstr "%1$s %2$s"
+
+#: widgets/ectbe-widget.php:759 widgets/layouts/ectbe-minimal-list.php:15
+msgid "Find out more"
+msgstr "Saiba mais"
+
+#: widgets/ectbe-widget.php:773
+msgid "There is no Event"
+msgstr "Não há evento"
+
+#: widgets/ectbe-widget.php:644 widgets/ectbe-widget.php:655
+msgid "View Demo"
+msgstr "Ver demonstração"
+
+#: widgets/ectbe-widget.php:591 widgets/layouts/ectbe-calendar.php:37
+msgid "Read More"
+msgstr "Leia mais"
+
+#: widgets/ectbe-widget.php:555
+msgid "Event Venue"
+msgstr "Local do evento"
+
+#: widgets/ectbe-widget.php:519
+msgid "Event Description"
+msgstr "Descrição do evento"
+
+#: widgets/ectbe-widget.php:492
+msgid "Event Title "
+msgstr "Título do evento "
+
+#: widgets/ectbe-widget.php:481 widgets/ectbe-widget.php:511
+#: widgets/ectbe-widget.php:544 widgets/ectbe-widget.php:580
+#: widgets/ectbe-widget.php:610
+msgid "Typography"
+msgstr "Tipografia"
+
+#: widgets/ectbe-widget.php:462
+msgid "Event Date"
+msgstr "Data do evento"
+
+#: widgets/ectbe-widget.php:436
+msgid "Event Background "
+msgstr "Plano de fundo do evento "
+
+#: widgets/ectbe-widget.php:426
+msgid "Font Color"
+msgstr "Cor da fonte"
+
+#: widgets/ectbe-widget.php:416
+msgid "Skin Color"
+msgstr "Cor do estilo"
+
+#: widgets/ectbe-widget.php:408
+msgid "Featured Event"
+msgstr "Evento em destaque"
+
+#: widgets/ectbe-widget.php:395 widgets/ectbe-widget.php:448
+#: widgets/ectbe-widget.php:470 widgets/ectbe-widget.php:500
+#: widgets/ectbe-widget.php:530 widgets/ectbe-widget.php:566
+#: widgets/ectbe-widget.php:599
+msgid "Color"
+msgstr "Cor"
+
+#: widgets/ectbe-widget.php:385
+msgid "Main Skin"
+msgstr "Skin principal"
+
+#: widgets/ectbe-widget.php:375
+msgid "Color & Typography Settings"
+msgstr "Configurações de cor e tipografia"
+
+#: widgets/ectbe-widget.php:355
+msgid "Display Categoery"
+msgstr "Mostrar categoria"
+
+#: widgets/ectbe-widget.php:337
+msgid "Display Description"
+msgstr "Mostrar descrição"
+
+#: widgets/ectbe-widget.php:324 widgets/ectbe-widget.php:341
+#: widgets/ectbe-widget.php:359
+msgid "Yes"
+msgstr "Sim"
+
+#: widgets/ectbe-widget.php:323 widgets/ectbe-widget.php:342
+#: widgets/ectbe-widget.php:360
+msgid "NO"
+msgstr "NÃO"
+
+#: widgets/ectbe-widget.php:319
+msgid "Hide Venue"
+msgstr "Ocultar local"
+
+#: widgets/ectbe-widget.php:309
+msgid "DESC"
+msgstr "Desc"
+
+#: widgets/ectbe-widget.php:308
+msgid "ASC"
+msgstr "Asc"
+
+#: widgets/ectbe-widget.php:304
+msgid "Events Order"
+msgstr "Ordem dos eventos"
+
+#: widgets/ectbe-widget.php:291
+msgid "dFT (01 January 8:00am-5:00pm)"
+msgstr "dFT (01 janeiro 8:00am-5:00pm)"
+
+#: widgets/ectbe-widget.php:290
+msgid "d.Ml (01. Jan Monday)"
+msgstr "d.Ml (01. Jan Segunda)"
+
+#: widgets/ectbe-widget.php:289
+msgid "Mdl (Jan 01 Monday)"
+msgstr "Mdl (jan 01 segunda-feira)"
+
+#: widgets/ectbe-widget.php:288
+msgid "ldF (Monday 01 January)"
+msgstr "ldF (segunda-feira 01 janeiro)"
+
+#: widgets/ectbe-widget.php:287
+msgid "d.F (01. January)"
+msgstr "d.F (01. janeiro)"
+
+#: widgets/ectbe-widget.php:286
+msgid "d.FY (01. January 2019)"
+msgstr "d.FY (01. janeiro 2019)"
+
+#: widgets/ectbe-widget.php:285
+msgid "jMl"
+msgstr "jMl"
+
+#: widgets/ectbe-widget.php:284
+msgid "Full (01 January 2019 8:00am-5:00pm)"
+msgstr "Completo (01 janeiro 2019 8:00am-5:00pm)"
+
+#: widgets/ectbe-widget.php:283
+msgid "Md,YT (Jan 01, 2019 8:00am-5:00pm)"
+msgstr "Md,YT (jan 01, 2019 8:00am-5:00pm)"
+
+#: widgets/ectbe-widget.php:282
+msgid "Md (Jan 01)"
+msgstr "Md (jan 01)"
+
+#: widgets/ectbe-widget.php:281
+msgid "dF (01 January)"
+msgstr "dF (01 Janeiro)"
+
+#: widgets/ectbe-widget.php:280
+msgid "dMl (01 Jan Monday)"
+msgstr "dMl (01 Jan Segunda)"
+
+#: widgets/ectbe-widget.php:279
+msgid "dM (01 Jan))"
+msgstr "dM (01 jan))"
+
+#: widgets/ectbe-widget.php:278
+msgid "Fd,Y (January 01, 2019)"
+msgstr "Fd,Y (Janeiro 01, 2019)"
+
+#: widgets/ectbe-widget.php:277
+msgid "Md,Y (Jan 01, 2019)"
+msgstr "Md,Y (jan 01, 2019)"
+
+#: widgets/ectbe-widget.php:276
+msgid "Default (01 January 2019)"
+msgstr "Padrão (01 Janeiro 2019)"
+
+#: widgets/ectbe-widget.php:272
+msgid "Date Format"
+msgstr "Formato de data"
+
+#: widgets/ectbe-widget.php:261
+msgid "Text Color"
+msgstr "Cor do texto"
+
+#: widgets/ectbe-widget.php:252
+msgid "Background Color of Multidays Event"
+msgstr "Cor de fundo do evento de dias múltiplos"
+
+#: widgets/ectbe-widget.php:249
+msgid "Background Color"
+msgstr "Cor de fundo"
+
+#: widgets/ectbe-widget.php:240
+msgid "Hide Read More link in event popup"
+msgstr "Ocultar link leia mais no popup do evento"
+
+#: widgets/ectbe-widget.php:236
+msgid "Hide Read More Link"
+msgstr "Ocultar leia mais"
+
+#: widgets/ectbe-widget.php:225
+msgid "Saturday"
+msgstr "Sábado"
+
+#: widgets/ectbe-widget.php:224
+msgid "Friday"
+msgstr "Sexta"
+
+#: widgets/ectbe-widget.php:223
+msgid "Thursday"
+msgstr "Quinta"
+
+#: widgets/ectbe-widget.php:222
+msgid "Wednesday"
+msgstr "Quarta"
+
+#: widgets/ectbe-widget.php:221
+msgid "Tuesday"
+msgstr "Terça"
+
+#: widgets/ectbe-widget.php:220
+msgid "Monday"
+msgstr "Segunda"
+
+#: widgets/ectbe-widget.php:219
+msgid "Sunday"
+msgstr "Domingo"
+
+#: widgets/ectbe-widget.php:216
+msgid "First Day of Week"
+msgstr "Primeiro dia da semana"
+
+#: widgets/ectbe-widget.php:204
+msgid "Week"
+msgstr "Semana"
+
+#: widgets/ectbe-widget.php:203
+msgid "Day"
+msgstr "Dia"
+
+#: widgets/ectbe-widget.php:202
+msgid "Month"
+msgstr "Mês"
+
+#: widgets/ectbe-widget.php:199
+msgid "Default View"
+msgstr "Visualização padrão"
+
+#: widgets/ectbe-widget.php:193
+msgid "Maximum number of events to display"
+msgstr "Número máximo de eventos a mostrar"
+
+#: widgets/ectbe-widget.php:189
+msgid "Number of Events"
+msgstr "Número de eventos"
+
+#: widgets/ectbe-widget.php:175
+msgid "Style 2"
+msgstr "Estilo 2"
+
+#: widgets/ectbe-widget.php:174
+msgid "Style 1"
+msgstr "Estilo 1"
+
+#: widgets/ectbe-widget.php:171
+msgid "Select Style"
+msgstr "Selecionar estilo"
+
+#: widgets/ectbe-widget.php:164
+msgid "Calendar"
+msgstr "Calendário"
+
+#: widgets/ectbe-widget.php:163
+msgid "Minimal List"
+msgstr "Lista mínima"
+
+#: widgets/ectbe-widget.php:162 widgets/ectbe-widget.php:205
+msgid "List"
+msgstr "Lista"
+
+#: widgets/ectbe-widget.php:157
+msgid "Layout"
+msgstr "Modelo"
+
+#: widgets/ectbe-widget.php:151
+msgid "End Date of Date Range"
+msgstr "Data de término do intervalo de datas"
+
+#: widgets/ectbe-widget.php:145
+msgid "End Date"
+msgstr "Data de término"
+
+#: widgets/ectbe-widget.php:139
+msgid "Start date of date range"
+msgstr "Data de início do intervalo de datas"
+
+#: widgets/ectbe-widget.php:133
+msgid "Start Date"
+msgstr "Data de início"
+
+#: widgets/ectbe-widget.php:125
+msgid "Events in between Date Range"
+msgstr "Eventos entre o intervalo de datas"
+
+#: widgets/ectbe-widget.php:124
+msgid "All Events"
+msgstr "Todos eventos"
+
+#: widgets/ectbe-widget.php:119
+msgid "Events Time"
+msgstr "Horário dos eventos"
+
+#: widgets/ectbe-widget.php:103
+msgid "Event Category"
+msgstr "Categoria do evento"
+
+#: widgets/ectbe-widget.php:93
+msgid "All (Upcoming + Past)"
+msgstr "Todos (agendados + passados)"
+
+#: widgets/ectbe-widget.php:92
+msgid "Past Events"
+msgstr "Eventos passados"
+
+#: widgets/ectbe-widget.php:91
+msgid "Upcoming Events"
+msgstr "Eventos agendados"
+
+#: widgets/ectbe-widget.php:87
+msgid "Type of Events"
+msgstr "Tipos de eventos"
+
+#: widgets/ectbe-widget.php:68
+msgid "Events Widgets"
+msgstr "Events widgets"
+
+#: includes/functions.php:258 includes/functions.php:260
+msgid "All day"
+msgstr "Todo o dia"
+
+#: includes/functions.php:92
+msgid "No Title"
+msgstr "Sem título"
+
+#: includes/class-review-notice.php:75
+msgid "No, not good enough, i do not like to rate it!"
+msgstr "Não, não é bom o suficiente, não gosto de avaliar!"
+
+#: includes/class-admin-notice.php:238 includes/class-review-notice.php:74
+msgid "Not Interested"
+msgstr "Não estou interessado"
+
+#: includes/class-admin-notice.php:237 includes/class-review-notice.php:73
+msgid "I already rated it"
+msgstr "Eu já fiz isso"
+
+#: includes/class-ectbe.php:13
+msgid "Events Calendar Addon For Elementor"
+msgstr "Events Calendar complemento para Elementor"
+
+#: feedback/admin-feedback-form.php:104
+msgid "I consent to having Cool Plugins store my all submitted information via this form, they can also respond to my inquiry."
+msgstr "Eu concordo que o Cool Plugins armazene todas as minhas informações enviadas através deste formulário, eles também podem responder à minha pergunta."
+
+#: feedback/admin-feedback-form.php:90
+msgid "If you have a moment, please share why you are deactivating this plugin."
+msgstr "Se você tiver um momento, compartilhe porque você está desativando o plugin."
+
+#: feedback/admin-feedback-form.php:77
+msgid "Quick Feedback"
+msgstr "Feedback rápido"
+
+#: feedback/admin-feedback-form.php:68 feedback/admin-feedback-form.php:142
+msgid "Please share the reason"
+msgstr "Compartilhe o motivo"
+
+#: feedback/admin-feedback-form.php:67 feedback/admin-feedback-form.php:141
+msgid "Other"
+msgstr "Outros"
+
+#: feedback/admin-feedback-form.php:63 feedback/admin-feedback-form.php:137
+msgid "It's a temporary deactivation"
+msgstr "É uma desativação temporária"
+
+#: feedback/admin-feedback-form.php:59 feedback/admin-feedback-form.php:133
+msgid "The plugin is not working"
+msgstr "O plugin não está funcionando"
+
+#: feedback/admin-feedback-form.php:56 feedback/admin-feedback-form.php:130
+msgid "Please share which plugin"
+msgstr "Compartilhe qual plugin"
+
+#: feedback/admin-feedback-form.php:55 feedback/admin-feedback-form.php:129
+msgid "I found a better plugin"
+msgstr "Encontrei um plugin melhor"
+
+#: feedback/admin-feedback-form.php:51 feedback/admin-feedback-form.php:125
+msgid "The plugin didn't work as expected"
+msgstr "O plugin não funcionou como o esperado"
+
+#: events-widgets-for-elementor-and-the-events-calendar.php:118
+msgid "The Events Calendar"
+msgstr "The Events Calendar"
+
+#. Author URI of the plugin
+msgid "https://coolplugins.net/"
+msgstr "https://coolplugins.net/"
+
+#. Author of the plugin
+msgid "Cool Plugins"
+msgstr "Cool Plugins"
+
+#. Description of the plugin
+msgid "Events Calendar Templates Builder For Elementor to create a beautiful calendar in  page and post."
+msgstr "Events Calendar Templates Builder para Elementor crie um lindo calendário na página e post."
+
+#. Plugin URI of the plugin
+msgid "https://coolplugins.net"
+msgstr "https://coolplugins.net"
+
+#. Plugin Name of the plugin
+msgid "Events Widgets For Elementor And The Events Calendar"
+msgstr "Events Widgets para Elementor e The Events Calendar"

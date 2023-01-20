@@ -1,0 +1,61 @@
+{
+  "name": "wpgurus/forms",
+  "authors": [
+    "Hassan Akhtar <hasan.yo41@gmail.com>"
+  ],
+  "description": "Create and manage forms",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "forms",
+    "wordpress",
+    "wpgurus"
+  ],
+  "license": "MIT",
+  "homepage": "https://wpgurus.net",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "raty": "~2.7.0",
+    "datetimepicker": "~2.5.3",
+    "iframe-resizer": "~3.5.1",
+    "font-awesome": "~4.5.0",
+    "select2": "^4.0.3"
+  },
+  "preen": {
+    "select2": [
+      "dist/css/select2.min.css",
+      "dist/js/select2.full.min.js",
+      "dist/js/i18n/*"
+    ],
+    "datetimepicker": [
+      "build/jquery.datetimepicker.full.min.js",
+      "*.css"
+    ],
+    "font-awesome": [
+      "css/*.min.css",
+      "fonts/*"
+    ],
+    "iframe-resizer": [
+      "js/*.min.js"
+    ],
+    "jquery": [
+      "dist/*.min.js"
+    ],
+    "raty": [
+      "lib/**"
+    ],
+    "jquery-mousewheel": [
+      ""
+    ],
+    "php-date-formatter": [
+      ""
+    ]
+  }
+}

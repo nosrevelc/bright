@@ -1,0 +1,256 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2021-01-25 17:48+0530\n"
+"PO-Revision-Date: 2021-01-25 17:49+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;esc_html__;esc_attr__;__e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: addons/android-apk-app-generator.php:102
+msgid "Package Id"
+msgstr ""
+
+#: addons/android-apk-app-generator.php:110
+msgid "Generate APK type"
+msgstr ""
+
+#: addons/android-apk-app-generator.php:118
+msgid "Generated APK lists"
+msgstr ""
+
+#: addons/android-apk-app-generator.php:130
+msgid ""
+"Create Android APK for your PWA and get listed on Google Play store with one "
+"click"
+msgstr ""
+
+#: addons/android-apk-app-generator.php:145
+msgid "First time"
+msgstr ""
+
+#: addons/android-apk-app-generator.php:146
+msgid "New version (Update) of APK"
+msgstr ""
+
+#: addons/android-apk-app-generator.php:147
+msgid ""
+"If you have already submitted APK on Google Play store, then select \"New "
+"version (Update) of APK\" and fill the below details. You can find these "
+"details in your old zip of APK"
+msgstr ""
+
+#: addons/android-apk-app-generator.php:154
+msgid "Upload new file"
+msgstr ""
+
+#: addons/android-apk-app-generator.php:159
+msgid "Last App version"
+msgstr ""
+
+#: addons/android-apk-app-generator.php:160
+msgid "Last App version code"
+msgstr ""
+
+#: addons/android-apk-app-generator.php:162
+msgid "Key file"
+msgstr ""
+
+#: addons/android-apk-app-generator.php:167
+msgid "Key password"
+msgstr ""
+
+#: addons/android-apk-app-generator.php:168
+msgid "Key store password"
+msgstr ""
+
+#: addons/android-apk-app-generator.php:202
+msgid "Download APK project (For development)"
+msgstr ""
+
+#: addons/android-apk-app-generator.php:209
+msgid "Version"
+msgstr ""
+
+#: addons/android-apk-app-generator.php:209
+msgid "Action"
+msgstr ""
+
+#: addons/android-apk-app-generator.php:223 addons/call-to-action.php:307
+msgid "Super Progressive Web Apps Pro"
+msgstr ""
+
+#: addons/android-apk-app-generator.php:223
+msgid "Android APK APP"
+msgstr ""
+
+#: addons/android-apk-app-generator.php:238 addons/call-to-action.php:323
+msgid "Settings saved."
+msgstr ""
+
+#: addons/android-apk-app-generator.php:257 addons/call-to-action.php:342
+msgid "Save Settings"
+msgstr ""
+
+#: addons/android-apk-app-generator.php:430
+msgid "PWA APK generated "
+msgstr ""
+
+#: addons/android-apk-app-generator.php:430
+#: addons/android-apk-app-generator.php:597
+msgid "Download"
+msgstr ""
+
+#: addons/android-apk-app-generator.php:597
+msgid "App project generated"
+msgstr ""
+
+#: addons/android-apk-app-generator.php:599
+msgid "App project not generated try later."
+msgstr ""
+
+#: addons/call-to-action.php:60
+msgid "Welcome to %sitename%"
+msgstr ""
+
+#: addons/call-to-action.php:61
+msgid "Install"
+msgstr ""
+
+#: addons/call-to-action.php:71 addons/call-to-action.php:234
+#: addons/call-to-action.php:293
+msgid ""
+"Install this %sitename% on your iPhone %ICON_INSTALL% and then %bold% Add to "
+"Home Screen %/bold%"
+msgstr ""
+
+#: addons/call-to-action.php:99 addons/call-to-action.php:187
+msgid "Message"
+msgstr ""
+
+#: addons/call-to-action.php:107
+msgid "Button Text"
+msgstr ""
+
+#: addons/call-to-action.php:115
+msgid "Position"
+msgstr ""
+
+#: addons/call-to-action.php:123
+msgid "Show on Desktop CTA"
+msgstr ""
+
+#: addons/call-to-action.php:131
+msgid "Show CTA banner without scroll"
+msgstr ""
+
+#: addons/call-to-action.php:139
+msgid "Bar Background Color"
+msgstr ""
+
+#: addons/call-to-action.php:147
+msgid "Container Background Color"
+msgstr ""
+
+#: addons/call-to-action.php:155
+msgid "Bar Text Color"
+msgstr ""
+
+#: addons/call-to-action.php:163
+msgid "Button Background Color"
+msgstr ""
+
+#: addons/call-to-action.php:171
+msgid "Button Text Color"
+msgstr ""
+
+#: addons/call-to-action.php:179
+msgid "Button Font Size"
+msgstr ""
+
+#: addons/call-to-action.php:184
+msgid "iOS popup"
+msgstr ""
+
+#: addons/call-to-action.php:244
+msgid ""
+"This add-on makes easy for your users to add the website to the home screen. "
+"It consists of multiple features like Call to action bar which will help you "
+"to implement the ‘Add to Homescreen’ popup in the output with full control "
+"over it."
+msgstr ""
+
+#: addons/call-to-action.php:307
+msgid "Call To Action"
+msgstr ""
+
+#: addons/call-to-action.php:390
+msgid "Install this "
+msgstr ""
+
+#: loader.php:31
+msgid "Parent plugin Super Progressive Web Apps not activated."
+msgstr ""
+
+#: loader.php:33
+msgid "Click here"
+msgstr ""
+
+#: loader.php:142 loader.php:172
+msgid "An error occurred, please try again."
+msgstr ""
+
+#: loader.php:151
+#, php-format
+msgid "Your license key expired on %s."
+msgstr ""
+
+#: loader.php:156
+msgid "Your license key has been disabled."
+msgstr ""
+
+#: loader.php:159
+msgid "Invalid license."
+msgstr ""
+
+#: loader.php:163
+msgid "Your license is not active for this URL."
+msgstr ""
+
+#: loader.php:166
+msgid "This appears to be an invalid license key."
+msgstr ""
+
+#: loader.php:169
+msgid "Your license key has reached its activation limit."
+msgstr ""
+
+#: updater/EDD_SL_Plugin_Updater.php:206
+#, php-format
+msgid ""
+"There is a new version of %1$s available. %2$sView version %3$s details%4$s. "
+"update now"
+msgstr ""
+
+#: updater/EDD_SL_Plugin_Updater.php:214
+#, php-format
+msgid ""
+"There is a new version of %1$s available. %2$sView version %3$s details%4$s "
+"or %5$supdate now%6$s."
+msgstr ""
+
+#: updater/EDD_SL_Plugin_Updater.php:410
+msgid "You do not have permission to install plugin updates"
+msgstr ""
+
+#: updater/EDD_SL_Plugin_Updater.php:410
+msgid "Error"
+msgstr ""

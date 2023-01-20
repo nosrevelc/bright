@@ -1,0 +1,30 @@
+{
+  "name": "widgilabs-premium/woocommerce-subscriptions",
+  "description": "Sell subscriptions with WooCommerce.",
+  "version": "2.2.10",
+  "type": "wordpress-plugin",
+  "keywords": [
+    "wordpress",
+    "woocommerce",
+    "subscriptions",
+    "ecommerce",
+    "e-commerce",
+    "commerce"
+  ],
+  "homepage": "https://bitbucket.org/widgilabs/woocommerce-subscriptions/",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "WidgiLabs",
+      "email": "dev@widgilabs.com",
+      "homepage": "http://widgilabs.com/"
+    }
+  ],
+  "repositories": [],
+  "require": {},
+  "require-dev": {},
+  "extra": {},
+  "config": {
+    "sort-packages": true
+  }
+}

@@ -1,0 +1,21 @@
+.element-media {
+	background: #f1f1f1 none repeat scroll 0 0;
+	border: 1px solid #e7e7e7;
+	padding: 10px;
+}
+
+.element-media img {
+	border: 1px solid #d7d7d7;
+}
+
+.element-media-controls {
+	text-align: right;
+}
+
+.element-media-multiple img {
+	margin-bottom: 10px;
+	margin-left: 0.5%;
+	margin-right: 0.5%;
+	max-width: 32%;
+	vertical-align: top;
+}

@@ -1,0 +1,36 @@
+{
+  "name": "idealbiz-service-request",
+  "description": "IdealBiz Service Request",
+  "type": "wordpress-plugin",
+  "keywords": [
+    "wordpress",
+    "plugin"
+  ],
+  "homepage": "http://widgilabs.com/",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "WidgiLabs",
+      "email": "dev@widgilabs.com",
+      "homepage": "http://widgilabs.com/"
+    }
+  ],
+  "support": {
+    "issues": "http://widgilabs.com/",
+    "source": "http://widgilabs.com/"
+  },
+  "autoload": {
+    "psr-4": {
+      "WidgiLabs\\WP\\Plugin\\IdealBiz\\Service\\Request\\": "lib/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "WidgiLabs\\WP\\Plugin\\Tests\\IdealBiz\\Service\\Request\\": "tests/"
+    }
+  },
+  "require-dev": {},
+  "require": {
+    "johnbillion/extended-cpts": "^4.2"
+  }
+}

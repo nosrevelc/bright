@@ -1,0 +1,79 @@
+/* Builder Shortcode Preview */
+.spfaq-builder-shrt-prev{background-color: #e7e7e7; padding: 10px; border: 1px solid #ccc; font-size: 15px;text-align: center;}
+.spfaq-builder-shrt-title span{border-bottom: 1px solid #999; display: inline-block; padding: 0 0 5px 0;}
+
+/* Meta CSS */
+.spfaq-pro-tag {padding: 4px 7px 4px 5px;background-color:#cdd9f3;color: #1e2b48; position: relative; font-size: 10px; margin: 0 10px; display: inline-block; line-height: 1.1;}
+.spfaq-pro-tag::before { content: ""; left: -10px; top: 0; border-top: 10px solid transparent;border-right: 10px solid #cdd9f3;border-bottom: 10px solid transparent; position: absolute;}
+.spfaq-pro-feature { opacity: 0.5;}
+.spfaq-pro-feature:hover{opacity: 0.8;}
+.pro-notice{background-color: #fcecce; border: 1px dashed #f8c057; padding: 3px 10px; font-size:15px;}
+#spfaq-post-metabox-pro tr.spfaq-pro-feature{border-bottom:1px solid #f1f1f1;}
+#spfaq-post-metabox-pro tr.spfaq-pro-feature th,
+#spfaq-post-metabox-pro tr.spfaq-pro-feature td{ vertical-align:top; padding:10px; }
+#spfaq-post-metabox-pro tr.spfaq-pro-feature th:first-child,
+#spfaq-post-metabox-pro tr.spfaq-pro-feature td:first-child{width:40%; }
+
+/************** Start - Solutions & Features Page CSS ****************/
+.sp_faq_page_sp-faq-solutions-features #wpcontent{padding: 0 0 40px; line-height: normal;}
+.sp-faq-sf-wrap .sp-faq-sf-inr{padding: 30px 40px 0;}
+.sp-faq-sf-wrap .sp-faq-sf-welcome-wrap{background-color: #fff; justify-content: space-between; box-shadow: 0 3px 2px rgba(0,0,0,.05); margin-bottom: 20px; position: relative; color: #23282d;}
+.sp-faq-sf-welcome-wrap .sp-faq-sf-welcome-inr{display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; padding: 30px; gap: 10px;}
+.sp-faq-sf-welcome-wrap .sp-faq-sf-welcome-inr > *{flex: 1;}
+.sp-faq-sf-subtitle{color: #6c7781; font-size: 16px; font-weight: 600; margin-bottom: 6px;}
+.sp-faq-sf-title{font-size: 32px; font-weight: 600; color: #23282d; margin-top: 0; margin-bottom: 20px;}
+.sp-faq-sf-ttl{font-size: 23px; font-weight: 600; color: #23282d; margin-top: 0; margin-bottom: 20px;}
+.sp-faq-sf-content{margin: 0 0 20px; font-size: 16px; line-height: 150%; color: #646970;}
+.sp-faq-sf-btn{display: inline-block; font-size: 16px; padding: 10px 10px;  background-color: #46b450; border-color: #46b450; color: #fff !important; font-weight: 600; border-radius: 3px; text-decoration: none;}
+.sp-faq-sf-btn-orange{ background-color: #FF1000; border-color: #FF1000 ;}
+.sp-faq-sf-btn:hover,
+.sp-faq-sf-btn:focus{background-color: #3fa548; border-color: #3fa548;}
+.sp-faq-sf-btn-orange:hover,
+.sp-faq-sf-btn-orange:focus {background-color: #D01003 ; border-color: #D01003 ;}
+.sp-faq-sf-fp-ttl{font-size: 23px; line-height: 1.4em; margin-bottom: 10px; font-weight: 600; text-align: center;}
+.sp-faq-sf-fp-box-wrp{display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; gap: 10px;}
+.sp-faq-sf-fp-box-wrp .sp-faq-sf-fp-box{position: relative; border: 1px solid #c3e6cb; padding: 10px; text-align: center;}
+.sp-faq-sf-fp-box-wrp .sp-faq-sf-pro-box{border: 1px solid #f5c6cb;}
+.sp-faq-sf-fp-box-wrp>*{flex: 0 0 26.8%;}
+.sp-faq-sf-fp-box-wrp i.dashicons{font-size: 25px; display: inline-block; color: #528bfa; width: 30px; height: 30px; line-height: 30px;}
+.sp-faq-sf-fp-box-wrp .sp-faq-sf-box-ttl{font-size: 16px;}
+.sp-faq-sf-tag{position: absolute; display: inline-block; top: 0; right: 0; background-color: #d4edda; color: #155724; padding: 1px 8px; text-transform: uppercase; font-size: 12px; }
+.sp-faq-sf-pro-box .sp-faq-sf-tag{background-color: #f8d7da; color: #721c24;}
+.sp-faq-center{ text-align: center; }
+.sp-faq-rc-wrap{max-width: 550px; margin: 15px auto 0 auto; text-align: left;}
+.sp-faq-rc-wrap .sp-faq-rc-inr{display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; margin-bottom: 15px;}
+.sp-faq-rc-wrap .sp-faq-rc-icon{margin-right: 15px; width: 60px; height: 60px;}
+.sp-faq-rc-wrap .sp-faq-rc-icon img{width: 100%; height: 100%;}
+.sp-faq-rc-wrap .sp-faq-rc-inr h3{font-size: 16px; margin: 0 0 5px 0;}
+.sp-faq-rc-wrap .sp-faq-rc-inr p{margin: 0;}
+.sp-faq-rc-wrap .sp-faq-rc-bg-box{ background-color:#f1f1f1; border: 1px solid #d1d1d1; padding: 5px 10px; }
+
+.sp-faq-solutions-section{margin-bottom: 20px;}
+.sp-faq-solutions-box-wrap{display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; gap: 15px;}
+.sp-faq-solutions-box-wrap>*{flex: 1 0 21%;}
+.sp-faq-solutions-box-wrap .sp-faq-solutions-box-grid{background-color: #ffffff; box-shadow: 0 0px 5px rgba(0, 0, 0, 0.08);}
+.sp-faq-solutions-box-wrap .sp-faq-box-ttl{background-color: #cce5ff; color: #004085; font-size: 16px; padding: 10px;}
+.sp-faq-solutions-box-wrap ul{padding: 0 10px; margin: 0;}
+.sp-faq-solutions-box-wrap ul li{position: relative; font-size: 14px; border-bottom: 1px solid #e7e7e7; margin: 0; padding: 8px 0;}
+.sp-faq-solutions-box-wrap ul li:last-child{border-bottom: none;}
+
+.sp-faq-features-section{background-color: #ffffff; box-shadow: 0 3px 2px rgba(0,0,0,.05);}
+.sp-faq-features-ttl{background-color: #d4edda; color: #155724; padding: 10px 30px; margin-bottom: 15px;}
+.sp-faq-features-ttl h2{margin-bottom: 5px; color: #155724;}
+.sp-faq-sf-cont{color: #464646;}
+.sp-faq-features-section .sp-faq-features-section-inr{padding: 15px 30px; margin-bottom:30px; text-align:center;}
+.sp-faq-features-section ul.sp-faq-features-box-grid{margin: 0 0 15px 0; display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; gap: 15px; list-style: none !important;}
+ul.sp-faq-features-box-grid>*{flex: 32%; text-align:center; font-size:13px; font-weight:bold;}
+ul.sp-faq-features-box-grid li{border:1px solid #f1f1f1; padding:10px 0;}
+ul.sp-faq-features-box-grid .sp-faq-popup-icon img{width: 100%; max-width: 100%; height: auto;}
+
+.sp-faq-testimonial-section-inr{text-align:center;}
+.sp-faq-testimonial-box-wrap{margin-bottom:15px;}
+.sp-faq-testimonial-box-wrap{display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; gap: 15px;}
+.sp-faq-testimonial-box-wrap>*{flex: 1 0 21%;}
+.sp-faq-testimonial-box-wrap .sp-faq-testimonial-box-grid{border: 1px solid #ddd;background:#fff;  box-shadow: 0 3px 2px rgba(0,0,0,.05);
+padding: 30px;text-align: center;display: flex;flex-direction: column;align-items: center;}
+.sp-faq-testimonial-box-wrap h3{margin-top:0px;}
+.sp-faq-testimonial-clnt{margin:15px 0 0 0; font-size:16px; font-weight:bold;}
+
+/************** End - Solutions & Features Page CSS ****************/

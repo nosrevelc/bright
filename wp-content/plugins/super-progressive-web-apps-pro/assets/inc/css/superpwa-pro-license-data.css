@@ -1,0 +1,110 @@
+.activated-plugins {
+	display: inline-block;
+	color: #222;
+    font-size: 14px;
+    letter-spacing: 0;
+}.aeaicon.dashicons.superpwapro_dashicon_yes { 
+    right: 4px;    
+} .superpwapro_dashicon_yes:before {
+    content: "\f147";
+    color: green;
+    top: 0;
+    margin: 0;
+    font-size: 21px;
+}
+.pro_icon:before {
+    content: "\f147";
+    content: "\f147";
+    background: #388e3c;
+    border-radius: 40px;
+    color: #fff;
+    border-radius: 40px;
+    padding: 1px 1px 0px 0;
+    top: 0;
+    margin: 0;
+    font-size: 17px;right: 3px;
+    position: relative;
+}
+.pro_icon{
+    margin: 0;
+    font-size: 16px;
+    margin-left: 3px;
+    margin-top: 1px;
+    right: 10px;
+}.inner_span{
+    color: green;
+}i.dashicons-before.dashicons-admin-generic {
+    color: #666;
+}#exp {
+    color: #FF0000;
+}.spwa_no:before {
+    content: "\f158";
+    top: 2px;
+    position: relative;
+    left: 0.5px;
+}
+.amppro-alert{
+    color: #ff0000;
+    font-size: 14px;
+    letter-spacing: 0;
+    margin-right: 3px;
+}.dashicons-alert::before {
+    content: "\f534";
+    background: #ffb900;
+    border-radius: 40px;
+    color: #fff;
+    border-radius: 40px;
+    padding: 4px 3px 4px 4px;
+    top: 0;
+    right: 9px;
+    margin: 0;
+    position: relative;
+}.superpwapro_dashicon_yes{
+	position: relative;
+    margin: 0;
+    font-size: 16px;
+    margin-left: 3px;
+    margin-top: 1px;
+}a.renewal-license {
+    margin-left: 3px;
+    font-size: 12px !important;
+    padding: 5px 12px 6px;
+    letter-spacing: 0.1px;
+    border-radius: 60px;
+    margin-right: 0px;
+    background: #388e3c;
+    color: black;
+    box-shadow: 0em 0.15em 0.65em 0em rgb(0 0 0 / 25%);
+    text-decoration: none;
+    background: linear-gradient(to right, #f4a7c9, #b168ff);
+}
+.renew-lic:hover {
+    color: #eee;
+}
+span.renew-lic {
+    font-size: 14px;
+}.superpwa_pro_key_user_name {
+    font-weight: bold;
+}.before_msg_Pro_active {
+    margin-left: 3px;
+}.superpwa_Pro_inactive{
+    margin-left: 3px;
+    color: red;
+}.ext_settings_url {
+    margin-left: 8px;
+}.superpwa-extension-mgr-main {
+    float: right;
+    background-color: #fff;
+    border: 8px solid #fff;
+    border-radius: 21px;
+    padding: 1px 0px 0px 13px;    
+}.pro_warning{color:#ffb229;right:3px;position:relative;bottom:1px}
+.zto30{color: red;}
+.superpwa-alert {
+    color: green;
+}.spwa_no{
+    background: #FF0000;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 15px;
+}

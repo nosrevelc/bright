@@ -1,0 +1,40 @@
+# Translation of Plugins - WooCommerce Filter Orders by Product - Stable (latest release) in English (UK)
+# This file is distributed under the same license as the Plugins - WooCommerce Filter Orders by Product - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-12-17 20:58:06+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: en_GB\n"
+"Project-Id-Version: Plugins - WooCommerce Filter Orders by Product - Stable (latest release)\n"
+
+#: inc/filter-by-category.php:24
+msgid "All Categories"
+msgstr "All Categories"
+
+#. Author URI of the plugin
+msgid "http://kowsarhossain.com"
+msgstr "http://kowsarhossain.com"
+
+#. Author of the plugin
+msgid "Md. Kowsar Hossain"
+msgstr "Mr. Kowsar Hossain"
+
+#. Description of the plugin
+msgid "This plugin lets you filter the WooCommrce Orders by any specific product"
+msgstr "This plugin lets you filter the WooCommerce Orders by any specific product"
+
+#. Plugin URI of the plugin
+msgid "http://kowsarhossain.com/"
+msgstr "http://kowsarhossain.com/"
+
+#. Plugin Name of the plugin
+msgid "WooCommerce Filter Orders by Product"
+msgstr "WooCommerce Filter Orders by Product"
+
+#: inc/filter-by-product.php:28
+msgid "All Products"
+msgstr "All Products"

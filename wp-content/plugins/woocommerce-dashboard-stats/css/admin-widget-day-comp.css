@@ -1,0 +1,31 @@
+#wcds_days_comp_legend_earnings
+{
+	display:inline-block;
+	background:#71b02f;
+	width:18px;
+	height:18px;
+}
+#wcds_days_comp_legend_avarages
+{
+	display:inline-block;
+	background: #255a8c;
+	width:18px;
+	height:18px;
+}
+.wcds_days_comp_legend_text {
+  vertical-align: top;
+  font-weight:bold;
+  margin-right: 20px;
+}
+#wcds_days_comp_stats_canvas_box
+{
+	display:none;
+}
+#wcds_days_comp_legend h2
+{
+	margin-bottom: 15px;
+}
+#wcds_days_comparison_picker_start_date, #wcds_days_comparison_picker_end_date {
+    width: 48%;
+	margin-right: 2px;
+}

@@ -1,0 +1,13 @@
+{
+  "name": "wpgurus/tabs",
+  "require": {
+    "wpgurus/templating": "1.4.0",
+    "wpgurus/config": "1.3.0",
+    "wpgurus/utils": "1.2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "WPGurus\\Tabs\\": "src"
+    }
+  }
+}

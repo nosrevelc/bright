@@ -1,0 +1,1644 @@
+{
+    "key": "group_5971ebd624134",
+    "title": "Listing Data",
+    "fields": [
+        {
+            "key": "field_5971ec580d840",
+            "label": "Listing Details",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_61fbea4d36c5c",
+            "label": "Type of Listing",
+            "name": "type_of_listing",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "type_listing",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_5ecd2121efe16",
+            "label": "Owner",
+            "name": "owner",
+            "type": "user",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "role": "",
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "array"
+        },
+        {
+            "key": "field_5971ee10a3150",
+            "label": "Status of Business",
+            "name": "business_status",
+            "type": "radio",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "sale": "For sale",
+                "offer": "Under offer",
+                "sold": "Sold (Subject to Contract)"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_5971fe4a728e6",
+            "label": "Franchise",
+            "name": "is_franchise",
+            "type": "radio",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "horizontal",
+            "choices": {
+                "1": "Yes",
+                "0": "No"
+            },
+            "default_value": "",
+            "other_choice": 0,
+            "save_other_choice": 0,
+            "allow_null": 0,
+            "return_format": "value"
+        },
+        {
+            "key": "field_5e734b68ec7d7",
+            "label": "Order Id",
+            "name": "active_order",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5ec00d935d601",
+            "label": "Expire Date",
+            "name": "expire_date",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d\/m\/Y",
+            "return_format": "Ymd",
+            "first_day": 1
+        },
+        {
+            "key": "field_5eeb5412460b1",
+            "label": "Responsible",
+            "name": "responsible",
+            "type": "user",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "role": "",
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "array"
+        },
+        {
+            "key": "field_63777898a0563",
+            "label": "Post in Recomemded Business?",
+            "name": "rb_post_in_recomemded_business",
+            "type": "true_false",
+            "instructions": "This is a field where possibility show this listing in list of Recommended Business",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "admin_only": 0,
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5971ffb5ca27c",
+            "label": "Media",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_6116534d6ff88",
+            "label": "Stamp",
+            "name": "stamp",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Yes",
+            "ui_off_text": "No"
+        },
+        {
+            "key": "field_6116536b6ff89",
+            "label": "Icon Stamp",
+            "name": "icon_stamp",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6116534d6ff88",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "menu-48x48",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "dropzone": 0
+        },
+        {
+            "key": "field_5e5d3048cb56e",
+            "label": "Featured Image\/Cover",
+            "name": "featured_image",
+            "type": "image",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "inline-preview",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "uploadedTo",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "dropzone": 0
+        },
+        {
+            "key": "field_5a0adf809942e",
+            "label": "Cover Video",
+            "name": "cover_video",
+            "type": "url",
+            "instructions": "Please paste the full Youtube URL video here.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5971fea29ad2e",
+            "label": "Gallery",
+            "name": "gallery",
+            "type": "gallery",
+            "instructions": "Please upload the image that will represent your listing.\r\n* Do not upload images without permission or which infringe on someone else's copyright\r\n* The picture format must be: .png,.jpg,.jpeg\r\n* Please refrain from using excessively large images (over 10MB)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": "",
+            "max": 10,
+            "insert": "append",
+            "library": "uploadedTo",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "dropzone": 1
+        },
+        {
+            "key": "field_5e5e809e89cf8",
+            "label": "Optional: Let our staff create your ad (.zip file)",
+            "name": "let_our_staff_create_your_ad",
+            "type": "file",
+            "instructions": "Our customer support will create your ad. Upload a .zip file (up to 100 MB) with information about your business.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "uploadedTo",
+            "min_size": "",
+            "max_size": 100,
+            "mime_types": "zip,7z,pdf,jpeg,jpg,png",
+            "dropzone": 0
+        },
+        {
+            "key": "field_5971ec710d841",
+            "label": "Business Info",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5e5e8726f70c2",
+            "label": "Business Type",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "h2",
+                "id": ""
+            },
+            "message": "Please choose the most relevant category for your business. \r\nOur team will review your business later and provide support if you think there is a more suitable one!",
+            "new_lines": "br",
+            "esc_html": 0
+        },
+        {
+            "key": "field_5971ece9be087",
+            "label": "Type of Business",
+            "name": "category",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "listing_cat",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_5e60b63f4306c",
+            "label": "Business Location",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "h2",
+                "id": ""
+            },
+            "message": "",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_5971ed18be088",
+            "label": "Business Location",
+            "name": "location",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "location",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_5ebd5f72a369a",
+            "label": "Expert",
+            "name": "expert",
+            "type": "post_object",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "expert"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_5e690cbde9ee5",
+            "label": "Financial Details",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5972004890f9a",
+            "label": "Property Type",
+            "name": "property_type",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "51",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "real": "Property Included",
+                "lease": "Lease",
+                "noproperty": "Without Property"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_5a69fc6b15daf",
+            "label": "Lease value",
+            "name": "lease_value",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5972004890f9a",
+                        "operator": "==",
+                        "value": "lease"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5a69fcc815db0",
+            "label": "Lease frequency",
+            "name": "lease_frequency",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5972004890f9a",
+                        "operator": "==",
+                        "value": "lease"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "19",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "year": "Year",
+                "month": "Month"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_5972008690f9b",
+            "label": "Price",
+            "name": "price_type",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            },
+            "admin_only": 0,
+            "choices": {
+                "manual": "Specific"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_5972010f90f9d",
+            "label": "Specific",
+            "name": "price_manual",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5972008690f9b",
+                        "operator": "==",
+                        "value": "manual"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "20",
+                "class": "acf-conditional-fields frontend-hide-label",
+                "id": ""
+            },
+            "admin_only": 0,
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 1,
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_597200be90f9c",
+            "label": "Range",
+            "name": "price_range",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5972008690f9b",
+                        "operator": "!=",
+                        "value": "manual"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "49",
+                "class": "acf-conditional-fields frontend-hide-label",
+                "id": ""
+            },
+            "admin_only": 0,
+            "choices": {
+                "99999": "Under 100k",
+                "100000_249999": "100k - 250k",
+                "250000_499999": "250k - 500k",
+                "500000_999999": "500k - 1m",
+                "1000000_4999999": "1m - 5m",
+                "5000000": "Over 5m"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_6377796ba0564",
+            "label": "Price Public",
+            "name": "rb_hidden_price_in_front_office",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5972008690f9b",
+                        "operator": "==",
+                        "value": "manual"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "30",
+                "class": "acf-conditional-fields frontend-hide-label",
+                "id": ""
+            },
+            "admin_only": 0,
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Now is Hidden",
+            "ui_off_text": "Now is Show"
+        },
+        {
+            "key": "field_637779c3a0565",
+            "label": "Income from Recommendation",
+            "name": "commission_by_recommendation_field",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5972008690f9b",
+                        "operator": "==",
+                        "value": "manual"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "35",
+                "class": "acf-conditional-fields",
+                "id": ""
+            },
+            "admin_only": 0,
+            "choices": {
+                "percentage_value": "Percentage Value %",
+                "monetary_value": "Fixed Value"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_637779f6a0566",
+            "label": "Percentage Value %",
+            "name": "percentage_value_field",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_637779c3a0565",
+                        "operator": "==",
+                        "value": "percentage_value"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "15",
+                "class": "acf-conditional-fields frontend-hide-label",
+                "id": ""
+            },
+            "admin_only": 0,
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_63777a5ca0567",
+            "label": "Fixed Value",
+            "name": "monetary_value_field",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_637779c3a0565",
+                        "operator": "==",
+                        "value": "monetary_value"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "25",
+                "class": "monetary_value",
+                "id": "monetary_value"
+            },
+            "admin_only": 0,
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_597201aa0eab9",
+            "label": "Revenue",
+            "name": "revenue_type",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "51",
+                "class": "",
+                "id": ""
+            },
+            "admin_only": 0,
+            "choices": {
+                "range": "Range",
+                "manual": "Specific",
+                "undisclosed": "Não divulgado"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "undisclosed : Não divulgado",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_597201cb0eaba",
+            "label": "Range",
+            "name": "revenue_range",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_597201aa0eab9",
+                        "operator": "==",
+                        "value": "range"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "49",
+                "class": "acf-conditional-fields",
+                "id": ""
+            },
+            "choices": {
+                "99999": "Under 100k",
+                "100000_249999": "100k - 250k",
+                "250000_499999": "250k - 500k",
+                "500000_999999": "500k - 1m",
+                "1000000_4999999": "1m - 5m",
+                "5000000": "Over 5m"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_63777b0b6ba11",
+            "label": "Cash Flow",
+            "name": "cash_flow_type",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_61fbea4d36c5c",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "51",
+                "class": "",
+                "id": ""
+            },
+            "admin_only": 0,
+            "choices": {
+                "range": "Range",
+                "manual": "Specific",
+                "undisclosed": "Não divulgado"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "undisclosed : Não divulgado",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_5972059994f64",
+            "label": "Range",
+            "name": "cash_flow_range",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5972056694f63",
+                        "operator": "==",
+                        "value": "range"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "49",
+                "class": "acf-conditional-fields",
+                "id": ""
+            },
+            "choices": {
+                "99999": "Under 100k",
+                "100000_249999": "100k - 250k",
+                "250000_499999": "250k - 500k",
+                "500000_999999": "500k - 1m",
+                "1000000_4999999": "1m - 5m",
+                "5000000": "Over 5m"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_597201e20eabb",
+            "label": "Specific Revenue",
+            "name": "revenue_manual",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_597201aa0eab9",
+                        "operator": "==",
+                        "value": "manual"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "49",
+                "class": "acf-conditional-fields",
+                "id": ""
+            },
+            "admin_only": 0,
+            "default_value": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_597205a694f65",
+            "label": "Specific Cach Flow",
+            "name": "cash_flow_manual",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_61fbea4d36c5c",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "49",
+                "class": "acf-conditional-fields",
+                "id": ""
+            },
+            "admin_only": 0,
+            "default_value": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_59720614cd45d",
+            "label": "Assets",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_59720621cd45e",
+            "label": "Real Estate Value",
+            "name": "real_estate",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_59720637cd45f",
+            "label": "Include Real Estate Value",
+            "name": "include_real_estate",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "acf-conditional-fields",
+                "id": ""
+            },
+            "choices": {
+                "1": "Propriedade\/imóvel incluída no preço"
+            },
+            "allow_custom": 0,
+            "default_value": [
+                0
+            ],
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "value",
+            "save_custom": 0
+        },
+        {
+            "key": "field_59720d7bc7340",
+            "label": "Size m<sup>2<\/sup>",
+            "name": "size",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "min": "",
+            "max": "",
+            "step": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_5972093befe18",
+            "label": "Furniture, Fixtures & Equipment",
+            "name": "furniture_fixtures_equipment",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_5972094fefe19",
+            "label": "Include Furniture, Fixtures & Equipment",
+            "name": "include_furniture_fixtures_equipment",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "49",
+                "class": "acf-conditional-fields",
+                "id": ""
+            },
+            "choices": {
+                "1": "Mobílias e equipamentos incluídos no preço"
+            },
+            "allow_custom": 0,
+            "default_value": [
+                0
+            ],
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "value",
+            "save_custom": 0
+        },
+        {
+            "key": "field_59720979efe1a",
+            "label": "Inventory \/ Stock",
+            "name": "inventory_stock",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_597209b4efe1b",
+            "label": "Include Inventory \/ Stock",
+            "name": "include_inventory_stock",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "acf-conditional-fields",
+                "id": ""
+            },
+            "choices": {
+                "1": "Inventário\/Stock incluído no preço"
+            },
+            "allow_custom": 0,
+            "default_value": [
+                0
+            ],
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "value",
+            "save_custom": 0
+        },
+        {
+            "key": "field_59720e5a824fb",
+            "label": "Terms",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_59720e62824fc",
+            "label": "Relocatable",
+            "name": "relocatable",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "1": "Yes",
+                "0": "No"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_59720e78824fd",
+            "label": "Owner Financing Available",
+            "name": "owner_financing",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "1": "Yes",
+                "0": "No"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_59720e8e824fe",
+            "label": "Financing Available",
+            "name": "financing",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 4,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_59720ea8824ff",
+            "label": "Reasons for Selling",
+            "name": "reasons",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 4,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_59720d72c733f",
+            "label": "Operation Details",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_59720d9dc7341",
+            "label": "Years Established",
+            "name": "years_established",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_59720da9c7342",
+            "label": "Employees",
+            "name": "employees",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_59720dbbc7343",
+            "label": "Trading Hours",
+            "name": "trading_hours",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 4,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_59720dc6c7344",
+            "label": "Support & Training",
+            "name": "support_training",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 4,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_59720dddc7345",
+            "label": "Website",
+            "name": "website",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_59720c18ebe5a",
+            "label": "Further Details",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_59720c31ebe5b",
+            "label": "Business Location Details",
+            "name": "business_location",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 4,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_59720c50ebe5c",
+            "label": "Premise Details",
+            "name": "premise_details",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 4,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_59720c55ebe5d",
+            "label": "Competition",
+            "name": "competition",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 4,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_59720c5debe5e",
+            "label": "Expansion Potential",
+            "name": "expansion_potential",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 4,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_59720c68ebe5f",
+            "label": "Living Accomodations",
+            "name": "living_accomodations",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "horizontal",
+            "choices": {
+                "1": "Yes",
+                "0": "No"
+            },
+            "default_value": "",
+            "other_choice": 0,
+            "save_other_choice": 0,
+            "allow_null": 0,
+            "return_format": "value"
+        },
+        {
+            "key": "field_59720ca6ebe60",
+            "label": "Accommodation Summary",
+            "name": "accommodation_summary",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 4,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_59720cb2ebe61",
+            "label": "Planning Consent",
+            "name": "planning_consent",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 4,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_5972003990f99",
+            "label": "Financial Details",
+            "name": "financial_details",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5a4b7769b4f10",
+            "label": "Related Listings",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5ebd5a3f9f630",
+            "label": "Publish in",
+            "name": "publish_in",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "language",
+            "field_type": "radio",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_5a4b7769b4d09",
+            "label": "Related Listings",
+            "name": "related_listings",
+            "type": "relationship",
+            "instructions": "Please choose the 4 business you consider related to this one.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "listing"
+            ],
+            "taxonomy": [],
+            "filters": [
+                "search",
+                "taxonomy"
+            ],
+            "elements": [
+                "featured_image"
+            ],
+            "min": "",
+            "max": 4,
+            "return_format": "object"
+        },
+        {
+            "key": "field_5ecf7ed99324e",
+            "label": "Broadcast Post",
+            "name": "broadcast_post",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": [],
+            "allow_custom": 0,
+            "default_value": [],
+            "layout": "horizontal",
+            "toggle": 0,
+            "return_format": "value",
+            "save_custom": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "listing"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "permalink",
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1669032066
+}

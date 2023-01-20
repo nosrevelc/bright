@@ -1,0 +1,11 @@
+{
+  "name": "wpgurus/components",
+  "require": {
+    "wpgurus/config": "1.3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "WPGurus\\Components\\": "src"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+.element-media-file {
+	background: #f1f1f1 none repeat scroll 0 0;
+	border: 1px solid #e7e7e7;
+	padding: 10px;
+}
+
+.element-media-file-preview-container {
+	margin-bottom: 10px;
+}
+
+.element-media-file-reload {
+	float:left;
+}
+
+.element-media-file-clear {
+	float: right;
+}
+
+.element-media-file-preview-state .element-media-file-input {
+	display: none;
+}
+
+.element-media-file-preview-state .element-media-file-reload {
+	display: none;
+}
+
+.element-media-file-upload-state .element-media-file-preview {
+	display: none;
+}
+
+.element-media-file-upload-state .element-media-file-clear {
+	display: none;
+}
+
+.element-media-file-preview img {
+	border: 1px solid #d7d7d7;
+}

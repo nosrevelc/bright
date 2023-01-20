@@ -1,0 +1,112 @@
+# Copyright (C) 2018 iDealBiz - Gravity Forms Field Add-On
+# This file is distributed under the same license as the iDealBiz - Gravity Forms Field Add-On package.
+msgid ""
+msgstr ""
+"Project-Id-Version: iDealBiz - Gravity Forms Field Add-On 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/idealbiz-gf-field-"
+"addon\n"
+"POT-Creation-Date: 2018-04-12 11:35:34+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: lib/Bootstrap.php:183
+msgid "Please insert only numbers (0 to 9)"
+msgstr ""
+
+#: lib/FieldAddon.php:180
+msgid "Field Taxonomy"
+msgstr ""
+
+#: lib/FieldAddon.php:181
+msgid ""
+"Choose a taxonomy from the list. The taxonomies can be repeated, because "
+"they are listed by post_type and can be related to more than one."
+msgstr ""
+
+#: lib/FieldAddon.php:186
+msgid "Post Attachments"
+msgstr ""
+
+#: lib/FieldAddon.php:187
+msgid ""
+"This value will be used as the meta key to store an array of IDs for all the "
+"attachments added through this field. An empty value will still ahve the "
+"attachments uploaded, but will only set them to have the created post as "
+"their parent."
+msgstr ""
+
+#: lib/FieldAddon.php:193 lib/FieldAddon.php:318
+msgid "Attachment extensions"
+msgstr ""
+
+#: lib/FieldAddon.php:194
+msgid ""
+"Provide a comma separated list with all the file extensions you want to "
+"allow. If empty, all extensions are allowed."
+msgstr ""
+
+#: lib/FieldAddon.php:200 lib/FieldAddon.php:337
+msgid "Attachment size (MB)"
+msgstr ""
+
+#: lib/FieldAddon.php:201
+msgid "Maximum file size allowed for uploaded files."
+msgstr ""
+
+#: lib/FieldAddon.php:206 lib/FieldAddon.php:356
+msgid "Number of files"
+msgstr ""
+
+#: lib/FieldAddon.php:207
+msgid "Maximum number of files that can be uploaded."
+msgstr ""
+
+#: lib/FieldAddon.php:278
+msgid "Custom taxonomy"
+msgstr ""
+
+#: lib/FieldAddon.php:280
+msgid "Select taxonomy"
+msgstr ""
+
+#: lib/FieldAddon.php:299
+msgid "Attachment meta key"
+msgstr ""
+
+#: lib/Fields/PostAttachments.php:17
+msgid "Attachments"
+msgstr ""
+
+#: lib/Fields/PostCustomTaxonomy.php:17
+msgid "Custom Taxonomy"
+msgstr ""
+
+#: lib/Fields/PostCustomTaxonomy.php:190
+msgid "Select option"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "iDealBiz - Gravity Forms Field Add-On"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://widgilabs.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Adds fields types to GravityForms using the Add-On Framework. Field types: "
+"custom taxonomy."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "WidgiLabs"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://widgilabs.com/"
+msgstr ""

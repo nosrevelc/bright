@@ -1,0 +1,76 @@
+# Translation of Plugins - WP Responsive Recent Post Slider/Carousel - Development (trunk) in Turkish
+# This file is distributed under the same license as the Plugins - WP Responsive Recent Post Slider/Carousel - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-08-21 14:31:54+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: tr\n"
+"Project-Id-Version: Plugins - WP Responsive Recent Post Slider/Carousel - Development (trunk)\n"
+
+#: includes/admin/wprps-how-it-work.php:115
+msgid "Need Support?"
+msgstr "Yardıma mı ihtiyacınız var?"
+
+#: includes/admin/wprps-how-it-work.php:175
+msgid "Go Premium "
+msgstr "Premium'a geç"
+
+#: includes/admin/wprps-how-it-work.php:50
+msgid "Step-2. This plugin get all the latest POST from WordPress Post section with a simple shortcode"
+msgstr "Adım 2. Bu eklenti, WordPress yazılar bölümünden en yeni yazıları basit bir kısa kod ile alır."
+
+#: includes/admin/wprps-how-it-work.php:51
+msgid "Step-3. If you need a <b>Featured Post</b> OR <b>Trending/Popular Post</b> plugin then try our plugins"
+msgstr "Adım 3. <b>Öne Çıkarılan Yazılar</b> veya <b>Popüler Yazılar</b> eklentisine ihtiyacınız varsa eklentilerimizi deneyin."
+
+#: includes/admin/wprps-how-it-work.php:58
+msgid "How Shortcode Works"
+msgstr "Kısa kod nasıl çalışır"
+
+#: includes/admin/wprps-how-it-work.php:176
+msgid "View PRO Demo "
+msgstr "PRO demosunu görüntüle"
+
+#: includes/admin/wprps-how-it-work.php:70
+msgid "All Shortcodes"
+msgstr "Tüm kısa kodlar"
+
+#: includes/admin/wprps-how-it-work.php:63
+msgid "Step-2. Put below shortcode as per your need."
+msgstr "Adım 2. İhtiyacınıza göre kısa kodu aşağıya koyun."
+
+#: includes/admin/wprps-how-it-work.php:123
+msgid "Check plugin document for shortcode parameters and demo for designs."
+msgstr "Tasarımlar için demo ve kısa kod parametreleri için eklenti belgesini kontrol edin."
+
+#: includes/admin/wprps-how-it-work.php:124
+msgid "Documentation"
+msgstr "Belgelendirme"
+
+#: includes/admin/wprps-how-it-work.php:125
+msgid "Demo for Designs"
+msgstr "Tasarımlar için demo"
+
+#: includes/admin/wprps-how-it-work.php:154
+msgid "Upgrate to Pro"
+msgstr "Pro'ya yükselt"
+
+#: includes/admin/wprps-how-it-work.php:139
+msgid "Help to improve this plugin!"
+msgstr "Bu eklentiyi iyileştirmeye yardım edin!"
+
+#: templates/carousel/design-1.php:50 templates/slider/design-1.php:44
+#: templates/slider/design-2.php:45 templates/slider/design-4.php:54
+#: templates/slider/design-3.php:54 assets/js/blocks.build.js:1
+msgid "Read More"
+msgstr "Devamını oku"
+
+#: templates/carousel/design-1.php:32 templates/slider/design-1.php:26
+#: templates/slider/design-2.php:27 templates/slider/design-4.php:36
+#: templates/slider/design-3.php:34
+msgid "By"
+msgstr "Yazan"

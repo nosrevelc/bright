@@ -1,0 +1,368 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WP FAQ\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-12 10:28+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.4.0; wp-5.4.2"
+
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:31
+msgid "15+. In lite version only one design."
+msgstr ""
+
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:23
+msgid ""
+"2 (FAQ, FAQ items with Categories in Grid). In lite version only 1 layout."
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"A simple FAQ plugin created with WordPress custom post type. Also work with "
+"Gutenberg shortcode block."
+msgstr ""
+
+#: includes/wp-faq-post-types.php:71
+msgid "Add New Category"
+msgstr ""
+
+#: includes/wp-faq-post-types.php:24
+msgid "Add New FAQ"
+msgstr ""
+
+#: includes/wp-faq-post-types.php:66
+msgid "All Category"
+msgstr ""
+
+#: includes/wp-faq-post-types.php:27
+msgid "All FAQ"
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:73
+msgid "All Shortcodes"
+msgstr ""
+
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:79
+msgid "Arrange your desired slides with your desired order and display."
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:130
+msgid "Boost Design"
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:129
+msgid "Boost design and best solution for your website."
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:84
+msgid "Check Documentation"
+msgstr ""
+
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:36
+msgid "Default Open FAQ "
+msgstr ""
+
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:28
+msgid "Designs "
+msgstr ""
+
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:95
+msgid ""
+"Do not display the faq & Do not display the faq for particular categories."
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:81
+msgid "Documentation"
+msgstr ""
+
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:76
+msgid "Drag & Drop Slide Order Change "
+msgstr ""
+
+#: includes/wp-faq-post-types.php:69
+msgid "Edit Category"
+msgstr ""
+
+#: includes/wp-faq-post-types.php:25
+msgid "Edit FAQ"
+msgstr ""
+
+#: includes/admin/settings/premium.php:14
+msgid "Essential Plugin Bundle"
+msgstr ""
+
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:92
+msgid "Exclude FAQ and Exclude Some Categories "
+msgstr ""
+
+#: includes/wp-faq-post-types.php:33
+msgid "FAQ"
+msgstr ""
+
+#: includes/wp-faq-post-types.php:73
+msgid "FAQ Category"
+msgstr ""
+
+#: includes/admin/class-spfaq-admin.php:111
+msgid "FAQ Category Shortcode"
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:76
+msgid "FAQ Shortcode"
+msgstr ""
+
+#: includes/shortcode/wp-faq.php:31 includes/shortcode/wp-faq.php:39
+msgid "FAQ View - Shortcode"
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:47
+msgid "Getting Started with FAQ"
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:180
+msgid "Go Premium "
+msgstr ""
+
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:87
+msgid ""
+"Gutenberg Block, Elementor, Bevear Builder, SiteOrigin, Divi, Visual "
+"Composer and Fusion Page Builder Support"
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:95
+msgid "Gutenberg Support"
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:142
+msgid "Help to improve this plugin!"
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:103
+msgid "How it Work"
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:16
+#: includes/admin/class-spfaq-admin.php:42
+msgid "How It Works"
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:39
+msgid "How It Works - Display and shortcode"
+msgstr ""
+
+#: includes/admin/class-spfaq-admin.php:42
+msgid "How it works, our plugins and offers"
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:61
+msgid "How Shortcode Works"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.essentialplugin.com"
+msgstr ""
+
+#: faq.php:128
+#, php-format
+msgid ""
+"It looks like you had PRO version %s of this plugin activated. To avoid "
+"conflicts the extra version has been deactivated and we recommend you delete "
+"it."
+msgstr ""
+
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:20
+msgid "Layouts "
+msgstr ""
+
+#: includes/admin/class-spfaq-admin.php:75
+msgid "More Premium - Settings"
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:121
+msgid "Need Support & Solutions?"
+msgstr ""
+
+#: includes/wp-faq-post-types.php:72
+msgid "New Category Name"
+msgstr ""
+
+#: includes/wp-faq-post-types.php:26
+msgid "New FAQ"
+msgstr ""
+
+#: includes/wp-faq-post-types.php:30
+msgid "No FAQ found"
+msgstr ""
+
+#: includes/wp-faq-post-types.php:31
+msgid "No FAQ found in Trash"
+msgstr ""
+
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:39
+msgid "Open number of FAQ open on page load."
+msgstr ""
+
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:84
+msgid "Page Builder Support "
+msgstr ""
+
+#: includes/wp-faq-post-types.php:67 includes/wp-faq-post-types.php:68
+msgid "Parent Category"
+msgstr ""
+
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:71
+msgid ""
+"Play with all shortcode parameters with preview panel. No documentation "
+"required."
+msgstr ""
+
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:20
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:28
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:36
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:44
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:52
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:60
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:68
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:76
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:84
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:92
+msgid "PRO"
+msgstr ""
+
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:52
+msgid "Read more/ Show Less button "
+msgstr ""
+
+#: includes/wp-faq-post-types.php:65
+msgid "Search Category"
+msgstr ""
+
+#: includes/wp-faq-post-types.php:29
+msgid "Search FAQ"
+msgstr ""
+
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:68
+msgid "Shortcode Generator "
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:65
+msgid "Step-1. Create a page like FAQ OR add the shortcode in any page."
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:51
+msgid "Step-1. Go to \"FAQ --> Add New\"."
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:107
+msgid "Step-1. Go to the Gutenberg editor of your page."
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:52
+msgid "Step-2. Add Title, Description and featured image"
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:66
+msgid "Step-2. Put below shortcode as per your need."
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:108
+msgid "Step-2. Search \"faq\" keyword in the Gutenberg block list."
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:109
+msgid ""
+"Step-3. Add any block of FAQ and you will find its relative options on the "
+"right end side."
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:53
+msgid ""
+"Step-3. Display multiple FAQs, create categories under \"FAQ --> category\" "
+"and create categories."
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:54
+msgid ""
+"Step-4. Assign FAQ post to respective categories and use the category "
+"shortcode under \"FAQ --> category\""
+msgstr ""
+
+#: faq.php:127
+#, php-format
+msgid "Thank you for activating %s"
+msgstr ""
+
+#: includes/wp-faq-post-types.php:70
+msgid "Update Category"
+msgstr ""
+
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:14
+#, php-format
+msgid ""
+"Upgrade to <a href=\"%s\" target=\"_blank\">Pro Version</a> with Essential "
+"Plugin Bundle to boost your website design."
+msgstr ""
+
+#: includes/admin/class-spfaq-admin.php:45
+msgid "Upgrade to PRO"
+msgstr ""
+
+#: includes/admin/class-spfaq-admin.php:45
+msgid "Upgrade to PRO - WP FAQ"
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:158
+msgid "Upgrate to Pro"
+msgstr ""
+
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:47
+msgid "Use plugin for WooCommerce product FAQ."
+msgstr ""
+
+#: includes/wp-faq-post-types.php:28
+msgid "View FAQ"
+msgstr ""
+
+#: includes/admin/spfaq-how-it-work.php:181
+msgid "View PRO Demo "
+msgstr ""
+
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:44
+msgid "WooCommerce Supports "
+msgstr ""
+
+#. Name of the plugin
+msgid "WP FAQ"
+msgstr ""
+
+#: includes/admin/settings/premium.php:14
+msgid "WP FAQ with "
+msgstr ""
+
+#. Author of the plugin
+msgid "WP OnlineSupport, Essential Plugin"
+msgstr ""
+
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:60
+msgid "WP Templating Features "
+msgstr ""
+
+#: includes/admin/supports/gutenberg-block.php:97
+msgid "WPOS Blocks"
+msgstr ""
+
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:63
+msgid "You can modify plugin html/designs in your current theme."
+msgstr ""
+
+#: includes/admin/metabox/spfaq-post-setting-metabox-pro.php:55
+msgid "You can Show Read more/ Show Less button."
+msgstr ""

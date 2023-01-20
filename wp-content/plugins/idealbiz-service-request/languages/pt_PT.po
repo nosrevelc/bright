@@ -1,0 +1,371 @@
+# Translation of IdealBiz Service Request in Portuguese (Portugal)
+# This file is distributed under the same license as the IdealBiz Service Request package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-06-07 12:33:08+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/1.0-alpha-1000\n"
+"Project-Id-Version: IdealBiz Service Request\n"
+
+#: lib/Gforms/HelperServiceContract.php:199
+msgid "Accept and pay link"
+msgstr "Link para aceitaçao e pagamento"
+
+#: lib/PostType/ServiceContract.php:443
+msgid "Accept and payment link"
+msgstr "Link para aceitaçao e pagamento"
+
+#: lib/PostType/ServiceContract.php:444
+msgid "Accept and payment"
+msgstr "Aceitar e pagar"
+
+#: lib/Gforms/HelperServiceMessage.php:157
+msgid "[idealBiz] You have a new message in your service request"
+msgstr "[idealBiz] Tem uma nova mensagem no seu pedido de serviço"
+
+#: lib/PostType/ServiceRequest.php:88
+msgid "[idealBiz] You have a new service request in your account"
+msgstr "[idealBiz] Tem um novo pedido de serviço na sua conta"
+
+#. translators: The placeholder id for the service request title
+#: lib/PostType/ServiceRequest.php:91
+msgid "%1$s service request"
+msgstr "Pedido de serviço de %1$s"
+
+#: lib/Fields/ConsultantEmailNotification.php:21
+msgctxt "Label"
+msgid "Consultant Email notification template"
+msgstr "Template de email para notificação de consultor"
+
+#: lib/Fields/ConsultantEmailNotification.php:24
+msgid "Don´t forget to include %MY_SERVICE_REQUESTS% to add the link back to the service requests"
+msgstr "Não esquecer de incluir %MY_SERVICE_REQUESTS% para adicionar ao email um link para os pedidos de serviços."
+
+#: lib/Gforms/HelperServiceContract.php:211
+msgid "Download proposal link."
+msgstr "Link para descarregar proposta."
+
+#: lib/Gforms/HelperServiceContract.php:200
+msgid "Accept and pay"
+msgstr "Aceitar e efectuar o pagamento"
+
+#: lib/PostType/ServiceContract.php:321 lib/PostType/ServiceContract.php:455
+msgid "Adjudication"
+msgstr "Adjudicação"
+
+#: lib/PostType/ServiceContract.php:325 lib/PostType/ServiceContract.php:459
+msgid "Intermediate"
+msgstr "Intermédia"
+
+#: lib/PostType/ServiceContract.php:329 lib/PostType/ServiceContract.php:463
+msgid "Conclusion"
+msgstr "Conclusão"
+
+#: lib/Gforms/HelperServiceMessage.php:139
+#: lib/Gforms/HelperServiceMessage.php:152
+#: lib/Gforms/HelperServiceSatisfaction.php:61
+#: lib/PostType/ServiceContract.php:352 lib/PostType/ServiceRequest.php:84
+msgid "Hello"
+msgstr "Olá"
+
+#: lib/Gforms/HelperServiceSatisfaction.php:107
+msgid "Your coupon code"
+msgstr "O seu cupão"
+
+#: lib/PostType/ServiceContract.php:360
+msgid "click to form"
+msgstr "Clique para o questionário"
+
+#: lib/PostType/ServiceContract.php:367
+msgid "Service satisfaction"
+msgstr "Satisfação de serviço"
+
+#: lib/WooCommerce/EndpointServiceRequest.php:73
+msgid "Pending Proposal"
+msgstr "Pendente proposta"
+
+#: lib/WooCommerce/EndpointServiceRequest.php:77
+msgid "Waiting on Customer"
+msgstr "Pendente resposta cliente"
+
+#: lib/WooCommerce/EndpointServiceRequest.php:81
+msgid "Waiting on Consultant"
+msgstr "Pendente resposta consultor"
+
+#: lib/WooCommerce/EndpointServiceRequest.php:85
+msgid "Closed"
+msgstr "Fechado"
+
+#: lib/Email/EmailTemplate.php:135
+msgid "IdealBiz Logo"
+msgstr "IdealBiz Logo"
+
+#: lib/Fields/AdjudicationProduct.php:21
+msgctxt "Label"
+msgid "Adjudication product"
+msgstr "Produto Adjudicação"
+
+#: lib/Fields/ConclusionProduct.php:21
+msgctxt "Label"
+msgid "Conclusion product"
+msgstr "Produto Conclusão"
+
+#: lib/Fields/EmailNotification.php:21
+msgctxt "Label"
+msgid "Email notification template"
+msgstr "Template de Email de Notificação"
+
+#: lib/Fields/EmailNotification.php:24
+msgid "Don´t forget to include %SERVICE_REQUEST_LINK% to add the link back to the service request"
+msgstr "Não esqueça de incluir %SERVICE_REQUEST_LINK% para adicionar o link de retorno ao pedido de serviço"
+
+#: lib/Fields/IntermediateProduct.php:21
+msgctxt "Label"
+msgid "Intermediate product"
+msgstr "Produto Fase Intermédia"
+
+#: lib/Fields/PaymentCompleted.php:21
+msgctxt "Label"
+msgid "Payment completed template"
+msgstr "Template de email completo"
+
+#: lib/Fields/PaymentCompleted.php:24
+msgid "You can use the following placeholders. %STAGE% - represent the completed stage."
+msgstr "Pode usar a MACRO. %STAGE% - que representa a fase deste serviço."
+
+#: lib/Fields/PaymentCompleted.php:32
+msgid "Payment for the %STAGE% completed."
+msgstr "Pagamento para a fase %STAGE% realizado com sucesso."
+
+#: lib/Fields/ProposalTemplate.php:21
+msgctxt "Label"
+msgid "Proposal template"
+msgstr "Template de Proposta"
+
+#: lib/Fields/ProposalTemplate.php:24
+msgid ""
+"You can use the following placeholders.\n"
+"%ORDER_LINK% - represent the link to accept and pay for the order.\n"
+"%PROPOSAL_LINK% - represent the proposal file download link."
+msgstr ""
+"Pode usar as seguintes MACROS.\n"
+"%ORDER_LINK% - representa o link para aceitar e efectuar o pagamento da encomenda.\n"
+"%PROPOSAL_LINK% - representa o link para descarregar o ficheiro de proposta."
+
+#: lib/Fields/ProposalTemplate.php:34
+msgid ""
+"Click the link below to open the proposal: %PROPOSAL_LINK%\n"
+"\n"
+"To accept the proposal simply click the link below and you will be redirected to the checkout page. %ORDER_LINK%."
+msgstr ""
+"Clique no link abaixo para abrir a proposta: %PROPOSAL_LINK%\n"
+"\n"
+"Para aceitar a proposta simplesmente clique no link abaixo e será redireccionado para a página de compra/pagamento. %ORDER_LINK%."
+
+#: lib/Fields/SatisfactionPage.php:21
+msgctxt "Label"
+msgid "Service satisfaction page"
+msgstr "Página se questionário serviço de satisfação."
+
+#: lib/Fields/ServicesTab.php:24
+msgctxt "Tab"
+msgid "Services"
+msgstr "Serviços"
+
+#: lib/Fields/StageCompleted.php:21
+msgctxt "Label"
+msgid "Stage completed template"
+msgstr "Template de Fase Completa"
+
+#: lib/Fields/StageCompleted.php:24
+msgid ""
+"You can use the following placeholders.\n"
+"%ORDER_LINK% - represent the link to accept and pay for the order.\n"
+"%STAGE% - represent the completed stage."
+msgstr ""
+"Pode usar as seguintes MACROS.\n"
+"%ORDER_LINK% - representa o link para aceitar e efectuar o pagamento da encomenda.\n"
+"%STAGE% - representa a fase do serviço."
+
+#: lib/Fields/StageCompleted.php:34
+msgid "%STAGE% completed. %ORDER_LINK%"
+msgstr "%STAGE% completo. %ORDER_LINK%"
+
+#: lib/Gforms/HelperServiceContract.php:212
+msgid "Download proposal."
+msgstr "Descarregar a proposta"
+
+#: lib/Gforms/HelperServiceMessage.php:165 lib/PostType/ServiceRequest.php:98
+msgid "View your service request link"
+msgstr "Ver o pedido de serviço"
+
+#: lib/Gforms/HelperServiceMessage.php:166 lib/PostType/ServiceRequest.php:99
+msgid "View your service request"
+msgstr "Ver o pedido de serviço"
+
+#: lib/Gforms/HelperServiceSatisfaction.php:102
+msgid "Here is you coupon code"
+msgstr "Aqui tem o seu código de desconto"
+
+#: lib/PostType/ServiceContract.php:76 lib/PostType/ServiceMessage.php:77
+#: lib/PostType/ServiceRequest.php:160
+msgid "Enter base cpt name here"
+msgstr "Insira nome do cpt base aqui"
+
+#: lib/PostType/ServiceContract.php:355
+msgid "Please fillout our customer satisfaction form."
+msgstr "Por favor preencha o nosso formulário de satisfação"
+
+#: lib/Taxonomy/WLBaseType.php:27
+msgctxt "Taxonomy General Name"
+msgid "BaseCPT Types"
+msgstr "Tipos BaseCPT"
+
+#: lib/Taxonomy/WLBaseType.php:28
+msgctxt "Taxonomy Singular Name"
+msgid "BaseCPT Type"
+msgstr "Tipo BaseCPT"
+
+#: lib/Taxonomy/WLBaseType.php:29
+msgid "Types"
+msgstr "Tipos"
+
+#: lib/Taxonomy/WLBaseType.php:30
+msgid "All BaseCPT Types"
+msgstr ""
+
+#: lib/Taxonomy/WLBaseType.php:31
+msgid "Parent BaseCPT Type"
+msgstr ""
+
+#: lib/Taxonomy/WLBaseType.php:32
+msgid "Parent BaseCPT Type:"
+msgstr ""
+
+#: lib/Taxonomy/WLBaseType.php:33
+msgid "New BaseCPT Type Name"
+msgstr ""
+
+#: lib/Taxonomy/WLBaseType.php:34
+msgid "Add New BaseCPT Type"
+msgstr ""
+
+#: lib/Taxonomy/WLBaseType.php:35
+msgid "Edit BaseCPT Type"
+msgstr ""
+
+#: lib/Taxonomy/WLBaseType.php:36
+msgid "Update BaseCPT Type"
+msgstr ""
+
+#: lib/Taxonomy/WLBaseType.php:37
+msgid "View BaseCPT Type"
+msgstr ""
+
+#: lib/Taxonomy/WLBaseType.php:38
+msgid "Separate types with commas"
+msgstr ""
+
+#: lib/Taxonomy/WLBaseType.php:39
+msgid "Add or remove types"
+msgstr ""
+
+#: lib/Taxonomy/WLBaseType.php:40
+msgid "Choose from the most used"
+msgstr ""
+
+#: lib/Taxonomy/WLBaseType.php:41
+msgid "Popular BaseCPT Types"
+msgstr ""
+
+#: lib/Taxonomy/WLBaseType.php:42
+msgid "Search BaseCPT Types"
+msgstr ""
+
+#: lib/Taxonomy/WLBaseType.php:43
+msgid "Not Found"
+msgstr ""
+
+#: lib/Taxonomy/WLBaseType.php:44
+msgid "No types"
+msgstr "Sem tipos"
+
+#: lib/Taxonomy/WLBaseType.php:45
+msgid "BaseCPT types list"
+msgstr "Lista de tipos BaseCPT"
+
+#: lib/Taxonomy/WLBaseType.php:46
+msgid "BaseCPT types list navigation"
+msgstr ""
+
+#: lib/WooCommerce/EndpointServiceRequest.php:35
+msgid "No Service requests found."
+msgstr "Sem pedidos de serviços."
+
+#: lib/WooCommerce/EndpointServiceRequest.php:109
+msgid "See Service Request"
+msgstr "Ver pedidos de serviços"
+
+#: lib/WooCommerce/EndpointServiceRequest.php:110
+msgid "See"
+msgstr "Ver"
+
+#: lib/WooCommerce/Helper.php:23
+msgid "View Your Service Requests"
+msgstr "Ver os meus pedidos de serviços"
+
+#: vendor/johnbillion/extended-cpts/functions.php:41
+msgid "Post types must be registered on the \"init\" hook."
+msgstr ""
+
+#: vendor/johnbillion/extended-cpts/functions.php:115
+msgid "Taxonomies must be registered on the \"init\" hook."
+msgstr ""
+
+#: vendor/johnbillion/extended-cpts/src/class-extended-cpt-admin.php:653
+msgid "Author"
+msgstr "Autor"
+
+#. translators: %s: The ID of the Posts 2 Posts connection type
+#: vendor/johnbillion/extended-cpts/src/class-extended-cpt-admin.php:955
+#: vendor/johnbillion/extended-cpts/src/class-extended-cpt-admin.php:982
+msgid "Invalid connection type: %s"
+msgstr ""
+
+#. translators: %s: Post type query variable name
+#: vendor/johnbillion/extended-cpts/src/class-extended-cpt.php:677
+msgid "Post type query var \"%s\" clashes with a taxonomy query var of the same name"
+msgstr ""
+
+#: vendor/johnbillion/extended-cpts/src/class-extended-taxonomy-admin.php:402
+msgid "Not specified"
+msgstr ""
+
+#. translators: %s: Taxonomy query variable name
+#: vendor/johnbillion/extended-cpts/src/class-extended-taxonomy.php:202
+msgid "Taxonomy query var \"%s\" clashes with a post type query var of the same name"
+msgstr ""
+
+#. translators: %s: Taxonomy query variable name
+#: vendor/johnbillion/extended-cpts/src/class-extended-taxonomy.php:208
+msgid "Taxonomy query var \"%s\" is not allowed"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "iDealBiz - Service Request"
+msgstr "iDealBiz - Pedidos de Serviços"
+
+#. Author URI of the plugin/theme
+msgid "http://widgilabs.com/"
+msgstr "http://widgilabs.com/"
+
+#. Description of the plugin/theme
+msgid "Add service request feature to platform."
+msgstr "Adicione funcionalidade de solicitação de serviço à plataforma."
+
+#. Author of the plugin/theme
+msgid "WidgiLabs"
+msgstr "WidgiLabs"

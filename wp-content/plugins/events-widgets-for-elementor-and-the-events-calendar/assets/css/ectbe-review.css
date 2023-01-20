@@ -1,0 +1,41 @@
+.ectbe-rating-notice-wrapper.notice.notice-info.is-dismissible {
+    padding: 5px;
+    display: table;
+    width: 100%;
+    max-width: 820px;
+    clear: both;
+    border-radius: 5px;
+    border: 2px solid #b7bfc7;
+}
+.ectbe-rating-notice-wrapper .logo_container {
+    width: 100px;
+    display: table-cell;
+    padding: 5px;
+    vertical-align: middle;
+}
+.ectbe-rating-notice-wrapper .logo_container a,
+.ectbe-rating-notice-wrapper .logo_container img {
+    width:100%;
+    height:auto;
+    display:inline-block;
+}
+.ectbe-rating-notice-wrapper .message_container {
+    display: table-cell;
+    padding: 5px 20px 5px 5px;
+    vertical-align: middle;
+}
+.ectbe-rating-notice-wrapper ul li {
+    float: left;
+    margin: 0px 10px 0 0;
+}
+.ectbe-rating-notice-wrapper ul li.already_rated a:before {
+    color: #f12945;
+    content: "\f153";
+    font: normal 18px/22px dashicons;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 3px;
+}
+.clrfix{
+    clear:both;
+}

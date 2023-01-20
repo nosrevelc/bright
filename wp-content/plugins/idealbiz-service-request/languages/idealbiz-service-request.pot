@@ -1,0 +1,256 @@
+# Copyright (C) 2019 WidgiLabs
+# This file is distributed under the same license as the iDealBiz - Service Request plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: iDealBiz - Service Request 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/idealbiz-service-request\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-06-07T12:29:51+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.1.0\n"
+"X-Domain: idealbiz-service-request\n"
+
+#. Plugin Name of the plugin
+msgid "iDealBiz - Service Request"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "http://widgilabs.com/"
+msgstr ""
+
+#. Description of the plugin
+msgid "Add service request feature to platform."
+msgstr ""
+
+#. Author of the plugin
+msgid "WidgiLabs"
+msgstr ""
+
+#: lib/WooCommerce/EndpointServiceRequest.php:35
+msgid "No Service requests found."
+msgstr ""
+
+#: lib/WooCommerce/EndpointServiceRequest.php:73
+msgid "Pending Proposal"
+msgstr ""
+
+#: lib/WooCommerce/EndpointServiceRequest.php:77
+msgid "Waiting on Customer"
+msgstr ""
+
+#: lib/WooCommerce/EndpointServiceRequest.php:81
+msgid "Waiting on Consultant"
+msgstr ""
+
+#: lib/WooCommerce/EndpointServiceRequest.php:85
+msgid "Closed"
+msgstr ""
+
+#: lib/WooCommerce/EndpointServiceRequest.php:109
+msgid "See Service Request"
+msgstr ""
+
+#: lib/WooCommerce/EndpointServiceRequest.php:110
+msgid "See"
+msgstr ""
+
+#: lib/WooCommerce/Helper.php:23
+msgid "View Your Service Requests"
+msgstr ""
+
+#: lib/Gforms/HelperServiceSatisfaction.php:61
+#: lib/Gforms/HelperServiceMessage.php:139
+#: lib/Gforms/HelperServiceMessage.php:152
+#: lib/PostType/ServiceRequest.php:119
+#: lib/PostType/ServiceRequest.php:173
+#: lib/PostType/ServiceContract.php:352
+msgid "Hello"
+msgstr ""
+
+#: lib/Gforms/HelperServiceSatisfaction.php:102
+msgid "Here is you coupon code"
+msgstr ""
+
+#: lib/Gforms/HelperServiceSatisfaction.php:107
+msgid "Your coupon code"
+msgstr ""
+
+#: lib/Gforms/HelperServiceMessage.php:157
+msgid "[idealBiz] You have a new message in your service request"
+msgstr ""
+
+#: lib/Gforms/HelperServiceMessage.php:165
+#: lib/PostType/ServiceRequest.php:133
+#: lib/PostType/ServiceRequest.php:187
+msgid "View your service request link"
+msgstr ""
+
+#: lib/Gforms/HelperServiceMessage.php:166
+#: lib/PostType/ServiceRequest.php:134
+#: lib/PostType/ServiceRequest.php:188
+msgid "View your service request"
+msgstr ""
+
+#: lib/Gforms/HelperServiceContract.php:199
+msgid "Accept and pay link"
+msgstr ""
+
+#: lib/Gforms/HelperServiceContract.php:200
+msgid "Accept and pay"
+msgstr ""
+
+#: lib/Gforms/HelperServiceContract.php:211
+msgid "Download proposal link."
+msgstr ""
+
+#: lib/Gforms/HelperServiceContract.php:212
+msgid "Download proposal."
+msgstr ""
+
+#: lib/Fields/ServicesTab.php:24
+msgctxt "Tab"
+msgid "Services"
+msgstr ""
+
+#: lib/Fields/ConclusionProduct.php:21
+msgctxt "Label"
+msgid "Conclusion product"
+msgstr ""
+
+#: lib/Fields/StageCompleted.php:21
+msgctxt "Label"
+msgid "Stage completed template"
+msgstr ""
+
+#: lib/Fields/StageCompleted.php:24
+msgid ""
+"You can use the following placeholders.\n"
+"%ORDER_LINK% - represent the link to accept and pay for the order.\n"
+"%STAGE% - represent the completed stage."
+msgstr ""
+
+#: lib/Fields/StageCompleted.php:34
+msgid "%STAGE% completed. %ORDER_LINK%"
+msgstr ""
+
+#: lib/Fields/ProposalTemplate.php:21
+msgctxt "Label"
+msgid "Proposal template"
+msgstr ""
+
+#: lib/Fields/ProposalTemplate.php:24
+msgid ""
+"You can use the following placeholders.\n"
+"%ORDER_LINK% - represent the link to accept and pay for the order.\n"
+"%PROPOSAL_LINK% - represent the proposal file download link."
+msgstr ""
+
+#: lib/Fields/ProposalTemplate.php:34
+msgid ""
+"Click the link below to open the proposal: %PROPOSAL_LINK%\n"
+"\n"
+"To accept the proposal simply click the link below and you will be redirected to the checkout page. %ORDER_LINK%."
+msgstr ""
+
+#: lib/Fields/AdjudicationProduct.php:21
+msgctxt "Label"
+msgid "Adjudication product"
+msgstr ""
+
+#: lib/Fields/PaymentCompleted.php:21
+msgctxt "Label"
+msgid "Payment completed template"
+msgstr ""
+
+#: lib/Fields/PaymentCompleted.php:24
+msgid "You can use the following placeholders. %STAGE% - represent the completed stage."
+msgstr ""
+
+#: lib/Fields/PaymentCompleted.php:32
+msgid "Payment for the %STAGE% completed."
+msgstr ""
+
+#: lib/Fields/IntermediateProduct.php:21
+msgctxt "Label"
+msgid "Intermediate product"
+msgstr ""
+
+#: lib/Fields/EmailNotification.php:21
+msgctxt "Label"
+msgid "Email notification template"
+msgstr ""
+
+#: lib/Fields/EmailNotification.php:24
+msgid "Don´t forget to include %SERVICE_REQUEST_LINK% to add the link back to the service request"
+msgstr ""
+
+#: lib/Fields/SatisfactionPage.php:21
+msgctxt "Label"
+msgid "Service satisfaction page"
+msgstr ""
+
+#: lib/Fields/ConsultantEmailNotification.php:21
+msgctxt "Label"
+msgid "Consultant Email notification template"
+msgstr ""
+
+#: lib/Fields/ConsultantEmailNotification.php:24
+#: lib/Fields/NewUserEmailNotification.php:24
+msgid "Don´t forget to include %MY_SERVICE_REQUESTS% to add the link back to the service requests"
+msgstr ""
+
+#: lib/Fields/NewUserEmailNotification.php:21
+msgctxt "Label"
+msgid "New user email notification template"
+msgstr ""
+
+#: lib/PostType/ServiceRequest.php:123
+#: lib/PostType/ServiceRequest.php:177
+msgid "[idealBiz] You have a new service request in your account"
+msgstr ""
+
+#. translators: The placeholder id for the service request title
+#: lib/PostType/ServiceRequest.php:126
+#: lib/PostType/ServiceRequest.php:180
+msgid "%1$s service request"
+msgstr ""
+
+#: lib/PostType/ServiceContract.php:321
+#: lib/PostType/ServiceContract.php:455
+msgid "Adjudication"
+msgstr ""
+
+#: lib/PostType/ServiceContract.php:325
+#: lib/PostType/ServiceContract.php:459
+msgid "Intermediate"
+msgstr ""
+
+#: lib/PostType/ServiceContract.php:329
+#: lib/PostType/ServiceContract.php:463
+msgid "Conclusion"
+msgstr ""
+
+#: lib/PostType/ServiceContract.php:355
+msgid "Please fillout our customer satisfaction form."
+msgstr ""
+
+#: lib/PostType/ServiceContract.php:360
+msgid "click to form"
+msgstr ""
+
+#: lib/PostType/ServiceContract.php:367
+msgid "Service satisfaction"
+msgstr ""
+
+#: lib/PostType/ServiceContract.php:443
+msgid "Accept and payment link"
+msgstr ""
+
+#: lib/PostType/ServiceContract.php:444
+msgid "Accept and payment"
+msgstr ""

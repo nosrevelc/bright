@@ -1,0 +1,808 @@
+/*
+List Common Styles
+*/
+
+#ectbe-events-list-content,
+.ectbe-list-wrapper {
+    display: inline-block;
+    width: 100%;
+    margin: 5px auto;
+    padding: 0;
+}
+
+#ectbe-events-list-content h2.ectbe-events-page-title {
+    margin: 0 auto 20px;
+    width: 100%;
+}
+
+.ectbe-list-post {
+    width: 100%;
+    height: 100%;
+    min-height: 180px;
+    box-sizing: border-box;
+    word-break: break-word;
+    display: table;
+    margin: 15px auto;
+}
+
+.ectbe-list-post.style-2 {
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.ectbe-list-post.style-1 {
+    min-height: auto;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.ectbe-list-post-left {
+    width: 30%;
+    height: 100%;
+    background-size: cover;
+    display: table-cell;
+    position: relative;
+    min-height: 180px;
+    z-index: 9;
+}
+
+.ectbe-list-post-right {
+    width: 70%;
+    display: table-cell;
+    background: #edf3f9;
+    vertical-align: top;
+    height: 100%;
+}
+
+.ectbe-list-post-left:hover {
+    -webkit-filter: brightness(95%) hue-rotate(2deg);
+    filter: brightness(95%) hue-rotate(2deg);
+}
+
+.ectbe-list-post-right .ectbe-list-venue:hover {
+    -webkit-filter: brightness(95%) hue-rotate(2deg);
+    filter: brightness(95%) hue-rotate(2deg);
+}
+
+.ectbe-list-img {
+    float: none;
+    height: 100%;
+    width: 100%;
+    background-color: #ebf0f7;
+}
+
+.ectbe-list-post a {
+    box-shadow: none;
+    text-decoration: none;
+}
+
+.ectbe-list-post-left .ectbe-list-date {
+    -webkit-transition: width linear 0.5s;
+    /* Safari */
+    transition: width linear 0.5s;
+    width: 35%;
+    min-width: 100px;
+    display: table;
+    text-align: center;
+    background: rgba(224, 232, 243, 0.96);
+    height: 100%;
+    color: #fff;
+    vertical-align: middle;
+    padding: 8px;
+    box-sizing: border-box;
+    position: relative;
+    top: 0;
+    z-index: 2;
+}
+
+.ectbe-list-post:hover .ectbe-list-post-left .ectbe-list-date {
+    width: 100%;
+}
+
+.ectbe-featured-event .ectbe-list-post-left .ectbe-list-date {
+    background: rgba(224, 40, 40, 0.90);
+}
+
+.ectbe-list-date .ectbe-date-area {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 92%;
+    font-size: 29px;
+    font-family: inherit;
+    padding-top: 14px;
+    font-weight: 600;
+}
+
+.ectbe-list-date .ectbe-date-area .ev-day {
+    font-size: 1em;
+    clear: both;
+    display: inline-block;
+    width: 100%;
+}
+
+.ectbe-list-date .ectbe-date-area .ev-mo {
+    font-size: 0.45em;
+    clear: both;
+    display: inline-block;
+    width: 100%;
+}
+
+.ectbe-list-date .ectbe-date-area .ev-yr {
+    font-size: 0.4em;
+    clear: both;
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    top: -14px;
+}
+
+.ectbe-list-date .ectbe-date-area .ev-time {
+    font-size: 0.32em;
+    clear: both;
+    display: inline-block;
+    width: 100%;
+    line-height: 1.35em;
+}
+
+#ectbe-events-list-content .ectbe-share-wrapper {
+    position: absolute;
+    right: 7px;
+    bottom: 7px;
+    z-index: 11;
+}
+
+
+/*right side*/
+
+.ectbe-list-post-right-table {
+    display: table;
+    vertical-align: top;
+    height: 100%;
+    width: 100%;
+}
+
+.ectbe-list-post-right .ectbe-list-description {
+    width: 70%;
+    height: 100%;
+    display: table-cell;
+    padding: 10px;
+    box-sizing: border-box;
+    vertical-align: top;
+    border-right: 1px solid;
+    position: relative;
+}
+
+.ectbe-list-post a.ectbe-events-read-more {
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.ectbe-list-post-right .ectbe-list-venue {
+    width: 30%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: top;
+    text-align: center;
+    background: #ff6a5c;
+    color: #fff;
+    padding: 10px;
+}
+
+.ectbe-list-post h2.ectbe-list-title {
+    font-size: 16px;
+    font-family: inherit;
+    margin-bottom: 10px;
+    padding: 0;
+    color: #00445e;
+    font-weight: bold;
+}
+
+.ectbe-list-post h2.ectbe-list-title a {
+    color: #ff6a5c;
+    text-decoration: none;
+    box-shadow: none;
+}
+
+.ectbe-list-post h2.ectbe-list-title a:hover {
+    filter: opacity(0.75);
+    -webkit-filter: opacity(0.75);
+}
+
+.ectbe-list-description .ectbe-event-content {
+    font-size: 13px;
+    font-family: inherit;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    width: 100%;
+    line-height: 1.6em;
+}
+
+.ectbe-list-description .ectbe-event-content p {
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    width: 100%;
+}
+
+a.ectbe-event-read-more {
+    color: #ff6a5c;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+#ectbe-events-list-content .ectbe-list-cost {
+    position: relative;
+}
+
+#ectbe-events-list-content .ectbe-rate-area {
+    float: right;
+    display: inline-block;
+    margin-top: -22px;
+    font-size: 22px;
+    color: #00445e;
+}
+
+.ectbe-list-venue .ectbe-icon {
+    display: inline-block;
+    /* width: 100%; */
+}
+
+.ectbe-list-venue .ectbe-venue-details {
+    font-size: 14px;
+    line-height: inherit;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.ectbe-list-venue .ectbe-venue-details .tribe-address {
+    font-size: 85%;
+    width: 100%;
+    display: inline-block;
+}
+
+.ectbe-venue-details .tribe-address span {
+    display: inline-block;
+}
+
+.ectbe-venue-details .tribe-address .tribe-delimiter {
+    margin-right: 3px;
+}
+
+.ectbe-venue-details .tribe-address .tribe-postal-code {
+    margin: 0 3px;
+}
+
+.ectbe-list-venue .ectbe-google {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.ectbe-list-venue .ectbe-google a {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 1px 0 0 currentColor;
+}
+
+.ectbe-list-post .ectbe-list-venue .ectbe-rate-area {
+    display: inline-block;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.15);
+    font-size: 22px;
+}
+
+
+/*
+  Style-2 / Modern List
+*/
+
+.modern-list-right-side {
+    width: 30%;
+    height: 100%;
+    display: table-cell;
+    padding: 10px;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+.modern-list-right-side .ectbe-list-date,
+.modern-list-right-side .ectbe-list-date .ectbe-date-area {
+    display: inline-block;
+    width: 100%;
+}
+
+.ectbe-list-post-right .modern-list-venue {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.modern-list-venue .ectbe-icon {
+    font-size: 24px;
+    display: inline-block;
+    vertical-align: top;
+    width: 34px;
+}
+
+.modern-list-venue span.ectbe-venue-details,
+.modern-list-venue span.ectbe-google {
+    display: inline-block;
+    width: calc(100% - 48px);
+    vertical-align: top;
+}
+
+#ectbe-events-list-content .style-2 .ectbe-rate-area {
+    float: left;
+    width: 100%;
+    margin: 0 0 10px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.ectbe-modern-time {
+    text-align: center;
+    font-size: 0.65em !Important;
+    line-height: 1.25em;
+}
+
+#ectbe-events-list-content .ectbe-load-more.style-2 .ectbe-load-more-btn {
+    border-radius: 8px;
+}
+
+
+/*** 
+     CSS for Classic List Style
+  ***/
+
+.ectbe-clslist-event-date {
+    display: table-cell;
+    width: 160px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+    
+    font-size: 28px;
+    position: relative;
+}
+.style-1.ectbe-simple-event .ectbe-clslist-event-date{
+    background:#dbf5ff;
+    color: #00445e
+}
+.style-1.ectbe-featured-event .ectbe-clslist-event-date{
+    background:#f19e59;
+    color: #3a2201;
+}
+.ectbe-clslist-time {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    width: 100%;
+    color: #515d64;
+}
+
+.ectbe-clslist-event-info {
+    /* background: #f3fbf1; */
+    background: #f4fcff;
+    display: table-cell;
+    width: calc(100% - 340px);
+    vertical-align: middle;
+    padding: 10px 25px;
+    color: #515d64;
+    text-align: left;
+}
+
+
+.ectbe-clslist-event-details {
+    background:#f4fcff ;
+    display: table-cell;
+    width: 180px;
+    text-align: center;
+    position: relative;
+}
+.style-1.ectbe-featured-event .ectbe-clslist-event-details a:hover{
+    background:#f19e59;
+
+}
+.style-1.ectbe-simple-event .ectbe-clslist-event-details a:hover{
+    background:#f4fcff;
+
+}
+
+.ectbe-clslist-event-details a.tribe-events-read-more {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    text-align: center;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    font-size: 14px;
+    box-shadow: none;
+    font-weight: normal;
+    
+}
+
+.ectbe-clslist-inner-container .ectbe-list-venue .ectbe-icon {
+    width: auto;
+    vertical-align: top;
+}
+
+.ectbe-clslist-inner-container i.ectbe-icon-bell-alt,
+.ectbe-clslist-inner-container i.ectbe-icon-clock,
+.ectbe-clslist-inner-container i.ectbe-icon-location {
+    min-width: 30px;
+    display: inline-block;
+    text-align: center;
+    min-height: 20px;
+    vertical-align: middle;
+}
+
+.ectbe-clslist-inner-container .ectbe-venue-details {
+    width: calc(100% - 35px);
+}
+
+#ectbe-events-list-content .style-1 .ectbe-rate-area {
+    margin-top: -30px;
+}
+
+#ectbe-events-list-content .ectbe-load-more.style-1 .ectbe-load-more-btn {
+    border-radius: 3px;
+}
+
+
+/*
+  Media Query 
+*/
+
+@media only screen and (max-width: 790px) {
+    .ectbe-list-post {
+        margin-bottom: 35px;
+    }
+    .ectbe-list-post-left .ectbe-list-date {
+        width: 100%;
+        position: absolute;
+        top: inherit;
+        bottom: 0;
+    }
+    .ectbe-list-date .ectbe-date-area .ev-day,
+    .ectbe-list-date .ectbe-date-area .ev-mo,
+    .ectbe-list-date .ectbe-date-area .ev-yr {
+        clear: none;
+        width: auto;
+        height: auto;
+        float: left;
+        top: 0;
+        margin-left: 5px;
+    }
+    .ectbe-list-date .ectbe-date-area .ev-time {
+        text-align: left;
+        margin-left: 5px;
+    }
+    #ectbe-events-list-content .ectbe-share-wrapper .ectbe-social-share-list {
+        left: inherit;
+        right: 0;
+    }
+    #ectbe-events-list-content .ectbe-share-wrapper .ectbe-social-share-list:before {
+        left: inherit;
+        right: 6px;
+    }
+    #ectbe-events-list-content .style-1 .ectbe-share-wrapper .ectbe-social-share-list {
+        top: 42px;
+    }
+    #ectbe-events-list-content .style-1 .ectbe-share-wrapper .ectbe-social-share-list:before {
+        bottom: inherit;
+        border-bottom-color: #fff;
+        border-top-color: transparent;
+        top: -20px;
+    }
+    .ectbe-list-post .ectbe-list-post-right .ectbe-list-description {
+        border-right: 0;
+    }
+    .ectbe-list-img {
+        min-height: 210px;
+    }
+    .ectbe-list-post-left,
+    .ectbe-list-post-right,
+    .ectbe-list-post-right-table,
+    .ectbe-list-venue {
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        height: auto;
+    }
+    .ectbe-list-post-right .ectbe-list-venue {
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        height: auto;
+    }
+    .ectbe-list-post {
+        padding: 30px auto;
+    }
+    .ectbe-list-post-right .ectbe-list-description,
+    .modern-list-right-side {
+        display: inline-block;
+        width: 100%;
+    }
+    .ectbe-modern-time {
+        display: inline-block;
+    }
+    .ectbe-clslist-event-date,
+    .ectbe-clslist-event-info,
+    .ectbe-clslist-event-details,
+    .ectbe-clslist-event-details a.tribe-events-read-more {
+        display: inline-block;
+        width: 100%;
+        position: relative;
+        padding: 10px;
+    }
+}
+
+.ectbe-list-post-left span.ectbe-custom-schedule {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 92%;
+    font-size: 38px;
+    font-family: inherit;
+    padding-top: 14px;
+}
+.ectbe-style1-desc a.ectbe-events-read-more {
+    display: none;
+}
+/**
+Style 2 css start here
+*/
+/**
+* style 2
+*/
+.ect-static-small-list-ev-img img {
+    width: -moz-available;
+    width: -webkit-fill-available;
+  }
+  
+  .ect-month-header:after {
+    background-color: #d5d5d5;
+    content: "";
+    display: block;
+    flex: auto;
+    height: 2px;
+    margin-left: 8px;
+  }
+  .ect-month-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+  .ectbe-list-venue {
+    display: flex;
+  }
+  .ectbe-event-details {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  span.ectbe-header-year {
+    font-size: 20px;
+    font-weight: 600;
+    /* color: #00445e;   */
+  }
+  #ect-events-minimal-list-content .ectbe-list-posts.style-2.ectbe-simple-event .ectbe-event-details{
+    border-left: 3px solid#dbf5ff;
+  
+  }
+  .style-2 .ectbe-event-date-tag {
+    padding: 25px;
+    
+      
+  }
+  .ectbe-list-posts.style-2.ectbe-featured-event .ectbe-event-details{
+    border-left: 3px solid #eda264;
+    /* padding-left: 30px;
+    padding-right: 30px; */
+  }
+  .ectbe-list-posts.style-2 span.ev-day {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.42;
+  }
+  .style-2 span.ectbe-minimal-list-time  {
+    letter-spacing: -1px;
+  }
+  .style-2 .ectbe-event-datetime{
+    font-size:15px;
+    font-weight: 600;
+   }
+   .style-2  .ectbe-events-read-more{
+    font-size:14px;
+  }
+  #ect-events-minimal-list-content .ectbe-list-posts.style-2.ectbe-simple-event .ectbe-event-details{
+    border-left: 3px solid#dbf5ff;
+  
+  }
+  .ectbe-list-posts.style-2 {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 100%;
+    margin: 5px auto;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  /**
+  * Responsive for style 2
+  */
+  
+  @media(max-width:768px){
+   .ectbe-list-posts.style-2 {
+      display: flex;
+      flex-wrap:nowrap;
+      flex-direction: column;
+      width: 100%;
+      max-width: 100%;
+      margin:auto;
+      padding: 0;
+      margin-bottom: 20px;
+      justify-content: center;
+    }
+    .style-2 .ectbe-event-date-tag {
+      padding: 0px;
+    }
+    .style-2 .ectbe-event-details {
+      width: 100%;
+     padding-left: 18px;
+     border-left: none;
+    }
+    .ectbe-list-posts.style-2 .ectbe-event-details{
+      order:2;
+    }
+    .style-2 .ectbe-right-wrapper{
+    
+      order:1;
+      margin-bottom:12px;
+      padding-left: 20px;
+     
+    }
+    .style-2 .ectbe-event-date-tag{
+      align-self:flex-start;
+    }
+  
+    .style-2 .ectbe-event-datetimes {
+      text-align: left;
+          display: block;
+          margin-left: 17px;
+      }
+   
+    .ectbe-list-posts.style-2{
+    height:100%;
+    border-left: 3px solid  #eda264 ;
+    }
+    .style-2 .ectbe-event-details {
+   
+      border-left: none !important;
+  }
+    
+  
+  }
+  @media(min-width:1200px){
+    .ectbe-event-date {
+     width:15%;
+     margin-right: 15px;
+   }
+    .ectbe-right-wrapper {
+     width:85%;
+   }
+   
+   .style-1 .ectbe-event-date-tag {
+       width: 18%;
+   }
+   .ectbe-list-posts.style-2{
+     border-left: none !important;
+   }
+ 
+ }
+ @media(max-width:425px){
+    .ectbe-event-date-tag {
+      width: 20%;
+    }
+  
+    .ectbe-right-wrapper {
+    padding-left:16px;
+  
+    }
+    .ectbe-left-wrapper {
+    width:22%; 
+    }
+    .style-1 .ectbe-event-details {
+      width: 80%;
+  }
+    }
+  @media(min-width:768px){
+      .style-2 .ectbe-event-date {
+        width: 30%;
+        margin-right: 5px;
+        padding-right: 5px;
+      }
+      .style-2 .ectbe-right-wrapper {
+        width: 70%;
+        padding-left: 0px;
+      }
+}
+.ectbe-list-posts .ectbe-events-title {
+    font-size:16px;
+    line-height: 30px;
+    font-weight: bold;
+    color: #00445e;
+   }
+  .ectbe-event-details {
+    width: 82%;
+  }
+  .ectbe-event-datetimes {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.38;
+  }
+   .ectbe-event-datetimes span.ev-mo {
+    font-size: 16px;
+    font-weight:600;
+    line-height: 1.5;
+    text-transform: uppercase;
+  } 
+  .ectbe-featured-event .ectbe-event-datetime .ectbe-icon-clock:before{
+    margin-left:0px;
+  }
+    
+ /**
+ * default color set
+ */
+
+.style-1.ectbe-featured-event .ectbe-clslist-event-details a{
+    color: #3a2201;
+}
+.ectbe-simple-event .ectbe-event-datetimes span{
+    color: #00445e;
+}
+.ect-month-header.ectbe-simple-event:after{
+    color: #00445e;  
+}
+.ectbe-list-posts.style-2.ectbe-simple-event .ectbe-event-details{
+    border-left: 3px solid#00445e;
+}
+.ect-month-header.ectbe-simple-event:after {
+    background-color: #00445e;
+}
+.ectbe-featured-event .ectbe-event-datetimes {
+    color: #3a2201;
+}
+.ect-month-header.ectbe-featured-event:after {
+    background-color: #3a2201;
+}
+.ect-month-header.ectbe-featured-event{
+    color: #3a2201;
+}
+.ectbe-list-posts.style-2.ectbe-featured-event .ectbe-event-details{
+    /* border-left: 3px solid#3a2201; */
+}
+.ectbe-simple-event .ectbe-header-year {
+
+    color: #00445e;
+}
+.ectbe-event-datetime,.ectbe-style-2-more a {
+    color: #00445e;
+}
+.ectbe-minimal-list-desc {
+    color: #515d64;
+}
+.ectbe-featured-event .ectbe-event-datetimes {
+    color: #3a2201;
+}

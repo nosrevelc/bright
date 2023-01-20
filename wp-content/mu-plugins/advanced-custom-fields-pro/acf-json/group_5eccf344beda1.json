@@ -1,0 +1,475 @@
+{
+    "key": "group_5eccf344beda1",
+    "title": "Wanted Data",
+    "fields": [
+        {
+            "key": "field_5eccf346be4db",
+            "label": "Listing Details",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5eccf346be63d",
+            "label": "Order Id",
+            "name": "active_order",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5eccf346be758",
+            "label": "Expire Date",
+            "name": "expire_date",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d\/m\/Y",
+            "return_format": "Ymd",
+            "first_day": 1
+        },
+        {
+            "key": "field_5eccf346be7e8",
+            "label": "Media",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5eccf346be878",
+            "label": "Featured Image\/Cover",
+            "name": "featured_image",
+            "type": "image",
+            "instructions": "Faça o upload da imagem que será o rosto do seu anúncio. Recomendamos que utilize imagens da sua autoria e nos seguintes formatos: .png, .jpg, .jpeg com a dimensão máxima até 10MB.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "inline-preview",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "uploadedTo",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "dropzone": 0
+        },
+        {
+            "key": "field_5eccf346bead5",
+            "label": "Business Info",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5eccf346beb4a",
+            "label": "Business Type",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "h2",
+                "id": ""
+            },
+            "message": "Please choose the most relevant category for your business. \r\nOur team will review your business later and provide support if you think there is a more suitable one!",
+            "new_lines": "br",
+            "esc_html": 0
+        },
+        {
+            "key": "field_5eccf346bebbf",
+            "label": "Type of Business",
+            "name": "category",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "listing_cat",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_5eccf346bec34",
+            "label": "Business Location",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "h2",
+                "id": ""
+            },
+            "message": "",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_5eccf346beca9",
+            "label": "Business Location",
+            "name": "location",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "location",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_5eccf346c006e",
+            "label": "Publish in",
+            "name": "publish_in",
+            "type": "taxonomy",
+            "instructions": "O iDealBiz é bilingue. Selecione a mesma língua em que se encontra a preencher o formulário.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "language",
+            "field_type": "radio",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_5eccf346bed1d",
+            "label": "Financial Details",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5eccf346bee08",
+            "label": "Lease value",
+            "name": "lease_value",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5eccf346bed93",
+                        "operator": "==",
+                        "value": "lease"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5eccf346bee7c",
+            "label": "Lease frequency",
+            "name": "lease_frequency",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5eccf346bed93",
+                        "operator": "==",
+                        "value": "lease"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "19",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "year": "Year",
+                "month": "Month"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_5eccf346beef1",
+            "label": "Price",
+            "name": "price_type",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            },
+            "admin_only": 0,
+            "choices": {
+                "manual": "Specific"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "manual : Specific",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_5eccf346befda",
+            "label": "Specific",
+            "name": "price_manual",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5eccf346beef1",
+                        "operator": "==",
+                        "value": "manual"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "25",
+                "class": "acf-conditional-fields frontend-hide-label",
+                "id": ""
+            },
+            "admin_only": 0,
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 1,
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_5eccf346bef65",
+            "label": "Range",
+            "name": "price_range",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5eccf346beef1",
+                        "operator": "!=",
+                        "value": "manual"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "49",
+                "class": "acf-conditional-fields frontend-hide-label",
+                "id": ""
+            },
+            "admin_only": 0,
+            "choices": {
+                "99999": "Under 100k",
+                "100000_249999": "100k - 250k",
+                "250000_499999": "250k - 500k",
+                "500000_999999": "500k - 1m",
+                "1000000_4999999": "1m - 5m",
+                "5000000": "Over 5m"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5ecd34ad622dc",
+            "label": "Owner",
+            "name": "owner",
+            "type": "user",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "role": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "array"
+        },
+        {
+            "key": "field_5f0752679b995",
+            "label": "Optional: Let our staff create your ad (.zip file)",
+            "name": "let_our_staff_create_your_ad_w",
+            "type": "file",
+            "instructions": "Our customer support will create your ad. Upload a .zip file (up to 100 MB) with information about your business.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "uploadedTo",
+            "min_size": 100,
+            "max_size": "",
+            "mime_types": "zip,7z,pdf,jpeg,jpg,png",
+            "dropzone": 0
+        },
+        {
+            "key": "field_5fb539aaa9d8c",
+            "label": "Expert",
+            "name": "expert",
+            "type": "post_object",
+            "instructions": "Selecione um assistente que o acompanhe na compra do seu negócio ou em opção a nossa equipa está apta para selecionar por si.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "expert"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "wanted"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "permalink",
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1669031873
+}

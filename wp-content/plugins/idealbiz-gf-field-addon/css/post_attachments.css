@@ -1,0 +1,56 @@
+.gfield_dropzone {
+  border-style: dashed;
+  margin: 20px 0;
+}
+
+.dropzone {
+  background-color: #ddd;
+}
+
+.dropzone.dz-clickable {
+  background-color: transparent;
+}
+
+.attachment-gallery {
+  margin: 20px -10px;
+}
+
+.attachment-gallery .item {
+  display: inline-block;
+  margin: 10px;
+  position: relative;
+}
+
+.attachment-gallery .item-delete {
+  background-color: #c99;
+  border-radius: 50%;
+  height: 30px;
+  margin: -5px -5px 0 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 30px;
+}
+
+.attachment-gallery .item-delete:hover {
+  background-color: #d88;
+}
+
+.attachment-gallery .item-delete::before,
+.attachment-gallery .item-delete::after {
+  background-color: #fff;
+  content: '';
+  height: 20px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  width: 2px;
+}
+
+.attachment-gallery .item-delete::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.attachment-gallery .item-delete::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}

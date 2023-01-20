@@ -1,0 +1,496 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Dashboard Stats\n"
+"POT-Creation-Date: 2019-02-18 11:14+0100\n"
+"PO-Revision-Date: 2019-02-18 11:14+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: classes/admin/WCDS_ActivationPage.php:39
+#: classes/admin/WCDS_ActivationPage.php:40
+#: classes/admin/WCDS_ActivationPage.php:87
+msgid " Activator"
+msgstr ""
+
+#: classes/admin/WCDS_ActivationPage.php:67
+msgid "Purchase code is invalid!"
+msgstr ""
+
+#: classes/admin/WCDS_ActivationPage.php:68
+msgid "Buyer name is invalid!"
+msgstr ""
+
+#: classes/admin/WCDS_ActivationPage.php:69
+msgid "Item id is invalid!"
+msgstr ""
+
+#: classes/admin/WCDS_ActivationPage.php:70
+msgid ""
+"Max number of domains reached! You have to purchase a new license. The "
+"current license has been activated in the following domains: "
+msgstr ""
+
+#: classes/admin/WCDS_ActivationPage.php:71
+#: classes/admin/WCDS_ActivationPage.php:156
+msgid "Verifing, please wait..."
+msgstr ""
+
+#: classes/admin/WCDS_ActivationPage.php:72
+msgid ""
+"There was an error while verifing the code. Please retry in few minutes!"
+msgstr ""
+
+#: classes/admin/WCDS_ActivationPage.php:73
+msgid "Activation successfully completed!"
+msgstr ""
+
+#: classes/admin/WCDS_ActivationPage.php:74
+msgid "Buyer and Purchase code fields must be filled!"
+msgstr ""
+
+#: classes/admin/WCDS_ActivationPage.php:116
+msgid "Activation"
+msgstr ""
+
+#: classes/admin/WCDS_ActivationPage.php:139
+msgid ""
+"The plugin can be activate in only <strong>two</strong> domains and they "
+"cannot be unregistered. Please enter the following data and hit the "
+"activation button"
+msgstr ""
+
+#: classes/admin/WCDS_ActivationPage.php:145
+msgid "Buyer"
+msgstr ""
+
+#: classes/admin/WCDS_ActivationPage.php:146
+msgid "Insert the Envato username used to purchase the plugin."
+msgstr ""
+
+#: classes/admin/WCDS_ActivationPage.php:147
+msgid "Example: vanquish"
+msgstr ""
+
+#: classes/admin/WCDS_ActivationPage.php:150
+msgid "Purchase code"
+msgstr ""
+
+#: classes/admin/WCDS_ActivationPage.php:151
+msgid ""
+"Insert the purchase code. It can be downloaded from your CodeCanyon "
+"\"Downloads\" profile page."
+msgstr ""
+
+#: classes/admin/WCDS_ActivationPage.php:152
+msgid "Example: 7d7c3rt8-f512-227c-8c98-fc53c3b212fe"
+msgstr ""
+
+#: classes/admin/WCDS_ActivationPage.php:154
+msgid "Activate"
+msgstr ""
+
+#: classes/admin/WCDS_ActivationPage.php:159
+msgid "The plugin has been successfully activated!"
+msgstr ""
+
+#: classes/admin/WCDS_Dashboard.php:16
+msgid "Last 15 days comparison"
+msgstr ""
+
+#: classes/admin/WCDS_Dashboard.php:17
+msgid "Averages & Estimations"
+msgstr ""
+
+#: classes/admin/WCDS_Dashboard.php:18 classes/admin/WCDS_SettingsPage.php:59
+#: classes/admin/WCDS_SettingsPage.php:149
+msgid "Geographical stats"
+msgstr ""
+
+#: classes/admin/WCDS_Dashboard.php:19 classes/admin/WCDS_SettingsPage.php:101
+#: classes/admin/WCDS_SettingsPage.php:171
+msgid "Customers stats"
+msgstr ""
+
+#: classes/admin/WCDS_Dashboard.php:20 classes/admin/WCDS_SettingsPage.php:80
+#: classes/admin/WCDS_SettingsPage.php:160
+msgid "Products stats"
+msgstr ""
+
+#: classes/admin/WCDS_Dashboard.php:21 classes/admin/WCDS_SettingsPage.php:112
+#: classes/admin/WCDS_SettingsPage.php:182
+msgid "Sales stats"
+msgstr ""
+
+#: classes/admin/WCDS_Dashboard.php:22 classes/admin/WCDS_SettingsPage.php:133
+#: classes/admin/WCDS_SettingsPage.php:204
+msgid "Refund stats"
+msgstr ""
+
+#: classes/admin/WCDS_Dashboard.php:23 classes/admin/WCDS_SettingsPage.php:193
+msgid "Payment methods stats"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:28
+msgid "General options"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:32
+msgid "Order statuses"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:33
+msgid ""
+"Select which order status have to be considered for stats computation. "
+"Select at least one status"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:35
+msgid "Select at least one status!"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:42
+msgid "Which role can see dashoboard widgets"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:44
+msgid "Select at least one role!"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:50
+msgid "Price format: number of decimal"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:51
+msgid ""
+"If left empyt, will be used the \"Number of decimals\" option setted in the "
+"WooCommerce -> Settings -> General tab. Values will be rounded (not "
+"truncated) so this may lead to some representation errors."
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:55
+msgid "Default widget values"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:56
+msgid "Select default values used by widget to display results."
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:61
+#: classes/admin/WCDS_SettingsPage.php:82
+#: classes/admin/WCDS_SettingsPage.php:102
+#: classes/admin/WCDS_SettingsPage.php:122 classes/com/WCDS_Html.php:140
+#: classes/com/WCDS_Html.php:527
+msgid "Max results"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:72
+#: classes/admin/WCDS_SettingsPage.php:113
+#: classes/admin/WCDS_SettingsPage.php:134
+msgid "View type"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:74 classes/com/WCDS_Html.php:149
+msgid "Country"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:75 classes/com/WCDS_Html.php:150
+msgid "State/Province"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:93 classes/com/WCDS_Html.php:300
+msgid "Show variations"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:95 classes/com/WCDS_Html.php:285
+#: classes/com/WCDS_Html.php:301
+msgid "No"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:96 classes/com/WCDS_Html.php:284
+#: classes/com/WCDS_Html.php:302
+msgid "Yes"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:115
+#: classes/admin/WCDS_SettingsPage.php:136 classes/com/WCDS_Html.php:376
+#: classes/com/WCDS_Html.php:452
+msgid "Daily View"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:116
+#: classes/admin/WCDS_SettingsPage.php:137 classes/com/WCDS_Html.php:377
+#: classes/com/WCDS_Html.php:453
+msgid "Monthly View"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:117
+#: classes/admin/WCDS_SettingsPage.php:138 classes/com/WCDS_Html.php:378
+#: classes/com/WCDS_Html.php:454
+msgid "Yearly View"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:121
+msgid "Payment stats"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:146
+msgid "Default widget data period"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:147
+msgid ""
+"By default, if any time period is selected, widgets will display stats for "
+"current month. Optionally you can change the default period."
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:151
+#: classes/admin/WCDS_SettingsPage.php:162
+#: classes/admin/WCDS_SettingsPage.php:173
+#: classes/admin/WCDS_SettingsPage.php:184
+#: classes/admin/WCDS_SettingsPage.php:195
+#: classes/admin/WCDS_SettingsPage.php:206
+msgid "Time period"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:153
+#: classes/admin/WCDS_SettingsPage.php:164
+#: classes/admin/WCDS_SettingsPage.php:175
+#: classes/admin/WCDS_SettingsPage.php:186
+#: classes/admin/WCDS_SettingsPage.php:197
+#: classes/admin/WCDS_SettingsPage.php:208 classes/com/WCDS_Html.php:120
+#: classes/com/WCDS_Html.php:201 classes/com/WCDS_Html.php:275
+#: classes/com/WCDS_Html.php:354 classes/com/WCDS_Html.php:433
+#: classes/com/WCDS_Html.php:513
+msgid "Day"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:154
+#: classes/admin/WCDS_SettingsPage.php:165
+#: classes/admin/WCDS_SettingsPage.php:176
+#: classes/admin/WCDS_SettingsPage.php:187
+#: classes/admin/WCDS_SettingsPage.php:198
+#: classes/admin/WCDS_SettingsPage.php:209 classes/com/WCDS_Html.php:121
+#: classes/com/WCDS_Html.php:202 classes/com/WCDS_Html.php:276
+#: classes/com/WCDS_Html.php:355 classes/com/WCDS_Html.php:434
+#: classes/com/WCDS_Html.php:514
+msgid "Month"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:155
+#: classes/admin/WCDS_SettingsPage.php:166
+#: classes/admin/WCDS_SettingsPage.php:177
+#: classes/admin/WCDS_SettingsPage.php:188
+#: classes/admin/WCDS_SettingsPage.php:199
+#: classes/admin/WCDS_SettingsPage.php:210 classes/com/WCDS_Html.php:122
+#: classes/com/WCDS_Html.php:203 classes/com/WCDS_Html.php:277
+#: classes/com/WCDS_Html.php:356 classes/com/WCDS_Html.php:435
+#: classes/com/WCDS_Html.php:515
+msgid "Year"
+msgstr ""
+
+#: classes/admin/WCDS_SettingsPage.php:216
+msgid "Save Changes"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:48 classes/com/WCDS_Html.php:132
+#: classes/com/WCDS_Html.php:210 classes/com/WCDS_Html.php:282
+#: classes/com/WCDS_Html.php:368 classes/com/WCDS_Html.php:444
+#: classes/com/WCDS_Html.php:521
+msgid "Start date cannot be greater than End date."
+msgstr ""
+
+#: classes/com/WCDS_Html.php:53
+msgid ""
+"Last 15 days sales are compared by default with latest 30 days average sales "
+"per day. You can choose a different period to compare averages: "
+msgstr ""
+
+#: classes/com/WCDS_Html.php:56 classes/com/WCDS_Html.php:155
+#: classes/com/WCDS_Html.php:226 classes/com/WCDS_Html.php:305
+#: classes/com/WCDS_Html.php:382 classes/com/WCDS_Html.php:458
+#: classes/com/WCDS_Html.php:538
+msgid "Start date"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:57 classes/com/WCDS_Html.php:156
+#: classes/com/WCDS_Html.php:227 classes/com/WCDS_Html.php:306
+#: classes/com/WCDS_Html.php:383 classes/com/WCDS_Html.php:459
+#: classes/com/WCDS_Html.php:539
+msgid "End date"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:59 classes/com/WCDS_Html.php:158
+#: classes/com/WCDS_Html.php:229 classes/com/WCDS_Html.php:308
+#: classes/com/WCDS_Html.php:385 classes/com/WCDS_Html.php:461
+#: classes/com/WCDS_Html.php:541
+msgid "Filter"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:64 classes/com/WCDS_Html.php:104
+#: classes/com/WCDS_Html.php:164 classes/com/WCDS_Html.php:234
+#: classes/com/WCDS_Html.php:313 classes/com/WCDS_Html.php:392
+#: classes/com/WCDS_Html.php:468 classes/com/WCDS_Html.php:547
+msgid "Computing data, please wait..."
+msgstr ""
+
+#: classes/com/WCDS_Html.php:72
+msgid "Legend"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:73
+msgid "Day sales"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:74
+msgid "Average sales"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:92
+msgid "Today"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:93
+msgid "This Month"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:94
+msgid "This Year"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:95
+msgid "Average per Day"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:96
+msgid "Average per Month"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:97
+msgid "Average per Year"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:98
+msgid "Estimated Sales This Month"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:135 classes/com/WCDS_Html.php:215
+#: classes/com/WCDS_Html.php:289 classes/com/WCDS_Html.php:371
+#: classes/com/WCDS_Html.php:447 classes/com/WCDS_Html.php:524
+msgid ""
+"If a data range is not selected, the displayed stats are relative to the "
+"current: "
+msgstr ""
+
+#: classes/com/WCDS_Html.php:162
+msgid "Sales per area"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:176
+msgid "Area"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:177 classes/com/WCDS_Html.php:248
+#: classes/com/WCDS_Html.php:406 classes/com/WCDS_Html.php:561
+msgid "Orders"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:178 classes/com/WCDS_Html.php:328
+#: classes/com/WCDS_Html.php:390 classes/com/WCDS_Html.php:407
+#: classes/com/WCDS_Html.php:466 classes/com/WCDS_Html.php:562
+msgid "Sales"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:187 classes/com/WCDS_Html.php:258
+#: classes/com/WCDS_Html.php:337 classes/com/WCDS_Html.php:416
+#: classes/com/WCDS_Html.php:492 classes/com/WCDS_Html.php:571
+msgid "Total"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:218
+msgid "Max customers"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:232
+msgid "Customers"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:246 classes/com/WCDS_Html.php:325
+msgid "Name"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:247
+msgid "Guest"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:249
+msgid "Spent"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:292
+msgid "Max products"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:311
+msgid "Products"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:326 classes/com/WCDS_Html.php:405
+msgid "Items"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:327
+msgid "Stock Left"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:404 classes/com/WCDS_Html.php:481
+msgid "Date"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:480
+msgid "Order"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:482
+msgid "Reason"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:483
+msgid "Refunded"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:559
+msgid "Title"
+msgstr ""
+
+#: classes/com/WCDS_Html.php:560
+msgid "Code"
+msgstr ""
+
+#: classes/com/WCDS_Product.php:249
+msgid "N/A"
+msgstr ""
+
+#: dashboard-stats.php:82
+#, php-format
+msgid ""
+"To complete the <span style=\"color:#96588a; font-weight:bold;\">%s</span> "
+"plugin activation, you must verify your purchase license. Click <a href=\"%s"
+"\">here</a> to verify it."
+msgstr ""
+
+#: dashboard-stats.php:103
+msgid "Dashboard Widget Stats Settings"
+msgstr ""

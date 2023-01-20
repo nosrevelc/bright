@@ -1,0 +1,93 @@
+.superpwa-button{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  text-align: center;
+}
+.superpwa-sticky-banner{
+    background: #bac747;
+    position: fixed;
+    text-align: center;
+    font-family: sans-serif;
+    width: 100%;
+    height: auto;
+    display: none;
+    z-index: 9999999;
+    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    align-items: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;  
+}
+.superpwa-sticky-banner .superpwa-stky-blk{
+    background: #ff416c;
+    width: 80%;
+    /* margin: 0 auto; */
+    margin-left: 5%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    justify-content: space-between;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    padding: 15px 20px;
+}
+.superpwa-stky-blk span.superpwa-txt{
+    color: #fff;
+    letter-spacing: 1px;
+    font-size: 15px;
+}
+a.superpwa_add_home_close{
+    position: absolute;
+    right: 4%;
+    background: #f1f1f1;
+    border: 0;
+    top: 35%;
+    border-radius: 100px;
+    text-decoration: none;
+    width: 30px;
+    height: 30px;
+    color: #000000;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.4;
+}
+span.superpwa-butn{
+  text-decoration: none;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+.superpwa-stky-blk h2{
+  font-size: 15px;
+  font-weight: 400;
+  margin: 0 0 0 10px;
+}
+.superpwa-cta-btn{
+  width:100%;
+}
+.superpwa-stky-blk a.superpwa-cta-btn{
+  width:auto;
+}
+.superpwa-stky-blk h2:before{
+  display: none;
+}

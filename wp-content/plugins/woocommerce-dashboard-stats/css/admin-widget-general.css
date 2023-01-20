@@ -1,0 +1,171 @@
+.wp-list-table tr:not(.inline-edit-row):not(.no-items) td:not(.check-column) {
+  display:table-cell;
+}
+.wcds_range_datepicker
+{
+	width:100px;
+	margin-top:2px;
+}
+.wcds_spacer
+{
+	display:block;
+	height:5px;
+}
+.wcds_spacer2
+{
+	display:block;
+	height:25px;
+}
+.wcds_table
+{
+	display:none;
+}
+.wcds_table table.wp-list-table tr td, .wcds_table table.wp-list-table tr th
+{
+	text-align:center;
+}
+.wcds_table table.wp-list-table tfoot tr 
+{
+	background-color:#14307b;
+}
+.wcds_table table.wp-list-table tfoot tr th
+{
+	color:white;
+}
+.wcds_table table.wp-list-table tr th
+{
+	font-weight: bold;
+	background: #14307b none repeat scroll 0 0;
+    color: white;
+}
+.chart
+{
+	margin-top:35px;
+}
+.column-date-earnings
+{
+	width:35%;
+}
+#wcds_payment_methods_chart_filter_button, #wcds_earnings_chart_filter_button, #wcds_products_chart_filter_button, #wcds_customers_chart_filter_button, 
+#wcds_geographic_chart_filter_button, #wcosm_stock_manager_filter_button, #wcds_days_comparison_chart_filter_button, #wcds_refund_chart_filter_button,
+#wcds_experts_chart_filter_button{
+	background: #14307b none repeat scroll 0 0;
+    border-color: #14307b;
+    box-shadow: none;
+	text-shadow:none;
+	font-weight: bold;
+}
+#wcds_payment_methods_chart_filter_button:hover, #wcds_earnings_chart_filter_button:hover, #wcds_products_chart_filter_button:hover, 
+#wcds_customers_chart_filter_button:hover, #wcds_geographic_chart_filter_button:hover, #wcds_days_comparison_chart_filter_button:hover, #wcds_refund_chart_filter_button:hover,
+#wcds_cexpertschart_filter_button:hover{
+	background: #C9A3C1 none repeat scroll 0 0;
+    border-color: #C9A3C1;
+    box-shadow: none;
+	font-weight: bold;
+}
+.wcds_wait_box
+{
+	display:none;
+	font-size: 18px;
+	margin-top: 15px;
+}
+.wcds_preloader_image
+{
+	margin-top:120px;
+	display:block;
+	width:64px;
+	height:64px;
+	margin-left:auto;
+	margin-right:auto;
+}
+#wcds_max_results_num, #wcds_geographic_view_type,#wcds_geographic_picker_start_date,#wcds_geographic_picker_end_date, .wcds_half_width
+{
+	width:45%;
+	
+}
+/* Avarages & Estimations */
+.wcds_avg_est_circle_chart
+{
+	width: 50%;
+	margin: 0 auto;
+}
+.wcds_avg_est_circle_chart_comment
+{
+	width: 50%;
+	margin: 0 auto;
+	display:block;
+	text-align: center;
+}
+.wcds_avg_est_comment_value
+{
+	font-size: 28px;
+	font-weight: bold;
+	display: block;
+	margin-bottom: 15px;
+}
+.wcds_avg_est_comment_text, .wcds_avg_est_estimation_text
+{
+	display: block;
+	border-top: 1px solid #d3d3d3;
+	padding-top: 5px;
+	color: #a0a0a0;
+}
+
+.wcds_avg_est_estimation_box
+{
+	width: 50%;
+	margin: 40px auto 10px;
+	text-align: center;
+	border:1px solid #d3d3d3;
+	padding: 50px;
+}
+.wcds_avg_est_estimation_value
+{
+	font-size: 42px;
+	font-weight: bold;
+	display: block;
+	margin-bottom: 25px;
+}
+.wcds-pager span 
+{
+	cursor:pointer;
+}
+.wcds-pager
+{
+	display: block;
+	margin-top: 20px;
+}
+td.wcds_refund_reason_column
+{
+  white-space: nowrap;
+  overflow: hidden;
+   text-overflow: ellipsis;
+   max-width:100px;
+}
+a.wcds_tooltip {outline:none; cursor:pointer;}
+a.wcds_tooltip strong { font-weight:bold;}
+a.wcds_tooltip:hover {text-decoration:none;} 
+a.wcds_tooltip span {
+    z-index:10;
+	display:none; 
+	padding:5px 15px 10px 15px;
+    margin-top:10px; 
+    max-width:600px;
+	font-style: normal;
+	font-size: 14px;
+	border-radius: 3px;
+}
+a.wcds_tooltip:hover span{
+    display:block; 
+	position:absolute; 
+    color:white; 
+    background:#14307b ;
+}
+.callout {z-index:20;position:absolute;border:0;top:-14px;left:120px;}
+    
+/*CSS3 extras*/
+a.wcds_tooltip span
+{
+    border-radius:2px;        
+    box-shadow: 0px 0px 4px 2px #888; 
+}

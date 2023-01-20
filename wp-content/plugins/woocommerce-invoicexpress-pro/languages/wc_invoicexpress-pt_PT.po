@@ -1,0 +1,577 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce InvoiceXpress Extension v0.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: Thu Dec 17 2015 15:15:51 GMT+0000 (WET)\n"
+"Last-Translator: nuno@widgilabs.com <nuno@widgilabs.com>\n"
+"Language-Team: \n"
+"Language: Portuguese (Portugal)\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Loco - https://localise.biz/\n"
+"X-Poedit-Language: Portuguese\n"
+"X-Poedit-Country: PORTUGAL\n"
+"X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
+"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
+"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
+"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
+"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
+"X-Poedit-Basepath: \n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes\n"
+"X-Loco-Target-Locale: pt_PT"
+
+#: ../woocommerce-invoicexpress.php:755
+msgid "Sem Isenção."
+msgstr ""
+
+#: ../woocommerce-invoicexpress.php:756
+msgid "Isento Artigo 14º do RITI."
+msgstr ""
+
+#: ../woocommerce-invoicexpress.php:757
+msgid "Regime da margem de lucro–Objetos de coleção e antiguidades."
+msgstr ""
+
+#: ../woocommerce-invoicexpress.php:758
+msgid "Regime da margem de lucro – Objetos de arte."
+msgstr ""
+
+#: ../woocommerce-invoicexpress.php:759
+msgid "Regime da margem de lucro – Bens em segunda mão."
+msgstr ""
+
+#: ../woocommerce-invoicexpress.php:760
+msgid "Regime da margem de lucro – Agências de viagens. "
+msgstr ""
+
+#: ../woocommerce-invoicexpress.php:761
+msgid "Regime particular do tabaco."
+msgstr ""
+
+#: ../woocommerce-invoicexpress.php:762
+msgid "IVA – Regime de isenção."
+msgstr ""
+
+#: ../woocommerce-invoicexpress.php:763
+msgid "Não sujeito; não tributado (ou similar)."
+msgstr ""
+
+#: ../woocommerce-invoicexpress.php:764
+msgid "IVA ‐ não confere direito a dedução."
+msgstr ""
+
+#: ../woocommerce-invoicexpress.php:765
+msgid "IVA – autoliquidação."
+msgstr ""
+
+#: ../woocommerce-invoicexpress.php:766
+msgid "Isento Artigo 9º do CIVA. "
+msgstr ""
+
+#: ../woocommerce-invoicexpress.php:767
+msgid "Isento Artigo 15º do CIVA."
+msgstr ""
+
+#: ../woocommerce-invoicexpress.php:768
+msgid "Isento Artigo 14º do CIVA."
+msgstr ""
+
+#: ../woocommerce-invoicexpress.php:769
+msgid "Isento Artigo 13º do CIVA."
+msgstr ""
+
+#: ../woocommerce-invoicexpress.php:770
+msgid "Exigibilidade de caixa."
+msgstr ""
+
+#: ../woocommerce-invoicexpress.php:771
+msgid "Artigo 6º do Decreto‐Lei nº 198/90, de 19 de Junho."
+msgstr ""
+
+#: ../woocommerce-invoicexpress.php:772
+msgid "Artigo 16º nº 6 do CIVA."
+msgstr ""
+
+msgid "WooCommerce InvoiceXpress Pro"
+msgstr "WooCommerce InvoiceXpress Pro"
+
+msgid "http://widgilabs.pt/plugin-woocommerce-invoicexpress-pro"
+msgstr "http://widgilabs.pt/plugin-woocommerce-invoicexpress-pro"
+
+msgid "Automatically create InvoiceXpress invoices when sales are made."
+msgstr ""
+"Quando é feita uma encomenda na sua loja automaticamente crie uma fatura no "
+"InvoiceXpress."
+
+msgid "WidgiLabs"
+msgstr "WidgiLabs"
+
+msgid "http://www.widgilabs.pt"
+msgstr "http://www.widgilabs.pt"
+
+#: ../woocommerce-invoicexpress.php:159
+msgid "License Activation"
+msgstr "Activar Licença"
+
+#: ../woocommerce-invoicexpress.php:160
+msgid "License Deactivation"
+msgstr "Desactivar"
+
+#: ../woocommerce-invoicexpress.php:363
+#, php-format
+msgid ""
+"The WooCommerce Invoicexpress Pro API License Key has not been activated, so "
+"the plugin is inactive! %sClick here%s to activate the license key and the "
+"plugin."
+msgstr ""
+"Precisa activar a licença do plugin WooCommerce Invoicexpress Pro, até lá o "
+"plugin estará inactivo! %sClique aqui%s para activar a licença e o plugin."
+
+#: ../woocommerce-invoicexpress.php:382
+#, php-format
+msgid ""
+"<b>Warning!</b> You're blocking external requests which means you won't be "
+"able to get %s updates. Please add %s to %s."
+msgstr ""
+"<b>Aviso!</b> Está a bloquear pedidos para fora o que significa que não será "
+"possível receber actualizações do %s. Por favor adicione %s a %s."
+
+#: ../woocommerce-invoicexpress.php:478 ../woocommerce-invoicexpress.php:478
+msgid "InvoiceXpress Pro"
+msgstr "InvoiceXpress Pro"
+
+#: ../woocommerce-invoicexpress.php:490
+msgid "InvoiceXpress for WooCommerce General Settings"
+msgstr "InvoiceXpress para WooCommerce: Definições Gerais"
+
+#: ../woocommerce-invoicexpress.php:495
+msgid "Subdomain"
+msgstr "Subdomínio"
+
+#: ../woocommerce-invoicexpress.php:499
+msgid "API Token"
+msgstr "Chave API"
+
+#: ../woocommerce-invoicexpress.php:503
+msgid "Create Invoice"
+msgstr "Criar Fatura"
+
+#: ../woocommerce-invoicexpress.php:507
+msgid "Invoice as Draft"
+msgstr "Fatura como Rascunho"
+
+#: ../woocommerce-invoicexpress.php:511
+msgid "Send Invoice"
+msgstr "Enviar Fatura"
+
+#: ../woocommerce-invoicexpress.php:515
+msgid "Create Simplified Invoice"
+msgstr "Criar Fatura Simplificada"
+
+#: ../woocommerce-invoicexpress.php:519
+msgid "Order State"
+msgstr "Estado da Encomenda"
+
+#: ../woocommerce-invoicexpress.php:523
+msgid "Sequence"
+msgstr "Série"
+
+#: ../woocommerce-invoicexpress.php:527
+msgid "Send Options"
+msgstr "Opções de Envio"
+
+#: ../woocommerce-invoicexpress.php:531
+msgid "Tax exemption reason"
+msgstr "Razão de isenção de IVA"
+
+#: ../woocommerce-invoicexpress.php:535
+msgid "Invoice observations"
+msgstr "Observações"
+
+#: ../woocommerce-invoicexpress.php:539
+msgid "Add NIF field"
+msgstr "Adicionar campo para NIF"
+
+#: ../woocommerce-invoicexpress.php:548
+msgid "InvoiceXpress for WooCommerce Email Settings"
+msgstr "InvoiceXpress para WooCommerce: Definições de Email"
+
+#: ../woocommerce-invoicexpress.php:553
+msgid "Email Subject"
+msgstr "Assunto"
+
+#: ../woocommerce-invoicexpress.php:557
+msgid "Email Body"
+msgstr "Mensagem"
+
+#: ../woocommerce-invoicexpress.php:587
+msgid "General"
+msgstr "Geral"
+
+#: ../woocommerce-invoicexpress.php:588
+msgid "E-Mail"
+msgstr "E-Mail"
+
+#: ../woocommerce-invoicexpress.php:589
+msgid "Support"
+msgstr "Apoio"
+
+#: ../woocommerce-invoicexpress.php:621 ../woocommerce-invoicexpress.php:632 ..
+#: /woocommerce-invoicexpress.php:885
+msgid "InvoiceXpress for WooCommerce"
+msgstr "InvoiceXpress para WooCommerce"
+
+#: ../woocommerce-invoicexpress.php:624 ../woocommerce-invoicexpress.php:635 ..
+#: /am/admin/class-wc-api-manager-menu.php:58 ../am/admin/class-wc-api-manager-
+#: menu.php:62
+msgid "Save Changes"
+msgstr "Guardar Alterações"
+
+#: ../woocommerce-invoicexpress.php:649
+msgid ""
+"Please fill in the necessary settings below. InvoiceXpress for WooCommerce "
+"works by creating an invoice when order status is updated to processing."
+msgstr ""
+"Por favor preencha as definições necessárias. InvoiceXpress para WooCommerce "
+"funciona ao criar uma fatura quando o estado da ordem é atualizado."
+
+#: ../woocommerce-invoicexpress.php:653
+msgid ""
+"When you access InvoiceXpress you use https://<b>subdomain.app</b>."
+"invoicexpress.com ( <a href=\"http://widgilabs.bitbucket."
+"org/static/invoicexpress_subdomain_faq.html\" target=\"_blank\">Help me find my "
+"subdomain</a> )"
+msgstr ""
+"Quando acede ao Invoicexpress o seu URL é https://<b>subdomain.app</b>."
+"invoicexpress.com  ( <a href=\"http://widgilabs.bitbucket."
+"org/static/invoicexpress_subdomain_faq.html\" target=\"_blank\">Ajuda</a> )"
+
+#: ../woocommerce-invoicexpress.php:657
+msgid "Go to Settings >> API in InvoiceXpress to get one."
+msgstr "Vá a Definições >> API do InvoiceXpress para obter a sua chave."
+
+#: ../woocommerce-invoicexpress.php:663
+msgid ""
+"Create invoices for orders that come in, otherwise only the client is "
+"created (<i>recommended</i>)."
+msgstr ""
+"Criar fatura para encomendas recebidas, caso contrário apenas é registado o "
+"cliente (<i>recomendado</i>)."
+
+#: ../woocommerce-invoicexpress.php:669
+msgid ""
+"Send the client an e-mail with the order invoice attached "
+"(<i>recommended</i>)."
+msgstr ""
+"Enviar ao cliente um e-mail com a fatura da encomenda em anexo "
+"(<i>recomendado</i>)."
+
+#: ../woocommerce-invoicexpress.php:675
+msgid "Add a client NIF field to the checkout form (<i>recommended</i>)."
+msgstr "Adicionar campo para NIF no finalizar compras (recomendado)."
+
+#: ../woocommerce-invoicexpress.php:682
+msgid "Create simplified invoices. Only available for Portuguese accounts."
+msgstr "Criar fatura simplificada. Apenas disponível para contas Portuguesas."
+
+#: ../woocommerce-invoicexpress.php:692
+msgid ""
+"You should be able to choose the sequence for your invoices once you "
+"establish a successful connection."
+msgstr "Escolha a série de faturação após estabeler uma ligação ao InvoiceXpress."
+
+#: ../woocommerce-invoicexpress.php:729
+msgid "The sequence to use for the invoices."
+msgstr "A série a usar para as faturas."
+
+#: ../woocommerce-invoicexpress.php:731
+msgid ""
+"You will be able to choose the sequence for your invoices once you establish "
+"a successful connection."
+msgstr ""
+"Poderá escolher a série de faturação uma vez estabelecida a ligação ao "
+"InvoiceXpress."
+
+#: ../woocommerce-invoicexpress.php:740
+msgid "send only the original"
+msgstr "enviar apenas o original"
+
+#: ../woocommerce-invoicexpress.php:741
+msgid "send the original and duplicate"
+msgstr "enviar original e duplicado"
+
+#: ../woocommerce-invoicexpress.php:742
+msgid "send the original, duplicate and triplicate"
+msgstr "enviar original, duplicado e triplicado"
+
+#: ../woocommerce-invoicexpress.php:786
+msgid ""
+"This will overwrite InvoiceXpress > Settings > Customize Document > "
+"Observations."
+msgstr ""
+"Irá substituir InvoiceXpress > Configurações > Personalização de Documentos "
+"> Observações."
+
+#: ../woocommerce-invoicexpress.php:793
+msgid "Create invoice as draft."
+msgstr "Criar fatura como rascunho."
+
+#: ../woocommerce-invoicexpress.php:815
+msgid "The state in which the order must be to send the invoice."
+msgstr "O estado em que deve encontrar-se a encomenda para enviar a fatura."
+
+#: ../woocommerce-invoicexpress.php:849
+msgid " The email subject."
+msgstr "O assunto do email."
+
+#: ../woocommerce-invoicexpress.php:854
+msgid " The email body."
+msgstr "A mensagem do email."
+
+#: ../woocommerce-invoicexpress.php:869
+msgid "Message successfully sent! We will get back to you soon ;)"
+msgstr "Mensagem enviado com sucesso! Responderemos em breve ;)"
+
+#: ../woocommerce-invoicexpress.php:874
+msgid "Oops! Something went wrong :("
+msgstr "Oops! Algo correu mal :("
+
+#: ../woocommerce-invoicexpress.php:878
+msgid "Please fill in all the fields bellow"
+msgstr "Por favor preencha todos os campos em baixo"
+
+#: ../woocommerce-invoicexpress.php:886
+msgid "Contact Us"
+msgstr "Contacte-nos"
+
+#: ../woocommerce-invoicexpress.php:902
+msgid "Send Message"
+msgstr "Enviar Mensagem"
+
+#: ../woocommerce-invoicexpress.php:1168
+msgid "Client invoice in InvoiceXpress"
+msgstr "Fatura criada no InvoiceXpress"
+
+#: ../woocommerce-invoicexpress.php:1197 ../woocommerce-invoicexpress.php:1199
+msgid "InvoiceXpress Invoice API Error:"
+msgstr "Erro API InvoiceXpress:"
+
+#: ../woocommerce-invoicexpress.php:1210
+msgid "Order Invoice"
+msgstr "Pedir Fatura"
+
+#: ../woocommerce-invoicexpress.php:1211
+msgid "Please find your invoice in attach. Archive this e-mail as proof of payment."
+msgstr ""
+"Por favor verifique a sua fatura em anexo. Guarde este e-mail como prova de "
+"pagamento."
+
+#: ../woocommerce-invoicexpress.php:1234
+msgid "Client invoice sent from InvoiceXpress"
+msgstr "Fatura do cliente enviada por e-mail pelo InvoiceXpress"
+
+#: ../woocommerce-invoicexpress.php:1236
+msgid "InvoiceXpress Send Invoice API Error"
+msgstr "Erro Fatura API InvoiceXpress "
+
+#: ../woocommerce-invoicexpress.php:1259
+msgid "VAT"
+msgstr "NIF / NIPC"
+
+#: ../woocommerce-invoicexpress.php:1260
+msgctxt "placeholder"
+msgid "VAT identification number"
+msgstr "Nº Contribuinte (NIF)"
+
+#: ../woocommerce-invoicexpress.php:1279 ../woocommerce-invoicexpress.php:1305 ..
+#: /woocommerce-invoicexpress.php:1311
+msgid "NIF / NIPC"
+msgstr "NIF / NIPC"
+
+#: ../woocommerce-invoicexpress.php:1280
+msgctxt "placeholder"
+msgid "Portuguese VAT identification number"
+msgstr "NIF"
+
+#: ../woocommerce-invoicexpress.php:1320
+msgid "Invalid NIF / NIPC"
+msgstr "Nº de Contribuinte (NIF) inválido"
+
+#: ../am/admin/class-wc-api-manager-menu.php:77
+msgid "API License Activation"
+msgstr "Activar Licença"
+
+#: ../am/admin/class-wc-api-manager-menu.php:78
+msgid "API License Key Status"
+msgstr "Estado da Licença"
+
+#: ../am/admin/class-wc-api-manager-menu.php:79
+msgid "API License Key"
+msgstr "API License Key"
+
+#: ../am/admin/class-wc-api-manager-menu.php:80
+msgid "API License email"
+msgstr "API License Email"
+
+#: ../am/admin/class-wc-api-manager-menu.php:84
+msgid "API License Deactivation"
+msgstr "Deactivar licença"
+
+#: ../am/admin/class-wc-api-manager-menu.php:85
+msgid "Deactivate API License Key"
+msgstr "Deactivar Licença"
+
+#: ../am/admin/class-wc-api-manager-menu.php:163
+msgid "Plugin activated. "
+msgstr "Plugin activado."
+
+#: ../am/admin/class-wc-api-manager-menu.php:169
+msgid "Connection failed to the License Key API server. Try again later."
+msgstr "Ligação ao servidor de Licenças falhou. Tente por favor mais tarde."
+
+#: ../am/admin/class-wc-api-manager-menu.php:256
+msgid ""
+"The license could not be deactivated. Use the License Deactivation tab to "
+"manually deactivate the license before activating a new license."
+msgstr ""
+"A licença não pode ser deactivada. Use o tab de Deactivação para manualmente "
+"deactivar a licença antes de activar uma nova licença."
+
+#: ../am/admin/class-wc-api-manager-menu.php:295
+msgid "Plugin license deactivated. "
+msgstr "Licença deactivada."
+
+#: ../am/admin/class-wc-api-manager-menu.php:363
+msgid "Deactivates an API License Key so it can be used on another blog."
+msgstr "Deactiva a licença para que possa ser usada noutro site."
+
+#: ../am/classes/class-wc-plugin-update.php:369
+#, php-format
+msgid ""
+"The license key for %s has expired. You can reactivate or purchase a license "
+"key from your account <a href=\"%s\" target=\"_blank\">dashboard</a>."
+msgstr ""
+"A licença para %s expirou. Pode reactivar ou adquirir uma nova licença a "
+"partir do <a href=\"%s\" target=\"_blank\">painel da sua conta</a>."
+
+#: ../am/classes/class-wc-plugin-update.php:380
+#, php-format
+msgid ""
+"The subscription for %s is on-hold. You can reactivate the subscription from "
+"your account <a href=\"%s\" target=\"_blank\">dashboard</a>."
+msgstr ""
+"A subscrição para %s está on-hold. Pode reactivar a subscrição a partir do "
+"<a href=\"%s\" target=\"_blank\">painel da sua conta</a>."
+
+#: ../am/classes/class-wc-plugin-update.php:391
+#, php-format
+msgid ""
+"The subscription for %s has been cancelled. You can renew the subscription "
+"from your account <a href=\"%s\" target=\"_blank\">dashboard</a>. A new license "
+"key will be emailed to you after your order has been completed."
+msgstr ""
+"A subscrição para %s foi cancelada. Pode renovar a subscrição a partir do <a "
+"href=\"%s\" target=\"_blank\">painel da sua conta</a>. Uma nova licença irá ser "
+"imediatamente enviada por e-mail após a encomenda."
+
+#: ../am/classes/class-wc-plugin-update.php:402
+#, php-format
+msgid ""
+"The subscription for %s has expired. You can reactivate the subscription "
+"from your account <a href=\"%s\" target=\"_blank\">dashboard</a>."
+msgstr ""
+"A subscrição para %s expirou. Pode reactivar a sua subscrição a partir do <a "
+"href=\"%s\" target=\"_blank\">painel da sua conta</a>."
+
+#: ../am/classes/class-wc-plugin-update.php:413
+#, php-format
+msgid ""
+"The subscription for %s has been suspended. You can reactivate the "
+"subscription from your account <a href=\"%s\" target=\"_blank\">dashboard</a>."
+msgstr ""
+"A subscrição para %s foi suspensa. Pode reactivar a sua subscrição a partir "
+"do <a href=\"%s\" target=\"_blank\">painel da sua conta</a>."
+
+#: ../am/classes/class-wc-plugin-update.php:424
+#, php-format
+msgid ""
+"The subscription for %s is still pending. You can check on the status of the "
+"subscription from your account <a href=\"%s\" target=\"_blank\">dashboard</a>."
+msgstr ""
+"A subscrição para %s está pendente. Pode reactivar a sua subscrição a partir "
+"do <a href=\"%s\" target=\"_blank\">painel da sua conta</a>."
+
+#: ../am/classes/class-wc-plugin-update.php:435
+#, php-format
+msgid ""
+"The subscription for %s has been placed in the trash and will be deleted "
+"soon. You can purchase a new subscription from your account <a href=\"%s\" "
+"target=\"_blank\">dashboard</a>."
+msgstr ""
+"A subscrição para %s foi posta na lixeira e irá ser apagada em breve. Pode "
+"reactivar a sua subscrição a partir do <a href=\"%s\" target=\"_blank\">painel "
+"da sua conta</a>."
+
+#: ../am/classes/class-wc-plugin-update.php:446
+#, php-format
+msgid ""
+"A subscription for %s could not be found. You can purchase a subscription "
+"from your account <a href=\"%s\" target=\"_blank\">dashboard</a>."
+msgstr ""
+"Uma subscrição para %s não foi encontrada. Pode reactivar a sua subscrição a "
+"partir do <a href=\"%s\" target=\"_blank\">painel da sua conta</a>."
+
+#: ../am/classes/class-wc-plugin-update.php:457
+#, php-format
+msgid ""
+"A license key for %s could not be found. Maybe you forgot to enter a license "
+"key when setting up %s, or the key was deactivated in your account. You can "
+"reactivate or purchase a license key from your account <a href=\"%s\" "
+"target=\"_blank\">dashboard</a>."
+msgstr ""
+"Uma licença para %s não foi encontrada. Por favor introduza a chave de "
+"licença (consulte o e-mail de recibo) ao configurar %s. Pode adquirir uma "
+"licença a partir do <a href=\"%s\" target=\"_blank\">painel da sua conta</a>."
+
+#: ../am/classes/class-wc-plugin-update.php:468
+#, php-format
+msgid ""
+"Download permission for %s has been revoked possibly due to a license key or "
+"subscription expiring. You can reactivate or purchase a license key from "
+"your account <a href=\"%s\" target=\"_blank\">dashboard</a>."
+msgstr ""
+"A permissão para download de %s foi negada possivelmente devido a uma "
+"licença ter expirado. Pode reactivar a sua licença a partir do <a href=\"%s\" "
+"target=\"_blank\">painel da sua conta</a>."
+
+#: ../am/classes/class-wc-plugin-update.php:479
+#, php-format
+msgid ""
+"%s has not been activated. Go to the settings page and enter the license key "
+"and license email to activate %s."
+msgstr ""
+"%s não foi activado. Vá à página de opções do plugin e introduza a licença e "
+"o email para activar %s."
+
+#: ../am/classes/class-wc-plugin-update.php:490
+#, php-format
+msgid ""
+"You changed the subscription for %s, so you will need to enter your new API "
+"License Key in the settings page. The License Key should have arrived in "
+"your email inbox, if not you can get it by logging into your account <a "
+"href=\"%s\" target=\"_blank\">dashboard</a>."
+msgstr ""
+"Mudou a subscrição para %s por isso necessita introduzir a sua licença na "
+"página de opções. Deverá ter recebido a sua licença por email. Pode obter "
+"uma licença também a partir do <a href=\"%s\" target=\"_blank\">painel da sua "
+"conta</a>."
+
+#: ../woo-includes/woo-functions.php:328
+msgid "n/a"
+msgstr "n/a"

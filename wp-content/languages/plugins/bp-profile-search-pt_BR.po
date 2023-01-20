@@ -1,0 +1,426 @@
+# Translation of Plugins - BP Profile Search - Stable (latest release) in Portuguese (Brazil)
+# This file is distributed under the same license as the Plugins - BP Profile Search - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-09-13 17:01:56+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: pt_BR\n"
+"Project-Id-Version: Plugins - BP Profile Search - Stable (latest release)\n"
+
+#: bps-form.php:66
+msgid "%1$s error: Form ID \"%2$d\" is empty or nonexistent."
+msgstr "Erro %1$s: ID do formulário \"%2$d\" está vazio ou não existe."
+
+#: bps-form.php:65
+msgid "%1$s error: Template \"%2$s\" not found."
+msgstr "Erro %1$s: Modelo \"%2$s\" não encontrado."
+
+#: bps-external.php:211
+msgid "Usermeta data"
+msgstr "Metadado do usuário"
+
+#: bps-help.php:72
+msgid "You can then add the form fields, specify the form settings and select the form template."
+msgstr "É possível então adicionar campos ao formulário, configurá-lo e selecionar seu modelo."
+
+#: bps-help.php:71
+msgid "To create a form, use the button %s."
+msgstr "Para criar um formulário use o botão %s."
+
+#: bps-admin.php:7 bps-help.php:36
+msgid "Form Settings"
+msgstr "Configurações do formulário"
+
+#: bps-help.php:7
+msgid "Display a Form"
+msgstr "Exibir um formulário"
+
+#: bps-help.php:15
+msgid "(*) Replace %s with the actual ID of your form."
+msgstr "()* Substituia %s com o ID do seu formulário."
+
+#: bps-help.php:30
+msgid "Select how to display your search form."
+msgstr "Selecione como exibir o seu formulário de pesquisa."
+
+#: bps-help.php:32
+msgid "Select the form template"
+msgstr "Selecione o modelo do formulário"
+
+#: bps-help.php:33
+msgid "Specify the template options, if any"
+msgstr "Especifique as opções do modelo, se houver"
+
+#: bps-help.php:69
+msgid "Create a form"
+msgstr "Criar um formulário"
+
+#: bps-help.php:62
+msgid "Enable or disable the <em>persistent search</em> feature."
+msgstr "Ativar ou desativar o recurso de <em>pesquisa persistente</em>."
+
+#: bps-external.php:104
+msgid "Users data"
+msgstr "Dados dos usuários"
+
+#: bps-admin.php:9 bps-help.php:60
+msgid "Persistent Search"
+msgstr "Pesquisa persistente"
+
+#: bps-help.php:64
+msgid "If enabled, a search is cleared when the user hits the <em>Clear</em> button"
+msgstr "Se ativada, uma pesquisa é desfeita quando o usuário clica no botão <em>Limpar</em>"
+
+#: bps-help.php:67
+msgid "This selection applies to all your forms at once."
+msgstr "Esta seleção se aplica a todos os formulários."
+
+#. translators: %1$s label, %2$s value
+#: templates/members/bps-details.php:28 templates/members/bps-details.php:39
+#: templates/members/bps-details.php:44
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"
+
+#: templates/members/bps-form-default.php:196
+msgid "get current location"
+msgstr "obter localização atual"
+
+#: bps-fields.php:73
+msgid "distance"
+msgstr "distância"
+
+#: templates/members/bps-form-default.php:192
+msgid "of"
+msgstr "de"
+
+#: templates/members/bps-form-default.php:193
+msgid "km"
+msgstr "km"
+
+#: templates/members/bps-form-default.php:194
+msgid "miles"
+msgstr "milhas"
+
+#: templates/members/bps-form-default.php:195
+msgid "Start typing, then select a location"
+msgstr "Comece a digitar e então selecione a localização"
+
+#: bps-fields.php:74
+msgid "is one of"
+msgstr "é um de"
+
+#: bps-help.php:22
+msgid "Select the field search mode from the <em>Search Mode</em> drop-down list"
+msgstr "Selecione o modo de pesquisa de campo no menu suspenso <em>Modo de pesquisa</em>"
+
+#: bps-help.php:24
+msgid "To remove a field from the form, click <em>Remove</em> on the right"
+msgstr "Para remover um campo do formulário clique em <em>Remover</em> no lado direito"
+
+#: bps-help.php:77
+msgid "Search Modes"
+msgstr "Modos de pesquisa"
+
+#: bps-help.php:78
+msgid "Troubleshooting"
+msgstr "Resolução de problemas"
+
+#: bps-fields.php:72
+msgid "age range"
+msgstr "faixa etária"
+
+#: bps-fields.php:75 bps-fields.php:100
+msgid "match any"
+msgstr "corresponder com qualquer"
+
+#: bps-fields.php:76 bps-fields.php:101
+msgid "match all"
+msgstr "corresponder com todos"
+
+#: bps-admin.php:22
+msgid "Search Mode"
+msgstr "Modo de pesquisa"
+
+#: bps-admin.php:54 bps-admin.php:67
+msgid "Remove"
+msgstr "Remover"
+
+#: bps-external.php:362
+msgid "Member type"
+msgstr "Tipo de membro"
+
+#: bps-external.php:363
+msgid "Select the member type"
+msgstr "Selecione o tipo de membro"
+
+#: bps-xprofile.php:274
+msgid "Any field"
+msgstr "Qualquer campo"
+
+#: bps-fields.php:68 bps-fields.php:93
+msgid "contains"
+msgstr "contém"
+
+#: bps-fields.php:69
+msgid "is"
+msgstr "é"
+
+#: bps-fields.php:70 bps-fields.php:95
+msgid "is like"
+msgstr "se parece com"
+
+#: bps-admin.php:125 bps-admin.php:209
+#: templates/members/bps-form-default.php:32
+msgid "Yes"
+msgstr "Sim"
+
+#: bps-admin.php:126 bps-admin.php:210
+#: templates/members/bps-form-default.php:33
+msgid "No"
+msgstr "Não"
+
+#: bps-start.php:150
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: bps-help.php:75
+msgid "For more information:"
+msgstr "Para mais informação:"
+
+#: bps-template.php:220 bps-template.php:258
+msgid "Clear"
+msgstr "Limpar"
+
+#: bps-start.php:52
+msgid "Settings"
+msgstr "Configurações"
+
+#: bps-help.php:71 bps-start.php:97
+msgid "Add New"
+msgstr "Adicionar Novo"
+
+#: bps-help.php:76
+msgid "Documentation"
+msgstr "Documentação"
+
+#: bps-start.php:191
+msgid "Move to Trash"
+msgstr "Mover para o Lixo"
+
+#: bps-start.php:193
+msgid "Delete Permanently"
+msgstr "Excluir Permanentemente"
+
+#: bps-start.php:192
+msgid "Restore"
+msgstr "Restaurar"
+
+#: bps-template.php:221
+msgid "Search"
+msgstr "Pesquisar"
+
+#: bps-help.php:25
+msgid "To leave a field description blank, enter a single dash (-) character"
+msgstr "Para deixar a descrição dos campos em branco, digite um hífen simples (-)"
+
+#: bps-help.php:53
+msgid "Select your form’s <em>method</em> attribute."
+msgstr "Selecione o atributo <em>method</em> do seu formulário."
+
+#: bps-help.php:79
+msgid "Incompatible plugins"
+msgstr "Plugins incompatíveis"
+
+#: bps-help.php:80
+msgid "Support Forum"
+msgstr "Fórum de suporte"
+
+#: bps-admin.php:19
+msgid "Field"
+msgstr "Campo"
+
+#: bps-admin.php:20
+msgid "Label"
+msgstr "Rótulo"
+
+#: bps-admin.php:21
+msgid "Description"
+msgstr "Descrição"
+
+#: bps-fields.php:71
+msgid "range"
+msgstr "faixa"
+
+#: bps-admin.php:31
+msgid "Add Field"
+msgstr "Adicionar campo"
+
+#: bps-start.php:177 bps-start.php:183
+msgid "unused"
+msgstr "não usado"
+
+#: bps-start.php:94
+msgid "Profile Search Forms"
+msgstr "Formulários de pesquisa de perfil"
+
+#: bps-start.php:95
+msgid "Profile Search Form"
+msgstr "Formulário de pesquisa de perfil"
+
+#: bps-start.php:98
+msgid "Add New Form"
+msgstr "Adicionar novo formulário"
+
+#: bps-start.php:99
+msgid "Edit Form"
+msgstr "Editar formulário"
+
+#: bps-start.php:100
+msgid "No forms found."
+msgstr "Nenhum formulário encontrado."
+
+#: bps-start.php:101
+msgid "No forms found in Trash."
+msgstr "Nenhum formulário encontrado na lixeira."
+
+#: bps-start.php:144
+msgid "Form"
+msgstr "Formulário"
+
+#: bps-start.php:145
+msgid "Fields"
+msgstr "Campos"
+
+#: bps-start.php:147
+msgid "Directory"
+msgstr "Diretório"
+
+#: bps-start.php:149
+msgid "Widget"
+msgstr "Widget"
+
+#: bps-start.php:167
+msgid "undefined"
+msgstr "indefinido"
+
+#: bps-admin.php:8 bps-admin.php:145 bps-help.php:28
+msgid "Form Template"
+msgstr "Modelo de formulário"
+
+#: bps-admin.php:129 bps-help.php:52
+msgid "Form Method"
+msgstr "Método do formulário"
+
+#: bps-admin.php:131
+msgid "POST"
+msgstr "POST"
+
+#: bps-admin.php:132
+msgid "GET"
+msgstr "GET"
+
+#: bps-start.php:234
+msgid "Form updated."
+msgstr "Formulário atualizado."
+
+#: bps-start.php:239
+msgid "Form created."
+msgstr "Formulário criado."
+
+#: bps-start.php:255
+msgid "%s form permanently deleted."
+msgid_plural "%s forms permanently deleted."
+msgstr[0] "%s formulário permanentemente excluído."
+msgstr[1] "%s formulários permanentemente excluídos."
+
+#: bps-start.php:256
+msgid "%s form moved to the Trash."
+msgid_plural "%s forms moved to the Trash."
+msgstr[0] "%s formulário enviado para a lixeira."
+msgstr[1] "%s formulários enviados para a lixeira."
+
+#: bps-start.php:257
+msgid "%s form restored from the Trash."
+msgid_plural "%s forms restored from the Trash."
+msgstr[0] "%s formulário restaurado da lixeira."
+msgstr[1] "%s formulários restaurados da lixeira."
+
+#: templates/members/bps-filters.php:30
+msgid "max"
+msgstr "máx"
+
+#: templates/members/bps-filters.php:29
+msgid "min"
+msgstr "mín"
+
+#. Plugin Name of the plugin
+msgid "BP Profile Search"
+msgstr "BP Profile Search"
+
+#. Plugin URI of the plugin
+msgid "http://www.dontdream.it/bp-profile-search/"
+msgstr "http://www.dontdream.it/bp-profile-search/"
+
+#. Author of the plugin
+msgid "Andrea Tarantini"
+msgstr "Andrea Tarantini"
+
+#. Author URI of the plugin
+msgid "http://www.dontdream.it/"
+msgstr "http://www.dontdream.it/"
+
+#: bps-widget.php:48
+msgid "Form:"
+msgstr "Formulário:"
+
+#: bps-widget.php:44
+msgid "Title:"
+msgstr "Título:"
+
+#: bps-start.php:181 bps-widget.php:57
+msgid "(no title)"
+msgstr "(sem título)"
+
+#: bps-admin.php:6 bps-help.php:17
+msgid "Form Fields"
+msgstr "Campos do formulário"
+
+#: bps-widget.php:13
+msgid "A Profile Search form."
+msgstr "Um formulário de pesquisa de perfil."
+
+#: bps-help.php:12 bps-start.php:96 bps-widget.php:14
+msgid "Profile Search"
+msgstr "Pesquisa de perfil"
+
+#: bps-widget.php:67
+msgid "You have not created any form yet."
+msgstr "Você ainda não criou nenhum formulário."
+
+#: bps-start.php:148
+msgid "Add to Directory"
+msgstr "Adicionar ao diretório"
+
+#: bps-help.php:12
+msgid "In a sidebar or widget area, using the widget %s"
+msgstr "Em uma barra lateral ou uma área de widgets, usando o widget %s"
+
+#: bps-help.php:13
+msgid "In a post or page, using the shortcode: %s (*)"
+msgstr "Em um post ou página, usando o shortcode: %s (*)"
+
+#: bps-help.php:19
+msgid "Select the profile fields to show in your search form."
+msgstr "Selecione os campos de perfil a serem exibidos no seu formulário de pesquisa."
+
+#: bps-help.php:21
+msgid "Customize the field label and description, or leave them empty to use the default"
+msgstr "Personalize o rótulo do campo e sua descrição ou deixe-os vazios para usar o padrão"
+
+#: bps-help.php:23
+msgid "To reorder the fields in the form, drag them up or down by the handle on the left"
+msgstr "Para reordenar os campos do formulário, arraste-os para cima ou para baixo usando o ícone à esquerda"

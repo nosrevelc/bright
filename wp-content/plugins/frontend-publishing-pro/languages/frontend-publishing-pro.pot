@@ -1,0 +1,1751 @@
+# WPGurus (c) {2019}
+msgid ""
+msgstr ""
+"Project-Id-Version: Frontend Publishing Pro 3.8.7\n"
+"Report-Msgid-Bugs-To: "
+"https://wordpress.org/support/plugin/frontend-publishing-pro\n"
+"POT-Creation-Date: 2019-05-26 02:00:27+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n 0.5.4\n"
+
+#: inc/Element_Containers/Form_Fields_Container.php:732
+msgid "1"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:733
+msgid "2"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:734
+msgid "3"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:735
+msgid "4"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:736
+msgid "5"
+msgstr ""
+
+#: global-functions.php:116
+#: inc/Components/Post_Form_Link_Quick_Edit_Fields.php:116
+msgid "No Form"
+msgstr ""
+
+#: inc/Admin_Pages/Form_Manager.php:82
+msgid "Form deleted successfully!"
+msgstr ""
+
+#: inc/Admin_Pages/Form_Manager.php:91
+msgid ""
+"The form could not be deleted because it is associated with %s post(s). You "
+"can change or remove these associations by bulk editing the posts %s."
+msgstr ""
+
+#: inc/Admin_Pages/Form_Manager.php:97
+msgid "The form could not be deleted."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Frontend Publishing Pro"
+msgstr ""
+
+#: inc/Admin_Pages/Form_Manager.php:175 inc/Admin_Pages/Form_Manager.php:270
+msgid "Frontend Publishing Forms"
+msgstr ""
+
+#: inc/Admin_Pages/Form_Manager.php:176 inc/Components/Admin_Messages.php:57
+msgid "Forms"
+msgstr ""
+
+#: inc/Admin_Pages/Form_Manager.php:196 inc/Admin_Pages/Plugin_Settings.php:39
+#: inc/Components/Admin_Messages.php:58 inc/Tabs/Form_Settings_Tab.php:20
+msgid "Settings"
+msgstr ""
+
+#: inc/Admin_Pages/Form_Manager.php:267 inc/Forms/Frontend_Form.php:340
+msgid "No form with the given ID was found in the database."
+msgstr ""
+
+#: inc/Admin_Pages/Form_Manager.php:272
+msgid "Create a New Form"
+msgstr ""
+
+#: inc/Admin_Pages/Network_Settings.php:43
+msgid "Network-Wide Settings"
+msgstr ""
+
+#: inc/Admin_Pages/Network_Settings.php:45
+msgid "Here you can change settings that will take effect throughout your network."
+msgstr ""
+
+#: inc/Admin_Pages/Plugin_Settings.php:38
+msgid "Frontend Publishing Settings"
+msgstr ""
+
+#: inc/Admin_Pages/Plugin_Settings.php:50
+msgid "Frontend Form Settings"
+msgstr ""
+
+#: inc/Components/Admin_Messages.php:46
+msgid "Important"
+msgstr ""
+
+#: inc/Components/Admin_Messages.php:47
+msgid ""
+"You are upgrading from an older version of FEP. You might have to make some "
+"changes on your site to keep things running smoothly. Please click the "
+"'What's New' link below and read the latest release notes to find out "
+"exactly what changes are required."
+msgstr ""
+
+#: inc/Components/Admin_Messages.php:50
+msgid ""
+"Thank you for installing the latest version of Frontend Publishing Pro! "
+"Please review your settings to make sure everything is in order."
+msgstr ""
+
+#: inc/Components/Admin_Messages.php:54
+msgid "What's New"
+msgstr ""
+
+#: inc/Components/Admin_Messages.php:56
+msgid "Leave a Review"
+msgstr ""
+
+#: inc/Components/Admin_Messages.php:59
+msgid "Dismiss This Message"
+msgstr ""
+
+#: inc/Components/Asset_Manager.php:76
+msgid "An error occurred."
+msgstr ""
+
+#: inc/Components/Asset_Manager.php:98
+msgid "Are you sure you want to delete this post permanently?"
+msgstr ""
+
+#: inc/Components/Asset_Manager.php:166
+msgid "Are you sure?"
+msgstr ""
+
+#: inc/Components/Custom_Fields_Meta_Box.php:56
+msgid "Frontend Form Custom Fields"
+msgstr ""
+
+#: inc/Components/Post_Form_Link_Meta_Box.php:37
+#: inc/Components/Post_Form_Link_Quick_Edit_Fields.php:67
+msgid "Frontend Form"
+msgstr ""
+
+#: inc/Components/Post_Form_Link_Meta_Box.php:64
+msgid "Frontend Form: "
+msgstr ""
+
+#: inc/Components/Post_Form_Link_Quick_Edit_Fields.php:115
+msgid "No Change"
+msgstr ""
+
+#: inc/Components/Post_Form_Link_Quick_Edit_Fields.php:168
+msgid "FEP Form: "
+msgstr ""
+
+#: inc/Element_Containers/Custom_Fields_Container.php:46
+#: inc/Element_Containers/Form_Fields_Container.php:314
+msgid "Label"
+msgstr ""
+
+#: inc/Element_Containers/Custom_Fields_Container.php:52
+#: inc/Element_Containers/Custom_Fields_Container.php:77
+#: inc/Element_Containers/Form_Details_Container.php:56
+#: inc/Element_Containers/Frontend_Messages_Container.php:82
+msgid "This field is required."
+msgstr ""
+
+#: inc/Element_Containers/Custom_Fields_Container.php:71
+msgid "Meta Key"
+msgstr ""
+
+#: inc/Element_Containers/Custom_Fields_Container.php:83
+msgid "Please enter a valid key."
+msgstr ""
+
+#: inc/Element_Containers/Data_Settings_Container.php:27
+msgid "Delete All Data on Uninstallation"
+msgstr ""
+
+#: inc/Element_Containers/Data_Settings_Container.php:28
+msgid ""
+"If you want to permanently remove this plugin then you might want to set "
+"this to true."
+msgstr ""
+
+#: inc/Element_Containers/Edit_Link_Settings_Container.php:28
+msgid "Override Edit Links for"
+msgstr ""
+
+#: inc/Element_Containers/Edit_Link_Settings_Container.php:29
+msgid "Select the post types for which you would like to override edit links."
+msgstr ""
+
+#: inc/Element_Containers/Edit_Link_Settings_Container.php:42
+msgid "Show Edit Form on"
+msgstr ""
+
+#: inc/Element_Containers/Edit_Link_Settings_Container.php:43
+msgid ""
+"Select an empty page on which you would like to display the form for "
+"editing. This page should not have any content or shortcodes in it."
+msgstr ""
+
+#: inc/Element_Containers/Email_Settings_Container.php:29
+msgid "User Emails"
+msgstr ""
+
+#: inc/Element_Containers/Email_Settings_Container.php:30
+msgid "Send thank you email to user on post submission?"
+msgstr ""
+
+#: inc/Element_Containers/Email_Settings_Container.php:41
+msgid "Admin Emails"
+msgstr ""
+
+#: inc/Element_Containers/Email_Settings_Container.php:42
+msgid "Send email to admin on post submission?"
+msgstr ""
+
+#: inc/Element_Containers/Email_Settings_Container.php:53
+msgid "Sender Name"
+msgstr ""
+
+#: inc/Element_Containers/Email_Settings_Container.php:54
+msgid "This name will be used as the sender name in notification emails."
+msgstr ""
+
+#: inc/Element_Containers/Email_Settings_Container.php:67
+msgid "Sender Address"
+msgstr ""
+
+#: inc/Element_Containers/Email_Settings_Container.php:68
+msgid "Emails will be sent from this address."
+msgstr ""
+
+#: inc/Element_Containers/Email_Settings_Container.php:81
+msgid "Email Format"
+msgstr ""
+
+#: inc/Element_Containers/Email_Settings_Container.php:82
+msgid "In which format would you like to send the emails."
+msgstr ""
+
+#: inc/Element_Containers/Email_Settings_Container.php:85
+msgid "Plain Text"
+msgstr ""
+
+#: inc/Element_Containers/Email_Settings_Container.php:86
+msgid "HTML"
+msgstr ""
+
+#: inc/Element_Containers/Email_Settings_Container.php:97
+msgid "User Email Subject"
+msgstr ""
+
+#: inc/Element_Containers/Email_Settings_Container.php:98
+msgid "Thank you for your contribution"
+msgstr ""
+
+#: inc/Element_Containers/Email_Settings_Container.php:108
+msgid "User Email Content"
+msgstr ""
+
+#: inc/Element_Containers/Email_Settings_Container.php:109
+msgid ""
+"Hi %s,\n"
+"\n"
+"Thank you for submitting the article '%s' at our website %s. It has been "
+"added to the queue and will be published shortly.\n"
+"\n"
+"Regards,\n"
+"%s\n"
+"%s"
+msgstr ""
+
+#: inc/Element_Containers/Email_Settings_Container.php:122
+msgid "Admin Email Subject"
+msgstr ""
+
+#: inc/Element_Containers/Email_Settings_Container.php:123
+msgid "A new article has been submitted on your website %s"
+msgstr ""
+
+#: inc/Element_Containers/Email_Settings_Container.php:133
+msgid "Admin Email Content"
+msgstr ""
+
+#: inc/Element_Containers/Email_Settings_Container.php:134
+msgid ""
+"Hi %s,\n"
+"\n"
+"A new article has been added to your website. You can view and edit all "
+"your articles here:\n"
+"\n"
+"%s\n"
+"\n"
+"Regards,\n"
+"Your web server"
+msgstr ""
+
+#: inc/Element_Containers/Email_Settings_Container.php:147
+msgid "You can use the following placeholders in email subject and content: "
+msgstr ""
+
+#: inc/Element_Containers/Form_Details_Container.php:49
+msgid "Form Name"
+msgstr ""
+
+#: inc/Element_Containers/Form_Details_Container.php:50
+msgid "The name of this form"
+msgstr ""
+
+#: inc/Element_Containers/Form_Details_Container.php:69
+#: inc/List_Tables/Forms.php:113
+msgid "Description"
+msgstr ""
+
+#: inc/Element_Containers/Form_Details_Container.php:70
+msgid "A tiny description explaining what this form does"
+msgstr ""
+
+#: inc/Element_Containers/Form_Details_Container.php:87
+#: inc/List_Tables/Forms.php:112
+msgid "Post Type"
+msgstr ""
+
+#: inc/Element_Containers/Form_Details_Container.php:88
+msgid "The post type of this form"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:82
+msgid "Title"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:93
+msgid "Content"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:100
+#: inc/Element_Containers/Form_Fields_Container.php:998
+msgid "Rich Text"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:101
+#: inc/Element_Containers/Form_Fields_Container.php:999
+msgid "Rich Text (Sandboxed)"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:102
+#: inc/Element_Containers/Form_Fields_Container.php:997
+msgid "Textarea"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:114
+msgid "Excerpt"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:125
+#: inc/Element_Containers/Form_Fields_Container.php:750
+#: inc/Element_Containers/Form_Fields_Container.php:783
+msgid "Thumbnail"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:132
+msgid "Media ID"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:133
+#: inc/Element_Containers/Form_Fields_Container.php:1004
+msgid "Media File"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:143
+msgid "Formats"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:150
+#: inc/Element_Containers/Form_Fields_Container.php:186
+#: inc/Element_Containers/Form_Fields_Container.php:219
+#: inc/Element_Containers/Form_Fields_Container.php:1001
+#: vendor/wpgurus/forms/src/Elements/Media_ID.php:20
+#: vendor/wpgurus/forms/src/Elements/Media_IDs.php:17
+#: vendor/wpgurus/forms/src/Elements/Media_URL.php:17
+msgid "Select"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:151
+#: inc/Element_Containers/Form_Fields_Container.php:187
+#: inc/Element_Containers/Form_Fields_Container.php:220
+#: inc/Element_Containers/Form_Fields_Container.php:1006
+msgid "Advanced Select"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:154
+#: inc/Element_Containers/Form_Fields_Container.php:190
+#: inc/Element_Containers/Form_Fields_Container.php:223
+#: inc/Element_Containers/Form_Fields_Container.php:1019
+msgid "en"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:155
+#: inc/Element_Containers/Form_Fields_Container.php:192
+#: inc/Element_Containers/Form_Fields_Container.php:225
+#: inc/Element_Containers/Form_Fields_Container.php:1021
+#: vendor/wpgurus/forms/src/Elements/Select_With_Search.php:160
+msgid "Select an Option"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:156
+#: inc/Element_Containers/Form_Fields_Container.php:193
+#: inc/Element_Containers/Form_Fields_Container.php:226
+#: inc/Element_Containers/Form_Fields_Container.php:1022
+#: vendor/wpgurus/forms/src/Elements/Select_With_Search.php:161
+msgid "Select Some Options"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:218
+#: inc/Element_Containers/Form_Fields_Container.php:996
+#: inc/Element_Containers/Media_Settings_Container.php:78
+msgid "Text"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:306
+msgid "Enabled"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:325
+msgid "Field Width"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:326
+msgid "Width in pixels or percentage. (e.g. 300px)"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:337
+msgid "Prefix Text"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:338
+msgid "The text that you want to place above this field."
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:346
+msgid "Fallback Value"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:348
+msgid "The value to use when this field is disabled. You can leave this empty."
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:364
+msgid "Display Media Button"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:365
+msgid ""
+"The media button will show up only if the user has permission to upload "
+"media."
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:375
+msgid "Editor Height"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:376
+msgid "Height of the editor e.g. 300 (unit not necessary)"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:386
+msgid "Element"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:394
+msgid "Allow Multiple Selections"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:404
+msgid "Hide Empty"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:414
+msgid "Exclude"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:415
+msgid "A comma-seperated list of term IDs that you want to exclude."
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:428
+msgid "Include"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:429
+msgid "A comma-seperated list of term IDs that you want to include."
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:442
+msgid "Display Terms as Hierarchy"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:443
+msgid ""
+"In a hierarchy structure, terms (e.g. categories) are followed by their "
+"children."
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:451
+msgid "Choices"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:452
+msgid ""
+"The choices for select and radio elements. One per line. Key value pairs "
+"can be added like this: key|Value"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:465
+msgid "Save to Post Meta"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:466
+msgid ""
+"Whether or not the value entered by the user should be saved in the DB as "
+"post meta"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:474
+msgid "Automatically Display"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:475
+msgid ""
+"Select the places where you would like the custom field to be displayed "
+"automatically."
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:478
+msgid "Above post content"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:479
+msgid "Below post content"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:480
+msgid "Admin area edit page"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:489
+msgid "Enable Embeds"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:491
+msgid "When the text from this field is shown in a post, should %s be enabled?"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:492
+msgid "WP embeds"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:504
+msgid "DateTime Format"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:505
+msgid "The format of the datetime stamp"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:518
+msgid "Date Picker Language"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:519
+msgid "Language code for the date picker jQuery plugin"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:532
+msgid "Date Enabled?"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:533
+msgid "Enable date in the date picker plugin"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:546
+msgid "Time Enabled?"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:547
+msgid "Enable time in the date picker plugin"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:560
+#: inc/Element_Containers/reCaptcha_Settings_Container.php:61
+msgid "Theme"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:561
+msgid "Date picker theme"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:566
+#: inc/Element_Containers/reCaptcha_Settings_Container.php:64
+msgid "Dark"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:567
+#: inc/Element_Containers/reCaptcha_Settings_Container.php:64
+msgid "Light"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:576
+msgid "Star Count"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:577
+msgid "Number of stars to display"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:588
+msgid "Language"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:589
+msgid "Choose a language for the jQuery select library used by this element"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:649
+msgid "Allow Addition of New Items"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:650
+msgid ""
+"Should the user be able to add items that are not already available in the "
+"dropdown?"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:660
+msgid "Placeholder Text for Single Select"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:661
+msgid ""
+"The text to display when nothing is selected and the multi-select is "
+"disabled"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:671
+msgid "Placeholder Text for Multi-Select"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:672
+msgid "The text to display when nothing is selected and the multi-select is enabled"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:682
+msgid "Allow Single Deselect"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:683
+msgid ""
+"When multi-select is disabled, should the user have the ability to deselect "
+"the currently selected value?"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:693
+msgid "Disable search"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:694
+msgid "Whether or not to disable the search feature"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:704
+msgid "Disable Search Threshold"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:705
+msgid ""
+"If the number of choices is less than this value then the search feature "
+"will be disabled"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:715
+msgid "Maximum Selected Options"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:716
+msgid ""
+"Maximum number of options that the user is allowed to select in case of "
+"multi-select"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:726
+msgid "Columns"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:727
+msgid "When the gallery is shown in a post, how many columns should it have?"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:744
+#: inc/Element_Containers/Form_Fields_Container.php:777
+msgid "Size"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:745
+msgid "When the gallery is shown in a post, what should be the size of each image?"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:751
+#: inc/Element_Containers/Form_Fields_Container.php:784
+msgid "Medium"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:752
+#: inc/Element_Containers/Form_Fields_Container.php:785
+msgid "Large"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:753
+#: inc/Element_Containers/Form_Fields_Container.php:786
+msgid "Full"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:761
+msgid "Link"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:762
+msgid "When the gallery is shown in a post, what should the images link to?"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:767
+msgid "Attachment Page"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:768
+msgid "Image File"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:769
+msgid "None"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:778
+msgid "When the image is shown in a post, what should be its size?"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:794
+msgid "Maximum Image Width"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:795
+msgid "When the image is shown in a post, what should be its maximum width in px?"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:1000
+msgid "Checkbox"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:1002
+msgid "Media Id"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:1003
+msgid "Media URL"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:1005
+msgid "Gallery"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:1007
+msgid "Color Picker"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:1008
+msgid "Date Picker"
+msgstr ""
+
+#: inc/Element_Containers/Form_Fields_Container.php:1009
+msgid "Star Rating"
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:35
+msgid "Disable restrictions for"
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:36
+msgid "These roles will have unrestricted access to the form."
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:49
+msgid "Instantly publish posts by"
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:50
+msgid "The post submitted by these roles will be published instantly."
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:63
+msgid "Width"
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:64
+msgid "Maximum form width."
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:74
+msgid "Redirection Type"
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:75
+msgid "Where would you like the user to be redirected after submission."
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:78
+msgid "Disabled"
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:79
+msgid "Custom URL"
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:80
+msgid "Post URL"
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:91
+msgid "Custom Redirect URL"
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:92
+msgid ""
+"The user will be redirected to this URL after successful submission. Leave "
+"this empty to disable redirection."
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:109
+msgid "Allow users to save drafts"
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:120
+msgid "Enable Captcha"
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:121
+msgid ""
+"Enable captcha for this form? In order to use this feature you need to add "
+"your ReCaptcha keys in the plugin settings."
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:132
+msgid "Advanced Validation"
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:133
+msgid ""
+"If this option is enabled, the values entered by the user will be validated "
+"continuously while the form is being filled in."
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:144
+msgid "Show Error Tooltips"
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:145
+msgid ""
+"If this option is enabled, the form errors will be displayed as tooltips. "
+"Otherwise, a simple error message will be displayed above the field."
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:156
+#: inc/Element_Containers/Post_List_Settings_Container.php:124
+msgid "Require Login"
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:157
+msgid ""
+"If this option is enabled, the form will only be accessible to logged-in "
+"users."
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:168
+#: inc/Element_Containers/Post_List_Settings_Container.php:136
+msgid "Redirect to Login Page"
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:169
+#: inc/Element_Containers/Post_List_Settings_Container.php:137
+msgid ""
+"If this option is enabled, the user will be redirected to the login page "
+"automatically. Otherwise, an error will be shown."
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:180
+msgid "Assign Anonymously Submitted Posts to"
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:181
+msgid ""
+"Enter the ID of the user that you would like anonymously submitted posts "
+"assigned to."
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:192
+msgid "Auto Save Posts"
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:193
+msgid ""
+"If this option is enabled, the post will be autosaved. In order for this to "
+"work, the draft feature must be enabled."
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:204
+msgid "Auto Save Interval"
+msgstr ""
+
+#: inc/Element_Containers/Form_Settings_Container.php:205
+msgid "After how many seconds do you want the post to be auto-saved?"
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Element_Container.php:553
+msgid "Submit"
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Element_Container.php:571
+msgid "Save Draft"
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:35
+msgid "Post Published Message"
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:36
+msgid "The success message shown when a post is published successfully."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:37
+msgid "The post has been published successfully."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:50
+msgid "Post Submitted Message"
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:51
+msgid "The success message shown when a post is submitted successfully for review."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:52
+msgid "The post has been submitted. It will be reviewed by an editor soon."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:65
+msgid "Form Error"
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:66
+msgid "The main error shown when the user hits the submission button."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:67
+msgid "There are errors in your submission. Please try again."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:80
+msgid "Required Field Error"
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:81
+msgid "The error shown when the user misses a required field."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:95
+msgid "Minimum Words Error"
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:96
+msgid ""
+"The error shown when the submission does not meet the minimum words "
+"requirement."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:97
+msgid "Please enter at least %s words."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:110
+msgid "Maximum Words Error"
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:111
+msgid ""
+"The error shown when the submission does not meet the maximum words "
+"requirement."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:112
+msgid "You cannot enter more than %s words."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:125
+msgid "Minimum Characters Error"
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:126
+msgid ""
+"The error shown when the submission does not meet the minimum characters "
+"requirement."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:127
+msgid "Please enter at least %s characters."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:140
+msgid "Maximum Characters Error"
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:141
+msgid ""
+"The error shown when the submission does not meet the maximum characters "
+"requirement."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:142
+msgid "You cannot enter more than %s characters."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:155
+msgid "Maximum Links Error"
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:156
+msgid ""
+"The error shown when the submission does not meet the maximum links "
+"requirement (used for non-hierarichal taxonomies like tags)."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:157
+msgid "You cannot enter more than %s links."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:170
+msgid "Minimum Segments Error"
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:171
+msgid ""
+"The error shown when the submission does not meet the minimum segments "
+"requirement (used for non-hierarichal taxonomies like tags)."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:172
+msgid "Please enter at least %s."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:185
+msgid "Maximum Segments Error"
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:186
+msgid ""
+"The error shown when the submission does not meet the maximum segments "
+"requirement (used for non-hierarichal taxonomies like tags)."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:187
+msgid "You cannot enter more than %s."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:200
+msgid "Invalid Email Error"
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:201
+msgid "The error shown when the user enters an invalid email."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:202
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:215
+msgid "Invalid URL Error"
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:216
+msgid "The error shown when the user enters an invalid URL."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:217
+msgid "Please enter a valid URL."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:230
+msgid "Regex Error"
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:231
+msgid ""
+"The error shown when the value entered by the user does not match the regex "
+"pattern."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:232
+msgid "The value you have entered is invalid."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:245
+msgid "Value Error"
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:246
+msgid ""
+"The error shown when the value entered by the user does not match the "
+"required string."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:247
+msgid "This is not the required value."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:260
+msgid "reCaptcha Error"
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:261
+msgid "The error shown when the captcha response is incorrect."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:262
+msgid "Captcha response incorrect."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:275
+msgid "File Too Large Error"
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:276
+msgid "The error shown when the uploaded file is too large."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:277
+msgid ""
+"The file you are attempting to upload is too large. The max file size is %s "
+"KBs."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:290
+msgid "Login Required Error"
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:291
+msgid ""
+"The error shown when the user is not logged in but tries to access "
+"something restricted."
+msgstr ""
+
+#: inc/Element_Containers/Frontend_Messages_Container.php:292
+msgid "You need to login first."
+msgstr ""
+
+#: inc/Element_Containers/Media_Settings_Container.php:29
+msgid "Make Restrictions Global"
+msgstr ""
+
+#: inc/Element_Containers/Media_Settings_Container.php:30
+msgid ""
+"If this option is selected, the media restrictions will be applied "
+"everywhere including the admin area. Otherwise the restrictions will be "
+"applied only on pages containing the shortcodes."
+msgstr ""
+
+#: inc/Element_Containers/Media_Settings_Container.php:41
+msgid "Max Upload Size"
+msgstr ""
+
+#: inc/Element_Containers/Media_Settings_Container.php:42
+msgid "Maximum upload size in kilobytes."
+msgstr ""
+
+#: inc/Element_Containers/Media_Settings_Container.php:53
+msgid "Show users only their media items"
+msgstr ""
+
+#: inc/Element_Containers/Media_Settings_Container.php:54
+msgid "All the other media items will be hidden."
+msgstr ""
+
+#: inc/Element_Containers/Media_Settings_Container.php:65
+msgid "Allowed Media Types"
+msgstr ""
+
+#: inc/Element_Containers/Media_Settings_Container.php:67
+msgid ""
+"By default WordPress supports a wide range of media formats. You can see "
+"the full list %s."
+msgstr ""
+
+#: inc/Element_Containers/Media_Settings_Container.php:70
+#: inc/Element_Containers/Update_Settings_Container.php:33
+#: inc/Element_Containers/reCaptcha_Settings_Container.php:33
+#: inc/Tabs/Form_Emails_Tab.php:48 inc/Tabs/Form_Post_List_Tab.php:47
+#: inc/Tabs/Form_Settings_Tab.php:52
+msgid "here"
+msgstr ""
+
+#: inc/Element_Containers/Media_Settings_Container.php:76
+msgid "Image"
+msgstr ""
+
+#: inc/Element_Containers/Media_Settings_Container.php:77
+msgid "Video"
+msgstr ""
+
+#: inc/Element_Containers/Media_Settings_Container.php:79
+msgid "Audio"
+msgstr ""
+
+#: inc/Element_Containers/Media_Settings_Container.php:80
+msgid "MS Office"
+msgstr ""
+
+#: inc/Element_Containers/Media_Settings_Container.php:81
+msgid "OpenOffice"
+msgstr ""
+
+#: inc/Element_Containers/Media_Settings_Container.php:82
+msgid "WordPerfect"
+msgstr ""
+
+#: inc/Element_Containers/Media_Settings_Container.php:83
+msgid "iWork"
+msgstr ""
+
+#: inc/Element_Containers/Media_Settings_Container.php:84
+msgid "Misc"
+msgstr ""
+
+#: inc/Element_Containers/Media_Settings_Container.php:97
+msgid "Exempt Roles"
+msgstr ""
+
+#: inc/Element_Containers/Media_Settings_Container.php:98
+msgid "These roles will not be affected by these upload restrictions."
+msgstr ""
+
+#: inc/Element_Containers/Media_Settings_Container.php:111
+msgid "Give upload capability to Subscribers & Contributors"
+msgstr ""
+
+#: inc/Element_Containers/Media_Settings_Container.php:112
+msgid ""
+"By default WordPress does not allow contributors and subscribers to upload "
+"media items. Check this if you want to give upload capabilities to these "
+"roles."
+msgstr ""
+
+#: inc/Element_Containers/Post_List_Settings_Container.php:29
+msgid "Page Length"
+msgstr ""
+
+#: inc/Element_Containers/Post_List_Settings_Container.php:30
+msgid "Number of items to display on a single page of the post list table"
+msgstr ""
+
+#: inc/Element_Containers/Post_List_Settings_Container.php:37
+#: inc/Tabbed_Interfaces/Post_List_Interface.php:133
+msgid "Published"
+msgstr ""
+
+#: inc/Element_Containers/Post_List_Settings_Container.php:38
+#: inc/Tabbed_Interfaces/Post_List_Interface.php:136
+msgid "Pending"
+msgstr ""
+
+#: inc/Element_Containers/Post_List_Settings_Container.php:39
+#: inc/Tabbed_Interfaces/Post_List_Interface.php:139
+msgid "Draft"
+msgstr ""
+
+#: inc/Element_Containers/Post_List_Settings_Container.php:53
+msgid "Active Tabs"
+msgstr ""
+
+#: inc/Element_Containers/Post_List_Settings_Container.php:54
+msgid "Which tabs would you like to display in the post list table"
+msgstr ""
+
+#: inc/Element_Containers/Post_List_Settings_Container.php:67
+msgid "Show permalink column on"
+msgstr ""
+
+#: inc/Element_Containers/Post_List_Settings_Container.php:68
+msgid "In which tabs should the view link be shown"
+msgstr ""
+
+#: inc/Element_Containers/Post_List_Settings_Container.php:81
+msgid "Show edit column on"
+msgstr ""
+
+#: inc/Element_Containers/Post_List_Settings_Container.php:82
+msgid "In which tabs should the edit link be shown"
+msgstr ""
+
+#: inc/Element_Containers/Post_List_Settings_Container.php:95
+msgid "Show delete column on"
+msgstr ""
+
+#: inc/Element_Containers/Post_List_Settings_Container.php:96
+msgid "In which tabs should the delete link be shown"
+msgstr ""
+
+#: inc/Element_Containers/Post_List_Settings_Container.php:110
+msgid "Show All Posts to"
+msgstr ""
+
+#: inc/Element_Containers/Post_List_Settings_Container.php:111
+msgid "Select the user roles that should see all the posts, not just their own"
+msgstr ""
+
+#: inc/Element_Containers/Post_List_Settings_Container.php:125
+msgid ""
+"If this option is enabled, the post list will only be shown to logged-in "
+"users."
+msgstr ""
+
+#: inc/Element_Containers/Post_List_Settings_Container.php:148
+msgid "Hide Tabs"
+msgstr ""
+
+#: inc/Element_Containers/Post_List_Settings_Container.php:149
+msgid ""
+"If you want to display the posts of each status on a separate page, you can "
+"use this option to hide the tabs."
+msgstr ""
+
+#: inc/Element_Containers/Sanitizers_Container.php:29
+msgid "Strip Tags"
+msgstr ""
+
+#: inc/Element_Containers/Sanitizers_Container.php:32
+msgid "Unsafe"
+msgstr ""
+
+#: inc/Element_Containers/Sanitizers_Container.php:33
+msgid "All"
+msgstr ""
+
+#: inc/Element_Containers/Sanitizers_Container.php:45
+msgid "Nofollow All Links"
+msgstr ""
+
+#: inc/Element_Containers/Update_Settings_Container.php:28
+msgid "Purchase Code"
+msgstr ""
+
+#: inc/Element_Containers/Update_Settings_Container.php:30
+msgid ""
+"Your Envato purchase code. Auto-updates will not work if you use the "
+"purchase code on more than one websites. You can get this code %s."
+msgstr ""
+
+#: inc/Element_Containers/Validators_Container.php:29
+msgid "Required"
+msgstr ""
+
+#: inc/Element_Containers/Validators_Container.php:42
+msgid "Minimum Words"
+msgstr ""
+
+#: inc/Element_Containers/Validators_Container.php:54
+msgid "Maximum Words"
+msgstr ""
+
+#: inc/Element_Containers/Validators_Container.php:66
+msgid "Minimum Characters"
+msgstr ""
+
+#: inc/Element_Containers/Validators_Container.php:78
+msgid "Maximum Characters"
+msgstr ""
+
+#: inc/Element_Containers/Validators_Container.php:90
+msgid "Minimum Count"
+msgstr ""
+
+#: inc/Element_Containers/Validators_Container.php:102
+msgid "Maximum Count"
+msgstr ""
+
+#: inc/Element_Containers/Validators_Container.php:114
+msgid "Maximum Links"
+msgstr ""
+
+#: inc/Element_Containers/Validators_Container.php:126
+#: inc/Tabs/Email_Settings_Tab.php:14
+msgid "Email"
+msgstr ""
+
+#: inc/Element_Containers/Validators_Container.php:139
+msgid "URL"
+msgstr ""
+
+#: inc/Element_Containers/Validators_Container.php:152
+msgid "Regex"
+msgstr ""
+
+#: inc/Element_Containers/Validators_Container.php:164
+msgid "Value"
+msgstr ""
+
+#: inc/Element_Containers/reCaptcha_Settings_Container.php:28
+msgid "Site Key"
+msgstr ""
+
+#: inc/Element_Containers/reCaptcha_Settings_Container.php:30
+msgid "Your ReCaptcha site key. You can get this key %s."
+msgstr ""
+
+#: inc/Element_Containers/reCaptcha_Settings_Container.php:45
+msgid "Secret"
+msgstr ""
+
+#: inc/Element_Containers/reCaptcha_Settings_Container.php:47
+msgid "Your ReCaptcha secret. You can get it %s."
+msgstr ""
+
+#: inc/Element_Containers/reCaptcha_Settings_Container.php:62
+msgid "Color scheme of the ReCaptcha widget."
+msgstr ""
+
+#: inc/Forms/Backend_DB_Form.php:36 inc/Forms/Backend_Options_Form.php:50
+msgid "Your changes have been saved."
+msgstr ""
+
+#: inc/Forms/Form_Details_Form.php:36
+msgid "The form could not be created. The following DB error occured: %s"
+msgstr ""
+
+#: inc/Forms/Form_Details_Form.php:78
+msgid "The form was created successfully!"
+msgstr ""
+
+#: inc/Forms/Frontend_Form.php:216 inc/Forms/Frontend_Form.php:345
+msgid "You don't have permission to edit this post."
+msgstr ""
+
+#: inc/Forms/Frontend_Form.php:531
+msgid "Continue Editing"
+msgstr ""
+
+#: inc/Forms/Frontend_Form.php:537
+msgid "View Post"
+msgstr ""
+
+#: inc/Forms/Frontend_Form.php:537
+msgid "Preview Post"
+msgstr ""
+
+#: inc/Forms/Frontend_Form.php:679
+msgid "This file type is not allowed for security reasons."
+msgstr ""
+
+#: inc/List_Tables/Forms.php:90 templates/tabs/frontend-tab/single-row.php:19
+msgid "Edit"
+msgstr ""
+
+#: inc/List_Tables/Forms.php:91 templates/tabs/frontend-tab/single-row.php:24
+msgid "Delete"
+msgstr ""
+
+#: inc/List_Tables/Forms.php:111
+msgid "Name"
+msgstr ""
+
+#: inc/List_Tables/Forms.php:114
+msgid "ID"
+msgstr ""
+
+#: inc/Shortcodes/Frontend_Form.php:33
+msgid "Please provide a form id."
+msgstr ""
+
+#: inc/Shortcodes/Post_Table.php:34
+msgid "Please specify a form ID."
+msgstr ""
+
+#: inc/Tabbed_Interfaces/Post_List_Interface.php:204
+msgid "The form ID that you have added is not valid."
+msgstr ""
+
+#: inc/Tabbed_Interfaces/Post_List_Interface.php:210
+msgid "This post can not be edited."
+msgstr ""
+
+#: inc/Tabbed_Interfaces/Post_List_Interface.php:216
+msgid "The post has been deleted successfully."
+msgstr ""
+
+#: inc/Tabs/Data_Settings_Tab.php:12
+msgid "Data"
+msgstr ""
+
+#: inc/Tabs/Edit_Link_Settings_Tab.php:14
+msgid "Edit Links"
+msgstr ""
+
+#: inc/Tabs/Form_Emails_Tab.php:19
+msgid "Emails"
+msgstr ""
+
+#: inc/Tabs/Form_Emails_Tab.php:44
+msgid ""
+"This form currently inherits email settings from the general plugin "
+"settings %s."
+msgstr ""
+
+#: inc/Tabs/Form_Emails_Tab.php:51
+msgid "Create form-specific email settings"
+msgstr ""
+
+#: inc/Tabs/Form_Fields_Tab.php:26
+msgid "Fields"
+msgstr ""
+
+#: inc/Tabs/Form_Post_List_Tab.php:18 inc/Tabs/Post_List_Settings_Tab.php:16
+msgid "Post List"
+msgstr ""
+
+#: inc/Tabs/Form_Post_List_Tab.php:43
+msgid ""
+"This form currently inherits its post list settings from the general plugin "
+"post list settings %s."
+msgstr ""
+
+#: inc/Tabs/Form_Post_List_Tab.php:50
+msgid "Create form-specific post list settings"
+msgstr ""
+
+#: inc/Tabs/Form_Settings_Tab.php:48
+msgid ""
+"This form currently inherits its settings from the general plugin settings "
+"%s."
+msgstr ""
+
+#: inc/Tabs/Form_Settings_Tab.php:55
+msgid "Create form-specific settings"
+msgstr ""
+
+#: inc/Tabs/Frontend_Messages_Tab.php:15
+msgid "Messages"
+msgstr ""
+
+#: inc/Tabs/General_Form_Settings_Tab.php:17
+msgid "Form Settings"
+msgstr ""
+
+#: inc/Tabs/Media_Settings_Tab.php:12
+msgid "Media"
+msgstr ""
+
+#: inc/WP_List_Table.php:163
+msgid "List View"
+msgstr ""
+
+#: inc/WP_List_Table.php:164
+msgid "Excerpt View"
+msgstr ""
+
+#: inc/WP_List_Table.php:346
+msgid "No items found."
+msgstr ""
+
+#: inc/WP_List_Table.php:480
+msgid "Select bulk action"
+msgstr ""
+
+#: inc/WP_List_Table.php:482
+msgid "Bulk Actions"
+msgstr ""
+
+#: inc/WP_List_Table.php:492
+msgid "Apply"
+msgstr ""
+
+#: inc/WP_List_Table.php:544 inc/WP_List_Table.php:1373
+msgid "Show more details"
+msgstr ""
+
+#: inc/WP_List_Table.php:608
+msgid "Filter by date"
+msgstr ""
+
+#: inc/WP_List_Table.php:610
+msgid "All dates"
+msgstr ""
+
+#: inc/WP_List_Table.php:623
+#. translators: 1: month name, 2: 4-digit year
+msgid "%1$s %2$d"
+msgstr ""
+
+#: inc/WP_List_Table.php:677
+msgid "%s comment"
+msgid_plural "%s comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/WP_List_Table.php:678
+msgid "%s approved comment"
+msgid_plural "%s approved comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/WP_List_Table.php:679
+msgid "%s pending comment"
+msgid_plural "%s pending comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/WP_List_Table.php:684 inc/WP_List_Table.php:696
+#: inc/WP_List_Table.php:709
+msgid "No comments"
+msgstr ""
+
+#: inc/WP_List_Table.php:696
+msgid "No approved comments"
+msgstr ""
+
+#: inc/WP_List_Table.php:709
+msgid "No pending comments"
+msgstr ""
+
+#: inc/WP_List_Table.php:789 inc/WP_List_Table.php:1399
+msgid "%s item"
+msgid_plural "%s items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/WP_List_Table.php:825
+msgid "First page"
+msgstr ""
+
+#: inc/WP_List_Table.php:835
+msgid "Previous page"
+msgstr ""
+
+#: inc/WP_List_Table.php:842 inc/WP_List_Table.php:845
+msgid "Current Page"
+msgstr ""
+
+#: inc/WP_List_Table.php:858
+msgid "Next page"
+msgstr ""
+
+#: inc/WP_List_Table.php:868
+msgid "Last page"
+msgstr ""
+
+#: inc/WP_List_Table.php:1104
+msgid "Select All"
+msgstr ""
+
+#: templates/element-containers/custom-fields.php:9
+#: templates/element-containers/form-details.php:7
+msgid "Add"
+msgstr ""
+
+#: templates/element-containers/form-fields.php:12
+msgid "Save Changes"
+msgstr ""
+
+#: templates/tabs/form-fields.php:10
+msgid "Custom Fields"
+msgstr ""
+
+#: templates/tabs/form-fields.php:19
+msgid "Validators"
+msgstr ""
+
+#: templates/tabs/form-fields.php:28
+msgid "Sanitizers"
+msgstr ""
+
+#: templates/tabs/frontend-tab/nav.php:4
+msgid "Newer Posts"
+msgstr ""
+
+#: templates/tabs/frontend-tab/nav.php:8
+msgid "Older Posts"
+msgstr ""
+
+#: templates/tabs/frontend-tab/single-row.php:11
+msgid "Preview"
+msgstr ""
+
+#: templates/tabs/frontend-tab/single-row.php:13
+msgid "View"
+msgstr ""
+
+#: templates/tabs/frontend-tab/tab.php:4
+msgid "Nothing found."
+msgstr ""
+
+#: vendor/wpgurus/forms/src/Elements/Google_reCaptcha.php:77
+msgid "reCaptcha keys missing."
+msgstr ""
+
+#: vendor/wpgurus/forms/src/Elements/Media_ID.php:19
+#: vendor/wpgurus/forms/src/Elements/Media_URL.php:16
+msgid "Select an Item"
+msgstr ""
+
+#: vendor/wpgurus/forms/src/Elements/Media_IDs.php:16
+msgid "Select Items"
+msgstr ""
+
+#: vendor/wpgurus/forms/src/Elements/Nonce.php:39
+msgid "Security token expired. Please try reloading the page."
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://wpfrontendpublishing.com/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Allow your users to create, edit and delete posts directly from the "
+"WordPress frontend area."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Hassan Akhtar"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://wpgurus.net/"
+msgstr ""
+
+#: inc/WP_List_Table.php:851
+msgctxt "paging"
+msgid "%1$s of %2$s"
+msgstr ""

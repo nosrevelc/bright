@@ -1,0 +1,217 @@
+# Translation of Plugins - ReCaptcha v2 for Contact Form 7 - Stable (latest release) in Chinese (Taiwan)
+# This file is distributed under the same license as the Plugins - ReCaptcha v2 for Contact Form 7 - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2021-06-21 09:19:22+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: zh_TW\n"
+"Project-Id-Version: Plugins - ReCaptcha v2 for Contact Form 7 - Stable (latest release)\n"
+
+#: recaptcha-v2.php:639
+msgid "This message shows whenever the reCaptcha is unchecked upon submission. Added by plugin: ReCaptcha for Contact Form 7."
+msgstr "提交時取消選取 reCAPTCHA，便會顯示這項訊息。由 ReCaptcha for Contact Form 7 新增。"
+
+#: recaptcha-v2.php:635
+msgid "This message shows whenever the reCaptcha is completely blocked. Added by plugin: ReCaptcha for Contact Form 7."
+msgstr "reCAPTCHA 遭到完全封鎖時，便會顯示這項訊息。由 ReCaptcha for Contact Form 7 新增。"
+
+#: recaptcha-v2.php:604 recaptcha-v2.php:636
+msgid "Could not verify the reCaptcha response."
+msgstr "無法驗證 reCAPTCHA 回應。"
+
+#: recaptcha-v2.php:76
+msgid "wpcf7-recaptcha: Could not verify reCaptcha response."
+msgstr "wpcf7-recaptcha: 無法驗證 reCAPTCHA 回應。"
+
+#. translators: ReCaptcha alignment: right
+#: recaptcha-v2.php:359
+msgid "Right"
+msgstr "靠右對齊"
+
+#. translators: ReCaptcha alignment: center
+#: recaptcha-v2.php:357
+msgid "Center"
+msgstr "置中對齊"
+
+#. translators: ReCaptcha alignment: left
+#: recaptcha-v2.php:355
+msgid "Left"
+msgstr "靠左對齊"
+
+#. translators: ReCaptcha theme (light or dark)
+#. translators: Alignment of the reCaptcha box (left, center, right)
+#: recaptcha-v2.php:347 recaptcha-v2.php:353
+msgid "Alignment"
+msgstr "對齊方式"
+
+#. Plugin Name of the plugin
+#: wpcf7-recaptcha.php:234 wpcf7-recaptcha.php:251
+msgid "ReCaptcha v2 for Contact Form 7"
+msgstr "ReCaptcha v2 for Contact Form 7"
+
+#: wpcf7-recaptcha.php:288
+msgid "Network Wide Settings"
+msgstr "多站網路全域設定"
+
+#: wpcf7-recaptcha.php:279
+msgid "Select reCaptcha Source"
+msgstr "選取 reCAPTCHA 來源"
+
+#: wpcf7-recaptcha.php:277
+msgid "If you're not sure if your country blocks Google then you may leave this as default. Otherwise, if your country blocks google.com requests then please select the suggested recaptcha.net alternative below."
+msgstr "如果不確定網站主機所處的地理位置是否封鎖了 Google 服務，建議保留預設值；如果確定網站主機所處的地理位置有封鎖 google.com 要求的行為，請選取 recaptcha.net。"
+
+#: wpcf7-recaptcha.php:271
+msgid "Select reCaptcha Usage"
+msgstr "選取 reCAPTCHA 使用方式"
+
+#: recaptcha-v2.php:167
+msgid "reCaptcha Response Here"
+msgstr "reCAPTCHA 的回應訊息"
+
+#: wpcf7-recaptcha.php:304
+msgid "Secret Key"
+msgstr "密鑰"
+
+#: wpcf7-recaptcha.php:300
+msgid "Site Key"
+msgstr "網站金鑰"
+
+#. translators: Care for HTML in string used for emphasis.
+#: wpcf7-recaptcha.php:294
+msgid "Do note that these keys will automatically apply to all network websites upon save <strong>if keys are not detected</strong>. If some network websites use reCaptcha v3 please <u>do not use this option</u> and set it on a per site level."
+msgstr "請注意，如果未在個別網站偵測到金鑰，這裡所設定的金鑰在儲存後便會自動套用至整個多站網路。如果個別網站使用 reCAPTCHA v3，請不要使用這項設定，並在個別網站進行金鑰設定。"
+
+#: wpcf7-recaptcha.php:291
+msgid "You may set Network wide API keys below. Please ensure that every network site is on the domain list in the Google API Consolefor this API key. ReCaptcha keys can still be set ( or unset ) on a per site basis if necessary."
+msgstr "如需為整個多站網路設定 API 金鑰，請確定已將多站網路的每一個網站納入 Google API Console 中的 API 金鑰允許清單。如有需要，可以為多站網路中的指定網站個別設定 reCAPTCHA 金鑰。"
+
+#: wpcf7-recaptcha.php:290
+msgid "Please read all of the below before committing to these changes."
+msgstr "在儲存設定前，請先閱讀下方全部內容。"
+
+#: wpcf7-recaptcha.php:193 wpcf7-recaptcha.php:194
+msgid "WPCF7 reCaptcha Settings"
+msgstr "WPCF7 reCAPTCHA 設定"
+
+#. translators: %s is a link to the Contact Form 7 blog post regarding
+#. reCaptcha v3
+#: recaptcha-v2.php:255 recaptcha-v2.php:288 recaptcha-v2.php:299
+msgid "reCaptcha"
+msgstr "reCAPTCHA"
+
+#: wpcf7-recaptcha.php:324
+msgid "Click the image above and like us on Facebook! Facebook is where you will receive the latest news on both this plugin and all future IQComputing plugins."
+msgstr "請點擊上方圖片，並在 Facebook 上為我們按讚。在 Facebook 上，可以收到這個外掛及 IQComputing 所開發的其他外掛的最新消息。"
+
+#: wpcf7-recaptcha.php:262
+msgid "Select the version of reCaptcha you would like to use. You will still need to use the %s shortcode tag in your Contact Form 7 forms."
+msgstr "請選取要用於這個網站的 reCAPTCHA 版本。外掛設定完畢後，請在 Contact Form 7 製作的聯絡表單中使用 %s 短代碼。"
+
+#. translators: Image alternative tag.
+#: wpcf7-recaptcha.php:321
+msgid "Like IQComputing on Facebook mascot"
+msgstr "在 Facebook 上的 IQComputing 粉絲專頁按讚"
+
+#: recaptcha-v2.php:75 recaptcha-v2.php:612 recaptcha-v2.php:640
+msgid "Please verify that you are not a robot."
+msgstr "請證明你不是機器人。"
+
+#: wpcf7-recaptcha.php:312
+msgid "Submit"
+msgstr "送出"
+
+#: wpcf7-recaptcha.php:274
+msgid "reCaptcha Version 2"
+msgstr "reCAPTCHA v2"
+
+#: wpcf7-recaptcha.php:273
+msgid "Default Usage"
+msgstr "預設使用方式"
+
+#: wpcf7-recaptcha.php:256
+msgid "Your reCaptcha settings have been updated."
+msgstr "reCAPTCHA 的設定已儲存。"
+
+#: wpcf7-recaptcha.php:235
+msgid "This version of Contact Form 7 already uses reCaptcha version 2, you do not need 'ReCaptcha v2 for Contact Form 7' installed at this time."
+msgstr "這個網站安裝的 Contact Form 7 版本使用的是 reCAPTCHA v2，因此不需要安裝 ReCaptcha v2 for Contact Form 7 外掛。"
+
+#: wpcf7-recaptcha.php:174 wpcf7-recaptcha.php:175
+msgid "reCaptcha Version"
+msgstr "reCAPTCHA 版本"
+
+#. translators: Insert shortcode tag into the page content
+#: recaptcha-v2.php:391
+msgid "Insert Tag"
+msgstr "插入標籤"
+
+#. translators: HTML Attribute class for reCaptcha box
+#: recaptcha-v2.php:375
+msgid "Class attribute"
+msgstr "類別屬性"
+
+#. translators: HTML Attribute ID for reCaptcha box
+#: recaptcha-v2.php:367
+msgid "Id attribute"
+msgstr "ID 屬性"
+
+#. translators: ReCaptcha theme: dark
+#: recaptcha-v2.php:339
+msgid "Dark"
+msgstr "深色"
+
+#. translators: ReCaptcha theme: light
+#: recaptcha-v2.php:337
+msgid "Light"
+msgstr "淺色"
+
+#. translators: ReCaptcha theme (light or dark)
+#. translators: Screen reader text, reCaptcha theme (light or dark)
+#: recaptcha-v2.php:329 recaptcha-v2.php:335
+msgid "Theme"
+msgstr "外觀樣式"
+
+#. translators: ReCaptcha size: compact
+#: recaptcha-v2.php:321
+msgid "Compact"
+msgstr "密集"
+
+#. translators: ReCaptcha size: normal
+#: recaptcha-v2.php:319
+msgid "Normal"
+msgstr "標準"
+
+#. translators: ReCaptcha size (normal or compact)
+#. translators: Screen reader text, reCaptcha size (normal or compact)
+#: recaptcha-v2.php:311 recaptcha-v2.php:317
+msgid "Size"
+msgstr "尺寸大小"
+
+#. translators: %s is a link to the Contact Form 7 blog post regarding
+#. reCaptcha v3
+#: recaptcha-v2.php:298
+msgid "Generate a form-tag for a reCaptcha widget. For more details, see %s."
+msgstr "為 reCAPTCHA 小工具產生表單標籤。如需進一步了解，請參閱〈%s〉。"
+
+#. translators: %s is a link to the Contact Form 7 blog post regarding
+#. reCaptcha v3
+#: recaptcha-v2.php:288
+msgid "To use reCaptcha, first you need to install an API key pair. For more details, see %s."
+msgstr "如需使用 reCAPTCHA 功能，必須先申請 API 金鑰。如需進一步了解，請參閱〈%s〉。"
+
+#. Author URI of the plugin
+msgid "http://www.iqcomputing.com/"
+msgstr "https://www.iqcomputing.com/"
+
+#. Author of the plugin
+msgid "IQComputing"
+msgstr "IQComputing"
+
+#. Description of the plugin
+msgid "ReCaptcha v2 Fix for Contact Form 7 5.1 and later."
+msgstr "為 Contact Form 7 5.1 或更新版本重新加入 reCAPTCHA v2 功能。"

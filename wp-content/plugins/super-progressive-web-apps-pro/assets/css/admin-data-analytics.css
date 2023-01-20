@@ -1,0 +1,38 @@
+.spwap-history-wrap{
+    width: 80%;
+    margin:0px auto;
+}
+table.spwap-download-history  {
+    border: 1px solid #eee;
+    background: #fff;
+    border-collapse: collapse;
+    font-size: 12.8px;
+    font-size: .8rem;
+    margin: 0 0 16px;
+    margin: 0 0 1rem;
+    padding: 0;
+    width: 100%;
+}
+table.spwap-download-history td, table.spwap-download-history th {
+    border: 1px solid #eee;
+    font-weight: 400;
+    margin: 0;
+    padding: 6.4px;
+    padding: .4rem;
+    text-align: left;
+    vertical-align: top;
+}
+table.spwap-download-history tbody tr:nth-child(2n) {
+    background: #f7f7f7;
+}
+
+.spwap-graph{
+    margin: 0px auto;
+}
+.spwap-addon-link{
+    color: #1d2327;
+    text-decoration: none;
+}
+.superpwa-newsletter-wrapper {
+    margin-top: 40px;
+}

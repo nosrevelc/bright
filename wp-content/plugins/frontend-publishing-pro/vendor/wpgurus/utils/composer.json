@@ -1,0 +1,9 @@
+{
+  "name": "wpgurus/utils",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "WPGurus\\Utils\\": "src"
+    }
+  }
+}

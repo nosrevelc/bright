@@ -1,0 +1,8 @@
+{
+  "name": "wpgurus/config",
+  "autoload": {
+    "psr-4": {
+      "WPGurus\\Config\\": "src"
+    }
+  }
+}
