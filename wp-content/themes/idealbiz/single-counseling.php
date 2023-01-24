@@ -59,7 +59,9 @@ $cl_membro = $_GET['refer'];
 
 
 $cl_sr_type_origin_id_field = get_field('sr_type_origin_id_field', 'options');
+$cl_input_sr_fixed_ppc_value_id_field = get_field('sr_input_sr_fixed_ppc_value_id_field', 'options');
 $cl_sr_origin_sr_id_of_field = get_field('sr_origin_sr_id_of_field', 'options');
+
 
 
 // verifica se é membro para proceder a refereianção
@@ -736,13 +738,15 @@ $cl_member_cat = get_field('member_category_store',$cl_user);
 
 let cl_id_campo_origem = '<?php echo $cl_sr_type_origin_id_field;?>'
 let cl_id_campo_Origin_SR = '<?php echo $cl_sr_origin_sr_id_of_field;?>'
-let sr_type_origin = document.querySelector('input[name="input_'+cl_id_campo_origem +'"]');
 let $cl_origin = document.querySelector('input[name="input_'+cl_id_campo_Origin_SR+'"]');
+let sr_type_origin = document.querySelector('input[name="input_'+cl_id_campo_origem +'"]');
+let input_sr_fixed_ppc_value = document.querySelector('input[name="input_'+cl_id_campo_origem +'"]');
 
 
 
 $cl_origin.value = '<?php echo $cl_rid; ?>';
 sr_type_origin.value = '<?php echo $cl_sr_type_origin; ?>';
+input_sr_fixed_ppc_value.value = '<?php echo $cl_sr_type_origin; ?>';
 
 var e;
 var  cl_care;
