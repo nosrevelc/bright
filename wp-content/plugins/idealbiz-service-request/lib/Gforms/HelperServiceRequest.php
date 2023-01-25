@@ -125,51 +125,56 @@ class HelperServiceRequest {
 			$post_id = $entry[$cl_sr_origin_sr_id_of_field];
 		}
 		
-		error_log(print_r($entry,true));
+		//error_log(print_r($entry,true));
 
- /* 		[id] => 1214
+ /* 		
+		[id] => 1312
 		[status] => active
 		[form_id] => 12
 		[ip] => 95.92.116.156
-		[source_url] => https://idealbiz.eu/pt/pt/receba-apoio-especializado/?refer=1
+		[source_url] => https://idealbiz.eu/pt/pt/counseling/geral/
 		[currency] => EUR
-		[post_id] => 86020
-		[date_created] => 2022-10-06 15:33:56
-		[date_updated] => 2022-10-06 15:33:56
+		[post_id] => 86641
+		[date_created] => 2023-01-25 09:26:14
+		[date_updated] => 2023-01-25 09:26:14
 		[is_starred] => 0
 		[is_read] => 0
-		[user_agent] => Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+		[user_agent] => Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
 		[payment_status] => 
 		[payment_date] => 
 		[payment_amount] => 
 		[payment_method] => 
 		[transaction_id] => 
 		[is_fulfilled] => 
-		[created_by] => 3559
+		[created_by] => 3126
 		[transaction_type] => 
 		[10] => service_request
 		[6] => 
 		[1.2] => 
-		[1.3] => PrestadorServ
+		[1.3] => CLEVERSON
 		[1.4] => 
-		[1.6] => Serviço
+		[1.6] => VIEIRA
 		[1.8] => 
-		[2] => prestadordeservicos@idealbiz.io -> Quem estava Conectado
+		[2] => cleverson.vieira@idealbiz.io
 		[3] => 999999999
-		[9] => 1552
-		[4] => CAMPO MSG DO SERVICE REQUEST
-		[24] => 1
+		[9] => 3073
+		[4] => TESTE CAMPO PPC FIXO
+		[24] => 2.5
 		[25] => 
 		[15] => 
 		[17] => 
 		[22] => 100
 		[23] => 
-		[13] => 2022-10-07
-		[12] => 83203 -> Profissional selecionado.
-		[27] => recommende_service */
+		[13] => 2023-01-27
+		[12] => 83203
+		[27] => normal_service
+		[28] => 79.85
+		*/
     
 		$cl_sr_type_origin_id_field = get_field('sr_type_origin_id_field', 'options');
+		$cl_input_sr_fixed_ppc_value_id_field = get_field('sr_input_sr_fixed_ppc_value_id_field', 'options');
 		$cl_sr_type_origin = $entry[$cl_sr_type_origin_id_field];
+		$cl_sr_ppc_fixed = $entry[$cl_input_sr_fixed_ppc_value_id_field];
 
 		$post = get_post( $post_id );
 		global $wpdb;
@@ -183,6 +188,7 @@ class HelperServiceRequest {
 		update_field( 'form_registry_id', $entry['id'], $post_id );
 		update_field( 'rs_id_request_type' ,$post_id, $post_id );
 		update_field( 'sr_type_origin' ,$cl_sr_type_origin, $post_id );
+		update_field( 'sr_fixed_ppc_value' ,$cl_sr_ppc_fixed, $post_id );
 
 		if($cl_sr_type_origin==='recommende_service' || $cl_sr_type_origin==='normal_service'){			
 			 $cl_idExpert= $entry[12];
