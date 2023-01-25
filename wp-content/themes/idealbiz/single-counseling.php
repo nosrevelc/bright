@@ -218,9 +218,31 @@ $cl_member_cat = get_field('member_category_store',$cl_user);
         </div>
     </div>
 
+<div class="container gf_browser_chrome gform_wrapper gform_legacy_markup_wrapper">
+<form onsubmit="event.preventDefault();">
+  <p><label class="gfield_label" for="selector"><?php _e('_str Select Option','idealbiz').':' ?></label></p>
+  <select class="gfield_select" id="selector" onchange="hideMessage()">
+    <option value="no company"><?php _e('_str No Company','idealbiz').':' ?></option>
+    <option value="company"><?php _e('_str Company','idealbiz').':' ?></option>
+  </select>
+  <div id="camposAdicionais1" style="display:none;">
+    <label class="gfield_label" for="campo1"><?php _e('_str Parameter 1','idealbiz').':' ?></label>
+    <input class="ginput_container" type="text" id="parametro1">
+    <label class="gfield_label" for="campo2"><?php _e('_str Parameter 2','idealbiz').':' ?></label>
+    <input class="ginput_container" type="text" id="parametro2">
+  </div>
+  <p><button class="btn btn-blue m-t-10 font-btn-plus blue--hover" onclick="showMessage()"><?php _e('_str Select','idealbiz').':' ?></button></p>
+  <div id="mensagem" style="display:none;">Mensagem enviada com sucesso!</div>
+</form>
+<script>
 
 
-    <div class="container m-b-25">
+</script>
+
+</div>
+
+
+    <div class="container m-b-25 form_sr_hidden" id="form_sr">
                 <!-- <div class="row"> -->
                 <!-- <div class="col-md-8 col-xs-12 stretch-100 form-selector "style="width:650px"> -->
                 <div class="div-to-align">
@@ -255,8 +277,10 @@ $cl_member_cat = get_field('member_category_store',$cl_user);
                     
                     
                     
-                    
-                    echo do_shortcode(get_post_field('post_content', getIdByTemplate('single-counseling.php'))); ?>
+
+                    echo do_shortcode(get_post_field('post_content', getIdByTemplate('single-counseling.php'))); 
+
+                    ?>
 
 
 
@@ -287,9 +311,13 @@ $cl_member_cat = get_field('member_category_store',$cl_user);
 
         </div>
         <!-- </div -->
-</section>
+    </section>
 
-<?php
+    <script>
+
+    </script>
+
+    <?php
  
 
                 $terms =  wp_get_object_terms($post_id, 'service_cat', array('fields' => 'ids'));
@@ -738,6 +766,37 @@ $cl_member_cat = get_field('member_category_store',$cl_user);
 
 
 <script>
+
+function callback(event){
+   event.preventDefault()
+}
+
+  function showMessage() {
+    document.getElementById("mensagem").style.display = "block";
+    document.getElementById("form_sr").style.display = "block";
+    let par1 = document.getElementById("parametro1").value;
+      let par2 = document.getElementById("parametro2").value;
+      let sum = parseFloat(par1) + parseFloat(par2);
+
+      input_12_22.value = sum;
+
+      console.log(sum);
+  }
+  
+  function hideMessage() {
+    document.getElementById("mensagem").style.display = "none";
+    document.getElementById("form_sr").style.display = "none";
+    if (document.getElementById("selector").value === "company") {
+      document.getElementById("camposAdicionais1").style.display = "block";
+
+      
+    } else {
+      document.getElementById("camposAdicionais1").style.display = "none";
+    }
+  }
+
+
+
 // REFATURAÇÃO PARA REENCAMINHAMENTO E RECOMENDAÇÃO.
 
 let cl_id_campo_origem = '<?php echo $cl_sr_type_origin_id_field;?>'
@@ -1325,6 +1384,9 @@ jQuery(document).ready(($) => {
 });
 </script>
 <style>
+            .form_sr_hidden{
+                display: none;
+            }
 
             .samll{
                 margin-top: -6px;
