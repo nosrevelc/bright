@@ -96,6 +96,7 @@ if($cl_membro){
 $query = new WP_Query($args);
 $cl_user = $query->posts[0]->ID;
 $cl_member_cat = get_field('member_category_store',$cl_user);
+
  if ($cl_member_cat != false){
     session_start();
     if (!isset($_SESSION['membro'])) {
@@ -104,6 +105,7 @@ $cl_member_cat = get_field('member_category_store',$cl_user);
     }
  }
 }
+
 
     if (have_posts()) : while (have_posts()) : the_post();
         $post_id = get_the_ID();
@@ -660,11 +662,13 @@ $cl_member_cat = get_field('member_category_store',$cl_user);
                                         }
                     
                                         $escalao = get_field('echelon_competency_factor', $post->ID);
+                                        $cl_fixed_ppc_value = get_field('fixed_ppc_value',$post->ID);
+                                        /* var_dump($cl_fixed_ppc_value); */
                                         $cl_sr_pay_lead_mode = '<span class="cl_icon-local dashicons dashicons-yes-alt"></span>'.consultLeadModeServieceRequest($post->ID,true);
                                         
 
 
-                    
+                                        $array_ppc_fixo =json_encode($cl_fixed_ppc_value); 
                                         $arry_escalao = json_encode($escalao);
                     
                                         //Este pedaço de codigo exibe na tela de forma legivel os escalões.
@@ -693,7 +697,7 @@ $cl_member_cat = get_field('member_category_store',$cl_user);
                                     }
                                        
                                         if ($fee == 1) {
-                                            $p .= '<div data-escalao=' . $arry_escalao . ' data-fee="' . $fee . '" data-f="" data-competencyfactor="" data-expert="' . $post->ID . '" data-locations="' . join(',', wp_list_pluck($location_objs, 'slug')) . '" style="display: none;" class="p-20 m-b-20 ' . $classes . $aux_class . ' ' . $location_as_classes . ' expert-card position-relative flex-column black--color white--background dropshadow font-weight-medium"  >';
+                                            $p .= '<div data-escalao=' . $arry_escalao . ' data-fee="' . $fee . '" data-ppc-fixo='.$array_ppc_fixo.'  data-f="" data-competencyfactor="" data-expert="' . $post->ID . '" data-locations="' . join(',', wp_list_pluck($location_objs, 'slug')) . '" style="display: none;" class="p-20 m-b-20 ' . $classes . $aux_class . ' ' . $location_as_classes . ' expert-card position-relative flex-column black--color white--background dropshadow font-weight-medium"  >';
                                             $p .= '<div class="d-flex flex-row center-content">';
                                             $p .= '<div class="w-100px h-100px b-r d-block o-hidden no-decoration">';
                                             $p .= '<img class="w-100 h-100 object-cover" src="' . get_field('foto', $post->ID)['sizes']['medium'] . '">';
@@ -738,15 +742,16 @@ $cl_member_cat = get_field('member_category_store',$cl_user);
 
 let cl_id_campo_origem = '<?php echo $cl_sr_type_origin_id_field;?>'
 let cl_id_campo_Origin_SR = '<?php echo $cl_sr_origin_sr_id_of_field;?>'
+let cl_id_campo_PPC_Fixo_SR = '<?php echo $cl_input_sr_fixed_ppc_value_id_field;?>'
 let $cl_origin = document.querySelector('input[name="input_'+cl_id_campo_Origin_SR+'"]');
 let sr_type_origin = document.querySelector('input[name="input_'+cl_id_campo_origem +'"]');
-let input_sr_fixed_ppc_value = document.querySelector('input[name="input_'+cl_id_campo_origem +'"]');
+/* let input_sr_fixed_ppc_value = document.querySelector('input[name="input_'+cl_id_campo_PPC_Fixo_SR +'"]'); */
 
 
 
 $cl_origin.value = '<?php echo $cl_rid; ?>';
 sr_type_origin.value = '<?php echo $cl_sr_type_origin; ?>';
-input_sr_fixed_ppc_value.value = '<?php echo $cl_sr_type_origin; ?>';
+/* input_sr_fixed_ppc_value.value = '<?php echo $cl_sr_type_origin; ?>'; */
 
 var e;
 var  cl_care;
@@ -789,6 +794,11 @@ jQuery(document).ready(($) => {
 
                 var cl_pre_escalao = $(this).data('escalao');
                 var cl_expert = $(this).data('expert');
+                var cl_ppc_fixo = $(this).data('ppc-fixo');
+
+                          
+
+                
 
                         if (cl_pre_escalao!=null && $(this).hasClass('active')){
                             
@@ -796,6 +806,7 @@ jQuery(document).ready(($) => {
                             var cl_begin_echelon = parseInt(cl_pre_escalao[cont].begin_echelon);
                             var cl_finish_echelon = parseInt(cl_pre_escalao[cont].finish_echelon);
                             var cl_percentage = cl_pre_escalao[cont].percentage;
+                            
 
                             //alert('cl_begin_echelon '+cl_begin_echelon+' cl_finish_echelon '+cl_finish_echelon+' cl_percentage ');
                                 
@@ -807,7 +818,9 @@ jQuery(document).ready(($) => {
                                     console.log(cl_begin_echelon);
                                     console.log(cl_orcamento);
                                     console.log(cl_expert );
+                                    console.log(cl_ppc_fixo);
                                     $('.maximo input[type="text"]').val(cl_orcamento);
+                                    $('input[name="input_'+cl_id_campo_PPC_Fixo_SR+'"]').val(cl_ppc_fixo); 
                                     return false;
                                
                                 }
@@ -1192,6 +1205,7 @@ jQuery(document).ready(($) => {
 
             var count_competents = 0;
             var v_ref = parseInt(vr.val());
+
             //Valida valor de referência e máximo não são Nulos e String.
             var ciclo_pai = 0; // Apagar depois
             if (vr.val() != '' && !isNaN(vr.val())) {
@@ -1231,6 +1245,8 @@ jQuery(document).ready(($) => {
                             
                                     
                         });
+
+ 
                     console.log(ciclo_pai + " -> Sai do ciclo Pai variavel e é :" + e); // Apagar depois
                     ciclo_pai = ciclo_pai + 1;
                     
