@@ -503,11 +503,10 @@ class HelperServiceRequest {
 			
 			$cl_sr_fixed_ppc_value = get_field('sr_fixed_ppc_value',$post_id,'');
 
-			if (isset($cl_sr_fixed_ppc_value)){
-				$cl_v_para_member = $cl_sr_fixed_ppc_value;
-			}else{
+			if ($cl_sr_fixed_ppc_value == Null){				
 				$cl_v_para_member = ((Int)$cl_orcamento*(int)$idb_tax)/100;
-				
+			}else{
+				$cl_v_para_member = $cl_sr_fixed_ppc_value;
 			}
 			
 			
