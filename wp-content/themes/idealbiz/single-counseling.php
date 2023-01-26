@@ -804,9 +804,9 @@ function callback(event){
             document.getElementById("error_par2").style.display = "none";
         }
     
-        amount_involved.disabled = true;
+        /* amount_involved.disabled = true; */
         amount_involved.style.backgroundColor = "#f1f1f1";
-        document.getElementById("field_"+<?php echo $form_id; ?>+"_22").style.display = "none !important";
+        /* document.getElementById("field_"+<?php echo $form_id; ?>+"_22").style.display = "none !important"; */
         document.getElementById("field_"+<?php echo $form_id; ?>+"_26").style.display = "none";
         amount_involved.value = sum;
 
