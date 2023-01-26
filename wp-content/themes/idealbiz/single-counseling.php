@@ -218,31 +218,82 @@ $cl_member_cat = get_field('member_category_store',$cl_user);
         </div>
     </div>
 
-<div class="container gf_browser_chrome gform_wrapper gform_legacy_markup_wrapper">
+<!-- NPMM  - início form parametros -->    
+
+<div id="form_par" class="container gf_browser_chrome gform_wrapper gform_legacy_markup_wrapper form_par">
 <form onsubmit="event.preventDefault();">
   <p><label class="gfield_label" for="selector"><?php _e('_str Select Option','idealbiz').':' ?></label></p>
-  <select class="gfield_select" id="selector" onchange="hideMessage()">
+  <select class=" m-b-25 gfield_select select_par" id="selector" onchange="hideMessage()">
     <option value="no company"><?php _e('_str No Company','idealbiz').':' ?></option>
     <option value="company"><?php _e('_str Company','idealbiz').':' ?></option>
   </select>
   <div id="camposAdicionais1" style="display:none;">
-    <label class="gfield_label" for="campo1"><?php _e('_str Parameter 1','idealbiz').':' ?></label>
+    <label class="m-t-20 gfield_label" for="campo1"><?php _e('_str Parameter 1','idealbiz').':' ?></label>
+    <div class="error_par" id="error_par1" style="display:none;"><?php _e('_str Parameter 1','idealbiz').' '._e('_str Mandatory','idealbiz'); ?></div>
     <input class="ginput_container" type="text" id="parametro1">
-    <label class="gfield_label" for="campo2"><?php _e('_str Parameter 2','idealbiz').':' ?></label>
-    <input class="ginput_container" type="text" id="parametro2">
+
+    <label class="m-t-20 gfield_label" for="campo2"></label>
+    <div class="error_par" id="error_par2" style="display:none;"><?php _e('_str Parameter 2','idealbiz').' '._e('_str Mandatory','idealbiz'); ?></div>
+    <input class="m-b-25 ginput_container" type="text" id="parametro2">
+
   </div>
-  <p><button class="btn btn-blue m-t-10 font-btn-plus blue--hover" onclick="showMessage()"><?php _e('_str Select','idealbiz').':' ?></button></p>
-  <div id="mensagem" style="display:none;">Mensagem enviada com sucesso!</div>
+  <button class="btn btn-blue m-l-10 font-btn-plus blue--hover" onclick="showMessage()"><?php _e('_str Select','idealbiz').':' ?></button>
+
 </form>
-<script>
 
-
-</script>
 
 </div>
 
+<script>
 
-    <div class="container m-b-25 form_sr_hidden" id="form_sr">
+function callback(event){
+   event.preventDefault()
+}
+
+  function showMessage() {
+    
+    let par1 = document.getElementById("parametro1").value;
+    let par2 = document.getElementById("parametro2").value;
+    let amount_involved = document.querySelector('input[name="input_22"]');
+    let sum = parseFloat(par1) + parseFloat(par2);
+
+
+    if (document.getElementById("selector").value === "company") {
+        if (par1 == "") {
+            document.getElementById("error_par1").style.display = "block";
+        return false;
+        }
+        if (par2 == "") {
+            document.getElementById("error_par2").style.display = "block";
+        return false;
+        }
+    
+        amount_involved.disabled = true;
+        amount_involved.style.backgroundColor = "#f1f1f1";
+       /*  document.getElementById("field_"+<?php echo $form_id; ?>+"_22").style.display = "none";  */  
+        amount_involved.value = sum;
+
+    }
+
+    document.getElementById("form_sr").style.display = "block";
+    document.getElementById("form_par").style.display = "none";
+
+  }
+  
+  function hideMessage() {
+    document.getElementById("form_sr").style.display = "none";
+    if (document.getElementById("selector").value === "company") {
+        document.getElementById("camposAdicionais1").style.display = "block";
+
+      
+    } else {
+      document.getElementById("camposAdicionais1").style.display = "none";
+    }
+  }
+</script>  
+
+
+    <div class="container m-b-25 form_sr_hidden " id="form_sr">
                 <!-- <div class="row"> -->
                 <!-- <div class="col-md-8 col-xs-12 stretch-100 form-selector "style="width:650px"> -->
                 <div class="div-to-align">
@@ -766,35 +817,6 @@ $cl_member_cat = get_field('member_category_store',$cl_user);
 
 
 <script>
-
-function callback(event){
-   event.preventDefault()
-}
-
-  function showMessage() {
-    document.getElementById("mensagem").style.display = "block";
-    document.getElementById("form_sr").style.display = "block";
-    let par1 = document.getElementById("parametro1").value;
-      let par2 = document.getElementById("parametro2").value;
-      let sum = parseFloat(par1) + parseFloat(par2);
-
-      input_12_22.value = sum;
-
-      console.log(sum);
-  }
-  
-  function hideMessage() {
-    document.getElementById("mensagem").style.display = "none";
-    document.getElementById("form_sr").style.display = "none";
-    if (document.getElementById("selector").value === "company") {
-      document.getElementById("camposAdicionais1").style.display = "block";
-
-      
-    } else {
-      document.getElementById("camposAdicionais1").style.display = "none";
-    }
-  }
-
 
 
 // REFATURAÇÃO PARA REENCAMINHAMENTO E RECOMENDAÇÃO.
@@ -1384,6 +1406,18 @@ jQuery(document).ready(($) => {
 });
 </script>
 <style>
+            .error_par{
+                color:red;
+                font-style: italic;
+            }
+            .select_par{
+                min-width: 250px;
+            }
+            .form_par{
+                border: #ced4da 1px solid; 
+                border-radius: 5px;
+                padding: 20px;
+            }
             .form_sr_hidden{
                 display: none;
             }
