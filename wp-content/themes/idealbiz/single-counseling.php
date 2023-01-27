@@ -63,7 +63,8 @@ $cl_membro = $_GET['refer'];
 $cl_sr_type_origin_id_field = get_field('sr_type_origin_id_field', 'options');
 $cl_input_sr_fixed_ppc_value_id_field = get_field('sr_input_sr_fixed_ppc_value_id_field', 'options');
 $cl_sr_origin_sr_id_of_field = get_field('sr_origin_sr_id_of_field', 'options');
-
+$cl_sr_company_parameter_1 = get_field('sr_company_parameter_1', 'options');
+$cl_sr_company_parameter_2 = get_field('sr_company_parameter_2', 'options');
 
 
 // verifica se é membro para proceder a refereianção
@@ -787,6 +788,8 @@ function callback(event){
     let par1 = document.getElementById("parametro1").value;
     let par2 = document.getElementById("parametro2").value;
     let amount_involved = document.querySelector('input[name="input_22"]');
+    let cl_sr_company_parameter_1 = document.querySelector('input[name="input_'+<?php echo $cl_sr_company_parameter_1;?>+'"]');
+    let cl_sr_company_parameter_2 = document.querySelector('input[name="input_'+<?php echo $cl_sr_company_parameter_2;?>+'"]');
     let sum = parseFloat(par1) + parseFloat(par2);
 
 
@@ -809,6 +812,8 @@ function callback(event){
         /* document.getElementById("field_"+<?php echo $form_id; ?>+"_22").style.display = "none !important"; */
         document.getElementById("field_"+<?php echo $form_id; ?>+"_26").style.display = "none";
         amount_involved.value = sum;
+        cl_sr_company_parameter_1.value = par1;
+        cl_sr_company_parameter_2.value = par2;
 
     }
 
