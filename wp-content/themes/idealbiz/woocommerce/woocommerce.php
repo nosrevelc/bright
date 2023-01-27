@@ -2040,7 +2040,7 @@ function getLeadSRValue($sr){
 
     $cl_ppc_fixo = get_field('sr_fixed_ppc_value',$sr);
 
-    var_dump($cl_ppc_fixo);
+    //var_dump($cl_ppc_fixo);
 
     if($cl_ppc_fixo == Null){
     
