@@ -495,11 +495,21 @@ class HelperServiceRequest {
 			$customer_care = get_field('costumer_care_email', 'option');
 
 			$cl_reference_value = get_field('reference_value',$post_id,'');
+
 			$cl_servico_id = get_field('request_type',$post_id,'');
 			//Cacula valor do serviço
 			$cl_orcamento = get_field('budget_max',$post_id,'');
 
-			$cl_v_para_member = ((Int)$cl_orcamento*(int)$idb_tax)/100;
+			
+			$cl_sr_fixed_ppc_value = get_field('sr_fixed_ppc_value',$post_id,'');
+
+			if ($cl_sr_fixed_ppc_value == Null){				
+				$cl_v_para_member = ((Int)$cl_orcamento*(int)$idb_tax)/100;
+			}else{
+				$cl_v_para_member = $cl_sr_fixed_ppc_value;
+			}
+			
+			
 			
 
 			function get_product_category_by_id( $category_id ) {
