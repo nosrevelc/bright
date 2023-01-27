@@ -125,7 +125,7 @@ class HelperServiceRequest {
 			$post_id = $entry[$cl_sr_origin_sr_id_of_field];
 		}
 		
-		//error_log(print_r($entry,true));
+		error_log(print_r($entry,true));
 
  /* 		
 		[id] => 1312
