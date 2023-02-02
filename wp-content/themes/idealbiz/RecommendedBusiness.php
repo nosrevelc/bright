@@ -206,9 +206,12 @@ if ($cl_mod === 'sent' && $check_member === true) {
 
 		<?php $cl_consultLeadModeRecomendation = consultLeadModeRecomendation($expert[0]->ID); ?>
 
-		<div class="woocommerce-MyAccount-content text-center">
-			<section class="page-content conteudo woocommerce-orders-table woocommerce-MyAccount-orders shop_table shop_table_responsive my_account_orders account-orders-table block stroke dropshadow p-30 m-b-25 b-r-5 white--background">
-				<table class="rb_conteudo">
+		<div class="woocommerce w-100">
+			<section>
+				<table class="woocommerce-orders-table woocommerce-MyAccount-orders shop_table 
+					shop_table_responsive my_account_orders account-orders-table
+					block stroke dropshadow p-30 m-b-25 b-r-5 white--background">
+					<thead>
 					<tr>
 						<th>
 							<h2 class="nobr"><?php echo __('strDate', 'idealbiz') ?></h2>
@@ -231,7 +234,8 @@ if ($cl_mod === 'sent' && $check_member === true) {
 						<!-- <th ><h2 class="nobr"><?php echo __('strAction', 'idealbiz') ?></h2></th> -->
 
 					</tr>
-
+					</thead>
+					<tbody>
 					<?php
 
 
@@ -364,15 +368,15 @@ if ($cl_mod === 'sent' && $check_member === true) {
 
 					?>
 						<tr class="woocommerce-orders-table__row woocommerce-orders-table__row--status-processing order sr-row">
-							<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number sr-title"><span class="cl_time"><?php echo $cl_date . ' ' . $cl_time ?></span></td>
+						<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number cl_center" data-title="Date"><span class="cl_time"><?php echo $cl_date . ' ' . $cl_time ?></span></td>
 							<!-- <td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number sr-title"><?php echo $cl_rb_name_owner_of_listng; ?></td> -->
-							<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number sr-title rb-title-list"><?php echo '<a href="' . $cl_rb_link_of_listing . '">' . $cl_get_Title . $cl_recipient . '</a>' ?></td>
+							<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number rb-title-list" data-title="Opportunity"><?php echo '<a href="' . $cl_rb_link_of_listing . '">' . $cl_get_Title . $cl_recipient . '</a>' ?></td>
 
 
-							<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number sr-title"><?php echo $cl_listingPrice . $cl_symbol; ?></td>
+							<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number cl_center" data-title="Price"><?php echo $cl_listingPrice . $cl_symbol; ?></td>
 							<!-- <td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number sr-title"><?php echo $cl_rb_number_order; ?></td> -->
-							<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number sr-title <?php echo $cl_color_font ?>;"><?php echo $cl_PrintStatus . $cl_orderID; ?></td>
-							<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number sr-title <?php echo $cl_comisOk ?>"><?php echo $cl_rb_commission_calculated . $cl_symbol; ?></td>
+							<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number cl_center <?php echo $cl_color_font ?>;" data-title="Status"><?php echo $cl_PrintStatus . $cl_orderID; ?></td>
+							<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number cl_center <?php echo $cl_comisOk ?>" data-title="To Receive"><?php echo $cl_rb_commission_calculated . $cl_symbol; ?></td>
 
 
 
@@ -382,6 +386,7 @@ if ($cl_mod === 'sent' && $check_member === true) {
 					<?php
 
 					} ?>
+					</tbody>
 				</table>
 			</section>
 		</div>
@@ -445,9 +450,12 @@ if ($cl_mod === 'received' && $check_member === true) {
 
 		</div>
 		<?php $cl_consultLeadModeRecomendation = consultLeadModeRecomendation($expert[0]->ID); ?>
-		<div class="woocommerce-MyAccount-content text-center">
-			<section class="page-content conteudo woocommerce-orders-table woocommerce-MyAccount-orders shop_table shop_table_responsive my_account_orders account-orders-table block stroke dropshadow p-30 m-b-25 b-r-5 white--background">
-				<table class="rb_conteudo">
+		<div class="woocommerce w-100">
+			<section>
+				<table class="woocommerce-orders-table woocommerce-MyAccount-orders shop_table 
+					shop_table_responsive my_account_orders account-orders-table
+					block stroke dropshadow p-30 m-b-25 b-r-5 white--background">
+					<thead>
 					<tr>
 						<th>
 							<h2 class="nobr"><?php echo __('strDate', 'idealbiz') ?></h2>
@@ -477,7 +485,8 @@ if ($cl_mod === 'received' && $check_member === true) {
 							<h2 class="nobr"><?php echo __('strAction', 'idealbiz') ?></h2>
 						</th>
 					</tr>
-
+					<thead>
+					<tbody>	
 					<?php
 					while ($loop->have_posts()) {
 
@@ -589,7 +598,7 @@ if ($cl_mod === 'received' && $check_member === true) {
 
 
 							if ($rb_status_order == 'completed') {
-								$cl_PrintStatus = __('_str Completed Payment', 'idealbiz-service-request');
+								$cl_PrintStatus ='<span style="color:#08A008"><b>' . __('_str Completed Payment', 'idealbiz-service-request').'</b></span>';
 								$cl_color_font = 'text-success text-uppercase font-weight-bold'; //STATUS COLOR
 								$botao = $cl_viewLead;
 								$cl_magrTop = 'm-t-20';
@@ -600,7 +609,7 @@ if ($cl_mod === 'received' && $check_member === true) {
 							if ($rb_status_order == '' || $rb_status_order == null) {
 								if ($cl_rb_confirmation_date == '' || $cl_rb_confirmation_date == null) {
 									$cl_color_font   = 'text-success text-uppercase font-weight-bold';
-									$cl_PrintStatus  =  __('_str View of the Released Lead', 'idealbiz');
+									$cl_PrintStatus  =  '<span style="color:#0868A0">' .__('_str View of the Released Lead', 'idealbiz').'</span>';
 									$botao = $cl_viewLeadPayLater . $cl_btn_confirmLeadOpportunity . $cl_btn_Reject_ID;
 									$botao .= $title_saw;
 									$cl_magrTop = 'm-t-110';
@@ -640,23 +649,24 @@ if ($cl_mod === 'received' && $check_member === true) {
 					 ?>
 
 						<tr class="woocommerce-orders-table__row woocommerce-orders-table__row--status-processing order sr-row">
-							<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number sr-title"><?php echo $cl_date . ' ' . $cl_time ?></td>
+							<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number cl_center" data-title="Date"><?php echo $cl_date . ' ' . $cl_time ?></td>
 							<!-- <td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number sr-title"><?php echo $cl_rb_name_owner_of_listng ?></td> -->
-							<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number rb-title-list"><?php echo '<a href="' . get_field('rb_link_of_listing', $cl_PostId) . '">' . $cl_titleopportunitye . $cl_source . '</a>' ?></td>
+							<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number rb-title-list" data-title="Opportunity"><?php echo '<a href="' . get_field('rb_link_of_listing', $cl_PostId) . '">' . $cl_titleopportunitye . $cl_source . '</a>' ?></td>
 
 							<!-- <td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number sr-title"><?php echo $cl_rb_number_order; ?></td> -->
 
-							<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number sr-title <?php echo $cl_color_font ?>;"><?php echo $cl_PrintStatus . $cl_orderID; ?></td>
+							<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number cl_center" data-title="Status"><?php echo $cl_PrintStatus . $cl_orderID; ?></td>
 
-							<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number sr-title"><?php echo $cl_listingPrice . $cl_symbol; ?></td>
+							<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number cl_center" data-title="Value"><?php echo $cl_listingPrice . $cl_symbol; ?></td>
 							<?php if ($cl_rb_pay_lead_mode_value != 'rb_not_pay') { ?>
-								<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number sr-title <?php echo  $cl_comisOk; ?>"><?php echo $cl_rb_gross_commission . $cl_symbol; ?></td>
+								<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number cl_center <?php echo  $cl_comisOk; ?>" data-title="Price">
+								<?php echo $cl_rb_gross_commission . $cl_symbol; ?></td>
 							<?php } ?>
 
-							<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number sr-title text-right"><?php echo $botao; ?></td>
+							<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-number sr-title text-right cl_botao"><?php echo $botao; ?></td>
 						</tr>
 					<?php } ?>
-
+					</tbody>
 				</table>
 			</section>
 		</div>
@@ -673,6 +683,19 @@ if ($cl_mod === 'received' && $check_member === true) {
 <?php get_footer(); ?>
 
 <style>
+	.woocommerce table.shop_table {
+
+    border-collapse: collapse;
+
+}
+	.woocommerce table.shop_table td, .woocommerce table.shop_table th{
+		width: 0% !important;
+		margin:0 auto;
+
+	}
+	.cl_center{
+		text-align:center;
+	}
 	.cl_p {
 		margin-bottom: 0em;
 	}
@@ -718,6 +741,10 @@ if ($cl_mod === 'received' && $check_member === true) {
 	.nobr {
 		font-weight: 500;
 		font-size: 1.2em;
+		text-align:center;
+		margin: 30px;
+		font-weight: bold;
+		color:#777777;
 	}
 
 	.rb_conteudo {
@@ -763,8 +790,7 @@ if ($cl_mod === 'received' && $check_member === true) {
 
 	td {
 		/* padding: 10px 10px 10px 5px; */
-		border-top: 1px solid rgba(0, 0, 0, .1);
-		border-left: 1px solid rgba(0, 0, 0, .1);
+		border:  1px solid rgba(0, 0, 0, .1);
 		padding: 7px;
 	}
 
@@ -783,6 +809,17 @@ if ($cl_mod === 'received' && $check_member === true) {
 	/**ATENÇÃO CSS MOBILE */
 
 	@media only screen and (max-width: 768px) {
+		td {
+		/* padding: 10px 10px 10px 5px; */
+		border:  0px solid rgba(0, 0, 0, .1);
+		padding: 7px;
+	}
+		.cl_botao{
+			padding-bottom: 85px !important;
+		}
+		.woocommerce table.shop_table td, .woocommerce table.shop_table th{
+		width: 100% !important;
+	}
 		.rb_botoes {
 			margin-bottom: 5px;
 			flex-direction: column;
