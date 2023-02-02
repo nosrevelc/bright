@@ -17,23 +17,24 @@ if($cl_rb_pay_lead_mode === NULL){
 
 }
 
+
 ?>
 <a href="<?php echo the_permalink(); ?>" class="w-50px h-50px o-hidden no-decoration">
-    <div class="p-5 m-10 expert-card position-relative d-flex flex-column black--color white--background dropshadow font-weight-medium">
+    <div class="cl_card expert-card position-relative d-flex flex-column black--color white--background dropshadow font-weight-medium">
 
         <?php if ($is_certified) : $badge = get_template_directory_uri() . '/assets/img/badge.png'; ?>
             <div class="certified-badge" style="background-image: url(<?php echo $badge; ?>);"></div>
         <?php endif; ?>
-        <div class="d-flex flex-row center-content text-uppercase">
-            <div>
-                <img class="w-50px h-50px object-cover b-r" src="<?php echo get_field('foto')['sizes']['medium']; ?>">
+        <div class="cl_display center-content text-uppercase">
+            <div class="cl_img_member">
+                <img class="object-cover b-r" src="<?php echo get_field('foto')['sizes']['medium']; ?>">
 
             </div>
             <div>
 
             </div>
             
-            <div class="cl_title m-l-10 p-l-10 w-230px"> 
+            <div class="cl_title"> 
             <span class="dashicons dashicons-businessman" style="font-size:1.3em"></span><?php the_title(); ?>
 
             <?php if($cl_company_associate[0]->post_title != Null){?>
@@ -44,17 +45,19 @@ if($cl_rb_pay_lead_mode === NULL){
 
                 <div class="cl_mode_pay"><span class=" dashicons dashicons-yes" style="font-size:1.5em;"></span><?php echo $cl_lable_opportunuty.$cl_rb_pay_lead_mode['label']?></div>
                 <div class="cl_mode_pay"><span class=" dashicons dashicons-yes" style="font-size:1.5em;"></span><?php echo $cl_lable_service.$cl_sr_pay_lead_mode['label']?></div>
-                
+                <div class="cl_service w-290px cl_mobile_show">
+                    <?php echo cl_services_member_list()?>
+                </div>
 
                     
             </div>
 
-            <div class="m-l-10 w-110px">
+            <div class = "div_flag">
 
             <?php
             $location_objs = get_the_terms(get_the_ID(), 'location');
             if ($location_objs) { ?>
-                <div class=" d-flex w-150px">
+                <div class="cl_flag_country">
 
                     <?php
                     $country_iso = get_option('country_market');
@@ -81,28 +84,33 @@ if($cl_rb_pay_lead_mode === NULL){
 
             </div>
 
-            <?php
-
-            $term_obj_list = get_the_terms(get_the_ID(), 'service_cat');
-            if ($term_obj_list) { ?>
+            <div class="cl_service m-l-10 p-l-10 w-290px cl_mobile_hidden">
+                    <?php echo cl_services_member_list()?>
+            </div>
             
-                <div class="cl_service m-l-10 p-l-10 w-290px">
-
-                    <?php
-                    $terms_string = '<span class=" dashicons dashicons-welcome-learn-more" style="font-size:1.5em;"></span>'.join(', ', wp_list_pluck($term_obj_list, 'name'));
-                    echo $terms_string;
-                    ?>
-                </div>
-            <?php } ?>
 
         </div>
 
     </div>
 <style>
 
-    .cl_title{
+.cl_flag_country{
+    display: flex;
+}
+.div_flag{
+    margin-left: 10px;
+    width: 110px;
+}
+.cl_card {
+    padding: 5px;
+    margin: 10px;
+}
+.cl_title{
         border-left: 1px solid #cccccc;
         border-right: 1px solid #cccccc;
+        margin-left: 10px;
+        padding-left: 10px;
+        width: 230px;
     }
 
     .cl_mode_pay {
@@ -134,4 +142,64 @@ if($cl_rb_pay_lead_mode === NULL){
     a:hover {
         text-decoration: none;
     }
+    .cl_mobile_show{
+        display:none;
+    }
+    .cl_mobile_hidden{
+        display:block;
+    }
+    .cl_display{
+        display: flex !important;
+    }
+    .cl_img_member > img{
+        width: 50px;
+        height: 50px;
+    }
+    @media only screen and (max-width: 768px) {
+        .div_flag{
+        margin-left:unset;
+        width:unset;
+    }
+        .country-market-flag img {
+            width: 25px;
+        }
+        .cl_flag_country{
+        flex-direction: row;
+        padding-top: 20px;
+    }
+        .cl_display{
+        flex-direction: column;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        font-size: large;
+    }
+    .cl_img_member{
+        margin-bottom: 20px;
+    }
+    .cl_img_member > img{
+        width: 150px;
+        height: 150px;
+    }
+    .cl_title{
+        border-left: 0px solid #FFFFFF;
+        border-right: 0px solid #FFFFFF;
+        margin-left: 0px;
+        padding-left: 0px;
+        width: 80%;
+        margin: auto;
+    }
+    .cl_service {
+        font-size: 0.75em;
+        border-left: 0px solid #cccccc;
+    }
+    .cl_mobile_show{
+        display:block;
+    }
+    .cl_mobile_hidden{
+        display:none;
+    }
+
+    
+}
+
 </style>
