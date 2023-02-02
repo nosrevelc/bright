@@ -530,8 +530,14 @@ $total = $experts->found_posts;
 
         padding-top: unset;
 
+    }
+    
+    .cl_menu_membro>.sub-menu {
+
+    font-size: 0.9em;
 
     }
+
 }
 
 </style>
