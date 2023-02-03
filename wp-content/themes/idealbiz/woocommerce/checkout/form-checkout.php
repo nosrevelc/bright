@@ -15,8 +15,7 @@
  * @version 3.5.0
  */
 
-$hidden_points = get_field('hidden_points');
-/* var_dump($hidden_points); */
+
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -89,12 +88,12 @@ if (!is_user_logged_in()) {
 	</div>
 
 	<?php
-	if ($hidden_points){
+
 
 	add_action('billing_footer', 'woocommerce_checkout_coupon_form', 10);
 
 	do_action('woocommerce_before_checkout_form', $checkout);
-	}
+
 	?>
 
 

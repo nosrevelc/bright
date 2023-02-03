@@ -125,51 +125,61 @@ class HelperServiceRequest {
 			$post_id = $entry[$cl_sr_origin_sr_id_of_field];
 		}
 		
-		error_log(print_r($entry,true));
+		//error_log(print_r($entry,true));
 
- /* 		[id] => 1214
-		[status] => active
-		[form_id] => 12
-		[ip] => 95.92.116.156
-		[source_url] => https://idealbiz.eu/pt/pt/receba-apoio-especializado/?refer=1
-		[currency] => EUR
-		[post_id] => 86020
-		[date_created] => 2022-10-06 15:33:56
-		[date_updated] => 2022-10-06 15:33:56
-		[is_starred] => 0
-		[is_read] => 0
-		[user_agent] => Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
-		[payment_status] => 
-		[payment_date] => 
-		[payment_amount] => 
-		[payment_method] => 
-		[transaction_id] => 
-		[is_fulfilled] => 
-		[created_by] => 3559
-		[transaction_type] => 
-		[10] => service_request
-		[6] => 
-		[1.2] => 
-		[1.3] => PrestadorServ
-		[1.4] => 
-		[1.6] => Serviço
-		[1.8] => 
-		[2] => prestadordeservicos@idealbiz.io -> Quem estava Conectado
-		[3] => 999999999
-		[9] => 1552
-		[4] => CAMPO MSG DO SERVICE REQUEST
-		[24] => 1
-		[25] => 
-		[15] => 
-		[17] => 
-		[22] => 100
-		[23] => 
-		[13] => 2022-10-07
-		[12] => 83203 -> Profissional selecionado.
-		[27] => recommende_service */
+ /* 		
+ [id] => 1332
+    [status] => active
+    [form_id] => 12
+    [ip] => 95.92.116.156
+    [source_url] => https://idealbiz.eu/pt/pt/counseling/geral/
+    [currency] => EUR
+    [post_id] => 86654
+    [date_created] => 2023-01-27 09:36:10
+    [date_updated] => 2023-01-27 09:36:10
+    [is_starred] => 0
+    [is_read] => 0
+    [user_agent] => Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+    [payment_status] => 
+    [payment_date] => 
+    [payment_amount] => 
+    [payment_method] => 
+    [transaction_id] => 
+    [is_fulfilled] => 
+    [created_by] => 3126
+    [transaction_type] => 
+    [10] => service_request
+    [6] => 
+    [1.2] => 
+    [1.3] => CLEVERSON
+    [1.4] => 
+    [1.6] => VIEIRA
+    [1.8] => 
+    [2] => cleverson.vieira@idealbiz.io
+    [3] => 999999999
+    [9] => 3073
+    [4] => Teste de registo dos parametros.
+    [24] => 3.5
+    [25] => 
+    [15] => 
+    [17] => 
+    [22] => 140
+    [23] => 
+    [13] => 2023-01-28
+    [12] => 83203
+    [27] => normal_service
+    [28] => 81.90
+    [29] => 30  //Parametro 1
+    [30] => 110  // Parametro 2
+		*/
     
 		$cl_sr_type_origin_id_field = get_field('sr_type_origin_id_field', 'options');
+		$cl_input_sr_fixed_ppc_value_id_field = get_field('sr_input_sr_fixed_ppc_value_id_field', 'options');
+		$cl_comp_par1 = $entry[get_field('sr_company_parameter_1', 'options')];
+		$cl_comp_par2 = $entry[get_field('sr_company_parameter_2', 'options')];
+
 		$cl_sr_type_origin = $entry[$cl_sr_type_origin_id_field];
+		$cl_sr_ppc_fixed = $entry[$cl_input_sr_fixed_ppc_value_id_field];
 
 		$post = get_post( $post_id );
 		global $wpdb;
@@ -183,6 +193,11 @@ class HelperServiceRequest {
 		update_field( 'form_registry_id', $entry['id'], $post_id );
 		update_field( 'rs_id_request_type' ,$post_id, $post_id );
 		update_field( 'sr_type_origin' ,$cl_sr_type_origin, $post_id );
+		update_field( 'sr_fixed_ppc_value' ,$cl_sr_ppc_fixed, $post_id );
+		update_field( 'sr_company_par_1' ,$cl_comp_par1, $post_id );
+		update_field( 'sr_company_par_2' ,$cl_comp_par2, $post_id );
+
+		
 
 		if($cl_sr_type_origin==='recommende_service' || $cl_sr_type_origin==='normal_service'){			
 			 $cl_idExpert= $entry[12];
@@ -489,11 +504,21 @@ class HelperServiceRequest {
 			$customer_care = get_field('costumer_care_email', 'option');
 
 			$cl_reference_value = get_field('reference_value',$post_id,'');
+
 			$cl_servico_id = get_field('request_type',$post_id,'');
 			//Cacula valor do serviço
 			$cl_orcamento = get_field('budget_max',$post_id,'');
 
-			$cl_v_para_member = ((Int)$cl_orcamento*(int)$idb_tax)/100;
+			
+			$cl_sr_fixed_ppc_value = get_field('sr_fixed_ppc_value',$post_id,'');
+
+			if ($cl_sr_fixed_ppc_value == Null){				
+				$cl_v_para_member = ((Int)$cl_orcamento*(int)$idb_tax)/100;
+			}else{
+				$cl_v_para_member = $cl_sr_fixed_ppc_value;
+			}
+			
+			
 			
 
 			function get_product_category_by_id( $category_id ) {

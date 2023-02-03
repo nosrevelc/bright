@@ -3,6 +3,17 @@
 
 get_header();
 
+function cl_services_member_list(){
+    $term_obj_list = get_the_terms(get_the_ID(), 'service_cat');
+    if ($term_obj_list) {
+    
+            $terms_string = '<span class=" dashicons dashicons-welcome-learn-more" style="font-size:1.5em;"></span>'.join(', ', wp_list_pluck($term_obj_list, 'name'));
+            echo $terms_string;
+
+    } 
+}
+
+
 $pageid = get_the_ID();
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $posts_per_page = (new IDB_Experts)->posts_per_page;
@@ -87,7 +98,8 @@ $total = $experts->found_posts;
 
 
 
-<div class="d-flex justify-content-center">
+<div class="cl_display justify-content-center">
+<div class="cl_mobile_show text-center p-b-30"><h1><?php echo get_the_title($pageid) ?></h1></div>
 <div  class ="experts-container"><?php cl_voltar();?></div>
 
     <div class="cl_menu_membro ">
@@ -99,7 +111,7 @@ $total = $experts->found_posts;
             <a class="greyer--color" href="<?php echo get_permalink(pll_get_post(get_page_by_path('contacts')->ID)); ?>"><?php _e('Contacts', 'idealbiz'); ?></a>
         </div>
 
-        <ul class="sub-menu dropshadow box">
+        <ul class="sub-menu dropshadow box black--color white--background dropshadow">
             <li class="hex-a55df1 menu-item">
                 <div class="icoMiddle">
                     <a data-iconbg="#a55df1" href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>" title="<?php _e('My Account', 'idealbiz'); ?>">
@@ -121,7 +133,7 @@ $total = $experts->found_posts;
                         } else {
                         }
                         ?>
-                        <?php _e('Premium Buyer', 'idealbiz'); ?>
+                        <?php _e('Premium Buyer', 'idealbiz'); ?> echo '<div class=""><h1>' . get_the_title($pageid) . '</h1></div>';
                     </a>
                 </div>
             </li>
@@ -228,7 +240,7 @@ $total = $experts->found_posts;
     <div>
 
         <section class="experts-page position-relative container medium-width">
-            <div class="container text-center m-t-30">
+            <div class="container text-center m-t-30 cl_mobile_hidden">
 
 
                 <?php
@@ -249,7 +261,8 @@ $total = $experts->found_posts;
                     echo '<h1>' . __("Expert Search Results:", 'idealbiz') . '<br/>';
                     echo '<span class="extra_small-font">' . '(' . $qtotal->found_posts . ' ' . __('Results found', 'idealbiz') . ')</span></h1>';
                 } else {
-                    echo '<h1>' . get_the_title($pageid) . '</h1>';
+                    
+                    echo '<div class=""><h1>' . get_the_title($pageid) . '</h1></div>';
                 }
 
                 echo get_post_field('post_content', $pageid);
@@ -264,18 +277,19 @@ $total = $experts->found_posts;
                 <div class="col-md-9 experts">
                 
                     <div>
-                        <div class=" experts-container">
+                        <div class="woocommerce w-100">
                             <div>
 
-                                <div class="search-bar container medium-width p-t-5 p-b-5 collapse dont-collapse-sm m-0-auto toggle-search" id="site-search">
+                                <div class="d-flex search-bar medium-width p-t-5 p-b-5  m-0-auto toggle-search" id="site-search">
                                     <p class="d-none"><?php _e('Search ', 'idealbiz'); ?></p>
 
-                                            <form role="search" method="get" id="search-form--header" class="search-form--header" action="<?php echo $current_url; ?>">
-                                                <label class="text-global-search border-blue b-t-l-r b-b-l-r">
+                                            <form role="search" method="get" id="search-form--header" class=" cl_search search-form--header w-100" action="<?php echo $current_url; ?>">
+                                                
+                                            <div class="text-global-search border-blue b-t-l-r b-b-l-r d-w-100">
                                                     <input name="search" type="text" autocomplete="off" minlength="3" placeholder="<?php _e('_str Search', 'idealbiz'); ?>" value="<?php if (isset($_REQUEST['search'])) {
                                                                                                                                                                                                     echo $_REQUEST['search'];
                                                                                                                                                                                                 } ?>" />
-                                                </label>
+                                                </div>
 
                                                 <div class="expert-location--select border-blue m-l--1 b-t-r-r b-b-r-r d-w-100">
                                                     <select data-placeholder="<?php _e('Location'); ?>" name="location">
@@ -327,7 +341,7 @@ $total = $experts->found_posts;
                                                 </div>
 
 
-                                                <button class="btn btn-blue m-l-10 font-btn-plus blue--hover" type="submit" value="Submit"><?php _e('Search', 'idealbiz'); ?></button>
+                                                <div><button  class="btn btn-blue m-l-10 font-btn-plus blue--hover"type="submit" value="Submit"><?php _e('Search', 'idealbiz'); ?></button></div>
                                            
                                             </form>
 
@@ -381,11 +395,22 @@ $total = $experts->found_posts;
 <?php get_footer(); ?>
 
 <style>
+
+
+    .cl_mobile_show{
+        display:none;
+    }
+    .cl_mobile_hidden{
+        display:block;
+    }
     .search-form--header .expert-location--select{
-        width: 55%;
+        width: 35%;
     }
     .search-form--header .listing_cat--select {
     width: 55%;
+    }
+    .search-form--header .text-global-search{
+        width: 85%;
     }
     .cl_order a{
         padding-left:30px;
@@ -402,6 +427,7 @@ $total = $experts->found_posts;
         z-index: 999;
         max-width: 97%;
         margin: 0 auto;
+        
     }
 
     .icoMiddle i {
@@ -420,8 +446,6 @@ $total = $experts->found_posts;
         list-style-type: none;
         padding-top: 140px;
         /* padding-right: 20px; */
-
-
 
     }
 
@@ -465,5 +489,55 @@ $total = $experts->found_posts;
         top: 170px !important;
         height: 70vh !important;
     }
+
+    @media only screen and (max-width: 768px) {
+        .search-form--header .expert-location--select{
+        width: 90%;
+        
+    }
+        .search-form--header .listing_cat--select {
+        width: 90%;
+    }
+        .search-form--header .text-global-search{
+        width: 90%;
+        margin-bottom: 10px;
+    }
+    .search-form--header div{
+        margin-bottom: 10px;
+        text-align: center;
+    }
+      .cl_search {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+        .cl_mobile_show{
+        display:block;
+    }
+    .cl_mobile_hidden{
+        display:none;
+    }
+
+    .cl_display{
+        flex-direction: column;
+    }
+    .cl_menu_membro {
+        margin : auto;
+        width: 80%;
+    }
+    .cl_menu_membro {
+
+        padding-top: unset;
+
+    }
+    
+    .cl_menu_membro>.sub-menu {
+
+    font-size: 0.9em;
+
+    }
+
+}
 
 </style>
