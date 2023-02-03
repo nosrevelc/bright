@@ -1399,7 +1399,7 @@
             "label": "Echelon Competency Factor",
             "name": "echelon_competency_factor",
             "type": "repeater",
-            "instructions": "Add as many tiers as you think you need, example: <br>\r\n<img style=\"-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;\" src=\"https:\/\/idealbiz.io\/pt\/wp-content\/uploads\/sites\/86\/2021\/06\/exemplo_escalao.png\">",
+            "instructions": "Add as many tiers as you think you need.",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -1407,6 +1407,7 @@
                 "class": "",
                 "id": ""
             },
+            "admin_only": 0,
             "collapsed": "",
             "min": 0,
             "max": 0,
@@ -1477,6 +1478,56 @@
                     "step": ""
                 }
             ]
+        },
+        {
+            "key": "field_63dbcf7da0141",
+            "label": "Fixed PPC",
+            "name": "fixed_ppc",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            },
+            "admin_only": 0,
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_63dbcfaca0142",
+            "label": "Fixed PPC value",
+            "name": "fixed_ppc_value",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_63dbcf7da0141",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "admin_only": 0,
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
         },
         {
             "key": "field_5fca2791e6321",
@@ -1702,5 +1753,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1670951891
+    "modified": 1675350016
 }

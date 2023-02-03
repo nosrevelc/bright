@@ -239,6 +239,72 @@
             "step": ""
         },
         {
+            "key": "field_63dbd217d7877",
+            "label": "Service Fixed PPC SR ID of field",
+            "name": "sr_input_sr_fixed_ppc_value_id_field",
+            "type": "number",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "admin_only": 0,
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_63dbd24cd7878",
+            "label": "Service Company Parameter 1",
+            "name": "sr_company_parameter_1",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "admin_only": 0,
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_63dbd267d7879",
+            "label": "Service Company Parameter 2",
+            "name": "sr_company_parameter_2",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "admin_only": 0,
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
             "key": "field_6399f5ec829cf",
             "label": "Qualification Lead",
             "name": "",
@@ -388,5 +454,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1671034449
+    "modified": 1675350657
 }
