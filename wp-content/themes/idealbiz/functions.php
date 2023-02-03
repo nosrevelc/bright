@@ -2021,6 +2021,7 @@ if(isset($_POST['confirm'])){
                 $message .= '<br/>'.__('_str Date confirmed by ','idealbiz').': <b>'.$date_by_server.'. </b>';
                 $message .= '<br/><br/>'.__('_str Comment upon confirmation','idealbiz').': '.'<br/>"'.$_POST['comment'].'"<br/>';
                 $message .= '<br/><br/>'.__('The iDealBiz Team','idealbizio').'.';
+                $message .= '<br/><span style="color:#ffffff;font-size:0.5em;">FUN01</span>';
                 
                 $emailHtml  = get_email_header(pll__('Customer Care'), ''); 
                 $emailHtml .= get_email_intro(pll__('Customer Care'), $message, $hi);
@@ -2040,6 +2041,7 @@ if(isset($_POST['confirm'])){
                 $message .= '<br/><br/>'.__('_str Thank you for making this confirmation, we ask that you kindly execute the payment for this Lead and so that you can do this we send the link below','idealbiz').'.';
                 $message .= '<br/><a href="'.$checkout_url.'">'.__('_str Click here to pay','idealbiz').'</a>';
                 $message .= '<br/><br/>'.__('The iDealBiz Team','idealbizio').'.';
+                $message .= '<br/><span style="color:#ffffff;font-size:0.5em;">FUN02</span>';
                 
                 $emailHtml  = get_email_header(pll__('Customer Care'), ''); 
                 $emailHtml .= get_email_intro(pll__('Customer Care'), $message, $hi);
