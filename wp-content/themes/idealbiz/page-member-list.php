@@ -1,22 +1,26 @@
 <?php
 // Template Name: Member List
 
+
+
 get_header();
 
-function cl_services_member_list(){
+
+function cl_services_member_list()
+{
     $term_obj_list = get_the_terms(get_the_ID(), 'service_cat');
     if ($term_obj_list) {
-    
-            $terms_string = '<span class=" dashicons dashicons-welcome-learn-more" style="font-size:1.5em;"></span>'.join(', ', wp_list_pluck($term_obj_list, 'name'));
-            echo $terms_string;
 
-    } 
+        $terms_string = '<span class=" dashicons dashicons-welcome-learn-more" style="font-size:1.5em;"></span>' . join(', ', wp_list_pluck($term_obj_list, 'name'));
+        echo $terms_string;
+    }
 }
 
 
 $pageid = get_the_ID();
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $posts_per_page = (new IDB_Experts)->posts_per_page;
+/* $posts_per_page = 10; */
 
 /* var_dump($member_category); */
 $word = get_query_var('search');
@@ -24,14 +28,13 @@ $catg = get_query_var('service_cat');
 global $wp;
 
 //$current_url = home_url(add_query_arg(array(), $wp->request));
-$current_url =getLinkByTemplate('page-memberlist.php');
+$current_url = getLinkByTemplate('page-memberlist.php');
 
 
-if (!$_GET['by_name'] || $_GET['by_name']== 'ASC' ){
-    $cl_orderName= array('ASC','Z-A',$current_url.'?by_name=DESC','<span class="dashicons dashicons-arrow-up"></span>');
-
-}else{
-    $cl_orderName= array('DESC','A-Z',$current_url.'?by_name=ASC','<span class="dashicons dashicons-arrow-down"></span>');
+if (!$_GET['by_name'] || $_GET['by_name'] == 'ASC') {
+    $cl_orderName = array('ASC', 'Z-A', $current_url . '?by_name=DESC', '<span class="dashicons dashicons-arrow-up"></span>');
+} else {
+    $cl_orderName = array('DESC', 'A-Z', $current_url . '?by_name=ASC', '<span class="dashicons dashicons-arrow-down"></span>');
 }
 
 
@@ -93,17 +96,19 @@ $args = array(
 );
 
 $experts = new WP_Query($args);
-$total = $experts->found_posts;
+
 ?>
 
 
 
 <div class="cl_display justify-content-center">
-<div class="cl_mobile_show text-center p-b-30"><h1><?php echo get_the_title($pageid) ?></h1></div>
-<div  class ="experts-container"><?php cl_voltar();?></div>
+    <div class="cl_mobile_show text-center p-b-30">
+        <h1><?php echo get_the_title($pageid) ?></h1>
+    </div>
+    <div class="experts-container"><?php cl_voltar(); ?></div>
 
     <div class="cl_menu_membro ">
-   
+
         <div class="pull-right d-md-none">
             <?php if ($phone = get_field('phone', 'option')) : ?>
                 <a href="tel:<?php echo $phone['call_code'] . $phone['number']; ?>" class="light-blue--color phone-number-right"><?php echo $phone['number']; ?></a>
@@ -111,11 +116,11 @@ $total = $experts->found_posts;
             <a class="greyer--color" href="<?php echo get_permalink(pll_get_post(get_page_by_path('contacts')->ID)); ?>"><?php _e('Contacts', 'idealbiz'); ?></a>
         </div>
 
-        <ul class="sub-menu dropshadow box black--color white--background dropshadow">
+        <ul class="sub-menu box black--color white--background">
             <li class="hex-a55df1 menu-item">
                 <div class="icoMiddle">
                     <a data-iconbg="#a55df1" href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>" title="<?php _e('My Account', 'idealbiz'); ?>">
-                    <i class="icon icon-perfil"></i> <?php _e('My Account', 'idealbiz'); ?>
+                        <i class="icon icon-perfil"></i> <?php _e('My Account', 'idealbiz'); ?>
                     </a>
                 </div>
             </li>
@@ -133,7 +138,9 @@ $total = $experts->found_posts;
                         } else {
                         }
                         ?>
-                        <?php _e('Premium Buyer', 'idealbiz'); ?> echo '<div class=""><h1>' . get_the_title($pageid) . '</h1></div>';
+                        <?php _e('Premium Buyer', 'idealbiz'); ?> echo '<div class="">
+                            <h1>' . get_the_title($pageid) . '</h1>
+                        </div>';
                     </a>
                 </div>
             </li>
@@ -145,7 +152,7 @@ $total = $experts->found_posts;
                     <?php _e('Panel Post Content', 'idealbiz'); ?><span class="icon dashicons dashicons-welcome-write-blog"></span>
                     
                 </a> -->
-                <span class="icon dashicons dashicons-welcome-write-blog"></span><?php _e('Panel Post Content', 'idealbiz'); ?>
+                    <span class="icon dashicons dashicons-welcome-write-blog"></span><?php _e('Panel Post Content', 'idealbiz'); ?>
                 </div>
             </li>
             <!-- FINAL MENU POSTS -->
@@ -177,14 +184,14 @@ $total = $experts->found_posts;
             <li class="hex-a55df1 menu-item">
                 <div class="icoMiddle">
                     <a data-iconbg="#a55df1" href="<?php echo wc_get_endpoint_url('mylistings', '', get_permalink(get_option('woocommerce_myaccount_page_id'))) ?>" title="<?php _e('My Listings', 'idealbiz'); ?>">
-                    <i class="icon icon-vender"></i><?php _e('My Listings', 'idealbiz'); ?> 
+                        <i class="icon icon-vender"></i><?php _e('My Listings', 'idealbiz'); ?>
                     </a>
                 </div>
             </li>
             <li class="hex-a55df1 menu-item">
                 <div class="icoMiddle">
                     <a data-iconbg="#a55df1" href="<?php echo wc_get_endpoint_url('favorites', '', get_permalink(get_option('woocommerce_myaccount_page_id'))) ?>" title="<?php _e('My Favorites', 'idealbiz'); ?>">
-                    <i class="icon icofont-heart"></i> <?php _e('My Favorites', 'idealbiz'); ?>
+                        <i class="icon icofont-heart"></i> <?php _e('My Favorites', 'idealbiz'); ?>
                     </a>
                 </div>
             </li>
@@ -197,20 +204,21 @@ $total = $experts->found_posts;
             );
             //if ($sr->have_posts()) {
             ?>
-                <li class="hex-a55df1 menu-item">
-                    <div class="icoMiddle">
-                        <a data-iconbg="#a55df1" href="<?php echo wc_get_endpoint_url('service_request', '', get_permalink(get_option('woocommerce_myaccount_page_id'))) . '?home=1'; ?>">
+            <li class="hex-a55df1 menu-item">
+                <div class="icoMiddle">
+                    <a data-iconbg="#a55df1" href="<?php echo wc_get_endpoint_url('service_request', '', get_permalink(get_option('woocommerce_myaccount_page_id'))) . '?home=1'; ?>">
                         <span class="icon dashicons dashicons-admin-generic"></span><?php _e('Service Requests', 'idealbiz'); ?>
-                        </a>
-                    </div>
-                </li>
-            <?php //} ?>
+                    </a>
+                </div>
+            </li>
+            <?php //} 
+            ?>
 
             <li class="hex-a55df1 menu-item">
                 <div class="icoMiddle">
                     <a data-iconbg="#a55df1" href="<?php echo getLinkByTemplate('RecommendedBusiness.php') . '?recommended=1'; ?>">
 
-                    <span class="icon dashicons dashicons-money-alt"></span><?php _e('_str Business opportunity', 'idealbiz'); ?>
+                        <span class="icon dashicons dashicons-money-alt"></span><?php _e('_str Business opportunity', 'idealbiz'); ?>
                     </a>
                 </div>
             </li>
@@ -219,7 +227,7 @@ $total = $experts->found_posts;
                 <div class="icoMiddle">
                     <a data-iconbg="#a55df1" href="<?php echo $current_url; ?>">
 
-                    <span class="icon dashicons dashicons-editor-removeformatting"></span><?php _e('_str Clean Filter', 'idealbiz'); ?>
+                        <span class="icon dashicons dashicons-editor-removeformatting"></span><?php _e('_str Clean Filter', 'idealbiz'); ?>
                     </a>
                 </div>
             </li>
@@ -227,7 +235,7 @@ $total = $experts->found_posts;
             <li class="hex-a55df1 menu-item">
                 <div class="icoMiddle">
                     <a href="<?php echo esc_url(wp_logout_url(home_url('/'))) ?>" title="<?php echo esc_attr__('Log out', 'idealbiz'); ?>" class="account-nav__link">
-                    <span class="icon dashicons dashicons-exit"></span><?php esc_html_e('Log out', 'idealbiz') ?>
+                        <span class="icon dashicons dashicons-exit"></span><?php esc_html_e('Log out', 'idealbiz') ?>
                     </a>
                 </div>
             </li>
@@ -256,12 +264,19 @@ $total = $experts->found_posts;
                         ),
                     );
 
-                    $qtotal = new WP_Query($args);
+                    $experts = new WP_Query($args);
+                    $show_map = true;
+                    $cl_cleanFilter = true;
 
                     echo '<h1>' . __("Expert Search Results:", 'idealbiz') . '<br/>';
-                    echo '<span class="extra_small-font">' . '(' . $qtotal->found_posts . ' ' . __('Results found', 'idealbiz') . ')</span></h1>';
+                    echo '<span class="extra_small-font">' . '(' . $experts->found_posts . ' ' . __('Results found', 'idealbiz') . ')</span></h1>';
+                ?>
+
+                <?php
+
+
                 } else {
-                    
+
                     echo '<div class=""><h1>' . get_the_title($pageid) . '</h1></div>';
                 }
 
@@ -275,84 +290,106 @@ $total = $experts->found_posts;
 
 
                 <div class="col-md-9 experts">
-                
+
                     <div>
                         <div class="woocommerce w-100">
                             <div>
 
+
+
                                 <div class="d-flex search-bar medium-width p-t-5 p-b-5  m-0-auto toggle-search" id="site-search">
                                     <p class="d-none"><?php _e('Search ', 'idealbiz'); ?></p>
 
-                                            <form role="search" method="get" id="search-form--header" class=" cl_search search-form--header w-100" action="<?php echo $current_url; ?>">
-                                                
-                                            <div class="text-global-search border-blue b-t-l-r b-b-l-r d-w-100">
-                                                    <input name="search" type="text" autocomplete="off" minlength="3" placeholder="<?php _e('_str Search', 'idealbiz'); ?>" value="<?php if (isset($_REQUEST['search'])) {
-                                                                                                                                                                                                    echo $_REQUEST['search'];
-                                                                                                                                                                                                } ?>" />
-                                                </div>
+                                    <form role="search" method="get" id="search-form--header" class=" cl_search search-form--header w-100" action="<?php echo $current_url; ?>">
 
-                                                <div class="expert-location--select border-blue m-l--1 b-t-r-r b-b-r-r d-w-100">
-                                                    <select data-placeholder="<?php _e('Location'); ?>" name="location">
-                                                        <option></option>
-                                                        <?php
-                                                        $terms = get_terms(
-                                                            array('taxonomy' => 'location', 'hide_empty' => false, 'parent' => 0) //change to true after
-                                                        );
-                                                        foreach ($terms as $term) {
-                                                            $selected = '';
-                                                            if (isset($_REQUEST['location'])) {
-                                                                if ($_REQUEST['location'] == $term->term_id) {
-                                                                    $selected = 'selected';
-                                                                }
-                                                            }
-                                                            echo sprintf(
-                                                                '<option value="%1$d" %3$s>%2$s</option>',
-                                                                $term->term_id,
-                                                                $term->name,
-                                                                $selected
-                                                            );
+                                        <div class="text-global-search border-blue b-t-l-r b-b-l-r d-w-100">
+                                            <input name="search" type="text" autocomplete="off" minlength="3" placeholder="<?php _e('_str Search', 'idealbiz'); ?>" value="<?php if (isset($_REQUEST['search'])) {
+                                                                                                                                                                                echo $_REQUEST['search'];
+                                                                                                                                                                            } ?>" />
+                                        </div>
+
+                                        <div class="expert-location--select border-blue m-l--1 b-t-r-r b-b-r-r d-w-100">
+                                            <select data-placeholder="<?php _e('Location'); ?>" name="location">
+                                                <option></option>
+                                                <?php
+                                                $terms = get_terms(
+                                                    array('taxonomy' => 'location', 'hide_empty' => false, 'parent' => 0) //change to true after
+                                                );
+                                                foreach ($terms as $term) {
+                                                    $selected = '';
+                                                    if (isset($_REQUEST['location'])) {
+                                                        if ($_REQUEST['location'] == $term->term_id) {
+                                                            $selected = 'selected';
                                                         }
-                                                        ?>
-                                                    </select>
-                                                </div>
-                                                <div class="listing_cat--select border-blue m-l--1 b-t-r-r b-b-r-r d-w-100">
-                                                    <select class="generic-search-field" data-placeholder="<?php _e('Area of ​​Expertise', 'idealbiz'); ?>" name="service_cat">
-                                                        <option></option>
-                                                        <?php
-                                                        $terms = get_terms(
-                                                            array('taxonomy' => 'service_cat', 'hide_empty' => false, 'parent' => 0) //change to true after
-                                                        );
-                                                        foreach ($terms as $term) {
-                                                            $selected = '';
-                                                            if (isset($_REQUEST['service_cat'])) {
-                                                                if ($_REQUEST['service_cat'] == $term->term_id) {
-                                                                    $selected = 'selected';
-                                                                }
-                                                            }
-                                                            echo sprintf(
-                                                                '<option value="%1$d" %3$s>%2$s</option>',
-                                                                $term->term_id,
-                                                                $term->name,
-                                                                $_REQUEST['service_cat'] == $term->term_id ? 'selected' : ''
-                                                            );
+                                                    }
+                                                    echo sprintf(
+                                                        '<option value="%1$d" %3$s>%2$s</option>',
+                                                        $term->term_id,
+                                                        $term->name,
+                                                        $selected
+                                                    );
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                        <div class="listing_cat--select border-blue m-l--1 b-t-r-r b-b-r-r d-w-100">
+                                            <select class="generic-search-field" data-placeholder="<?php _e('Area of ​​Expertise', 'idealbiz'); ?>" name="service_cat">
+                                                <option></option>
+                                                <?php
+                                                $terms = get_terms(
+                                                    array('taxonomy' => 'service_cat', 'hide_empty' => false, 'parent' => 0) //change to true after
+                                                );
+                                                foreach ($terms as $term) {
+                                                    $selected = '';
+                                                    if (isset($_REQUEST['service_cat'])) {
+                                                        if ($_REQUEST['service_cat'] == $term->term_id) {
+                                                            $selected = 'selected';
                                                         }
-                                                        ?>
-                                                    </select>
-                                                </div>
+                                                    }
+                                                    echo sprintf(
+                                                        '<option value="%1$d" %3$s>%2$s</option>',
+                                                        $term->term_id,
+                                                        $term->name,
+                                                        $_REQUEST['service_cat'] == $term->term_id ? 'selected' : ''
+                                                    );
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
 
 
-                                                <div><button  class="btn btn-blue m-l-10 font-btn-plus blue--hover"type="submit" value="Submit"><?php _e('Search', 'idealbiz'); ?></button></div>
-                                           
-                                            </form>
+                                        <div><button class="btn btn-blue m-l-10 font-btn-plus blue--hover" type="submit" value="Submit"><?php _e('Search', 'idealbiz'); ?></button></div>
 
+                                    </form>
                                 </div>
+                                <?php
+                                $show_map = true;
+                                if ($show_map == true) {
+                                    $zoom_map = 2;
+                                    $latitude_center = floatval($config_sub_homepage['latitude_sub']);
+                                    $longitude_center = floatval($config_sub_homepage['longitude_sub']);
+                                    echo '<div>';
+                                    include(MY_THEME_DIR . 'elements/member-map.php');
+                                    echo '</div>';
+                                }
+                                ?>
 
                             </div>
 
-                            <div>
-                                <?php get_field('localation_member', 'options'); 
-                               echo '<div class="cl_order"><a href="'.$cl_orderName[2]. '">'.__('_str Order By Name','idealbiz').' : '. $cl_orderName[1].$cl_orderName[3].'</a></div>';
-                                ?>
+                            <div class="d-flex">
+                                <div>
+                                    <?php get_field('localation_member', 'options');
+                                    echo '<div class="cl_order"><a href="' . $cl_orderName[2] . '">' . __('_str Order By Name', 'idealbiz') . ' : ' . $cl_orderName[1] . $cl_orderName[3] . '</a></div>';
+                                    ?>
+                                </div>
+                                <?php if($cl_cleanFilter == true){?>
+                                <div class="icoMiddle cl_order">
+                                    <a data-iconbg="#a55df1" href="<?php echo $current_url; ?>">
+
+                                        <span class="icon dashicons dashicons-editor-removeformatting"></span><?php _e('_str Clean Filter', 'idealbiz'); ?>
+                                    </a>
+                                </div>
+                                <?php }?>
                             </div>
                             <?php
 
@@ -360,7 +397,7 @@ $total = $experts->found_posts;
 
                                 while ($experts->have_posts()) : $experts->the_post();
                                     get_template_part('/elements/member-list') . '<br/>';
-                                /* get_template_part('/elements/single-expert-list'); */
+
                                 endwhile;
                             else :
                                 get_template_part('/elements/no_results');
@@ -396,38 +433,49 @@ $total = $experts->found_posts;
 
 <style>
 
+    #map {
+        height: 400px !important;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 
-    .cl_mobile_show{
-        display:none;
+    .cl_mobile_show {
+        display: none;
     }
-    .cl_mobile_hidden{
-        display:block;
+
+    .cl_mobile_hidden {
+        display: block;
     }
-    .search-form--header .expert-location--select{
+
+    .search-form--header .expert-location--select {
         width: 35%;
     }
+
     .search-form--header .listing_cat--select {
-    width: 55%;
+        width: 55%;
     }
-    .search-form--header .text-global-search{
+
+    .search-form--header .text-global-search {
         width: 85%;
     }
-    .cl_order a{
-        padding-left:30px;
+
+    .cl_order a {
+        padding-left: 30px;
         padding-top: 25px;
         font-weight: 600;
-        font-size:0.9em;
+        font-size: 0.9em;
         text-transform: uppercase;
     }
+
     .m-t-20 {
-        margin-top: 312px!important;
+        margin-top: 312px !important;
     }
 
     .cl_search {
         z-index: 999;
         max-width: 97%;
         margin: 0 auto;
-        
+
     }
 
     .icoMiddle i {
@@ -444,7 +492,7 @@ $total = $experts->found_posts;
     .cl_menu_membro {
         /* text-align: right; */
         list-style-type: none;
-        padding-top: 140px;
+        padding-top: 215px;
         /* padding-right: 20px; */
 
     }
@@ -456,7 +504,7 @@ $total = $experts->found_posts;
         border-radius: 10px;
         padding-top: 15px;
         padding-bottom: 15px;
-       /*  position: fixed;
+        /*  position: fixed;
         z-index: 999; */
 
 
@@ -491,53 +539,59 @@ $total = $experts->found_posts;
     }
 
     @media only screen and (max-width: 768px) {
-        .search-form--header .expert-location--select{
-        width: 90%;
-        
-    }
+        .search-form--header .expert-location--select {
+            width: 90%;
+
+        }
+
         .search-form--header .listing_cat--select {
-        width: 90%;
-    }
-        .search-form--header .text-global-search{
-        width: 90%;
-        margin-bottom: 10px;
-    }
-    .search-form--header div{
-        margin-bottom: 10px;
-        text-align: center;
-    }
-      .cl_search {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+            width: 90%;
+        }
 
-        .cl_mobile_show{
-        display:block;
+        .search-form--header .text-global-search {
+            width: 90%;
+            margin-bottom: 10px;
+        }
+
+        .search-form--header div {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .cl_search {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cl_mobile_show {
+            display: block;
+        }
+
+        .cl_mobile_hidden {
+            display: none;
+        }
+
+        .cl_display {
+            flex-direction: column;
+        }
+
+        .cl_menu_membro {
+            margin: auto;
+            width: 80%;
+        }
+
+        .cl_menu_membro {
+
+            padding-top: unset;
+
+        }
+
+        .cl_menu_membro>.sub-menu {
+
+            font-size: 0.9em;
+
+        }
+
     }
-    .cl_mobile_hidden{
-        display:none;
-    }
-
-    .cl_display{
-        flex-direction: column;
-    }
-    .cl_menu_membro {
-        margin : auto;
-        width: 80%;
-    }
-    .cl_menu_membro {
-
-        padding-top: unset;
-
-    }
-    
-    .cl_menu_membro>.sub-menu {
-
-    font-size: 0.9em;
-
-    }
-
-}
-
 </style>
