@@ -12,7 +12,7 @@ function cl_services_member_list()
     if ($term_obj_list) {
 
         $terms_string = '<span class=" dashicons dashicons-welcome-learn-more" style="font-size:1.5em;"></span>' . join(', ', wp_list_pluck($term_obj_list, 'name'));
-        echo $terms_string;
+        return $terms_string;
     }
 }
 

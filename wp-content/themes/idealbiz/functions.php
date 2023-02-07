@@ -4117,3 +4117,128 @@ function checkisMember(){
             return $cl_ismember;
 
 }
+
+function meberPITModal($srid)
+{
+    
+
+
+
+    $args = array(
+
+        'posts_per_page' => -1,
+        'post_type' => 'expert',
+        'post_status' => 'publish',
+       
+    );
+    
+    //$experts = new WP_Query($args);
+    $the_query = new WP_Query( $args );
+
+        $post_id = get_the_ID();
+        $image = get_field('foto')['sizes']['full'];
+        $permalink = get_permalink();
+        $title = get_the_title();
+        $is_certified = get_field('listing_certification_status') == 'certification_finished';
+        $cl_youtube = get_field('youtube_of_member');
+        $badge = get_template_directory_uri() . '/assets/img/badge.png';
+        $expert_schedule_available = get_field('youtube_of_member', $post_id);
+        $experts_professional_experience = get_field('experts_professional_experience', $post_id);
+
+        $is_certified = get_field('listing_certification_status') == 'certification_finished';
+        $cl_company_associate = get_field('company_associate');
+        
+        $cl_lable_service = __('_str service','idealbiz').' : ';
+        $cl_lable_opportunuty = __('_str Opportunity','idealbiz').' : ';
+        $cl_lable_company = __('_str Company','idealbiz').' : ';
+        
+        $cl_sr_pay_lead_mode = get_field('sr_pay_lead_mode');
+        if ($cl_sr_pay_lead_mode === NULL) {
+            $cl_sr_pay_lead_mode = ['value' => 'sr_pay_before', 'label' => 'Pay Before'];
+        }
+        
+        $cl_rb_pay_lead_mode = get_field('rb_pay_lead_mode');
+        if($cl_rb_pay_lead_mode === NULL){
+            $cl_rb_pay_lead_mode = ['value'=>'rb_pay_before','label'=>'Pay Before'];
+        
+        }    
+    $cl_linkPitch = __('_str know more about','idealbiz').' '. $title;
+    $idealbiz_logo   = get_option( 'woocommerce_email_header_image' );
+
+    $cl_logo = '<div style="text-align:center;"><img src="'.$idealbiz_logo.'" alt="Logo" width="200" height="100"></div><br/><br/><br/>';
+
+
+
+    $cl_pitch = '<div class="d-flex center-content" style="margin-left:20px;">
+            <div class="w-100px h-100px b-r d-block o-hidden no-decoration">
+                <img class="w-100 h-100 object-cover" src="' . get_field('foto')['sizes']['medium'] . '">
+            </div>
+                <div style="margin-left:20px;">
+                        <div class="d-flex flex-row">
+                            <div>
+                                <h3 class="font-weight-semi-bold">
+                                    <span class="dashicons dashicons-businessman" style="font-size:1.3em;">
+                                    </span>
+                                </h3>
+                            </div>
+                            <div>
+                                <h3 style="margin-left:10px;">' . $title . '
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="">
+                            <span class=" dashicons dashicons-yes" style="font-size:1.5em;">
+                            </span><h7>'.$cl_lable_opportunuty.$cl_rb_pay_lead_mode['label'].'
+                        </h7></div>
+                        <div class="">
+                            <span class=" dashicons dashicons-yes" style="font-size:1.5em;">
+                            </span><h7>'.$cl_lable_service.$cl_sr_pay_lead_mode['label'].'
+                        </h7></div>
+                        <div >
+                        <h7>'.cl_services_member_list().'</h7>
+                        </div>
+                </div>
+        </div>
+    ';
+    $cl_pitch .= '<div class="calc-100-120 h-100 d-flex justify-content-between flex-column p-y-10 p-x-17">
+    <div class="m-t-10 p-10 text-center" style="border:1px solid #cccccc;background-color:#f1f1f1;"><h3>'.__('_str Short Presentation', 'idealbiz').'</h3></div>
+
+        <div style="border:1px solid #cccccc;border-radius:0px;padding:15px;">
+        <div class="font-weight-semi-bold">' . get_field('pitch', $post_id) . '
+        </div>
+        </div>
+    </div>';
+
+    $cl_pitch .= '<div class="calc-100-120 h-100 d-flex justify-content-between flex-column p-y-10 p-x-17">
+
+
+        <div style="border:1px solid #cccccc;border-radius:0px;padding:15px;">
+        <div class=" font-weight-bold text-center"><a class="btn-blue" href="'. get_permalink( $post_id ).'"><b>' .$cl_linkPitch.'</b></a>
+        </div>
+        </div>
+    </div>';
+
+
+    $message=$cl_logo.$cl_pitch;
+    $current_user= wp_get_current_user();
+
+
+    $content = '<div class="popWrapper" id="post-'.$srid.'" style="z-index: 999999999 !important;">
+        <div class="popWrapper_screen" style="z-index: 999999999 !important;"></div>
+        <div class="iziModal formPopUp col-md-11 col-sm-11 col-xs-11" style="overflow-y: scroll;max-height: 80vh;">
+            <div class="iziModal-wrap" style="height: auto;">
+                <div class="iziModal-content" style="padding: 0px;">
+                    <div class="content generic-form p-b-20"> 
+                        <button data-izimodal-close="" class="icon-close popUpForm" href="#post-'.$srid.'"></button>
+                        <div class="clear"></div>
+                        <div class="acf-form" style="text-align:left; color: #14307b; font-size:1.2em; line-height: 1.8em; font-weight: 500;">
+                        '.$message.'
+                        </div>
+                    </div>    
+                </div>
+            </div>    
+        </div>
+    </div>';
+    // always return
+    return $content;
+}

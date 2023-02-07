@@ -19,7 +19,7 @@ if($cl_rb_pay_lead_mode === NULL){
 
 
 ?>
-<a href="<?php echo the_permalink(); ?>" class="w-35px h-35px o-hidden no-decoration">
+<a href="<?php echo '#post-'.$post->ID; ?>" class="popUpForm info-modal w-35px h-35px o-hidden no-decoration">
     <div class="cl_card expert-card position-relative d-flex flex-column black--color white--background font-weight-medium">
 
         <?php if ($is_certified) : $badge = get_template_directory_uri() . '/assets/img/badge.png'; ?>
@@ -43,8 +43,8 @@ if($cl_rb_pay_lead_mode === NULL){
                 }
                 ?>
 
-                <div class="cl_mode_pay"><span class=" dashicons dashicons-yes" style="font-size:1.5em;"></span><?php echo $cl_lable_opportunuty.$cl_rb_pay_lead_mode['label']?></div>
-                <div class="cl_mode_pay"><span class=" dashicons dashicons-yes" style="font-size:1.5em;"></span><?php echo $cl_lable_service.$cl_sr_pay_lead_mode['label']?></div>
+                <!-- <div class="cl_mode_pay"><span class=" dashicons dashicons-yes" style="font-size:1.5em;"></span><?php echo $cl_lable_opportunuty.$cl_rb_pay_lead_mode['label']?></div>
+                <div class="cl_mode_pay"><span class=" dashicons dashicons-yes" style="font-size:1.5em;"></span><?php echo $cl_lable_service.$cl_sr_pay_lead_mode['label']?></div> -->
                 <div class="cl_service w-290px cl_mobile_show">
                     <?php echo cl_services_member_list()?>
                 </div>
@@ -92,6 +92,7 @@ if($cl_rb_pay_lead_mode === NULL){
         </div>
 
     </div>
+            </a><?php echo meberPITModal($post->ID);?>
 <style>
     .dashicons{
         height: 0px !important;
