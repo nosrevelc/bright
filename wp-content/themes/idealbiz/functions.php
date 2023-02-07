@@ -4231,7 +4231,7 @@ function meberPITModal($srid)
                     <div class="content generic-form p-b-20"> 
                         <button data-izimodal-close="" class="icon-close popUpForm" href="#post-'.$srid.'"></button>
                         <div class="clear"></div>
-                        <div class="acf-form" style="text-align:left; color: #14307b; font-size:1.2em; line-height: 1.8em; font-weight: 500;">
+                        <div class="acf-form" style="text-align:left; color: #343434; font-size:1.2em; line-height: 1.8em; font-weight: 500;">
                         '.$message.'
                         </div>
                     </div>    

@@ -19,8 +19,8 @@ function cl_services_member_list()
 
 $pageid = get_the_ID();
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-$posts_per_page = (new IDB_Experts)->posts_per_page;
-/* $posts_per_page = 10; */
+/* $posts_per_page = (new IDB_Experts)->posts_per_page; */
+$posts_per_page = 30;
 
 /* var_dump($member_category); */
 $word = get_query_var('search');
@@ -255,6 +255,7 @@ $experts = new WP_Query($args);
                 if ($word || $catg || $loca) {
                     $args = array(
                         's' => $word,
+                        'posts_per_page' => $posts_per_page,
                         'post_type' => 'expert',
                         'post_status' => 'publish',
                         'tax_query' => array(
