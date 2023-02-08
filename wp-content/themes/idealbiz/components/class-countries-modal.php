@@ -59,8 +59,11 @@ class Component_Countries_Modal
                             break;
                         }
                     }
-    
-                    header("Location: https://idealbiz.io/$choice/");
+                    
+                    $cl_dominio = $_SERVER['HTTP_HOST'];                    
+                    header("Location: https://$cl_dominio/$choice/");
+
+                    /* header("Location: https://idealbiz.eu/$choice/"); */
                     
     
                 /* }*/

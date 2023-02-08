@@ -19,8 +19,8 @@ if($cl_rb_pay_lead_mode === NULL){
 
 
 ?>
-<a href="<?php echo the_permalink(); ?>" class="w-50px h-50px o-hidden no-decoration">
-    <div class="cl_card expert-card position-relative d-flex flex-column black--color white--background dropshadow font-weight-medium">
+<a href="<?php echo '#post-'.$post->ID; ?>" class="popUpForm info-modal w-35px h-35px o-hidden no-decoration">
+    <div class="cl_card expert-card position-relative d-flex flex-column black--color white--background font-weight-medium">
 
         <?php if ($is_certified) : $badge = get_template_directory_uri() . '/assets/img/badge.png'; ?>
             <div class="certified-badge" style="background-image: url(<?php echo $badge; ?>);"></div>
@@ -43,8 +43,8 @@ if($cl_rb_pay_lead_mode === NULL){
                 }
                 ?>
 
-                <div class="cl_mode_pay"><span class=" dashicons dashicons-yes" style="font-size:1.5em;"></span><?php echo $cl_lable_opportunuty.$cl_rb_pay_lead_mode['label']?></div>
-                <div class="cl_mode_pay"><span class=" dashicons dashicons-yes" style="font-size:1.5em;"></span><?php echo $cl_lable_service.$cl_sr_pay_lead_mode['label']?></div>
+                <!-- <div class="cl_mode_pay"><span class=" dashicons dashicons-yes" style="font-size:1.5em;"></span><?php echo $cl_lable_opportunuty.$cl_rb_pay_lead_mode['label']?></div>
+                <div class="cl_mode_pay"><span class=" dashicons dashicons-yes" style="font-size:1.5em;"></span><?php echo $cl_lable_service.$cl_sr_pay_lead_mode['label']?></div> -->
                 <div class="cl_service w-290px cl_mobile_show">
                     <?php echo cl_services_member_list()?>
                 </div>
@@ -92,8 +92,11 @@ if($cl_rb_pay_lead_mode === NULL){
         </div>
 
     </div>
+            </a><?php echo meberPITModal($post->ID);?>
 <style>
-
+    .dashicons{
+        height: 0px !important;
+    }
 .cl_flag_country{
     display: flex;
 }
@@ -103,7 +106,8 @@ if($cl_rb_pay_lead_mode === NULL){
 }
 .cl_card {
     padding: 5px;
-    margin: 10px;
+    margin: 1px;
+    border: #cccccc 1px solid;
 }
 .cl_title{
         border-left: 1px solid #cccccc;
@@ -152,8 +156,8 @@ if($cl_rb_pay_lead_mode === NULL){
         display: flex !important;
     }
     .cl_img_member > img{
-        width: 50px;
-        height: 50px;
+        width: 35px;
+        height: 35px;
     }
     @media only screen and (max-width: 768px) {
         .div_flag{
@@ -177,8 +181,8 @@ if($cl_rb_pay_lead_mode === NULL){
         margin-bottom: 20px;
     }
     .cl_img_member > img{
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 100px;
     }
     .cl_title{
         border-left: 0px solid #FFFFFF;

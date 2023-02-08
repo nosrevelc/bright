@@ -16,17 +16,26 @@ if (WEBSITE_SYSTEM == '1') {
     }
 }
 
-$args = array(
-    'posts_per_page' => -1,
-    'post_type' => 'expert',
-    'post_status' => 'publish',
-    'post__in' => $includeIds
+                                            if (!$_GET['search']) {
+                                                if (!$_GET['location']) {
+                                                    if (!$_GET['service_cat']) {
 
-);
 
-$experts = new WP_Query($args);
-$total = $experts->found_posts;
+                                                        $args = array(
+                                                            'posts_per_page' => -1,
+                                                            'post_type' => 'expert',
+                                                            'post_status' => 'publish',
+                                                            'post__in' => $includeIds
+
+                                                        );
+
+                                                        $experts = new WP_Query($args);
+                                                    
+                                                    }
+                                                }
+                                            } 
 $i=0;
+$check_andress = 0;
 
 
 
@@ -41,8 +50,10 @@ foreach($experts->posts as $cl_expert){
             $foto = get_field('foto',$cl_expert->ID)['sizes']['medium'];
         $i++;
 
+        
 
         if($expert_address){
+            $check_andress++;
 
                         $term_obj_list = get_the_terms($cl_expert->ID, 'service_cat' );
                         $location_objs = get_the_terms($cl_expert->ID, 'location' );
@@ -98,10 +109,12 @@ foreach($experts->posts as $cl_expert){
                     <!-- <a href="https://www.google.com/maps/place/<?php echo $address;?>/@<?php echo $latitude.','.$longitude;?>,15z" target="_blank"><?php echo 'Ver no Mapa'; ?></a> -->
                     <?php
                         } else {
+                        
                             /* echo $response->status; */
                         } 
                     }else{
-                       /*  cl_alerta('Sem morada Correta'); */
+                       
+                        /*  cl_alerta('Sem morada Correta'); */
                     }
 
         
@@ -179,7 +192,15 @@ $cl_Json_array = json_encode($cl_Json_array);
     </script>
 
 <body onload="InitMap();">
-
-    <div class="container dropshadow"id="map" style="height: 700px; width: 100%;">
-    </div>
+<?php 
+    if ($check_andress > 0){?>
+        <div class="container dropshadow"id="map" style="height: 700px; width: 100%;">
+        </div>
+        <?php
+    }else{
+        echo '<h2 class="text-center p-t-15 p-b-15">';   
+        _e('_str Unable to display the map as there are no addresses to display for this search','idelabiz');
+        echo '</h2>'; 
+    }
+?>
 </body>
