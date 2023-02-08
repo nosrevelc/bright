@@ -436,6 +436,9 @@ $experts = new WP_Query($args);
 <?php get_footer(); ?>
 
 <style>
+    .cl_h7{
+    padding-left: 20px;
+    }
     .cl_pop_title{
         border:unset;
     }
