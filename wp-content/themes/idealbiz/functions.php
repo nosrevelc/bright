@@ -4194,15 +4194,15 @@ function meberPITModal($srid)
                             </div>
                         </div>
                         <div class="">
-                            <span class=" dashicons dashicons-yes" style="font-size:1.5em;">
+                            <span class=" dashicons dashicons-yes" style="font-size:1.9em;">
                             </span><h7 class="cl_h7">'.$cl_lable_opportunuty.$cl_rb_pay_lead_mode['label'].'
                         </h7></div>
                         <div class="">
-                            <span class=" dashicons dashicons-yes" style="font-size:1.5em;">
+                            <span class=" dashicons dashicons-yes" style="font-size:1.9em;">
                             </span><h7 class="cl_h7">'.$cl_lable_service.$cl_sr_pay_lead_mode['label'].'
                         </h7></div>
                         <div >
-                        <h7 class="cl_h7">'.cl_services_member_list().'</h7>
+                       '.cl_services_member_list().'
                         </div>
                 </div>
         </div>

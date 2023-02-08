@@ -11,7 +11,10 @@ function cl_services_member_list()
     $term_obj_list = get_the_terms(get_the_ID(), 'service_cat');
     if ($term_obj_list) {
 
-        $terms_string = '<span class=" dashicons dashicons-welcome-learn-more" style="font-size:1.5em;"></span>' . join(', ', wp_list_pluck($term_obj_list, 'name'));
+        $terms_string = '<div class=""><span class=" dashicons dashicons-welcome-learn-more" style="font-size:1.5em;"></span><h7 class="cl_h7">' . join(', ', wp_list_pluck($term_obj_list, 'name')).'
+        </h7></div>';
+        
+       
         return $terms_string;
     }
 }
@@ -575,7 +578,7 @@ $experts = new WP_Query($args);
     }
         .cl_h7{
             font-size: 0.7em !important;
-            padding-left: 10px;
+            padding-left: 20px;
         }
         .cl_h3{
             font-size: 0.9em !important;
