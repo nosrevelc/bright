@@ -433,7 +433,24 @@ $experts = new WP_Query($args);
 <?php get_footer(); ?>
 
 <style>
+    .cl_pop_title{
+        border:unset;
+    }
+    .cl_pop_pitch{
+    padding: 10px;
+    font-size: 0.8em;
+    border-left:1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    padding:15px;
+    }
 
+    .cl_pop_logo{
+        margin-bottom: 30px;
+    }
+    .formPopUp{
+        max-width: 80% !important;
+    }
     #map {
         height: 400px !important;
         margin-top: 10px;
@@ -540,6 +557,40 @@ $experts = new WP_Query($args);
     }
 
     @media only screen and (max-width: 768px) {
+        .cl_pop_pitch{
+        padding: 5px;
+        font-size: 0.8em;
+        border-left:1px solid #cccccc;
+        border-right: 1px solid #cccccc;
+        border-bottom: 1px solid #cccccc;
+        }
+        .cl_pop_title{
+        padding-left: 10px;
+        font-size: 1em;
+        white-space:normal;
+        padding-top: 10px;
+        }
+        .cl_pop_logo{
+        margin-bottom: 15px;
+    }
+        .cl_h7{
+            font-size: 0.7em !important;
+            padding-left: 10px;
+        }
+        .cl_h3{
+            font-size: 0.9em !important;
+        }
+        .cl_img_mobile{
+            margin:auto
+        }
+
+        .cl_pop{
+            display: flex;
+            flex-direction: column !important;
+        }
+        .formPopUp{
+        max-width: 98% !important;
+    }
         .search-form--header .expert-location--select {
             width: 90%;
 

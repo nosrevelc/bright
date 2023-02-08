@@ -4165,15 +4165,22 @@ function meberPITModal($srid)
     $cl_linkPitch = __('_str know more about','idealbiz').' '. $title;
     $idealbiz_logo   = get_option( 'woocommerce_email_header_image' );
 
-    $cl_logo = '<div style="text-align:center;"><img src="'.$idealbiz_logo.'" alt="Logo" width="200" height="100"></div><br/><br/><br/>';
+    $cl_logo = '<div class="cl_pop_logo" style="text-align:center;">
+    <img src="'.$idealbiz_logo.'" alt="Logo" width="200" height="100">
+    </div>
+    <div class="cl_img_mobile w-100px h-100px b-r o-hidden no-decoration cl_mobile_show">
+    <img class="w-100 h-100 object-cover" src="' . get_field('foto')['sizes']['medium'] . '">
+</div>
+    ';
 
 
 
     $cl_pitch = '<div class="d-flex center-content" style="margin-left:20px;">
-            <div class="w-100px h-100px b-r d-block o-hidden no-decoration">
+            <div class="w-100px h-100px b-r o-hidden no-decoration cl_mobile_hidden">
                 <img class="w-100 h-100 object-cover" src="' . get_field('foto')['sizes']['medium'] . '">
             </div>
                 <div style="margin-left:20px;">
+
                         <div class="d-flex flex-row">
                             <div>
                                 <h3 class="font-weight-semi-bold">
@@ -4182,38 +4189,38 @@ function meberPITModal($srid)
                                 </h3>
                             </div>
                             <div>
-                                <h3 style="margin-left:10px;">' . $title . '
+                                <h3 class="cl_pop_title" style="margin-left:10px;">' . $title . '
                                 </h3>
                             </div>
                         </div>
                         <div class="">
                             <span class=" dashicons dashicons-yes" style="font-size:1.5em;">
-                            </span><h7>'.$cl_lable_opportunuty.$cl_rb_pay_lead_mode['label'].'
+                            </span><h7 class="cl_h7">'.$cl_lable_opportunuty.$cl_rb_pay_lead_mode['label'].'
                         </h7></div>
                         <div class="">
                             <span class=" dashicons dashicons-yes" style="font-size:1.5em;">
-                            </span><h7>'.$cl_lable_service.$cl_sr_pay_lead_mode['label'].'
+                            </span><h7 class="cl_h7">'.$cl_lable_service.$cl_sr_pay_lead_mode['label'].'
                         </h7></div>
                         <div >
-                        <h7>'.cl_services_member_list().'</h7>
+                        <h7 class="cl_h7">'.cl_services_member_list().'</h7>
                         </div>
                 </div>
         </div>
     ';
-    $cl_pitch .= '<div class="calc-100-120 h-100 d-flex justify-content-between flex-column p-y-10 p-x-17">
-    <div class="m-t-10 p-10 text-center" style="border:1px solid #cccccc;background-color:#f1f1f1;"><h3>'.__('_str Short Presentation', 'idealbiz').'</h3></div>
+    $cl_pitch .= '<div class=" m-t-10 calc-100-120 h-100 d-flex justify-content-between flex-column ">
+    <div class="p-t-10 text-center" style="border:1px solid #cccccc;background-color:#f1f1f1;"><h3 class="cl_h3">'.__('_str Short Presentation', 'idealbiz').'</h3></div>
 
-        <div style="border:1px solid #cccccc;border-radius:0px;padding:15px;">
+        <div class="cl_pop_pitch">
         <div class="font-weight-semi-bold">' . get_field('pitch', $post_id) . '
         </div>
         </div>
     </div>';
 
-    $cl_pitch .= '<div class="calc-100-120 h-100 d-flex justify-content-between flex-column p-y-10 p-x-17">
+    $cl_pitch .= '<div class="m-t-10 calc-100-120 h-100 d-flex justify-content-between flex-column ">
 
 
         <div style="border:1px solid #cccccc;border-radius:0px;padding:15px;">
-        <div class=" font-weight-bold text-center"><a class="btn-blue" href="'. get_permalink( $post_id ).'"><b>' .$cl_linkPitch.'</b></a>
+        <div class="font-weight-bold text-center cl_h3"><a class="btn-blue" href="'. get_permalink( $post_id ).'"><b>' .$cl_linkPitch.'</b></a>
         </div>
         </div>
     </div>';
