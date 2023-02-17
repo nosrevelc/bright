@@ -5,6 +5,13 @@ $first_name   = false;
 ?>
 <?php if (is_user_logged_in()) :
     $current_user = wp_get_current_user();
+    $id_expert = isExpert($current_user->ID);
+
+    $cl_image_url = get_field('foto',$id_expert[0]->ID)['sizes']["thumbnail"];
+
+    $cl_image = '<div class="cl_img_mobile w-40px h-40px b-r o-hidden no-decoration">
+    <img class="w-100 h-100 object-cover" src="' . $cl_image_url . '">
+    </div>';
 
     if ( in_array( 'consultant', $current_user->roles, true ) || $expert ) {
         $cl_consultant = 'consultant';
@@ -15,21 +22,30 @@ $first_name   = false;
     $first_name   = $current_user->first_name;
     ?>
 
-    <div class="my-account-header">
+    <div class=" my-account-header">
         <a href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>" title="<?php _e('My Account', 'idealbiz'); ?>">
+        <div class="cl_user_img">
             <?php if ($first_name) {
                     printf(
-                        '<span class="account__user__name">%1$s %2$s</span>',
+                        '<div class="account__user__name">%1$s %2$s</div>',
                         esc_html__('Hi!', 'idealbiz'),
                         esc_html__($first_name)
                     );
-                } ?><?php echo get_avatar(
-                            get_current_user_id(),
-                            38,
-                            '',
-                            esc_html__('User avatar', 'i'),
-                            array('class' => 'account__user-image')
-                        ) ?>
+                } ?><?php 
+                if($cl_image_url == Null){
+                    echo get_avatar(
+                                get_current_user_id(),
+                                38,
+                                '',
+                                esc_html__('User avatar', 'i'),
+                                array('class' => 'account__user-image')
+                        ) ;
+                    }else{
+                        echo $cl_image;
+                    }
+                        
+                        ?>
+        </div>
         </a>
         <div class="pull-right d-md-none">
             <?php if ($phone = get_field('phone', 'option')) : ?>
@@ -195,3 +211,18 @@ $first_name   = false;
     </div>
 
 <?php endif ?>
+<style>
+.cl_user_img {
+
+  padding-top: 17px;;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 20%;
+}
+.cl_user_img .object-cover {
+    -webkit-filter: unset !important;
+    filter: unset !important;
+}
+</style>
