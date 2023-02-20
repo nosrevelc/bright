@@ -52,7 +52,7 @@ foreach($experts->posts as $cl_expert){
             if($cl_show_this_member_in_map == NULL){
                 $cl_show_this_member_in_map = "show_map";
             }
-            var_dump($cl_show_this_member_in_map);
+
         $i++;
 
         
