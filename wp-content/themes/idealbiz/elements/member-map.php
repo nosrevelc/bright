@@ -48,10 +48,15 @@ foreach($experts->posts as $cl_expert){
             $expert_city = get_field('expert_city',$cl_expert->ID);
             $cl_perfil = get_post_permalink($cl_expert->ID);
             $foto = get_field('foto',$cl_expert->ID)['sizes']['medium'];
+            $cl_show_this_member_in_map = get_field('show_this_member_in_map',$cl_expert->ID);
+            if($cl_show_this_member_in_map == NULL){
+                $cl_show_this_member_in_map = "show_map";
+            }
+            var_dump($cl_show_this_member_in_map);
         $i++;
 
         
-
+    if ($cl_show_this_member_in_map === "show_map"){;
         if($expert_address){
             $check_andress++;
 
@@ -60,7 +65,7 @@ foreach($experts->posts as $cl_expert){
                         $location_string = $expert_city;
                         $terms_string = join(', ', wp_list_pluck($term_obj_list, 'name'));
                         $lis_cat=str_replace(', ','<br/>',$terms_string ); 
-                        $address = $expert_address;
+                        $address = "$expert_postal_code";
                         
             $url = "https://maps.google.com/maps/api/geocode/json?address=".urlencode($address).'&key='.$key;
 
@@ -118,6 +123,8 @@ foreach($experts->posts as $cl_expert){
                     }
 
         
+    }
+
 }
 
 $cl_Json_array = json_encode($cl_Json_array);
