@@ -43,12 +43,8 @@ add_action( 'wp_enqueue_scripts', 'theme_scripts' );
    ========================================= */
 define('WEBSITE_SYSTEM',get_field('website_sr_system', 'options')["value"]);
 define('LISTING_SYSTEM',get_field('listing_system', 'options')["value"]);
-//define('PAY_LEAD',get_field('sr_mode_pay_lead', 'options')["value"]);
-//define('RECOMMENDED_PAY_LEAD',get_field('rb_recommended_mode_pay_lead', 'options')["value"]);
 define('ID_FORM_RECOM_BUSINESS',get_field('id_gform_recommended_business', 'option'));
-
-
-//var_dump(WEBSITE_SYSTEM.' e '.LISTING_SYSTEM);
+define('OPPORTUNITY_SYSTEM',get_field('opportunity_system', 'option')["value"]);
 
 /* get strign between two strings */
 function get_string_between($string, $start, $end){

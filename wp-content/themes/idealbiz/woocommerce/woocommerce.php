@@ -1864,9 +1864,12 @@ function service_request_endpoint_content() {
 
             <div class="rb_botoes_rs">';
 
+            if(OPPORTUNITY_SYSTEM == '1'){
+
                echo ' <a href="'.wc_get_endpoint_url('service_request', '', get_permalink(get_option('woocommerce_myaccount_page_id'))).'?home=1" class="nav-link '.(!isset($_GET['referrals']) && !isset($_GET['refer']) ? 'active' : '').'"><div class="bota_quadrado_sr stroke dropshadow "><span class="dashicons dashicons-feedback"></span><p>
                     '.__('My Service Requests','idealbiz').'
                     </p></div></a>';
+            }        
  
 //BOTÃO ABAIXO DESATIVADO CONFORME CONVERSA COM DR ALBERTO DIA 20/10/22 - CONFORME BRAFING DO EXCEL
 // BOTÕES APARECEM EM : wp-content/plugins/idealbiz-service-request/lib/WooCommerce/EndpointServiceRequest.php

@@ -182,8 +182,7 @@ $experts = new WP_Query($args);
                         </a>
                     </li> -->
 
-
-
+    <?php if(OPPORTUNITY_SYSTEM == '1'){ ?>
             <li class="hex-a55df1 menu-item">
                 <div class="icoMiddle">
                     <a data-iconbg="#a55df1" href="<?php echo wc_get_endpoint_url('mylistings', '', get_permalink(get_option('woocommerce_myaccount_page_id'))) ?>" title="<?php _e('My Listings', 'idealbiz'); ?>">
@@ -198,6 +197,7 @@ $experts = new WP_Query($args);
                     </a>
                 </div>
             </li>
+    <?php } ?>        
             <?php
             $sr = new \WP_Query(
                 array(
@@ -216,7 +216,7 @@ $experts = new WP_Query($args);
             </li>
             <?php //} 
             ?>
-
+    <?php if(OPPORTUNITY_SYSTEM == '1'){ ?>
             <li class="hex-a55df1 menu-item">
                 <div class="icoMiddle">
                     <a data-iconbg="#a55df1" href="<?php echo getLinkByTemplate('RecommendedBusiness.php') . '?recommended=1'; ?>">
@@ -225,7 +225,7 @@ $experts = new WP_Query($args);
                     </a>
                 </div>
             </li>
-
+    <?php } ?>
             <li class="hex-a55df1 menu-item">
                 <div class="icoMiddle">
                     <a data-iconbg="#a55df1" href="<?php echo $current_url; ?>">
@@ -299,9 +299,20 @@ $experts = new WP_Query($args);
                         <div class="woocommerce w-100">
                             <div>
 
+                                <?php
+                                $show_map = true;
+                                if ($show_map == true) {
+                                    $zoom_map = 2;
+                                    $latitude_center = floatval($config_sub_homepage['latitude_sub']);
+                                    $longitude_center = floatval($config_sub_homepage['longitude_sub']);
+                                    echo '<div>';
+                                    include(MY_THEME_DIR . 'elements/member-map.php');
+                                    echo '</div>';
+                                }
+                                ?>
 
-
-                                <div class="d-flex search-bar medium-width p-t-5 p-b-5  m-0-auto toggle-search" id="site-search">
+                            </div>
+                            <div class="d-flex search-bar medium-width p-t-5 p-b-5  m-0-auto toggle-search" id="site-search">
                                     <p class="d-none"><?php _e('Search ', 'idealbiz'); ?></p>
 
                                     <form role="search" method="get" id="search-form--header" class=" cl_search search-form--header w-100" action="<?php echo $current_url; ?>">
@@ -366,20 +377,6 @@ $experts = new WP_Query($args);
 
                                     </form>
                                 </div>
-                                <?php
-                                $show_map = true;
-                                if ($show_map == true) {
-                                    $zoom_map = 2;
-                                    $latitude_center = floatval($config_sub_homepage['latitude_sub']);
-                                    $longitude_center = floatval($config_sub_homepage['longitude_sub']);
-                                    echo '<div>';
-                                    include(MY_THEME_DIR . 'elements/member-map.php');
-                                    echo '</div>';
-                                }
-                                ?>
-
-                            </div>
-
                             <div class="d-flex">
                                 <div>
                                     <?php get_field('localation_member', 'options');

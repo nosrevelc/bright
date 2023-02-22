@@ -190,10 +190,11 @@ if (have_posts()) : while (have_posts()) : the_post();
                                 $cl_rb_member_of_recommended_business = get_field('rb_member_of_recommended_business', $cl_userAtual);
 
                                 /* var_dump($cl_rb_member_of_recommended_business); */
-                                
+                                if(OPPORTUNITY_SYSTEM == '1'){
                                 if ($cl_rb_member_of_recommended_business == true) {
                                     if ($cl_rb_post_in_recomemded_business === true){
                                 ?>
+
                                     <h1><p class="p-t-20"><?php _e('_str You can receive to recommend this deal','idealbiz');?></p></h1>
                                     <div class="cl_comissao"></div>
                                     <div id="test-popup" class="white-popup mfp-hide">
@@ -205,7 +206,8 @@ if (have_posts()) : while (have_posts()) : the_post();
                                     </div>
                                 <?php 
                                     }
-                                } 
+                                }
+                            }
                                 ?>
                     </div>
                     <div class="m-t-15 hidden-desktop">

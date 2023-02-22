@@ -275,14 +275,16 @@ $experts = new WP_Query($args);
     <?php //} 
     ?>
 
-    <li class="hex-a55df1 menu-item d-none">
-        <div class="icoMiddle">
-            <a data-iconbg="#a55df1" href="<?php echo getLinkByTemplate('RecommendedBusiness.php') . '?recommended=1'; ?>">
+    <?php if(OPPORTUNITY_SYSTEM == '1'){ ?>
+        <li class="hex-a55df1 menu-item">
+            <div class="icoMiddle">
+                <a data-iconbg="#a55df1" href="<?php echo getLinkByTemplate('RecommendedBusiness.php') . '?recommended=1'; ?>">
 
-                <span class="icon dashicons dashicons-money-alt"></span><?php _e('_str Business opportunity', 'idealbiz'); ?>
-            </a>
-        </div>
-    </li>
+                    <span class="icon dashicons dashicons-money-alt"></span><?php _e('_str Business opportunity', 'idealbiz'); ?>
+                </a>
+            </div>
+        </li>
+    <?php } ?>
 
     <li class="hex-a55df1 menu-item">
         <div class="icoMiddle">
