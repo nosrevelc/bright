@@ -4166,7 +4166,7 @@ function meberPITModal($srid)
     $idealbiz_logo   = get_option( 'woocommerce_email_header_image' );
 
     $cl_logo = '<div class="cl_pop_logo" style="text-align:center;">
-    <img src="'.$idealbiz_logo.'" alt="Logo" width="200" height="100">
+    <img src="'.$idealbiz_logo.'" alt="Logo" width="" height="100">
     </div>
     <div class="cl_img_mobile w-100px h-100px b-r o-hidden no-decoration cl_mobile_show">
     <img class="w-100 h-100 object-cover" src="' . get_field('foto')['sizes']['medium'] . '">

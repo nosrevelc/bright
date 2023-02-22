@@ -25,6 +25,7 @@ if( !class_exists( 'MUCD_Duplicate' ) ) {
          * @return $form_message result messages of the process
          */
         public static function duplicate_site($data) {
+            //error_log('duplicate_site : Start ');
             
             MUCD_Duplicate::surbma_multisite_transient_cleaner_activate();
 
@@ -54,11 +55,12 @@ if( !class_exists( 'MUCD_Duplicate' ) ) {
             $user_id = MUCD_Duplicate::create_admin($email, $domain);
 
             if ( is_wp_error( $user_id ) ) {
-                $form_message['error'] = $user_id->get_error_message();
+                $form_message['error'] = 'Could Not Create User';
                 return $form_message;
             }
 
             // Create new site
+            //error_log('duplicate_site : before  Create new site ');
             switch_to_blog(1);
             $to_site_id = wpmu_create_blog( $newdomain, $path, $title, $user_id , array( 'public' => $public ), $network_id );
             $wpdb->show_errors();
@@ -69,13 +71,15 @@ if( !class_exists( 'MUCD_Duplicate' ) ) {
             }
 
             // User rights adjustments
+            //error_log('duplicate_site : before User rights adjustments');
             if ( !is_super_admin( $user_id ) && !get_user_option( 'primary_blog', $user_id ) ) {
                 update_user_option( $user_id, 'primary_blog', $to_site_id, true );
             }
-
+            //error_log('duplicate_site : before  bypass_server_limit ');
             MUCD_Duplicate::bypass_server_limit();
 
             // Copy Site - File
+            //error_log('duplicate_site : before  Copy Site - File ');
             if($copy_file=='yes') {
                 do_action( 'mucd_before_copy_files', $from_site_id, $to_site_id );
                 $result = MUCD_Files::copy_files($from_site_id, $to_site_id);
@@ -83,11 +87,13 @@ if( !class_exists( 'MUCD_Duplicate' ) ) {
             }
 
             // Copy Site - Data
+            //error_log('duplicate_site : before  Copy Site - Data ');
             do_action( 'mucd_before_copy_data', $from_site_id, $to_site_id );
             $result = MUCD_Data::copy_data($from_site_id, $to_site_id);
             do_action( 'mucd_after_copy_data', $from_site_id, $to_site_id );
 
             // Copy Site - Users
+            //error_log('duplicate_site : before  Copy Site - Users ');
             if($keep_users=='yes') {
                 do_action( 'mucd_before_copy_users', $from_site_id, $to_site_id );
                 $result = MUCD_Duplicate::copy_users($from_site_id, $to_site_id);
@@ -102,6 +108,7 @@ if( !class_exists( 'MUCD_Duplicate' ) ) {
             MUCD_Duplicate::write_log('End site duplication : new site ID = ' . $to_site_id);
 
             wp_cache_flush();
+            //error_log('duplicate_site : End ');
             return $form_message;
         }
 
@@ -287,9 +294,12 @@ if( !class_exists( 'MUCD_Duplicate' ) ) {
         }
 
         private static function surbma_multisite_transient_cleaner_activate() {
+            //error_log('surbma_multisite_transient_cleaner_activate  : start ');
             if ( is_multisite() ) {
                 global $wpdb;
         
+                
+
                 $all_sites = $wpdb->get_results( "SELECT * FROM $wpdb->blogs" );
 
                 
@@ -299,16 +309,17 @@ if( !class_exists( 'MUCD_Duplicate' ) ) {
                     foreach ( $all_sites as $site ) {
                         $wpdb->set_blog_id( $site->blog_id );
 
-                        $table_exists = $wpdb->query( "SELECT COUNT(1) FROM information_schema.tables WHERE table_schema='idealbizio' AND table_name=`{$wpdb->prefix}options`");
+                        $table_exists = $wpdb->query( "SELECT COUNT(1) FROM information_schema.tables WHERE table_schema='idealbizio' AND table_name='{$wpdb->prefix}options'");
                         if($table_exists)
                         $wpdb->query( "DELETE FROM `{$wpdb->prefix}options` WHERE `option_name` LIKE ('_transient_%') or `option_name` LIKE ('_site_transient_%') or `option_name` LIKE ('displayed_galleries_%')" );
                         
-                        $table_exists = $wpdb->query( "SELECT COUNT(1) FROM information_schema.tables WHERE table_schema='idealbizio' AND table_name=`{$wpdb->prefix}sitemeta`");
+ /*                         $table_exists = $wpdb->query( "SELECT COUNT(1) FROM information_schema.tables WHERE table_schema='idealbizio' AND table_name=`{$wpdb->prefix}sitemeta`");
                         if($table_exists)
-                        $wpdb->query( "DELETE FROM `{$wpdb->prefix}sitemeta` WHERE `meta_key` LIKE ('_site_transient_%')" );
+                        $wpdb->query( "DELETE FROM `{$wpdb->prefix}sitemeta` WHERE `meta_key` LIKE ('_site_transient_%')" ); */
                     }
                 }
             }
+            //error_log('surbma_multisite_transient_cleaner_activate : end ');
         }
     }
 
