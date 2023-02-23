@@ -1,4 +1,6 @@
-<?php if( function_exists('acf_add_local_field_group') ): acf_add_local_field_group(array(
+<?php if( function_exists('acf_add_local_field_group') ):
+
+acf_add_local_field_group(array(
 	'key' => 'group_5e57abef39b15',
 	'title' => 'Business Options',
 	'fields' => array(
@@ -222,8 +224,8 @@
 					'message' => '',
 					'default_value' => 0,
 					'ui' => 1,
-					'ui_on_text' => '&amp;nbsp;',
-					'ui_off_text' => '&amp;nbsp;',
+					'ui_on_text' => '&nbsp;',
+					'ui_off_text' => '&nbsp;',
 				),
 				array(
 					'key' => 'field_5e8de5aa62077',
@@ -508,7 +510,9 @@
 	'hide_on_screen' => '',
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_5aa1752625c0c',
 	'title' => 'Certification',
 	'fields' => array(
@@ -600,7 +604,9 @@
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_6184083054099',
 	'title' => 'Chekout',
 	'fields' => array(
@@ -656,7 +662,9 @@
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_61718ff4a7a66',
 	'title' => 'Config Map',
 	'fields' => array(
@@ -756,7 +764,9 @@
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_5eb53768d2705',
 	'title' => 'Contacts',
 	'fields' => array(
@@ -904,7 +914,9 @@
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_61fa452cbad7b',
 	'title' => 'Cookies',
 	'fields' => array(
@@ -1191,7 +1203,9 @@
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_62c40ea81ceaf',
 	'title' => 'Default Pan To Broker',
 	'fields' => array(
@@ -1247,7 +1261,9 @@
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_5db867581fa88',
 	'title' => 'Expert Fields',
 	'fields' => array(
@@ -1371,8 +1387,8 @@
 			'label' => 'YouTube of Member',
 			'name' => 'youtube_of_member',
 			'type' => 'text',
-			'instructions' => 'Just put the video code as the example below	&lt;br/>
-e.g.: https://www.youtube.com/watch?v=XXXXXXXXXXX&amp;t=2s &lt;br/> 
+			'instructions' => 'Just put the video code as the example below	<br/>
+e.g.: https://www.youtube.com/watch?v=XXXXXXXXXXX&t=2s <br/> 
 Just put:	XXXXXXXXXXX',
 			'required' => 0,
 			'conditional_logic' => 0,
@@ -1487,25 +1503,6 @@ Just put:	XXXXXXXXXXX',
 			'step' => '',
 		),
 		array(
-			'key' => 'field_5f3d6f867003a',
-			'label' => 'IBAN',
-			'name' => 'iban',
-			'type' => 'text',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'default_value' => '',
-			'placeholder' => '',
-			'prepend' => '',
-			'append' => '',
-			'maxlength' => '',
-		),
-		array(
 			'key' => 'field_5e2f0161b6c9b',
 			'label' => 'Address',
 			'name' => 'expert_address',
@@ -1573,33 +1570,29 @@ Just put:	XXXXXXXXXXX',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
-				'width' => '55',
+				'width' => '85',
 				'class' => '',
 				'id' => '',
 			),
-			'admin_only' => 0,
 			'default_value' => '',
 			'placeholder' => '',
 			'prepend' => '',
 			'append' => '',
 			'maxlength' => '',
-			'readonly' => 0,
-			'disabled' => 0,
 		),
 		array(
 			'key' => 'field_5e2f016fb6c9c',
 			'label' => 'Postal',
 			'name' => 'expert_postal_code',
 			'type' => 'number',
-			'instructions' => 'Put Postal Code, to show corect local in map.',
+			'instructions' => 'Put Postal Code.',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
-				'width' => '45',
+				'width' => '15',
 				'class' => '',
 				'id' => '',
 			),
-			'admin_only' => 0,
 			'default_value' => '',
 			'placeholder' => '',
 			'prepend' => '',
@@ -1609,54 +1602,23 @@ Just put:	XXXXXXXXXXX',
 			'step' => '',
 		),
 		array(
-			'key' => 'field_63f396f7a624d',
-			'label' => 'Show this Member in Map',
-			'name' => 'show_this_member_in_map',
-			'type' => 'radio',
-			'instructions' => 'Enter the correct zip code in the &quot;Postal&quot; field to show the correct location on the map',
-			'required' => 1,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '100',
-				'class' => '',
-				'id' => '',
-			),
-			'admin_only' => 0,
-			'choices' => array(
-				'show_map' => 'Show',
-				'no_show_map' => 'No Show',
-			),
-			'allow_null' => 0,
-			'other_choice' => 0,
-			'default_value' => 'show_map : Show',
-			'layout' => 'horizontal',
-			'return_format' => 'value',
-			'save_other_choice' => 0,
-		),
-		array(
-			'key' => 'field_63f3a1b0eecdb',
-			'label' => 'Show this Member in List Member Network',
-			'name' => 'show_this_member_in_list',
-			'type' => 'radio',
+			'key' => 'field_5f3d6f867003a',
+			'label' => 'IBAN',
+			'name' => 'iban',
+			'type' => 'text',
 			'instructions' => '',
-			'required' => 1,
+			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
-				'width' => '100',
+				'width' => '',
 				'class' => '',
 				'id' => '',
 			),
-			'admin_only' => 0,
-			'choices' => array(
-				'show_list' => 'Show',
-				'no_show_list' => 'No Show',
-			),
-			'allow_null' => 0,
-			'other_choice' => 0,
-			'default_value' => 'show_list : Show',
-			'layout' => 'horizontal',
-			'return_format' => 'value',
-			'save_other_choice' => 0,
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
 		),
 		array(
 			'key' => 'field_5e2f0268b6ca2',
@@ -2504,7 +2466,7 @@ Just put:	XXXXXXXXXXX',
 				'id' => '',
 			),
 			'choices' => array(
-				'I authorize my Pitch to appear on the HomePage of the iDealBiz Experts network website and in the &quot;Meet our Consultants&quot; section' => 'I authorize my Pitch to appear on the HomePage of the iDealBiz Experts network website and in the &quot;Meet our Consultants&quot; section',
+				'I authorize my Pitch to appear on the HomePage of the iDealBiz Experts network website and in the "Meet our Consultants" section' => 'I authorize my Pitch to appear on the HomePage of the iDealBiz Experts network website and in the "Meet our Consultants" section',
 			),
 			'allow_custom' => 0,
 			'default_value' => array(
@@ -2728,7 +2690,7 @@ Just put:	XXXXXXXXXXX',
 					'label' => 'Begin Echelon, example : 0,00',
 					'name' => 'begin_echelon',
 					'type' => 'number',
-					'instructions' => 'Do not use &quot;.&quot;	&quot;$&quot; use only &quot;,&quot; to enter value, example 0,00',
+					'instructions' => 'Do not use "."	"$" use only "," to enter value, example 0,00',
 					'required' => 1,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -2749,7 +2711,7 @@ Just put:	XXXXXXXXXXX',
 					'label' => 'Finish Echelon, example : 10000,00',
 					'name' => 'finish_echelon',
 					'type' => 'number',
-					'instructions' => 'Do not use &quot;.&quot;	&quot;$&quot; use only &quot;,&quot; to enter value, example 10000,00',
+					'instructions' => 'Do not use "."	"$" use only "," to enter value, example 10000,00',
 					'required' => 1,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -2770,7 +2732,7 @@ Just put:	XXXXXXXXXXX',
 					'label' => 'Percentage,	example : 10 our 10,5',
 					'name' => 'percentage',
 					'type' => 'number',
-					'instructions' => 'Place the percentage without &quot;%&quot; symbols and use &quot;,&quot; for percentage fraction',
+					'instructions' => 'Place the percentage without "%" symbols and use "," for percentage fraction',
 					'required' => 1,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -2789,7 +2751,7 @@ Just put:	XXXXXXXXXXX',
 			),
 		),
 		array(
-			'key' => 'field_63cfa3bc4f231',
+			'key' => 'field_63dbcf7da0141',
 			'label' => 'Fixed PPC',
 			'name' => 'fixed_ppc',
 			'type' => 'true_false',
@@ -2809,7 +2771,7 @@ Just put:	XXXXXXXXXXX',
 			'ui_off_text' => '',
 		),
 		array(
-			'key' => 'field_63cfa4564f232',
+			'key' => 'field_63dbcfaca0142',
 			'label' => 'Fixed PPC value',
 			'name' => 'fixed_ppc_value',
 			'type' => 'number',
@@ -2818,7 +2780,7 @@ Just put:	XXXXXXXXXXX',
 			'conditional_logic' => array(
 				array(
 					array(
-						'field' => 'field_63cfa3bc4f231',
+						'field' => 'field_63dbcf7da0141',
 						'operator' => '==',
 						'value' => '1',
 					),
@@ -2935,7 +2897,7 @@ Just put:	XXXXXXXXXXX',
 			'label' => 'Force direct contact with advertiser',
 			'name' => 'rb_force_direct_contact_with_advertiser',
 			'type' => 'true_false',
-			'instructions' => 'Marking this field only for the User &quot;Direct Contact to the Advertiser&quot;, this will forward the payment email from the Lead to the Advertiser when receiving a Business Opportunity contact.',
+			'instructions' => 'Marking this field only for the User "Direct Contact to the Advertiser", this will forward the payment email from the Lead to the Advertiser when receiving a Business Opportunity contact.',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
@@ -3062,7 +3024,9 @@ Just put:	XXXXXXXXXXX',
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_61a8fe5b9021b',
 	'title' => 'Home Page > v2',
 	'fields' => array(
@@ -6678,7 +6642,9 @@ Just put:	XXXXXXXXXXX',
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_5ea1d9dc53049',
 	'title' => 'Homepage Config',
 	'fields' => array(
@@ -6909,7 +6875,7 @@ Just put:	XXXXXXXXXXX',
 				'id' => '',
 			),
 			'default_value' => '',
-			'placeholder' => '[contact-form-7 id=&quot;70544&quot; title=&quot;Submit Newsletter EN&quot;]',
+			'placeholder' => '[contact-form-7 id="70544" title="Submit Newsletter EN"]',
 			'prepend' => '',
 			'append' => '',
 			'maxlength' => '',
@@ -6947,7 +6913,9 @@ Just put:	XXXXXXXXXXX',
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_5ebd2ed04655f',
 	'title' => 'iDealBiz Settings',
 	'fields' => array(
@@ -7126,31 +7094,6 @@ Just put:	XXXXXXXXXXX',
 			'save_other_choice' => 0,
 		),
 		array(
-			'key' => 'field_63f6270284149',
-			'label' => 'Opportunity System',
-			'name' => 'opportunity_system',
-			'type' => 'radio',
-			'instructions' => 'This configuration has the purpose of hiding or showing the links, windows, content and material that are related to the Business Opportunities, for the members that are connected',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '33',
-				'class' => '',
-				'id' => '',
-			),
-			'admin_only' => 0,
-			'choices' => array(
-				0 => 'System Hidden Opportunity',
-				1 => 'System Show Opportunity',
-			),
-			'allow_null' => 0,
-			'other_choice' => 0,
-			'default_value' => 1,
-			'layout' => 'vertical',
-			'return_format' => 'array',
-			'save_other_choice' => 0,
-		),
-		array(
 			'key' => 'field_6037a1654703c',
 			'label' => 'Referral Points in Contact Lead Purchase',
 			'name' => 'referral_points',
@@ -7213,7 +7156,7 @@ Just put:	XXXXXXXXXXX',
 			'step' => '',
 		),
 		array(
-			'key' => 'field_63cfaebd58a7a',
+			'key' => 'field_63dbd217d7877',
 			'label' => 'Service Fixed PPC SR ID of field',
 			'name' => 'sr_input_sr_fixed_ppc_value_id_field',
 			'type' => 'number',
@@ -7221,7 +7164,7 @@ Just put:	XXXXXXXXXXX',
 			'required' => 1,
 			'conditional_logic' => 0,
 			'wrapper' => array(
-				'width' => '33',
+				'width' => '30',
 				'class' => '',
 				'id' => '',
 			),
@@ -7235,12 +7178,12 @@ Just put:	XXXXXXXXXXX',
 			'step' => '',
 		),
 		array(
-			'key' => 'field_63d2aefd75aec',
+			'key' => 'field_63dbd24cd7878',
 			'label' => 'Service Company Parameter 1',
 			'name' => 'sr_company_parameter_1',
 			'type' => 'text',
 			'instructions' => '',
-			'required' => 0,
+			'required' => 1,
 			'conditional_logic' => 0,
 			'wrapper' => array(
 				'width' => '25',
@@ -7257,12 +7200,12 @@ Just put:	XXXXXXXXXXX',
 			'disabled' => 0,
 		),
 		array(
-			'key' => 'field_63d2af3b75aed',
+			'key' => 'field_63dbd267d7879',
 			'label' => 'Service Company Parameter 2',
 			'name' => 'sr_company_parameter_2',
 			'type' => 'text',
 			'instructions' => '',
-			'required' => 0,
+			'required' => 1,
 			'conditional_logic' => 0,
 			'wrapper' => array(
 				'width' => '25',
@@ -7428,7 +7371,9 @@ Just put:	XXXXXXXXXXX',
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_602fe8a450f48',
 	'title' => 'IPost Data',
 	'fields' => array(
@@ -8226,7 +8171,7 @@ Our team will review your business later and provide support if you think there 
 		),
 		array(
 			'key' => 'field_602fe8a471dec',
-			'label' => 'Size m&lt;sup>2&lt;/sup>',
+			'label' => 'Size m<sup>2</sup>',
 			'name' => 'size',
 			'type' => 'number',
 			'instructions' => '',
@@ -8247,7 +8192,7 @@ Our team will review your business later and provide support if you think there 
 		),
 		array(
 			'key' => 'field_602fe8a471e36',
-			'label' => 'Furniture, Fixtures &amp; Equipment',
+			'label' => 'Furniture, Fixtures & Equipment',
 			'name' => 'furniture_fixtures_equipment',
 			'type' => 'number',
 			'instructions' => '',
@@ -8268,7 +8213,7 @@ Our team will review your business later and provide support if you think there 
 		),
 		array(
 			'key' => 'field_602fe8a471e91',
-			'label' => 'Include Furniture, Fixtures &amp; Equipment',
+			'label' => 'Include Furniture, Fixtures & Equipment',
 			'name' => 'include_furniture_fixtures_equipment',
 			'type' => 'checkbox',
 			'instructions' => '',
@@ -8518,7 +8463,7 @@ Our team will review your business later and provide support if you think there 
 		),
 		array(
 			'key' => 'field_602fe8a47233f',
-			'label' => 'Support &amp; Training',
+			'label' => 'Support & Training',
 			'name' => 'support_training',
 			'type' => 'textarea',
 			'instructions' => '',
@@ -8850,7 +8795,9 @@ Our team will review your business later and provide support if you think there 
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_5efb008b3af4d',
 	'title' => 'Jobs Options',
 	'fields' => array(
@@ -8923,8 +8870,8 @@ Our team will review your business later and provide support if you think there 
 					'message' => '',
 					'default_value' => 0,
 					'ui' => 1,
-					'ui_on_text' => '&amp;nbsp;',
-					'ui_off_text' => '&amp;nbsp;',
+					'ui_on_text' => '&nbsp;',
+					'ui_off_text' => '&nbsp;',
 				),
 				array(
 					'key' => 'field_5efb008b6a933',
@@ -9101,7 +9048,9 @@ Our team will review your business later and provide support if you think there 
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_60d2013d4bc53',
 	'title' => 'Listing Category',
 	'fields' => array(
@@ -9179,7 +9128,9 @@ Our team will review your business later and provide support if you think there 
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_5971ebd624134',
 	'title' => 'Listing Data',
 	'fields' => array(
@@ -10207,7 +10158,7 @@ Our team will review your business later and provide support if you think there 
 		),
 		array(
 			'key' => 'field_59720d7bc7340',
-			'label' => 'Size m&lt;sup>2&lt;/sup>',
+			'label' => 'Size m<sup>2</sup>',
 			'name' => 'size',
 			'type' => 'number',
 			'instructions' => '',
@@ -10228,7 +10179,7 @@ Our team will review your business later and provide support if you think there 
 		),
 		array(
 			'key' => 'field_5972093befe18',
-			'label' => 'Furniture, Fixtures &amp; Equipment',
+			'label' => 'Furniture, Fixtures & Equipment',
 			'name' => 'furniture_fixtures_equipment',
 			'type' => 'number',
 			'instructions' => '',
@@ -10249,7 +10200,7 @@ Our team will review your business later and provide support if you think there 
 		),
 		array(
 			'key' => 'field_5972094fefe19',
-			'label' => 'Include Furniture, Fixtures &amp; Equipment',
+			'label' => 'Include Furniture, Fixtures & Equipment',
 			'name' => 'include_furniture_fixtures_equipment',
 			'type' => 'checkbox',
 			'instructions' => '',
@@ -10499,7 +10450,7 @@ Our team will review your business later and provide support if you think there 
 		),
 		array(
 			'key' => 'field_59720dc6c7344',
-			'label' => 'Support &amp; Training',
+			'label' => 'Support & Training',
 			'name' => 'support_training',
 			'type' => 'textarea',
 			'instructions' => '',
@@ -10831,7 +10782,9 @@ Our team will review your business later and provide support if you think there 
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_60ba33d9e709d',
 	'title' => 'Listing Options',
 	'fields' => array(
@@ -10897,7 +10850,9 @@ Our team will review your business later and provide support if you think there 
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_6197dcdea0f0b',
 	'title' => 'Login App',
 	'fields' => array(
@@ -10955,7 +10910,9 @@ Our team will review your business later and provide support if you think there 
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_60c70a5eb2ee2',
 	'title' => 'Member Config',
 	'fields' => array(
@@ -11021,7 +10978,9 @@ Our team will review your business later and provide support if you think there 
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_5e569bf2ed89d',
 	'title' => 'Page Background',
 	'fields' => array(
@@ -11111,7 +11070,9 @@ Our team will review your business later and provide support if you think there 
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_5fb529491fc29',
 	'title' => 'Partner Fields',
 	'fields' => array(
@@ -11151,7 +11112,9 @@ Our team will review your business later and provide support if you think there 
 	'hide_on_screen' => '',
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_614b30da37ec3',
 	'title' => 'Post Content',
 	'fields' => array(
@@ -11207,7 +11170,9 @@ Our team will review your business later and provide support if you think there 
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_5ecbe481e6e2b',
 	'title' => 'Purchase Options',
 	'fields' => array(
@@ -11280,8 +11245,8 @@ Our team will review your business later and provide support if you think there 
 					'message' => '',
 					'default_value' => 0,
 					'ui' => 1,
-					'ui_on_text' => '&amp;nbsp;',
-					'ui_off_text' => '&amp;nbsp;',
+					'ui_on_text' => '&nbsp;',
+					'ui_off_text' => '&nbsp;',
 				),
 				array(
 					'key' => 'field_5ecbe4852dcac',
@@ -11444,7 +11409,9 @@ Our team will review your business later and provide support if you think there 
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_6399f6db3e0f3',
 	'title' => 'Recommended Business',
 	'fields' => array(
@@ -12200,7 +12167,9 @@ Our team will review your business later and provide support if you think there 
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_61fd152c7daf2',
 	'title' => 'Reditect',
 	'fields' => array(
@@ -12256,7 +12225,9 @@ Our team will review your business later and provide support if you think there 
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_6183a74e9a115',
 	'title' => 'Sell Business/Add Wanted Options',
 	'fields' => array(
@@ -12319,7 +12290,9 @@ Our team will review your business later and provide support if you think there 
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_5ec51102330e2',
 	'title' => 'Sell Options',
 	'fields' => array(
@@ -12392,8 +12365,8 @@ Our team will review your business later and provide support if you think there 
 					'message' => '',
 					'default_value' => 0,
 					'ui' => 1,
-					'ui_on_text' => '&amp;nbsp;',
-					'ui_off_text' => '&amp;nbsp;',
+					'ui_on_text' => '&nbsp;',
+					'ui_off_text' => '&nbsp;',
 				),
 				array(
 					'key' => 'field_5ec511053d8bf',
@@ -12556,7 +12529,9 @@ Our team will review your business later and provide support if you think there 
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_5d7acf521cbb4',
 	'title' => 'Service Card',
 	'fields' => array(
@@ -12598,7 +12573,9 @@ Our team will review your business later and provide support if you think there 
 	'active' => true,
 	'description' => '',
 	'modified' => 1568329603,
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_5c93a630b2532',
 	'title' => 'Service Contracts',
 	'fields' => array(
@@ -12831,7 +12808,9 @@ Our team will review your business later and provide support if you think there 
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_5d7accd480dbf',
 	'title' => 'Service Details',
 	'fields' => array(
@@ -12892,7 +12871,9 @@ Our team will review your business later and provide support if you think there 
 	'active' => true,
 	'description' => '',
 	'modified' => 1570794676,
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_5c9b698e6c79c',
 	'title' => 'Service Message',
 	'fields' => array(
@@ -12975,7 +12956,9 @@ Our team will review your business later and provide support if you think there 
 	'active' => true,
 	'description' => '',
 	'modified' => 1554113425,
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_5c9367f9d21b6',
 	'title' => 'Service Request',
 	'fields' => array(
@@ -13395,7 +13378,7 @@ Our team will review your business later and provide support if you think there 
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
-				'width' => '20',
+				'width' => '10',
 				'class' => '',
 				'id' => '',
 			),
@@ -13624,7 +13607,7 @@ Our team will review your business later and provide support if you think there 
 			'disabled' => 0,
 		),
 		array(
-			'key' => 'field_63cfa8e00c242',
+			'key' => 'field_63dbd071dd0de',
 			'label' => 'Fixed ppc value',
 			'name' => 'sr_fixed_ppc_value',
 			'type' => 'number',
@@ -13646,7 +13629,7 @@ Our team will review your business later and provide support if you think there 
 			'step' => '',
 		),
 		array(
-			'key' => 'field_63d3a902dd5e7',
+			'key' => 'field_63dbd0a2dd0df',
 			'label' => 'Company Parameter 1',
 			'name' => 'sr_company_par_1',
 			'type' => 'text',
@@ -13668,7 +13651,7 @@ Our team will review your business later and provide support if you think there 
 			'disabled' => 0,
 		),
 		array(
-			'key' => 'field_63d3a987dd5e8',
+			'key' => 'field_63dbd0bddd0e0',
 			'label' => 'Company Parameter 2',
 			'name' => 'sr_company_par_2',
 			'type' => 'text',
@@ -13893,7 +13876,9 @@ Our team will review your business later and provide support if you think there 
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_5e8346af477be',
 	'title' => 'Social Networks',
 	'fields' => array(
@@ -14010,7 +13995,9 @@ Our team will review your business later and provide support if you think there 
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_60ad1d9097e3a',
 	'title' => 'Sub Homepage Config',
 	'fields' => array(
@@ -14383,8 +14370,8 @@ Our team will review your business later and provide support if you think there 
 					'label' => 'Highlight',
 					'name' => 'highlight',
 					'type' => 'true_false',
-					'instructions' => '&quot;Enabled&quot; only displays ads in, &quot;Highlight&quot;.
-&quot;Disabled&quot; displays &quot;ALL&quot; + &quot;Highlight&quot;',
+					'instructions' => '"Enabled" only displays ads in, "Highlight".
+"Disabled" displays "ALL" + "Highlight"',
 					'required' => 0,
 					'conditional_logic' => array(
 						array(
@@ -14641,8 +14628,8 @@ Put -1 to show all listings.',
 					'label' => '1-Highlight',
 					'name' => 'highlight_1',
 					'type' => 'true_false',
-					'instructions' => '&quot;Enabled&quot; only displays ads in, &quot;Highlight&quot;.
-&quot;Disabled&quot; displays &quot;ALL&quot; + &quot;Highlight&quot;',
+					'instructions' => '"Enabled" only displays ads in, "Highlight".
+"Disabled" displays "ALL" + "Highlight"',
 					'required' => 0,
 					'conditional_logic' => array(
 						array(
@@ -14899,8 +14886,8 @@ Put -1 to show all listings.',
 					'label' => '2-Highlight',
 					'name' => 'highlight_2',
 					'type' => 'true_false',
-					'instructions' => '&quot;Enabled&quot; only displays ads in, &quot;Highlight&quot;.
-&quot;Disabled&quot; displays &quot;ALL&quot; + &quot;Highlight&quot;',
+					'instructions' => '"Enabled" only displays ads in, "Highlight".
+"Disabled" displays "ALL" + "Highlight"',
 					'required' => 0,
 					'conditional_logic' => array(
 						array(
@@ -15157,8 +15144,8 @@ Put -1 to show all listings.',
 					'label' => '3-Highlight',
 					'name' => 'highlight_3',
 					'type' => 'true_false',
-					'instructions' => '&quot;Enabled&quot; only displays ads in, &quot;Highlight&quot;.
-&quot;Disabled&quot; displays &quot;ALL&quot; + &quot;Highlight&quot;',
+					'instructions' => '"Enabled" only displays ads in, "Highlight".
+"Disabled" displays "ALL" + "Highlight"',
 					'required' => 0,
 					'conditional_logic' => array(
 						array(
@@ -16296,7 +16283,7 @@ Put -1 to show all listings.',
 						'id' => '',
 					),
 					'default_value' => '',
-					'placeholder' => '[contact-form-7 id=&quot;70544&quot; title=&quot;Submit Newsletter EN&quot;]',
+					'placeholder' => '[contact-form-7 id="70544" title="Submit Newsletter EN"]',
 					'prepend' => '',
 					'append' => '',
 					'maxlength' => '',
@@ -17251,7 +17238,9 @@ Put -1 to show all listings.',
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_5e9484bf0ccf3',
 	'title' => 'Support Services',
 	'fields' => array(
@@ -17464,7 +17453,9 @@ Put -1 to show all listings.',
 	),
 	'active' => true,
 	'description' => '',
-));acf_add_local_field_group(array(
+));
+
+acf_add_local_field_group(array(
 	'key' => 'group_5eccf344beda1',
 	'title' => 'Wanted Data',
 	'fields' => array(
@@ -17939,4 +17930,6 @@ Our team will review your business later and provide support if you think there 
 	),
 	'active' => true,
 	'description' => '',
-));endif;
+));
+
+endif;
