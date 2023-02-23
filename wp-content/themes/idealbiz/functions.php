@@ -43,12 +43,8 @@ add_action( 'wp_enqueue_scripts', 'theme_scripts' );
    ========================================= */
 define('WEBSITE_SYSTEM',get_field('website_sr_system', 'options')["value"]);
 define('LISTING_SYSTEM',get_field('listing_system', 'options')["value"]);
-//define('PAY_LEAD',get_field('sr_mode_pay_lead', 'options')["value"]);
-//define('RECOMMENDED_PAY_LEAD',get_field('rb_recommended_mode_pay_lead', 'options')["value"]);
 define('ID_FORM_RECOM_BUSINESS',get_field('id_gform_recommended_business', 'option'));
-
-
-//var_dump(WEBSITE_SYSTEM.' e '.LISTING_SYSTEM);
+define('OPPORTUNITY_SYSTEM',get_field('opportunity_system', 'option')["value"]);
 
 /* get strign between two strings */
 function get_string_between($string, $start, $end){
@@ -4166,7 +4162,7 @@ function meberPITModal($srid)
     $idealbiz_logo   = get_option( 'woocommerce_email_header_image' );
 
     $cl_logo = '<div class="cl_pop_logo" style="text-align:center;">
-    <img src="'.$idealbiz_logo.'" alt="Logo" width="200" height="100">
+    <img src="'.$idealbiz_logo.'" alt="Logo" width="" height="100">
     </div>
     <div class="cl_img_mobile w-100px h-100px b-r o-hidden no-decoration cl_mobile_show">
     <img class="w-100 h-100 object-cover" src="' . get_field('foto')['sizes']['medium'] . '">

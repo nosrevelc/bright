@@ -25,22 +25,34 @@ function custom_remove_downloads_my_account( $items ) {
 	return $items;
 }
 
+function cl_checkEndpoint($cl_endpoint){
 
+	$cl_block_endpoint = array(
+		'',
+		'dashboard'
+	);
+
+	if(OPPORTUNITY_SYSTEM != '1'){ 
+		array_push($cl_block_endpoint, 'mylistings','favorites','chat');
+	}
+
+	foreach($cl_block_endpoint as $cl_true){
+		if($cl_endpoint === $cl_true){
+			return 'false';
+		}
+	}
+
+}
 ?>
-
-
-
 <div class="woocommerce-MyAccount-navigation">
 	<div class="swiper-nav p-relative">
 		<div class="swiper-wrapper">
 			<?php foreach ( wc_get_account_menu_items() as $endpoint => $label ) : ?>
-				<?php if($endpoint != ''){;?>
-					<?php if($endpoint != 'dashboard'){;?>
-					
+				<?php 
+				if(cl_checkEndpoint($endpoint) != 'false'){?>				
 				<div class="swiper-slide h-211px stroke dropshadow <?php echo wc_get_account_menu_item_classes( $endpoint ); ?>">
 					<a href="<?php echo esc_url( wc_get_account_endpoint_url( $endpoint ) ); ?>"><?php echo esc_html( $label ); ?></a>
 				</div>
-				<?php } ?>
 				<?php } ?>
 			<?php endforeach; ?>
 		</div>	

@@ -100,6 +100,7 @@ $first_name   = false;
             </li> -->
             <!-- FINAL MENU POSTS -->
         <!-- Broker no menu -->
+        <?php if(OPPORTUNITY_SYSTEM == '1'){ ?>
         <li class="hex-a55df1 menu-item">
                         <a data-iconbg="#a55df1" href="<?php echo getLinkByTemplate('broker-account.php'); ?>" title="<?php _e('Broker Account', 'idealbiz'); ?>">
                             <i class="icon icon-especialistas"></i>
@@ -121,7 +122,7 @@ $first_name   = false;
                             
                         </a>
                     </li>
-
+                    <?php } ?>
 
             <!-- NPMM -SUSPENÇO DIA 05/12/2022 PELA REORGANIZAÇÃO DE MENUS FEITA POR DR. ALBERTO -->                    
             <!-- <li class="hex-a55df1 menu-item">
@@ -129,11 +130,13 @@ $first_name   = false;
                     <i class="icon icon-vender"></i> <?php _e('My Listings', 'idealbiz'); ?>
                 </a>
             </li> -->
+            <?php if(OPPORTUNITY_SYSTEM == '1'){ ?>
             <li class="hex-a55df1 menu-item">
                 <a data-iconbg="#a55df1" href="<?php echo wc_get_endpoint_url('favorites', '', get_permalink(get_option('woocommerce_myaccount_page_id'))) ?>" title="<?php _e('My Favorites', 'idealbiz'); ?>">
                     <i class="icofont-heart" style="line-height: 30px;"></i> <?php _e('My Favorites', 'idealbiz'); ?>
                 </a>
             </li>
+            <?php } ?>
             <?php
             $sr = new \WP_Query(
                 array(

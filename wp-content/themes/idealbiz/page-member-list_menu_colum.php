@@ -1,12 +1,7 @@
 <?php
-// Template Name: Member List
+// Template Name: Member List Menu Colum
 
-//NPMM - Código que checa e força a logar
-if (!is_user_logged_in()) {
-    $redirect = ( strpos( $_SERVER['REQUEST_URI'], '/options.php' ) && wp_get_referer() ) ? wp_get_referer() : set_url_scheme( 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] );
-    wp_redirect(get_site_url().'/'.pll_languages_list()[0].'/login-register/?redirect_to='.$redirect );
- }
- 
+
 
 get_header();
 
@@ -109,13 +104,148 @@ $experts = new WP_Query($args);
 
 
 
-<div class="cl_display justify-content-center d-none">
+<div class="cl_display justify-content-center">
     <div class="cl_mobile_show text-center p-b-30">
         <h1><?php echo get_the_title($pageid) ?></h1>
     </div>
-   
+    <div class="experts-container"><?php cl_voltar(); ?></div>
 
- 
+    <div class="cl_menu_membro ">
+
+        <div class="pull-right d-md-none">
+            <?php if ($phone = get_field('phone', 'option')) : ?>
+                <a href="tel:<?php echo $phone['call_code'] . $phone['number']; ?>" class="light-blue--color phone-number-right"><?php echo $phone['number']; ?></a>
+            <?php endif; ?>
+            <a class="greyer--color" href="<?php echo get_permalink(pll_get_post(get_page_by_path('contacts')->ID)); ?>"><?php _e('Contacts', 'idealbiz'); ?></a>
+        </div>
+
+        <ul class="sub-menu box black--color white--background">
+            <li class="hex-a55df1 menu-item">
+                <div class="icoMiddle">
+                    <a data-iconbg="#a55df1" href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>" title="<?php _e('My Account', 'idealbiz'); ?>">
+                        <i class="icon icon-perfil"></i> <?php _e('My Account', 'idealbiz'); ?>
+                    </a>
+                </div>
+            </li>
+
+            <li class="hex-a55df1 menu-item d-none">
+                <div class="icoMiddle">
+                    <a data-iconbg="#a55df1" href="<?php echo getLinkByTemplate('premium-buyer.php'); ?>" title="<?php _e('Premium Buyer', 'idealbiz'); ?>">
+
+                        <?php
+                        $premium_buyer = isPremiumBuyer();
+                        if (is_array($premium_buyer) && $premium_buyer['status'] == 3) {
+                            echo '<i class="icofont-check valid-check-plan green--color"></i>';
+                        } elseif (is_array($premium_buyer) && $premium_buyer['status'] == 2) {
+                            echo '<i class="icofont-check valid-check-plan yellow--color"></i>';
+                        } else {
+                        }
+                        ?>
+                        <?php _e('Premium Buyer', 'idealbiz'); ?> echo '<div class="">
+                            <h1>' . get_the_title($pageid) . '</h1>
+                        </div>';
+                    </a>
+                </div>
+            </li>
+            <!-- INICIO MENU POSTS -->
+            <li class="hex-a55df1 menu-item">
+                <div class="icoMiddle text-secondary">
+                    <!--                 <a data-iconbg="#a55df1" href="<?php echo getLinkByTemplate('post-content.php'); ?>" title="<?php _e('Post Content', 'idealbiz'); ?>">
+                   
+                    <?php _e('Panel Post Content', 'idealbiz'); ?><span class="icon dashicons dashicons-welcome-write-blog"></span>
+                    
+                </a> -->
+                    <span class="icon dashicons dashicons-welcome-write-blog"></span><?php _e('Panel Post Content', 'idealbiz'); ?>
+                </div>
+            </li>
+            <!-- FINAL MENU POSTS -->
+            <!-- Broker no menu -->
+            <!--         <li class="hex-a55df1 menu-item">
+                        <a data-iconbg="#a55df1" href="<?php echo getLinkByTemplate('broker-account.php'); ?>" title="<?php _e('Broker Account', 'idealbiz'); ?>">
+                            
+                            <?php
+                            $broker = isBroker();
+                            //echo  pll_current_language();
+                            if (array_key_exists('status', $broker)) {
+                                if (is_array($broker) && $broker['status'] == 3) {
+                                    echo '<i class="icofont-check valid-check-plan green--color"></i>';
+                                    _e('Broker Account', 'idealbiz');
+                                } elseif (is_array($broker) && $broker['status'] == 2) {
+                                    echo '<i class="icofont-check valid-check-plan yellow--color"></i>';
+                                    _e('Broker Account', 'idealbiz');
+                                }
+                            } else {
+                                _e('Add Broker Subscription', 'idealbiz');
+                            }
+                            ?>
+                            
+                        </a>
+                    </li> -->
+
+    <?php if(OPPORTUNITY_SYSTEM == '1'){ ?>
+            <li class="hex-a55df1 menu-item">
+                <div class="icoMiddle">
+                    <a data-iconbg="#a55df1" href="<?php echo wc_get_endpoint_url('mylistings', '', get_permalink(get_option('woocommerce_myaccount_page_id'))) ?>" title="<?php _e('My Listings', 'idealbiz'); ?>">
+                        <i class="icon icon-vender"></i><?php _e('My Listings', 'idealbiz'); ?>
+                    </a>
+                </div>
+            </li>
+            <li class="hex-a55df1 menu-item">
+                <div class="icoMiddle">
+                    <a data-iconbg="#a55df1" href="<?php echo wc_get_endpoint_url('favorites', '', get_permalink(get_option('woocommerce_myaccount_page_id'))) ?>" title="<?php _e('My Favorites', 'idealbiz'); ?>">
+                        <i class="icon icofont-heart"></i> <?php _e('My Favorites', 'idealbiz'); ?>
+                    </a>
+                </div>
+            </li>
+    <?php } ?>        
+            <?php
+            $sr = new \WP_Query(
+                array(
+                    'post_type'      => 'service_request',
+                    'posts_per_page' => 1,
+                )
+            );
+            //if ($sr->have_posts()) {
+            ?>
+            <li class="hex-a55df1 menu-item">
+                <div class="icoMiddle">
+                    <a data-iconbg="#a55df1" href="<?php echo wc_get_endpoint_url('service_request', '', get_permalink(get_option('woocommerce_myaccount_page_id'))) . '?home=1'; ?>">
+                        <span class="icon dashicons dashicons-admin-generic"></span><?php _e('Service Requests', 'idealbiz'); ?>
+                    </a>
+                </div>
+            </li>
+            <?php //} 
+            ?>
+    <?php if(OPPORTUNITY_SYSTEM == '1'){ ?>
+            <li class="hex-a55df1 menu-item">
+                <div class="icoMiddle">
+                    <a data-iconbg="#a55df1" href="<?php echo getLinkByTemplate('RecommendedBusiness.php') . '?recommended=1'; ?>">
+
+                        <span class="icon dashicons dashicons-money-alt"></span><?php _e('_str Business opportunity', 'idealbiz'); ?>
+                    </a>
+                </div>
+            </li>
+    <?php } ?>
+            <li class="hex-a55df1 menu-item">
+                <div class="icoMiddle">
+                    <a data-iconbg="#a55df1" href="<?php echo $current_url; ?>">
+
+                        <span class="icon dashicons dashicons-editor-removeformatting"></span><?php _e('_str Clean Filter', 'idealbiz'); ?>
+                    </a>
+                </div>
+            </li>
+
+            <li class="hex-a55df1 menu-item">
+                <div class="icoMiddle">
+                    <a href="<?php echo esc_url(wp_logout_url(home_url('/'))) ?>" title="<?php echo esc_attr__('Log out', 'idealbiz'); ?>" class="account-nav__link">
+                        <span class="icon dashicons dashicons-exit"></span><?php esc_html_e('Log out', 'idealbiz') ?>
+                    </a>
+                </div>
+            </li>
+
+
+        </ul>
+    </div>
 
 
     <div>
@@ -163,152 +293,12 @@ $experts = new WP_Query($args);
             <div class="row">
 
 
-                <div class="experts">
+                <div class="col-md-9 experts">
 
                     <div>
-                        <div class="cl_w_member">
-                        <div class="experts-container"><?php cl_voltar(); ?></div>
-<div class="cl_menu_membro ">
-
-<div class="pull-right d-md-none">
-    <?php if ($phone = get_field('phone', 'option')) : ?>
-        <a href="tel:<?php echo $phone['call_code'] . $phone['number']; ?>" class="light-blue--color phone-number-right"><?php echo $phone['number']; ?></a>
-    <?php endif; ?>
-    <a class="greyer--color" href="<?php echo get_permalink(pll_get_post(get_page_by_path('contacts')->ID)); ?>"><?php _e('Contacts', 'idealbiz'); ?></a>
-</div>
-
-<ul class="sub-menu box black--color white--background">
-    <li class="hex-a55df1 menu-item">
-        <div class="icoMiddle">
-            <a data-iconbg="#a55df1" href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>" title="<?php _e('My Account', 'idealbiz'); ?>">
-                <span class="dashicons dashicons-admin-users"></span> <?php _e('My Account', 'idealbiz'); ?>
-            </a>
-        </div>
-    </li>
-
-    <li class="hex-a55df1 menu-item d-none">
-        <div class="icoMiddle">
-            <a data-iconbg="#a55df1" href="<?php echo getLinkByTemplate('premium-buyer.php'); ?>" title="<?php _e('Premium Buyer', 'idealbiz'); ?>">
-
-                <?php
-                $premium_buyer = isPremiumBuyer();
-                if (is_array($premium_buyer) && $premium_buyer['status'] == 3) {
-                    echo '<i class="icofont-check valid-check-plan green--color"></i>';
-                } elseif (is_array($premium_buyer) && $premium_buyer['status'] == 2) {
-                    echo '<i class="icofont-check valid-check-plan yellow--color"></i>';
-                } else {
-                }
-                ?>
-                <?php _e('Premium Buyer', 'idealbiz'); ?> echo '<div class="">
-                    <h1>' . get_the_title($pageid) . '</h1>
-                </div>';
-            </a>
-        </div>
-    </li>
-    <!-- INICIO MENU POSTS -->
-    <li class="hex-a55df1 menu-item d-none">
-        <div class="icoMiddle text-secondary">
-            <!--                 <a data-iconbg="#a55df1" href="<?php echo getLinkByTemplate('post-content.php'); ?>" title="<?php _e('Post Content', 'idealbiz'); ?>">
-           
-            <?php _e('Panel Post Content', 'idealbiz'); ?><span class="icon dashicons dashicons-welcome-write-blog"></span>
-            
-        </a> -->
-            <span class="icon dashicons dashicons-welcome-write-blog"></span><?php _e('Panel Post Content', 'idealbiz'); ?>
-        </div>
-    </li>
-    <!-- FINAL MENU POSTS -->
-    <!-- Broker no menu -->
-    <!--         <li class="hex-a55df1 menu-item">
-                <a data-iconbg="#a55df1" href="<?php echo getLinkByTemplate('broker-account.php'); ?>" title="<?php _e('Broker Account', 'idealbiz'); ?>">
-                    
-                    <?php
-                    $broker = isBroker();
-                    //echo  pll_current_language();
-                    if (array_key_exists('status', $broker)) {
-                        if (is_array($broker) && $broker['status'] == 3) {
-                            echo '<i class="icofont-check valid-check-plan green--color"></i>';
-                            _e('Broker Account', 'idealbiz');
-                        } elseif (is_array($broker) && $broker['status'] == 2) {
-                            echo '<i class="icofont-check valid-check-plan yellow--color"></i>';
-                            _e('Broker Account', 'idealbiz');
-                        }
-                    } else {
-                        _e('Add Broker Subscription', 'idealbiz');
-                    }
-                    ?>
-                    
-                </a>
-            </li> -->
-
-
-
-    <li class="hex-a55df1 menu-item d-none">
-        <div class="icoMiddle">
-            <a data-iconbg="#a55df1" href="<?php echo wc_get_endpoint_url('mylistings', '', get_permalink(get_option('woocommerce_myaccount_page_id'))) ?>" title="<?php _e('My Listings', 'idealbiz'); ?>">
-                <i class="icon icon-vender"></i><?php _e('My Listings', 'idealbiz'); ?>
-            </a>
-        </div>
-    </li>
-    <li class="hex-a55df1 menu-item d-none">
-        <div class="icoMiddle">
-            <a data-iconbg="#a55df1" href="<?php echo wc_get_endpoint_url('favorites', '', get_permalink(get_option('woocommerce_myaccount_page_id'))) ?>" title="<?php _e('My Favorites', 'idealbiz'); ?>">
-                <i class="icon icofont-heart"></i> <?php _e('My Favorites', 'idealbiz'); ?>
-            </a>
-        </div>
-    </li>
-    <?php
-    $sr = new \WP_Query(
-        array(
-            'post_type'      => 'service_request',
-            'posts_per_page' => 1,
-        )
-    );
-    //if ($sr->have_posts()) {
-    ?>
-    <li class="hex-a55df1 menu-item">
-        <div class="icoMiddle">
-            <a data-iconbg="#a55df1" href="<?php echo wc_get_endpoint_url('service_request', '', get_permalink(get_option('woocommerce_myaccount_page_id'))) . '?home=1'; ?>">
-                <span class="icon dashicons dashicons-admin-generic"></span><?php _e('Service Requests', 'idealbiz'); ?>
-            </a>
-        </div>
-    </li>
-    <?php //} 
-    ?>
-
-    <?php if(OPPORTUNITY_SYSTEM == '1'){ ?>
-        <li class="hex-a55df1 menu-item">
-            <div class="icoMiddle">
-                <a data-iconbg="#a55df1" href="<?php echo getLinkByTemplate('RecommendedBusiness.php') . '?recommended=1'; ?>">
-
-                    <span class="icon dashicons dashicons-money-alt"></span><?php _e('_str Business opportunity', 'idealbiz'); ?>
-                </a>
-            </div>
-        </li>
-    <?php } ?>
-
-    <li class="hex-a55df1 menu-item">
-        <div class="icoMiddle">
-            <a data-iconbg="#a55df1" href="<?php echo $current_url; ?>">
-
-                <span class="icon dashicons dashicons-editor-removeformatting"></span><?php _e('_str Clean Filter', 'idealbiz'); ?>
-            </a>
-        </div>
-    </li>
-
-    <li class="hex-a55df1 menu-item">
-        <div class="icoMiddle">
-            <a href="<?php echo esc_url(wp_logout_url(home_url('/'))) ?>" title="<?php echo esc_attr__('Log out', 'idealbiz'); ?>" class="account-nav__link">
-                <span class="icon dashicons dashicons-exit"></span><?php esc_html_e('Log out', 'idealbiz') ?>
-            </a>
-        </div>
-    </li>
-
-
-</ul>
-</div>
+                        <div class="woocommerce w-100">
                             <div>
 
-                            
                                 <?php
                                 $show_map = true;
                                 if ($show_map == true) {
@@ -322,9 +312,7 @@ $experts = new WP_Query($args);
                                 ?>
 
                             </div>
-                            
-
-                                <div class="d-flex search-bar medium-width p-t-5 p-b-5  m-0-auto toggle-search"       id="site-search">
+                            <div class="d-flex search-bar medium-width p-t-5 p-b-5  m-0-auto toggle-search" id="site-search">
                                     <p class="d-none"><?php _e('Search ', 'idealbiz'); ?></p>
 
                                     <form role="search" method="get" id="search-form--header" class=" cl_search search-form--header w-100" action="<?php echo $current_url; ?>">
@@ -389,7 +377,6 @@ $experts = new WP_Query($args);
 
                                     </form>
                                 </div>
-
                             <div class="d-flex">
                                 <div>
                                     <?php get_field('localation_member', 'options');
@@ -446,12 +433,6 @@ $experts = new WP_Query($args);
 <?php get_footer(); ?>
 
 <style>
-    .div_flag{
-    width: 25% !important;
-    }
-.cl_title {
-    width: 35% !important;
-}
     .cl_h7{
     padding-left: 20px;
     }
@@ -487,21 +468,17 @@ $experts = new WP_Query($args);
         display: block;
     }
 
-    .search-form--header .text-global-search {
-        width: 39%;
-    }
     .search-form--header .expert-location--select {
-        width: 27%;
+        width: 35%;
     }
+
     .search-form--header .listing_cat--select {
-        width: 26%;
+        width: 55%;
     }
 
-    .search-form--header{
-        -webkit-justify-content:unset;
-        justify-content: unset;
+    .search-form--header .text-global-search {
+        width: 85%;
     }
-
 
     .cl_order a {
         padding-left: 30px;
@@ -517,8 +494,8 @@ $experts = new WP_Query($args);
 
     .cl_search {
         z-index: 999;
-        min-width: 100%;
-        /* margin: 0 auto; */
+        max-width: 97%;
+        margin: 0 auto;
 
     }
 
@@ -528,15 +505,15 @@ $experts = new WP_Query($args);
 
     }
 
-    .cl_w_member{
-            min-width: 1150px;
-            margin: auto;
-        }
+    .col-md-9 {
+        max-width: 100% !important;
+        /* right: -220px !important; */
+    }
 
     .cl_menu_membro {
         /* text-align: right; */
         list-style-type: none;
-        /* padding-top: 215px; */
+        padding-top: 215px;
         /* padding-right: 20px; */
 
     }
@@ -545,24 +522,20 @@ $experts = new WP_Query($args);
         list-style-type: none;
         font-size: 1.2em;
         border: 1px solid #cccccc;
-        /* border-radius: 10px; */
+        border-radius: 10px;
         padding-top: 15px;
         padding-bottom: 15px;
         /*  position: fixed;
         z-index: 999; */
-        display: flex;
-        flex-direction:row;
-        justify-content:space-around;
 
 
     }
 
     .cl_menu_membro>.sub-menu li {
-        /* padding-bottom: 7px; */
-        /* margin-top: 7px; */
+        padding-bottom: 7px;
+        margin-top: 7px;
         margin-right: 30px;
         margin-left: -23px;
-        font-weight: bold;
 
     }
 
@@ -572,8 +545,7 @@ $experts = new WP_Query($args);
 
     .icon {
         font-size: 1.6em;
-        margin-right: 5px;
-        margin-left: 20px;
+        margin-right: 20px;
     }
 
     .expert-card:hover {
@@ -588,16 +560,6 @@ $experts = new WP_Query($args);
     }
 
     @media only screen and (max-width: 768px) {
-        .icon {
-        font-size: 1.6em;
-        margin-right: 5px;
-        margin-left: unset;
-    }
-        .cl_w_member{
-            min-width: 107%;
-            margin: auto;
-            padding-left: 20px;
-        }
         .cl_pop_pitch{
         padding: 5px;
         font-size: 0.8em;
@@ -649,7 +611,6 @@ $experts = new WP_Query($args);
         .search-form--header div {
             margin-bottom: 10px;
             text-align: center;
-
         }
 
         .cl_search {
@@ -672,7 +633,7 @@ $experts = new WP_Query($args);
 
         .cl_menu_membro {
             margin: auto;
-            width: 100%;
+            width: 80%;
         }
 
         .cl_menu_membro {
@@ -684,18 +645,8 @@ $experts = new WP_Query($args);
         .cl_menu_membro>.sub-menu {
 
             font-size: 0.9em;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-
 
         }
-        .cl_menu_membro>.sub-menu li {
-        padding-bottom: 7px;
-        margin-top: 7px;
-        border-bottom: 1px #ccc solid;
-
-    }
 
     }
 </style>
