@@ -25,7 +25,7 @@ function custom_remove_downloads_my_account( $items ) {
 	return $items;
 }
 
-function cl_checaEndpoint($cl_endpoint){
+function cl_checkEndpoint($cl_endpoint){
 
 	$cl_block_endpoint = array(
 		'',
@@ -49,7 +49,7 @@ function cl_checaEndpoint($cl_endpoint){
 		<div class="swiper-wrapper">
 			<?php foreach ( wc_get_account_menu_items() as $endpoint => $label ) : ?>
 				<?php 
-				if(cl_checaEndpoint($endpoint) != 'false'){?>				
+				if(cl_checkEndpoint($endpoint) != 'false'){?>				
 				<div class="swiper-slide h-211px stroke dropshadow <?php echo wc_get_account_menu_item_classes( $endpoint ); ?>">
 					<a href="<?php echo esc_url( wc_get_account_endpoint_url( $endpoint ) ); ?>"><?php echo esc_html( $label ); ?></a>
 				</div>
