@@ -82,7 +82,7 @@ foreach($experts->posts as $cl_expert){
 
             /* var_dump($lis_cat); */
 
-    $address = $expert_address;
+    $address = $expert_address.','.$expert_city.','.$expert_postal_code;
 
 
 $url = "https://maps.google.com/maps/api/geocode/json?address=".urlencode($address).'&key='.$key;
@@ -182,11 +182,11 @@ $cl_Json_array = json_encode($cl_Json_array);
             var infowindow = new google.maps.InfoWindow();
             var marker, i;
             for (i = 0; i < locations.length; i++) {
-                var iconBase = 'https://idealbiz.io/pt/wp-content/uploads/sites/86/2021/10/';
+                var iconBase = 'https://tgs-business.io/pt/wp-content/uploads/sites/395/2023/02/';
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(locations[i][1], locations[i][2]),
                     map: map,
-                    icon: iconBase + 'pin-idealbiz-blue.png'
+                    icon: iconBase + 'pin-tgs.png'
                 });
                 google.maps.event.addListener(marker, 'click', (function (marker, i) {
                     return function () {

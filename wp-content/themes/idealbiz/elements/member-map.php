@@ -6,6 +6,8 @@ $key = 'AIzaSyCETxZ_RlpLL1i-PMC2VGRWEIQD42tiN6w';
 ?>
 
 <?php
+
+
 $includeIds = array();
 if (WEBSITE_SYSTEM == '1') {
     $experts_with_fees = getExpertsWithActiveFees();
@@ -29,7 +31,7 @@ if (WEBSITE_SYSTEM == '1') {
 
                                                         );
 
-                                                        $experts = new WP_Query($args);
+                                                        $experts_map = new WP_Query($args);
                                                     
                                                     }
                                                 }
@@ -40,7 +42,7 @@ $check_andress = 0;
 
 
 
-foreach($experts->posts as $cl_expert){
+foreach($experts_map->posts as $cl_expert){
 
             $member_category = get_field('member_category',$cl_expert->ID);
             $expert_address = get_field('expert_address',$cl_expert->ID);
@@ -65,7 +67,13 @@ foreach($experts->posts as $cl_expert){
                         $location_string = $expert_city;
                         $terms_string = join(', ', wp_list_pluck($term_obj_list, 'name'));
                         $lis_cat=str_replace(', ','<br/>',$terms_string ); 
-                        $address = "$expert_postal_code";
+                        if(!$expert_city || !$expert_postal_code){
+                            $address = '';
+                        }else{
+                            $address = $expert_address.','.$expert_city.','.$expert_postal_code;
+                        }
+
+                        $address = $expert_address.','.$expert_city.','.$expert_postal_code;
                         
             $url = "https://maps.google.com/maps/api/geocode/json?address=".urlencode($address).'&key='.$key;
 
