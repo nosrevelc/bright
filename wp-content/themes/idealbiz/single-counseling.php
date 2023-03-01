@@ -1,5 +1,3 @@
-
-
 <?php
 // Template Name: SingleCounseling
 
@@ -247,6 +245,8 @@ $cl_member_cat = get_field('member_category_store',$cl_user);
 
 
 </div>
+
+get_template_part('elements/member-search/member', 'search');
 
 <script>
 
