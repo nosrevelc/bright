@@ -248,11 +248,6 @@ $cl_member_cat = get_field('member_category_store',$cl_user);
 
 get_template_part('elements/member-search/member', 'search');
 
-<script>
-
-
-</script>  
-
 
     <div class="container m-b-25 form_sr_hidden " id="form_sr">
                 <!-- <div class="row"> -->
