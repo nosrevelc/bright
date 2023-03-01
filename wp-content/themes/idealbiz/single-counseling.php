@@ -66,12 +66,9 @@ $cl_sr_company_parameter_2 = get_field('sr_company_parameter_2', 'options');
 
 
 // verifica se é membro para proceder a refereianção
-if($cl_membro){
-
-
+if ($cl_membro) {
     $_SESSION['rid'] = $_GET['rid'];//ID do Serviçe Resquest Original
     $_SESSION['sr'] =  $_GET['sr'];
-    
 
     $cl_user = get_current_user_id();
 
@@ -79,7 +76,6 @@ if($cl_membro){
     $user_info = get_userdata($user_id);
     $mailadresje = $user_info->user_email;
     $cl_display_name = $user_info->display_name;
-
    
     $args = array(
         'numberposts'	=> 1,
@@ -94,17 +90,17 @@ if($cl_membro){
         ),
     );
 
-$query = new WP_Query($args);
-$cl_user = $query->posts[0]->ID;
-$cl_member_cat = get_field('member_category_store',$cl_user);
+    $query = new WP_Query($args);
+    $cl_user = $query->posts[0]->ID;
+    $cl_member_cat = get_field('member_category_store',$cl_user);
 
- if ($cl_member_cat != false){
-    session_start();
-    if (!isset($_SESSION['membro'])) {
-    $_SESSION['membro'] = $cl_user;
-    $_SESSION['email_referenciado'] = $mailadresje;
+    if ($cl_member_cat != false) {
+        session_start();
+        if (!isset($_SESSION['membro'])) {
+            $_SESSION['membro'] = $cl_user;
+            $_SESSION['email_referenciado'] = $mailadresje;
+        }
     }
- }
 }
 
 
@@ -113,7 +109,8 @@ $cl_member_cat = get_field('member_category_store',$cl_user);
         $title = get_the_title();
         $description = get_field('text');
         //echo 'Post ID ' . $post_id . ' Titulo ' . $title . ' Descrição ' . $description;
-        ?>
+?>
+
 <?php
         $cl_shortcode_old = get_post_field('post_content', getIdByTemplate('single-counseling.php'));
         $cl_shortcode_satizado = filter_var($cl_shortcode_old, FILTER_SANITIZE_STRING);
@@ -125,7 +122,6 @@ $cl_member_cat = get_field('member_category_store',$cl_user);
         $replace = array("\"",",","'","’"," ","[","]",'"','="',' "','= ','&#34;',"t","i","l");
         $cl_id = str_replace( $replace,"",$cl_id_old);
 
-
         //Inicio preenchar os izModal co a descrição dos campos
         //id do Formulário
         $form_id = $cl_id;
@@ -133,15 +129,16 @@ $cl_member_cat = get_field('member_category_store',$cl_user);
         $form = RGFormsModel::get_form_meta($form_id);
         // Run through the fields to grab an object of the desired field
         $i = 0;
-                for ($i = 1; ; $i++) {
+        for ($i = 1; ; $i++) {
             if ($i > 30) {   
                 break;
             }
             $field = RGFormsModel::get_field($form, $i);
-            if($field){
-            $descicao[$i]= array($field->id => $field->description);
+            if($field) {
+                $descicao[$i]= array($field->id => $field->description);
             }
         }
+
         infoModal('<h3>' . __($descicao[1][1], 'idealbiz') . '</h3>', 'campo1', 'd-none');
         infoModal('<h3>' . __($descicao[2][2], 'idealbiz') . '</h3>', 'campo2', 'd-none');
         infoModal('<h3>' . __($descicao[3][3], 'idealbiz') . '</h3>', 'campo3', 'd-none');
@@ -172,13 +169,12 @@ $cl_member_cat = get_field('member_category_store',$cl_user);
         infoModal('<h3>' . __($descicao[28][28], 'idealbiz') . '</h3>', 'campo28', 'd-none');
         infoModal('<h3>' . __($descicao[29][29], 'idealbiz') . '</h3>', 'campo29', 'd-none');
         infoModal('<h3>' . __($descicao[30][30], 'idealbiz') . '</h3>', 'campo30', 'd-none');
-        
 
 
-        
         $cl_descicao12='teste'.$descicao[12][12];
         //Fim preenchar os izModal co a descrição dos campos
-        ?>
+?>
+
 <section class="single-counceling">
 
     <div class="container m-b-25">
