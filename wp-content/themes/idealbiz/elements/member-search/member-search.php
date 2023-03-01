@@ -29,8 +29,13 @@ $array = array (1, 2, 3, 4, 5);
         </div>
     </div>
     <?php endforeach ?>
+
     <div class="not-found" style="display:none;">
         <p class="not-found" style="display: none;">[Not found]</p>
     </div>
     <span id="result_D" class="cl_aviso">[Not found Message]</span>
 </div>
+
+<?php
+    gravity_form( 'Consultoria Negócio', /*$display_title*/ true, /*$display_description*/ true, /*$display_inactive*/ false, /*$field_values*/ null);
+?>
