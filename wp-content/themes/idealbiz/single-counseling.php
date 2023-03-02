@@ -37,8 +37,6 @@
 <?php
     $cl_rid = $_GET['rid'];
 
-    //cl_alerta($cl_sr_type_origin);
-
     //EDITADO PELO CLEVERSON VIEIRA
     //Iniciando Escalão sem Orçamento dia 08/07/21
 
@@ -118,8 +116,8 @@
         //Inicio preenchar os izModal co a descrição dos campos
         //id do Formulário
         $form_id = $cl_id;
-        /* cl_alerta($form_id); */
         $form = RGFormsModel::get_form_meta($form_id);
+
         // Run through the fields to grab an object of the desired field
         $i = 0;
         for ($i = 1; ; $i++) {
