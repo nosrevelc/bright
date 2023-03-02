@@ -7,7 +7,8 @@ $array = array (1, 2, 3, 4, 5);
 ?>
 
 <div class="expert-preview m-t-20">
-    <?php foreach ($array as $a): ?>
+    <?php foreach ($array as $a) {
+        ?>
         <div data-escalao="" data-fee="" data-ppc-fixo="" data-f="" data-competencyfactor="" data-expert="" data-locations="" class="p-20 m-b-20 service_cat_[TODO] location_[TODO] expert-card position-relative flex-column black--color white--background dropshadow font-weight-medium">
             <div class="d-flex flex-row center-content">
                 <div class="w-100px h-100px b-r d-block o-hidden no-decoration">
@@ -28,7 +29,9 @@ $array = array (1, 2, 3, 4, 5);
                 </div>
             </div>
         </div>
-    <?php endforeach ?>
+        <?php
+    } 
+    ?>
 
     <div class="not-found" style="display:none;">
         <p class="not-found" style="display: none;">[Not found]</p>
