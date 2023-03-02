@@ -783,6 +783,11 @@
         var cl_fim_echlon = '';
 
         jQuery(document).ready(($) => {
+            // GS: Disable entire jQuery code
+            if(true) {
+                return;
+            }
+
             //var e='';
             $('.single-counceling .ginput_container_custom_taxonomy select').val(
                 <?php echo $terms[0]; ?>); // Select the option with a value of '1'
