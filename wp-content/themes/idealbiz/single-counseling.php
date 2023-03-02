@@ -1502,10 +1502,7 @@ jQuery(document).ready(($) => {
                 font-size: 1.0em;
             }
 
-
-            <?php
-            if (WEBSITE_SYSTEM == '1') {
-                echo '
+            <?php if (WEBSITE_SYSTEM == '1') : ?>
             .system1{ 
                 display: block !important; 
             }
@@ -1524,9 +1521,7 @@ jQuery(document).ready(($) => {
             div[data-fee="0"]{
                 display: none !important;
             }
-            ';
-            }
-            ?>
+            <?php endif; ?>
         </style>
 
 <?php endwhile;
