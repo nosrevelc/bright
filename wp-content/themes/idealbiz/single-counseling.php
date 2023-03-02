@@ -1,108 +1,102 @@
 <?php
-// Template Name: SingleCounseling
+    // Template Name: SingleCounseling
 
-  
-//NPMM - wp-content/plugins/idealbiz-service-request/lib/Gforms  -  Content Files Service Request é paraa onde os dados são enviados após Submeter
+    //NPMM - wp-content/plugins/idealbiz-service-request/lib/Gforms  -  Content Files Service Request é paraa onde os dados são enviados após Submeter
 
-//NPMM - Código que checa e força a logar
-if (!is_user_logged_in()) {
-    $redirect = ( strpos( $_SERVER['REQUEST_URI'], '/options.php' ) && wp_get_referer() ) ? wp_get_referer() : set_url_scheme( 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] );
-    wp_redirect(get_site_url().'/'.pll_languages_list()[0].'/login-register/?redirect_to='.$redirect );
- }
+    //NPMM - Código que checa e força a logar
+    if (!is_user_logged_in()) {
+        $redirect = ( strpos( $_SERVER['REQUEST_URI'], '/options.php' ) && wp_get_referer() ) ? wp_get_referer() : set_url_scheme( 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] );
+        wp_redirect(get_site_url().'/'.pll_languages_list()[0].'/login-register/?redirect_to='.$redirect );
+    }
  
+    get_header();
+?>
 
-get_header();
-
-//NPMM - Resolve que tipo serviço - E o nomeia.
-if($_GET["refer"]==1 && !$_GET['rid']){
-    $cl_sr_type_origin = 'recommende_service';
-    $cl_sr_Type_origin_tittle = __('_str_REFERENCE BETWEEN MEMBERS','idealbiz');
-
-echo '<style>';
-echo 'input[name=input_2],input[name="input_1.3"],input[name="input_1.6"]
-        {
+<?php
+    //NPMM - Resolve que tipo serviço - E o nomeia.
+    if($_GET["refer"]==1 && !$_GET['rid']) :
+        $cl_sr_type_origin = 'recommende_service';
+        $cl_sr_Type_origin_tittle = __('_str_REFERENCE BETWEEN MEMBERS','idealbiz'); 
+?>
+    <style>
+        input[name=input_2],input[name="input_1.3"],input[name="input_1.6"] {
             pointer-events: none;
             background-color:#f5f5f5;
         }
-';
-echo '</style>';
+    </style>
+<?php 
+    elseif ($_GET["refer"]==1 && $_GET['rid']!= null) :
+        $cl_sr_type_origin = 'forward_service';
+        $cl_sr_Type_origin_tittle = __('_str Forward to Member', 'idealbiz');
+    else:
+        $cl_sr_type_origin = 'normal_service';
+        $cl_sr_Type_origin_tittle = '';
+    endif;
+?>
 
 
-}else if ($_GET["refer"]==1 && $_GET['rid']!= null){
-    $cl_sr_type_origin = 'forward_service';
-    $cl_sr_Type_origin_tittle = __('_str Forward to Member', 'idealbiz');
-}else{
-    $cl_sr_type_origin = 'normal_service';
-    $cl_sr_Type_origin_tittle = '';
-}
+<?php
+    $cl_rid = $_GET['rid'];
 
+    //cl_alerta($cl_sr_type_origin);
 
+    //EDITADO PELO CLEVERSON VIEIRA
+    //Iniciando Escalão sem Orçamento dia 08/07/21
 
-$cl_rid = $_GET['rid'];
+    // Get the Form fields
 
-//cl_alerta($cl_sr_type_origin);
+    //Garante que não haja sessões criadas para isiciar novo processo se for membro.
+    session_start();
+    unset($_SESSION['membro']);
+    unset($_SESSION['rid']);
+    unset($_SESSION['sr']);
+    unset($_SESSION['email_referenciado']);
 
+    $cl_membro = $_GET['refer'];
 
-//EDITADO PELO CLEVERSON VIEIRA
-//Iniciando Escalão sem Orçamento dia 08/07/21
+    $cl_sr_type_origin_id_field = get_field('sr_type_origin_id_field', 'options');
+    $cl_input_sr_fixed_ppc_value_id_field = get_field('sr_input_sr_fixed_ppc_value_id_field', 'options');
+    $cl_sr_origin_sr_id_of_field = get_field('sr_origin_sr_id_of_field', 'options');
+    $cl_sr_company_parameter_1 = get_field('sr_company_parameter_1', 'options');
+    $cl_sr_company_parameter_2 = get_field('sr_company_parameter_2', 'options');
 
-// Get the Form fields
+    // verifica se é membro para proceder a refereianção
+    if ($cl_membro) {
+        $_SESSION['rid'] = $_GET['rid'];//ID do Serviçe Resquest Original
+        $_SESSION['sr'] =  $_GET['sr'];
 
-//Garante que não haja sessões criadas para isiciar novo processo se for membro.
-session_start();
-unset($_SESSION['membro']);
-unset($_SESSION['rid']);
-unset($_SESSION['sr']);
-unset($_SESSION['email_referenciado']);
+        $cl_user = get_current_user_id();
 
-$cl_membro = $_GET['refer'];
+        $user_id = get_current_user_id(); 
+        $user_info = get_userdata($user_id);
+        $mailadresje = $user_info->user_email;
+        $cl_display_name = $user_info->display_name;
+    
+        $args = array(
+            'numberposts'	=> 1,
+            'post_type'		=> 'expert',
+            'meta_query'	=> array(
+                'relation'		=> 'AND',
+                array(
+                    'key'	 	=> 'expert_email',
+                    'value'	  	=> $mailadresje,
+                ),
 
-
-$cl_sr_type_origin_id_field = get_field('sr_type_origin_id_field', 'options');
-$cl_input_sr_fixed_ppc_value_id_field = get_field('sr_input_sr_fixed_ppc_value_id_field', 'options');
-$cl_sr_origin_sr_id_of_field = get_field('sr_origin_sr_id_of_field', 'options');
-$cl_sr_company_parameter_1 = get_field('sr_company_parameter_1', 'options');
-$cl_sr_company_parameter_2 = get_field('sr_company_parameter_2', 'options');
-
-
-// verifica se é membro para proceder a refereianção
-if ($cl_membro) {
-    $_SESSION['rid'] = $_GET['rid'];//ID do Serviçe Resquest Original
-    $_SESSION['sr'] =  $_GET['sr'];
-
-    $cl_user = get_current_user_id();
-
-    $user_id = get_current_user_id(); 
-    $user_info = get_userdata($user_id);
-    $mailadresje = $user_info->user_email;
-    $cl_display_name = $user_info->display_name;
-   
-    $args = array(
-        'numberposts'	=> 1,
-        'post_type'		=> 'expert',
-        'meta_query'	=> array(
-            'relation'		=> 'AND',
-            array(
-                'key'	 	=> 'expert_email',
-                'value'	  	=> $mailadresje,
             ),
+        );
 
-        ),
-    );
+        $query = new WP_Query($args);
+        $cl_user = $query->posts[0]->ID;
+        $cl_member_cat = get_field('member_category_store',$cl_user);
 
-    $query = new WP_Query($args);
-    $cl_user = $query->posts[0]->ID;
-    $cl_member_cat = get_field('member_category_store',$cl_user);
-
-    if ($cl_member_cat != false) {
-        session_start();
-        if (!isset($_SESSION['membro'])) {
-            $_SESSION['membro'] = $cl_user;
-            $_SESSION['email_referenciado'] = $mailadresje;
+        if ($cl_member_cat != false) {
+            session_start();
+            if (!isset($_SESSION['membro'])) {
+                $_SESSION['membro'] = $cl_user;
+                $_SESSION['email_referenciado'] = $mailadresje;
+            }
         }
     }
-}
-
 
     if (have_posts()) : while (have_posts()) : the_post();
         $post_id = get_the_ID();
