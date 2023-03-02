@@ -1366,6 +1366,8 @@
 endif; ?>
 
 <?php
+    //$terms = get_terms(array('taxonomy' => 'service_cat', 'hide_empty' => false, 'parent' => 0));
+    //$terms = get_terms(array('taxonomy' => 'location', 'hide_empty' => false, 'parent' => 0));
     //get_template_part('elements/member-search/member', 'search');
 ?>
 
