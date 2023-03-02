@@ -176,7 +176,6 @@ if ($cl_membro) {
 ?>
 
 <section class="single-counceling">
-
     <div class="container m-b-25">
         <a class="go-search font-weight-medium d-flex align-items-center" href="javascript: history.go(-1);">
             <i class="icon-dropdown"></i>
@@ -215,107 +214,83 @@ if ($cl_membro) {
         </div>
     </div>
 
-<!-- NPMM  - início form parametros -->    
+    <!-- NPMM  - início form parametros -->    
 
-<div id="form_par" class="container gf_browser_chrome gform_wrapper gform_legacy_markup_wrapper form_par">
-<form onsubmit="event.preventDefault();">
-  <p><label class="gfield_label" for="selector"><?php _e('_str Are you a company?','idealbiz').':' ?></label></p>
-  <select class=" m-b-25 gfield_select select_par" id="selector" onchange="hideMessage()">
-    <option value="no company"><?php _e("_str I'm not a company","idealbiz").':' ?></option>
-    <option value="company"><?php _e('_str Yes I am a company','idealbiz').':' ?></option>
-  </select>
-  <div id="camposAdicionais1" style="display:none;">
-  <div class="m-t-30 m-b-30"style="text-align: center;"><h3><?php _e('_str Explanatory text.','idealbiz');?></h3></div>
-    <label class="m-t-20 gfield_label" for="campo1"><?php _e('_str Parameter 1','idealbiz').':' ?></label>
-    <div class="error_par" id="error_par1" style="display:none;"><?php _e('_str Parameter 1','idealbiz').' '._e('_str Mandatory','idealbiz'); ?></div>
-    <input class="ginput_container" type="text" id="parametro1">
+    <div id="form_par" class="container gf_browser_chrome gform_wrapper gform_legacy_markup_wrapper form_par">
+        <form onsubmit="event.preventDefault();">
+            <p><label class="gfield_label" for="selector"><?php _e('_str Are you a company?','idealbiz').':' ?></label></p>
+            <select class=" m-b-25 gfield_select select_par" id="selector" onchange="hideMessage()">
+                <option value="no company"><?php _e("_str I'm not a company","idealbiz").':' ?></option>
+                <option value="company"><?php _e('_str Yes I am a company','idealbiz').':' ?></option>
+            </select>
+            <div id="camposAdicionais1" style="display:none;">
+                <div class="m-t-30 m-b-30"style="text-align: center;">
+                    <h3><?php _e('_str Explanatory text.','idealbiz');?></h3>
+                </div>
+                <label class="m-t-20 gfield_label" for="campo1"><?php _e('_str Parameter 1','idealbiz').':' ?></label>
+                <div class="error_par" id="error_par1" style="display:none;"><?php _e('_str Parameter 1','idealbiz').' '._e('_str Mandatory','idealbiz'); ?></div>
+                <input class="ginput_container" type="text" id="parametro1">
 
-    <label class="m-t-20 gfield_label" for="campo2"><?php _e('_str Parameter 2','idealbiz').':' ?></label>
-    <div class="error_par" id="error_par2" style="display:none;"><?php _e('_str Parameter 2','idealbiz').' '._e('_str Mandatory','idealbiz'); ?></div>
-    <input class="m-b-25 ginput_container" type="text" id="parametro2">
-
-  </div>
-  <button class="btn btn-blue m-l-10 font-btn-plus blue--hover" onclick="showMessage()"><?php _e('_str Continue...','idealbiz').':' ?></button>
-
-</form>
-
-
-</div>
+                <label class="m-t-20 gfield_label" for="campo2"><?php _e('_str Parameter 2','idealbiz').':' ?></label>
+                <div class="error_par" id="error_par2" style="display:none;"><?php _e('_str Parameter 2','idealbiz').' '._e('_str Mandatory','idealbiz'); ?></div>
+                <input class="m-b-25 ginput_container" type="text" id="parametro2">
+            </div>
+            <button class="btn btn-blue m-l-10 font-btn-plus blue--hover" onclick="showMessage()"><?php _e('_str Continue...','idealbiz').':' ?></button>
+        </form>
+    </div>
 
     <div class="container m-b-25 form_sr_hidden " id="form_sr">
-                <!-- <div class="row"> -->
-                <!-- <div class="col-md-8 col-xs-12 stretch-100 form-selector "style="width:650px"> -->
-                <div class="div-to-align">
-                    <?php 
-                    
-                    if(WEBSITE_SYSTEM == '1'){
-                        
-                            add_filter( 'gform_field_value_valor_referencia', 'valor_referencia_population_function' );
-                            function valor_referencia_population_function( $value ) {
-                                return get_field('reference_value',$_GET['rid']);
-                            }
-                            add_filter( 'gform_field_value_minimo', 'minimo_population_function' );
-                            function minimo_population_function( $value ) {
-                                return get_field('budget_min',$_GET['rid']);
-                            }
-                            add_filter( 'gform_field_value_maximo', 'maximo_population_function' );
-                            function maximo_population_function( $value ) {
-                                return get_field('budget_max',$_GET['rid']);
-                            }
+        <div class="div-to-align">
+            <?php 
+                if(WEBSITE_SYSTEM == '1') {
+                    add_filter( 'gform_field_value_valor_referencia', 'valor_referencia_population_function' );
+                    function valor_referencia_population_function( $value ) {
+                        return get_field('reference_value',$_GET['rid']);
+                    }
 
-                            add_filter( 'gform_field_value_data_entrega', 'data_entrega_population_function' );
-                            function data_entrega_population_function( $value ) {
-                                return get_field('delivery_date',$_GET['rid']);
-                            }
+                    add_filter( 'gform_field_value_minimo', 'minimo_population_function' );
+                    function minimo_population_function( $value ) {
+                        return get_field('budget_min',$_GET['rid']);
+                    }
 
-                            add_filter( 'gform_field_value_mensagem', 'mensagem_population_function' );
-                            function mensagem_population_function( $value ) {
-                                return get_field('message',$_GET['rid']);
-                            }
+                    add_filter( 'gform_field_value_maximo', 'maximo_population_function' );
+                    function maximo_population_function( $value ) {
+                        return get_field('budget_max',$_GET['rid']);
+                    }
 
-                        }
-                    
-                    
-                    
+                    add_filter( 'gform_field_value_data_entrega', 'data_entrega_population_function' );
+                    function data_entrega_population_function( $value ) {
+                        return get_field('delivery_date',$_GET['rid']);
+                    }
 
-                    echo do_shortcode(get_post_field('post_content', getIdByTemplate('single-counseling.php'))); 
+                    add_filter( 'gform_field_value_mensagem', 'mensagem_population_function' );
+                    function mensagem_population_function( $value ) {
+                        return get_field('message',$_GET['rid']);
+                    }
+                }
 
-                    ?>
+                echo do_shortcode(get_post_field('post_content', getIdByTemplate('single-counseling.php'))); 
+            ?>
+        </div>
 
-
-
-            </div>
-            <!-- <div class="col-md-4 col-xs-12"> -->
-            <div class="sidebar-service-message m-t-28">
-                    <div id="contact-this-seller" class="form-content">
-                        <div class="expert-field-message d-flex flex-wrap justify-content-between">
-                            <h4 class="box__title title" >
-                                <?php esc_html_e('Profissionais disponiveis', 'idealbiz'); ?><span style="color: #790000;margin-left: 4px;" class="gfield_required">*</span>
-                            </h4>
-
-                            <select id="seleciona_expert" class="location_expert_search"></select>
-                            <span class="validation_message_expert"></span>
-                        </div>
-                        <div class="loader" style="left: 50%; position: relative; display: none; margin-left: -15px; margin-top: 30px;">
-                        </div>
-                        <div class="expert-preview m-t-20">
-                        </div>
-                        
-                    </div>
-                    <?php //.account-content 
-                         ?>
+        <div class="sidebar-service-message m-t-28">
+            <div id="contact-this-seller" class="form-content">
+                <div class="expert-field-message d-flex flex-wrap justify-content-between">
+                    <h4 class="box__title title" >
+                        <?php esc_html_e('Profissionais disponiveis', 'idealbiz'); ?>
+                        <span style="color: #790000;margin-left: 4px;" class="gfield_required">*</span>
+                    </h4>
+                    <select id="seleciona_expert" class="location_expert_search"></select>
+                    <span class="validation_message_expert"></span>
                 </div>
-                <!-- </div> -->
-                
+                <div class="loader" style="left: 50%; position: relative; display: none; margin-left: -15px; margin-top: 30px;">
+                </div>
+                <div class="expert-preview m-t-20">
+                </div>
+            </div>
         </div>
-
-        </div>
-        <!-- </div -->
-    </section>
-
-    <script>
-
-    </script>
+    </div>
+</section>
 
     <?php
  
