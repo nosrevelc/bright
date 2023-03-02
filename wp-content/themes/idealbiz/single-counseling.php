@@ -186,21 +186,16 @@
 
         <div class="container container d-flex flex-row flex-wrap justify-content-around">
             <div>
-                <?php 
-                
-                if($cl_membro && $cl_member_cat != false){
-
-                printf('    <div>
-                    <h1 style="text-align: center;">'.$cl_sr_Type_origin_tittle.' </h1>
-                    <div></div>
-                    
-                    <div></div>
-                    <div></div>
-                    </div>');
-
-                }else{
-                echo the_content(); 
-                }
+                <?php if($cl_membro && $cl_member_cat != false) : ?>
+                    <div>
+                        <h1 style="text-align: center;">'.$cl_sr_Type_origin_tittle.' </h1>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                <?php else :
+                    echo the_content();
+                endif;
                 ?>
             </div>
         </div>
