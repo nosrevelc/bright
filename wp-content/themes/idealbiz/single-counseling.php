@@ -253,9 +253,15 @@
                             return get_field('message',$_GET['rid']);
                         }
 
-                        add_filter( 'gform_field_value_service_request_location', 'service_request_location_function' );
-                        function service_request_location_function( $value ) {
-                            return 'Algarve';
+                        add_filter( 'gform_pre_render', 'service_request_add_dynamic_opts' );
+                        function service_request_add_dynamic_opts( $form ) {
+                            foreach( $form['fields'] as &$field ) {
+                                if ( str_contains($field->class, 'service-request-location' ) ) {
+                                    $field->choices = array( 'value' => '999', 'text' => 'Algarve' );
+                                }
+                            }
+
+                            return $form;
                         }
                     }
 
