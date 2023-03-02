@@ -1374,155 +1374,151 @@ jQuery(document).ready(($) => {
     
 });
 </script>
+
 <style>
-            .error_par{
-                color:red;
-                font-style: italic;
-            }
-            .select_par{
-                min-width: 250px;
-            }
-            .form_par{
-                border: #ced4da 1px solid; 
-                border-radius: 5px;
-                padding: 20px;
-            }
-            .form_sr_hidden{
-                display: none;
-            }
+    .error_par{
+        color:red;
+        font-style: italic;
+    }
+    .select_par{
+        min-width: 250px;
+    }
+    .form_par{
+        border: #ced4da 1px solid; 
+        border-radius: 5px;
+        padding: 20px;
+    }
+    .form_sr_hidden{
+        display: none;
+    }
 
-            .samll{
-                margin-top: -6px;
-            }
-            .cl_icon-local{
-                font-size:1.3em;
-                text-transform:uppercase;
+    .samll{
+        margin-top: -6px;
+    }
+    .cl_icon-local{
+        font-size:1.3em;
+        text-transform:uppercase;
 
-            }
-            .cl_icon{
-                font-size:0.7em;
-                text-transform:uppercase;
-                margin-left: -5px;
-            }
-            
-            .select2-results__option {
-                line-height: 32px;
-                padding: 0 6px;
-            }
+    }
+    .cl_icon{
+        font-size:0.7em;
+        text-transform:uppercase;
+        margin-left: -5px;
+    }
+    
+    .select2-results__option {
+        line-height: 32px;
+        padding: 0 6px;
+    }
 
-            .gform_wrapper textarea.medium {
-                height: 78px !important;
-            }
+    .gform_wrapper textarea.medium {
+        height: 78px !important;
+    }
 
-            .no-margin {
-                margin-right: 0 !important;
-            }
+    .no-margin {
+        margin-right: 0 !important;
+    }
 
-            .f-label {
-                font-size: 11px;
-                padding-top: 37px !important;
-                padding-right: 10px !important;
-                border-color: rgba(255, 255, 255, 0) !important;
-                min-width: 160px;
-            }
+    .f-label {
+        font-size: 11px;
+        padding-top: 37px !important;
+        padding-right: 10px !important;
+        border-color: rgba(255, 255, 255, 0) !important;
+        min-width: 160px;
+    }
 
-            .inline_label {
-                display: none !important;
-                flex-direction: row;
-                align-items: center;
-                margin-top: 32px !important;
-            }
+    .inline_label {
+        display: none !important;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 32px !important;
+    }
 
-            .inline_label .gfield_label {
-                margin-bottom: 0;
-                padding-right: 10px;
-                min-width: 160px;
-            }
+    .inline_label .gfield_label {
+        margin-bottom: 0;
+        padding-right: 10px;
+        min-width: 160px;
+    }
 
-            .inline_label .ginput_container {
-                margin-top: 0 !important;
-            }
+    .inline_label .ginput_container {
+        margin-top: 0 !important;
+    }
 
-            .valor_referencia,
-            .minimo,
-            .maximo {
-                position: relative;
-            }
+    .valor_referencia,
+    .minimo,
+    .maximo {
+        position: relative;
+    }
 
-            /*             .valor_referencia {
-                max-width: 100% !important;
-                width: 100% !important;
-            } */
+    .valor_referencia .ginput_container,
+    .minimo .ginput_container,
+    .maximo .ginput_container {
+        position: relative;
+        margin-right: 0px;
+    }
 
-            .valor_referencia .ginput_container,
-            .minimo .ginput_container,
-            .maximo .ginput_container {
-                position: relative;
-                margin-right: 0px;
-            }
+    .valor_referencia input[type="text"],
+    .minimo input[type="text"],
+    .maximo input[type="text"] {
+        padding: .375em 1.8em !important;
+        min-width: 50px;
+        width: 10px;
+    }
 
-            .valor_referencia input[type="text"],
-            .minimo input[type="text"],
-            .maximo input[type="text"] {
-                padding: .375em 1.8em !important;
-                min-width: 50px;
-                width: 10px;
-            }
+    .curr_symbol {
+        margin-left: 1px;
+        position: absolute;
+        top: 25%;
+        left: 1px;
+    }
 
-            .curr_symbol {
-                margin-left: 1px;
-                position: absolute;
-                top: 25%;
-                left: 1px;
-            }
+    .info-balloon {
+        margin-right: 0px;
+        /* position: absolute; */
+        top: 1%;
+        right: -10px;
+        background-color: #ffffff;
+    }
 
-            .info-balloon {
-                margin-right: 0px;
-                /* position: absolute; */
-                top: 1%;
-                right: -10px;
-                background-color: #ffffff;
-            }
+    .gfield_description {
+        display: none;
+    }
 
-            .gfield_description {
-                display: none;
-            }
+    .gform_wrapper {
+        width: 660px;
+    }
 
-            .gform_wrapper {
-                width: 660px;
-            }
+    .box__title{
+        font-weight: 700;
+        font-size: 1.25em;
+    }
 
-            .box__title{
-                font-weight: 700;
-                font-size: 1.25em;
-            }
+    .cl_aviso{
+        font-weight: 700;
+        font-size: 1.0em;
+    }
 
-            .cl_aviso{
-                font-weight: 700;
-                font-size: 1.0em;
-            }
-
-            <?php if (WEBSITE_SYSTEM == '1') : ?>
-            .system1{ 
-                display: block !important; 
-            }
-            .gf_inline.system1{
-                display: inline-block !important; 
-            }
-            .inline_label.system1{
-                display: flex !important; 
-            }
-            .customer_care{
-                display: none !important;
-            }
-            .non-competent{
-                display: none !important;
-            }
-            div[data-fee="0"]{
-                display: none !important;
-            }
-            <?php endif; ?>
-        </style>
+    <?php if (WEBSITE_SYSTEM == '1') : ?>
+        .system1{ 
+            display: block !important; 
+        }
+        .gf_inline.system1{
+            display: inline-block !important; 
+        }
+        .inline_label.system1{
+            display: flex !important; 
+        }
+        .customer_care{
+            display: none !important;
+        }
+        .non-competent{
+            display: none !important;
+        }
+        div[data-fee="0"]{
+            display: none !important;
+        }
+    <?php endif; ?>
+</style>
 
 <?php endwhile;
 endif; ?>
