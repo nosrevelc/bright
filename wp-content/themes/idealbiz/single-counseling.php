@@ -77,9 +77,8 @@
                 array(
                     'key'	 	=> 'expert_email',
                     'value'	  	=> $mailadresje,
-                ),
-
-            ),
+                )
+            )
         );
 
         $query = new WP_Query($args);
@@ -95,7 +94,7 @@
         }
     }
 
-    if (have_posts()) : while (have_posts()) : the_post();
+    if (have_posts()) : the_post();
         $post_id = get_the_ID();
         $title = get_the_title();
         $description = get_field('text');
@@ -1362,8 +1361,7 @@
         <?php endif; ?>
     </style>
 
-<?php endwhile;
-endif; ?>
+<?php endif; ?>
 
 <?php
     //$terms = get_terms(array('taxonomy' => 'service_cat', 'hide_empty' => false, 'parent' => 0));
