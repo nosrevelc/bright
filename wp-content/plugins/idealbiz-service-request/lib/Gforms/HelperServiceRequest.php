@@ -197,8 +197,6 @@ class HelperServiceRequest {
 		update_field( 'sr_company_par_1' ,$cl_comp_par1, $post_id );
 		update_field( 'sr_company_par_2' ,$cl_comp_par2, $post_id );
 
-		
-
 		if($cl_sr_type_origin==='recommende_service' || $cl_sr_type_origin==='normal_service'){			
 			 $cl_idExpert= $entry[12];
 			$user= get_user_by( 'email', get_field('expert_email',$cl_idExpert) );
@@ -209,10 +207,8 @@ class HelperServiceRequest {
 			update_field( 'customer', $cl_Criador , $post_id );
 		}
 
-
-		
-
 				foreach ( $form['fields'] as $field ) {
+					error_log(print_r($field,true));
 
 					if ( $field->type === 'custom_taxonomy' && $field->idealbizCustomTaxonomy === 'service_cat' ) {
 
