@@ -17,14 +17,14 @@
     if($_GET["refer"]==1 && !$_GET['rid']) :
         $cl_sr_type_origin = 'recommende_service';
         $cl_sr_Type_origin_tittle = __('_str_REFERENCE BETWEEN MEMBERS','idealbiz'); 
-?>
-    <style>
-        input[name=input_2],input[name="input_1.3"],input[name="input_1.6"] {
-            pointer-events: none;
-            background-color:#f5f5f5;
-        }
-    </style>
-<?php 
+    ?>
+        <style>
+            input[name=input_2],input[name="input_1.3"],input[name="input_1.6"] {
+                pointer-events: none;
+                background-color:#f5f5f5;
+            }
+        </style>
+    <?php 
     elseif ($_GET["refer"]==1 && $_GET['rid']!= null) :
         $cl_sr_type_origin = 'forward_service';
         $cl_sr_Type_origin_tittle = __('_str Forward to Member', 'idealbiz');
@@ -366,40 +366,43 @@
                 <?php
                     $expert_looking_for_projects_on = get_post_meta($post->ID, 'expert_looking_for_projects_on')[0];
                     $expert_has_expertise = get_post_meta($post->ID, 'expert_has_expertise')[0];
+
                     if ($expert_looking_for_projects_on || $expert_has_expertise) : 
-                ?>
-                    <div class="card">
-                        <div class="card-header" id="heading_business_sectors_<?php echo $post->ID; ?>">
-                            <h3 class="mb-0">
-                                <a class="btn btn-link" data-toggle="collapse" data-target="#business_sectors_<?php echo $post->ID; ?>" aria-expanded="false" aria-controls="business_sectors_<?php echo $post->ID; ?>">
-                                    <?php _e('Business Sectors and Expertise Areas', 'idealbiz'); ?>
-                                </a>
-                            </h3>
-                        </div>
+                        ?>
+                            <div class="card">
+                                <div class="card-header" id="heading_business_sectors_<?php echo $post->ID; ?>">
+                                    <h3 class="mb-0">
+                                        <a class="btn btn-link" data-toggle="collapse" data-target="#business_sectors_<?php echo $post->ID; ?>" aria-expanded="false" aria-controls="business_sectors_<?php echo $post->ID; ?>">
+                                            <?php _e('Business Sectors and Expertise Areas', 'idealbiz'); ?>
+                                        </a>
+                                    </h3>
+                                </div>
 
-                        <div id="business_sectors_<?php echo $post->ID; ?>" class="collapse" aria-labelledby="heading_business_sectors_<?php echo $post->ID; ?>" data-parent="#accordion_<?php echo $post->ID; ?>">
-                            <div class="card-body">
-                                <?php if ($expert_looking_for_projects_on) : ?>
-                                    <h4><?php _e('Looking for Projects on:', 'idealbiz'); ?></h4>
-                                    <div class="d-flex flex-column m-b-10">
-                                        <?php foreach ($expert_looking_for_projects_on as $term) : ?>
-                                            <span><?php echo get_term_by('id', $term, 'service_cat')->name; ?></span>
-                                        <?php endforeach; ?>
-                                    </div>
-                                <?php endif; ?>
+                                <div id="business_sectors_<?php echo $post->ID; ?>" class="collapse" aria-labelledby="heading_business_sectors_<?php echo $post->ID; ?>" data-parent="#accordion_<?php echo $post->ID; ?>">
+                                    <div class="card-body">
+                                        <?php if ($expert_looking_for_projects_on) : ?>
+                                            <h4><?php _e('Looking for Projects on:', 'idealbiz'); ?></h4>
+                                            <div class="d-flex flex-column m-b-10">
+                                                <?php foreach ($expert_looking_for_projects_on as $term) : ?>
+                                                    <span><?php echo get_term_by('id', $term, 'service_cat')->name; ?></span>
+                                                <?php endforeach; ?>
+                                            </div>
+                                        <?php endif; ?>
 
-                                <?php if ($expert_has_expertise) : ?>
-                                    <h4><?php _e('Have expertise on the following areas:', 'idealbiz'); ?></h4>
-                                    <div class="d-flex flex-column">
-                                        <?php foreach ($expert_has_expertise as $term) : ?>
-                                            <span><?php echo get_term_by('id', $term, 'service_cat')->name; ?></span>
-                                        <?php endforeach; ?>
+                                        <?php if ($expert_has_expertise) : ?>
+                                            <h4><?php _e('Have expertise on the following areas:', 'idealbiz'); ?></h4>
+                                            <div class="d-flex flex-column">
+                                                <?php foreach ($expert_has_expertise as $term) : ?>
+                                                    <span><?php echo get_term_by('id', $term, 'service_cat')->name; ?></span>
+                                                <?php endforeach; ?>
+                                            </div>
+                                        <?php endif; ?>
                                     </div>
-                                <?php endif; ?>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                <?php endif; ?>
+                        <?php 
+                    endif; 
+                ?>
 
                 <?php if ($experts_professional_experience = get_field('experts_professional_experience', $post->ID)) : ?>
                     <div class="card">
@@ -528,16 +531,17 @@
 
                 <?php endif; ?>
 
-                <?php 
-                    if ($expert_projects = get_field('expert_projects', $post->ID)) : 
+                <?php
+                    if ($expert_projects = get_field('expert_projects', $post->ID)) :
                         $showprojects = 0;
                         foreach ($expert_projects as $project) :
                             if ($project['project'] != '') {
                                 $showprojects = 1;
                             }
                         endforeach;
-                        if ($showprojects) {
-                ?>
+
+                        if ($showprojects) :
+                            ?>
                             <div class="card">
                                 <div class="card-header" id="heading_other_projects_<?php echo $post->ID; ?>">
                                     <h3 class="mb-0">
@@ -552,6 +556,7 @@
                                         <?php $i = 1; ?>
                                         <?php foreach ($expert_projects as $project) : ?>
                                             <h4 class="<?php echo $i > 1 ? 'm-t-10' : ''; ?>"><strong><?php echo $project['project']; ?> - </strong></h4>
+
                                             <?php if ($project['start_date'] || $project['end_date']) : ?>
                                             <div class="d-flex flex-row m-b-5">
                                                 <strong><?php _e('Duration:', 'idealbiz'); ?>&nbsp;</strong>
@@ -571,9 +576,9 @@
                                     </div>
                                 </div>
                             </div>
-                <?php 
-                        }
-                    endif; 
+                            <?php
+                        endif;
+                    endif;
                 ?>
 
                 <?php 
@@ -584,8 +589,9 @@
                                 $showit = 1;
                             }
                         endforeach;
-                        if ($showit) {
-                ?>
+
+                        if ($showit) :
+                            ?>
                             <div class="card">
                                 <div class="card-header" id="heading_it_knowledge_<?php echo $post->ID; ?>">
                                     <h3 class="mb-0">
@@ -608,8 +614,8 @@
                                     </div>
                                 </div>
                             </div>
-                <?php
-                        }
+                            <?php
+                        endif;
                     endif;
                 ?>
             </div>
@@ -1139,6 +1145,7 @@
                     if (vr.val() != '' && !isNaN(vr.val())) {
                         $('.expert-preview .customer_care').attr('style', '');
                         /* $('.expert-preview').find('#result_D').html(''); */
+
                         $(".expert-preview .expert-card").each(function() {
                             //var e = $(this).data('competencyfactor'); // Codigo antigo 
                             console.log(ciclo_pai + "-> Entrei ciclo Pai a variavel e é :" + e); // Apagar depois 
@@ -1146,6 +1153,7 @@
                             var tx = '';
                             var pre_escalao = $(this).data('escalao'); //Arry com os dados do escalao
                             var i = 0;
+
                             $(pre_escalao).each(function(key, value) { 
                                 var begin_echelon = parseInt(pre_escalao[i].begin_echelon);
                                 var finish_echelon = parseInt(pre_escalao[i].finish_echelon);
@@ -1189,16 +1197,15 @@
                             }
                         });
                         
-                            /* alert('count_competents'+count_competents+' cl_care-'+cl_care+' cl_care2-'+cl_care2); */
+                        /* alert('count_competents'+count_competents+' cl_care-'+cl_care+' cl_care2-'+cl_care2); */
                         
-                                if (count_competents == 0 || cl_care == 1 && cl_care2 == '' ) {
-                                        $('.expert-preview .customer_care').attr('style', 'display:flex !important;');
-                                        $('.expert-preview').find('#result_D').html('<?php echo __($descicao[12][12]);?>');
-                                    
-                                    }else{
-                                        $('.expert-preview .customer_care').attr('style', 'display:none !important;');
-                                        cl_care2 = '';
-                                    }
+                        if (count_competents == 0 || cl_care == 1 && cl_care2 == '' ) {
+                                $('.expert-preview .customer_care').attr('style', 'display:flex !important;');
+                                $('.expert-preview').find('#result_D').html('<?php echo __($descicao[12][12]);?>');
+                        } else {
+                            $('.expert-preview .customer_care').attr('style', 'display:none !important;');
+                            cl_care2 = '';
+                        }
                     } else {
                         $('.expert-preview .expert-card').each(function() {
                             $(this).addClass('non-competent');
