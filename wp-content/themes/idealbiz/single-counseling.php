@@ -258,6 +258,11 @@
                 ?>
             </div>
 
+            <?php 
+            /*
+             * GS: Remove additional dropdown not added via Gravity Forms.
+             * This dropdown is moved inside the Gravity Form via jQuery appendTo
+             * 
             <div class="sidebar-service-message m-t-28">
                 <div id="contact-this-seller" class="form-content">
                     <div class="expert-field-message d-flex flex-wrap justify-content-between">
@@ -274,6 +279,11 @@
                     </div>
                 </div>
             </div>
+            */ 
+            ?>
+
+            <div class="loader" style="left: 50%; position: relative; display: none; margin-left: -15px; margin-top: 30px;"></div>
+            <div class="expert-preview m-t-20"></div>
         </div>
     </section>
 
