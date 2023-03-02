@@ -1533,7 +1533,7 @@ jQuery(document).ready(($) => {
 endif; ?>
 
 <?php
-    get_template_part('elements/member-search/member', 'search');
+    //get_template_part('elements/member-search/member', 'search');
 ?>
 
 <?php get_footer(); ?>
