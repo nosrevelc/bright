@@ -1,18 +1,13 @@
 <?php // Template Name: Map Member
 get_header();
 ?>
-
-
 <?php 
-
 $key = 'AIzaSyCETxZ_RlpLL1i-PMC2VGRWEIQD42tiN6w';
-
 $zoom_map = (int)get_field('zoom_map');
 $latitude_center = floatval(get_field('latitude'));
 $longitude_center = floatval(get_field('longitude'));
 $titulo = get_the_title( $post );
 ?>
-
 <div class="container text-center">
         <h1 class="m-h2 text-xs-left m-b-30" Style= "text-align:center;">
         <?php echo $titulo; ?>
@@ -21,7 +16,6 @@ $titulo = get_the_title( $post );
 <div class="container m-b-30">
 <?php the_content(); ?> 
 </div> 
-
 <?php
 $includeIds = array();
 if (WEBSITE_SYSTEM == '1') {
@@ -32,61 +26,35 @@ if (WEBSITE_SYSTEM == '1') {
         $includeIds = $experts_with_fees;
     }
 }
-
 $args = array(
     'posts_per_page' => -1,
     'post_type' => 'expert',
     'post_status' => 'publish',
     'post__in' => $includeIds,
 );
-
 $experts = new WP_Query($args);
 $total = $experts->found_posts;
 $i=0;
-
-
-
-
+$cl_icon = get_field('icon_map_logo', 'option')['url'];
 foreach($experts->posts as $cl_expert){
-
-
-
-
-
             $member_category = get_field('member_category',$cl_expert->ID);
             $expert_address = get_field('expert_address',$cl_expert->ID);
             $expert_postal_code = get_field('expert_postal_code',$cl_expert->ID);
             $expert_city = get_field('expert_city',$cl_expert->ID);
             $cl_perfil = get_post_permalink($cl_expert->ID);
             $foto = get_field('foto',$cl_expert->ID)['sizes']['medium'];
-        $i++;
-        
+        $i++;       
         if($expert_address){
-
             $term_obj_list = get_the_terms($cl_expert->ID, 'service_cat' );
             $p=0;
             foreach($term_obj_list as $k){
                 $_categorias[] = $term_obj_list[$p]->name;
                 $p++;
             }
-
             $_cat = implode(', ',$_categorias);
-
             $lis_cat=str_replace(', ','<br/>',$_cat );
-
-            
-
-            /* echo '<pre>';
-            print_r($_categorias);
-            echo '</pre>'; */
-
-            /* var_dump($lis_cat); */
-
-    $address = $expert_address;
-
-
+    $address = $expert_address.','.$expert_city.','.$expert_postal_code;
 $url = "https://maps.google.com/maps/api/geocode/json?address=".urlencode($address).'&key='.$key;
-
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);    
@@ -182,11 +150,11 @@ $cl_Json_array = json_encode($cl_Json_array);
             var infowindow = new google.maps.InfoWindow();
             var marker, i;
             for (i = 0; i < locations.length; i++) {
-                var iconBase = 'https://idealbiz.io/pt/wp-content/uploads/sites/86/2021/10/';
+                var iconBase = '<?php echo $cl_icon;?>';
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(locations[i][1], locations[i][2]),
                     map: map,
-                    icon: iconBase + 'pin-idealbiz-blue.png'
+                    icon: iconBase
                 });
                 google.maps.event.addListener(marker, 'click', (function (marker, i) {
                     return function () {

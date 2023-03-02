@@ -588,16 +588,14 @@ class HelperServiceRequest {
 						$to = $e_email.','.$customer_care; //Sr Alberto pediu para retirar a copia enviada para o Custumercare dia 30/06/2021 - Ativado dia 28/03/2022 Junto com Sofia.
 						$headers = array('Content-Type: text/html; charset=UTF-8');
 					
-						$message  = __('Hello').' ' .' {{expert}}';
-						$message .= '<br/>'.__('_str Your profile','idealbiz').' '.__('_str Mode','idealbiz').' '.$mode;
-						
+						$message  = __('Hello').' ' .' {{expert}}';						
 						$message .= '<br />'.'<br />'.__('It received a new Service Request for its Area of Expertise').' '.$cl_servico.' ';
 						$message .= '<br /><br /><b>'.__('Details data').':</b>';
 						$message .= '<br />'.__('Reference:').' #'.$post_id;
-						//$message .= '<br />' . __('_str Create Date: ') .' '. $cl_dateSendThis;
 						$message .= '<br />' . __('Conclusion Date: ') .' '. $cl_date;
 						$message .=  __('with the Reference Value').' '.number_format((float)$cl_reference_value, 2, '.', '').__('Money Simbol');
 						$message .= '<br />'.__('Lead purchase amount').':'.number_format((float)$cl_v_para_member, 2, '.', '').__('Money Simbol');
+						$message .= '<br/>'.__('_str Your profile','idealbiz').' '.__('_str Mode','idealbiz').' '.$mode;
 						$message .= '<br /><br />'.__('To accept, decline or reference the Service Request go to your Orders Dashboard at:{{service_requests_page}}');
 						$message .= '<br /><br />'.__('Thank you');
 						$message .= '<br />'.__('The iDealBiz Team');

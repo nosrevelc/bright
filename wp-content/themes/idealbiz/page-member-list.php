@@ -138,12 +138,12 @@ $experts = new WP_Query($args);
                         ),
                     );
 
-                    $experts = new WP_Query($args);
+                    $experts_map = new WP_Query($args);
                     $show_map = true;
                     $cl_cleanFilter = true;
 
                     echo '<h1>' . __("Expert Search Results:", 'idealbiz') . '<br/>';
-                    echo '<span class="extra_small-font">' . '(' . $experts->found_posts . ' ' . __('Results found', 'idealbiz') . ')</span></h1>';
+                    echo '<span class="extra_small-font">' . '(' . $experts_map->found_posts . ' ' . __('Results found', 'idealbiz') . ')</span></h1>';
                 ?>
 
                 <?php
@@ -240,22 +240,22 @@ $experts = new WP_Query($args);
                 </a>
             </li> -->
 
-
-
-    <li class="hex-a55df1 menu-item d-none">
+<?php if(OPPORTUNITY_SYSTEM == '1'){ ?>
+    <li class="hex-a55df1 menu-item ">
         <div class="icoMiddle">
             <a data-iconbg="#a55df1" href="<?php echo wc_get_endpoint_url('mylistings', '', get_permalink(get_option('woocommerce_myaccount_page_id'))) ?>" title="<?php _e('My Listings', 'idealbiz'); ?>">
                 <i class="icon icon-vender"></i><?php _e('My Listings', 'idealbiz'); ?>
             </a>
         </div>
     </li>
-    <li class="hex-a55df1 menu-item d-none">
+    <li class="hex-a55df1 menu-item ">
         <div class="icoMiddle">
             <a data-iconbg="#a55df1" href="<?php echo wc_get_endpoint_url('favorites', '', get_permalink(get_option('woocommerce_myaccount_page_id'))) ?>" title="<?php _e('My Favorites', 'idealbiz'); ?>">
                 <i class="icon icofont-heart"></i> <?php _e('My Favorites', 'idealbiz'); ?>
             </a>
         </div>
     </li>
+<?php } ?>
     <?php
     $sr = new \WP_Query(
         array(
@@ -274,17 +274,16 @@ $experts = new WP_Query($args);
     </li>
     <?php //} 
     ?>
+<?php if(OPPORTUNITY_SYSTEM == '1'){ ?>
+    <li class="hex-a55df1 menu-item">
+        <div class="icoMiddle">
+            <a data-iconbg="#a55df1" href="<?php echo getLinkByTemplate('RecommendedBusiness.php') . '?recommended=1'; ?>">
 
-    <?php if(OPPORTUNITY_SYSTEM == '1'){ ?>
-        <li class="hex-a55df1 menu-item">
-            <div class="icoMiddle">
-                <a data-iconbg="#a55df1" href="<?php echo getLinkByTemplate('RecommendedBusiness.php') . '?recommended=1'; ?>">
-
-                    <span class="icon dashicons dashicons-money-alt"></span><?php _e('_str Business opportunity', 'idealbiz'); ?>
-                </a>
-            </div>
-        </li>
-    <?php } ?>
+                <span class="icon dashicons dashicons-money-alt"></span><?php _e('_str Business opportunity', 'idealbiz'); ?>
+            </a>
+        </div>
+    </li>
+<?php } ?>
 
     <li class="hex-a55df1 menu-item">
         <div class="icoMiddle">

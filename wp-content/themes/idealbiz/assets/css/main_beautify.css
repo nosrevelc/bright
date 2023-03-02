@@ -180923,3 +180923,26 @@ input:checked + .slider:before {
     max-width: 35px !important;
   }
 }
+div.gform_confirmation_wrapper {
+  color: #7ed957;
+  border: 1px solid #7ed957;
+  padding: 45px 45px 56px 155px;
+  font-size: 1.5em;
+  background-image: url(https://idealbiz.io/wp-content/uploads/2022/05/send_ok.png);
+  background-repeat: no-repeat;
+  background-size: 100px 100px;
+  background-clip: padding-box;
+  margin: 20px;
+}
+@media only screen and (max-width: 768px) {
+  div.gform_confirmation_wrapper {
+    color: #7ed957;
+    border: 1px solid #7ed957;
+    padding: 135px 45px 56px 30px;
+    font-size: 1.7em;
+    background-image: url(https://idealbiz.io/wp-content/uploads/2022/05/send_ok.png);
+    background-repeat: no-repeat;
+    background-size: 100px 100px;
+    background-clip: padding-box;
+  }
+}
