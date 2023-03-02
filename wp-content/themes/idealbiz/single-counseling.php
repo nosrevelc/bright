@@ -252,6 +252,11 @@
                         function mensagem_population_function( $value ) {
                             return get_field('message',$_GET['rid']);
                         }
+
+                        add_filter( 'gform_field_value_service_request_location', 'service_request_location_function' );
+                        function service_request_location_function( $value ) {
+                            return 'Algarve';
+                        }
                     }
 
                     echo do_shortcode(get_post_field('post_content', getIdByTemplate('single-counseling.php'))); 
