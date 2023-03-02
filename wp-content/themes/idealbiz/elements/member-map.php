@@ -1,11 +1,5 @@
-
 <?php 
-
 $key = 'AIzaSyCETxZ_RlpLL1i-PMC2VGRWEIQD42tiN6w';
-
-?>
-
-<?php
 $includeIds = array();
 if (WEBSITE_SYSTEM == '1') {
     $experts_with_fees = getExpertsWithActiveFees();
@@ -15,12 +9,9 @@ if (WEBSITE_SYSTEM == '1') {
         $includeIds = $experts_with_fees;
     }
 }
-
                                             if (!$_GET['search']) {
                                                 if (!$_GET['location']) {
                                                     if (!$_GET['service_cat']) {
-
-
                                                         $args = array(
                                                             'posts_per_page' => -1,
                                                             'post_type' => 'expert',
@@ -28,20 +19,15 @@ if (WEBSITE_SYSTEM == '1') {
                                                             'post__in' => $includeIds
 
                                                         );
-
-                                                        $experts = new WP_Query($args);
+                                                        $experts_map = new WP_Query($args);
                                                     
                                                     }
                                                 }
                                             } 
 $i=0;
 $check_andress = 0;
-
-
-
-
-foreach($experts->posts as $cl_expert){
-
+$cl_icon = get_field('icon_map_logo', 'option')['url'];
+foreach($experts_map->posts as $cl_expert){
             $member_category = get_field('member_category',$cl_expert->ID);
             $expert_address = get_field('expert_address',$cl_expert->ID);
             $expert_postal_code = get_field('expert_postal_code',$cl_expert->ID);
@@ -52,37 +38,31 @@ foreach($experts->posts as $cl_expert){
             if($cl_show_this_member_in_map == NULL){
                 $cl_show_this_member_in_map = "show_map";
             }
-
-        $i++;
-
-        
+        $i++;       
     if ($cl_show_this_member_in_map === "show_map"){;
         if($expert_address){
             $check_andress++;
-
                         $term_obj_list = get_the_terms($cl_expert->ID, 'service_cat' );
                         $location_objs = get_the_terms($cl_expert->ID, 'location' );
                         $location_string = $expert_city;
                         $terms_string = join(', ', wp_list_pluck($term_obj_list, 'name'));
                         $lis_cat=str_replace(', ','<br/>',$terms_string ); 
-                        $address = "$expert_postal_code";
-                        
+                        if(!$expert_city || !$expert_postal_code){
+                            $address = '';
+                        }else{
+                            $address = $expert_address.','.$expert_city.','.$expert_postal_code;
+                        }
+                        $address = $expert_address.','.$expert_city.','.$expert_postal_code;                       
             $url = "https://maps.google.com/maps/api/geocode/json?address=".urlencode($address).'&key='.$key;
-
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);    
             $responseJson = curl_exec($ch);
             curl_close($ch);
-
-
-
             $response = json_decode($responseJson);
-
                 if ($response->status == 'OK') {
                     $latitude = $response->results[0]->geometry->location->lat;
                     $longitude = $response->results[0]->geometry->location->lng;
-
                     $cl_Json_array[]= array(
                         "cl_latitude" => $latitude,
                         "cl_longitude" => $longitude,
@@ -104,41 +84,21 @@ foreach($experts->posts as $cl_expert){
                             .'<br/><div><i class="icon-local"></i>
                             <span class="text-uppercase">'.$location_string .'</span></div>'
                             ,
-                        
-                            
-
-                    );
-                    
-                
+                    );                
                     ?>
                     <!-- <a href="https://www.google.com/maps/place/<?php echo $address;?>/@<?php echo $latitude.','.$longitude;?>,15z" target="_blank"><?php echo 'Ver no Mapa'; ?></a> -->
                     <?php
-                        } else {
-                        
+                        } else {                        
                             /* echo $response->status; */
                         } 
-                    }else{
-                       
+                    }else{                       
                         /*  cl_alerta('Sem morada Correta'); */
-                    }
-
-        
+                    }        
     }
 
 }
-
 $cl_Json_array = json_encode($cl_Json_array);
-
-
-
-
-
-
-/* var_dump($cl_Json_array); */
-
 ?>
-
-
 <script type="text/javascript">
      var key = "https://maps.googleapis.com/maps/api/js?key="+<?php echo $key ;?>+"""
     <?php foreach($locations as $location){ ?>
@@ -149,25 +109,15 @@ $cl_Json_array = json_encode($cl_Json_array);
         });
     <?php } ?>
 </script>
-
-
     <title>How to add multiple markers on google maps javascript</title>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<?php echo $key;?>" ></script>
-    <script type="text/javascript">
-        
+    <script type="text/javascript">       
         let cl_dados_map = JSON.stringify(<?php echo $cl_Json_array; ?>);
-
         let cl_mapa_json = JSON.parse(cl_dados_map); 
-
         console.log(cl_mapa_json);
-
-
-
         locations = cl_mapa_json.map((p,i)=>
         [cl_mapa_json[i].cl_link,cl_mapa_json[i].cl_latitude,cl_mapa_json[i].cl_longitude,i+1],
         );
-
-
         console.log(locations);
         function InitMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
@@ -175,29 +125,24 @@ $cl_Json_array = json_encode($cl_Json_array);
                 center: new google.maps.LatLng(cl_mapa_json[0].cl_latitude_center, cl_mapa_json[0].cl_longitude_center),
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
-
-
             var infowindow = new google.maps.InfoWindow();
             var marker, i;
             for (i = 0; i < locations.length; i++) {
-                var iconBase = 'https://idealbiz.io/pt/wp-content/uploads/sites/86/2021/10/';
+                var iconBase = '<?php echo $cl_icon;?>';
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(locations[i][1], locations[i][2]),
                     map: map,
-                    icon: iconBase + 'pin-idealbiz-blue.png'
+                    icon: iconBase
                 });
                 google.maps.event.addListener(marker, 'click', (function (marker, i) {
                     return function () {
                         infowindow.setContent(locations[i][0]);
                         infowindow.open(map, marker);
                     }
-                })(marker, i));
-
-            
+                })(marker, i));            
             }
         }
     </script>
-
 <body onload="InitMap();">
 <?php 
     if ($check_andress > 0){?>
