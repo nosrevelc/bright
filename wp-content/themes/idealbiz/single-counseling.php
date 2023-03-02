@@ -732,538 +732,435 @@ if ($cl_membro) {
 
 
 <script>
-//NPMM - Funções referente ao form de parametros
-function callback(event){
-   event.preventDefault()
-}
-
-  function showMessage() {
-    
-    let par1 = document.getElementById("parametro1").value;
-    let par2 = document.getElementById("parametro2").value;
-    let amount_involved = document.querySelector('input[name="input_22"]');
-    let cl_sr_company_parameter_1 = document.querySelector('input[name="input_'+<?php echo $cl_sr_company_parameter_1;?>+'"]');
-    let cl_sr_company_parameter_2 = document.querySelector('input[name="input_'+<?php echo $cl_sr_company_parameter_2;?>+'"]');
-    let sum = parseFloat(par1) + parseFloat(par2);
-
-
-    if (document.getElementById("selector").value === "company") {
-        if (par1 == "") {
-            document.getElementById("error_par1").style.display = "block";
-        return false;
-        }else{
-            document.getElementById("error_par1").style.display = "none";
-        }
-        if (par2 == "") {
-            document.getElementById("error_par2").style.display = "block";
-        return false;
-        }else{
-            document.getElementById("error_par2").style.display = "none";
-        }
-    
-        /* amount_involved.disabled = true; */
-        amount_involved.style.backgroundColor = "#f1f1f1";
-        /* document.getElementById("field_"+<?php echo $form_id; ?>+"_22").style.display = "none !important"; */
-        document.getElementById("field_"+<?php echo $form_id; ?>+"_26").style.display = "none";
-        amount_involved.value = sum;
-        cl_sr_company_parameter_1.value = par1;
-        cl_sr_company_parameter_2.value = par2;
-
+    //NPMM - Funções referente ao form de parametros
+    function callback(event) {
+        event.preventDefault()
     }
 
-    document.getElementById("form_sr").style.display = "block";
-    document.getElementById("form_par").style.display = "none";
+    function showMessage() {
+        let par1 = document.getElementById("parametro1").value;
+        let par2 = document.getElementById("parametro2").value;
+        let amount_involved = document.querySelector('input[name="input_22"]');
+        let cl_sr_company_parameter_1 = document.querySelector('input[name="input_'+<?php echo $cl_sr_company_parameter_1;?>+'"]');
+        let cl_sr_company_parameter_2 = document.querySelector('input[name="input_'+<?php echo $cl_sr_company_parameter_2;?>+'"]');
+        let sum = parseFloat(par1) + parseFloat(par2);
 
-  }
+        if (document.getElementById("selector").value === "company") {
+            if (par1 == "") {
+                document.getElementById("error_par1").style.display = "block";
+                return false;
+            }else{
+                document.getElementById("error_par1").style.display = "none";
+            }
+
+            if (par2 == "") {
+                document.getElementById("error_par2").style.display = "block";
+                return false;
+            }else{
+                document.getElementById("error_par2").style.display = "none";
+            }
+
+            /* amount_involved.disabled = true; */
+            amount_involved.style.backgroundColor = "#f1f1f1";
+            /* document.getElementById("field_"+<?php echo $form_id; ?>+"_22").style.display = "none !important"; */
+            document.getElementById("field_"+<?php echo $form_id; ?>+"_26").style.display = "none";
+            amount_involved.value = sum;
+            cl_sr_company_parameter_1.value = par1;
+            cl_sr_company_parameter_2.value = par2;
+        }
+
+        document.getElementById("form_sr").style.display = "block";
+        document.getElementById("form_par").style.display = "none";
+    }
   
-  function hideMessage() {
-    document.getElementById("form_sr").style.display = "none";
-    if (document.getElementById("selector").value === "company") {
-        document.getElementById("camposAdicionais1").style.display = "block";
-
-      
-    } else {
-      document.getElementById("camposAdicionais1").style.display = "none";
+    function hideMessage() {
+        document.getElementById("form_sr").style.display = "none";
+        if (document.getElementById("selector").value === "company") {
+            document.getElementById("camposAdicionais1").style.display = "block";
+        } else {
+            document.getElementById("camposAdicionais1").style.display = "none";
+        }
     }
-  }
 
+    // REFATURAÇÃO PARA REENCAMINHAMENTO E RECOMENDAÇÃO.
 
-// REFATURAÇÃO PARA REENCAMINHAMENTO E RECOMENDAÇÃO.
+    let cl_id_campo_origem = '<?php echo $cl_sr_type_origin_id_field;?>'
+    let cl_id_campo_Origin_SR = '<?php echo $cl_sr_origin_sr_id_of_field;?>'
+    let cl_id_campo_PPC_Fixo_SR = '<?php echo $cl_input_sr_fixed_ppc_value_id_field;?>'
+    let $cl_origin = document.querySelector('input[name="input_'+cl_id_campo_Origin_SR+'"]');
+    let sr_type_origin = document.querySelector('input[name="input_'+cl_id_campo_origem +'"]');
+    /* let input_sr_fixed_ppc_value = document.querySelector('input[name="input_'+cl_id_campo_PPC_Fixo_SR +'"]'); */
 
-let cl_id_campo_origem = '<?php echo $cl_sr_type_origin_id_field;?>'
-let cl_id_campo_Origin_SR = '<?php echo $cl_sr_origin_sr_id_of_field;?>'
-let cl_id_campo_PPC_Fixo_SR = '<?php echo $cl_input_sr_fixed_ppc_value_id_field;?>'
-let $cl_origin = document.querySelector('input[name="input_'+cl_id_campo_Origin_SR+'"]');
-let sr_type_origin = document.querySelector('input[name="input_'+cl_id_campo_origem +'"]');
-/* let input_sr_fixed_ppc_value = document.querySelector('input[name="input_'+cl_id_campo_PPC_Fixo_SR +'"]'); */
+    $cl_origin.value = '<?php echo $cl_rid; ?>';
+    sr_type_origin.value = '<?php echo $cl_sr_type_origin; ?>';
+    /* input_sr_fixed_ppc_value.value = '<?php echo $cl_sr_type_origin; ?>'; */
 
+    var e;
+    var  cl_care;
+    var  cl_care2 = '';
+    var orcamento;
+    var cl_ini_echlon = '';
+    var cl_fim_echlon = '';
 
+    jQuery(document).ready(($) => {
+        //var e='';
+        $('.single-counceling .ginput_container_custom_taxonomy select').val(
+            <?php echo $terms[0]; ?>); // Select the option with a value of '1'
+        // Notify any JS components that the value changed
+        $('.experts_by_service_cat select').html('<?php echo $opts; ?>');
+        $('.expert-preview').html('<?php echo $p; ?>');
 
-$cl_origin.value = '<?php echo $cl_rid; ?>';
-sr_type_origin.value = '<?php echo $cl_sr_type_origin; ?>';
-/* input_sr_fixed_ppc_value.value = '<?php echo $cl_sr_type_origin; ?>'; */
+        var sel = $('.location_expert_search');
+        sel.html('<?php echo $location_aux; ?>');
+        var selected = sel.val();
+        var opts_list = sel.find('option');
+        opts_list.sort(function(a, b) {
+            return $(a).text() > $(b).text() ? 1 : -1;
+        });
+        sel.html('').append(opts_list);
+        sel.val(selected);
 
-var e;
-var  cl_care;
-var  cl_care2 = '';
-var orcamento;
-var cl_ini_echlon = '';
-var cl_fim_echlon = '';
-jQuery(document).ready(($) => {
-    //var e='';
-    $('.single-counceling .ginput_container_custom_taxonomy select').val(
-        <?php echo $terms[0]; ?>); // Select the option with a value of '1'
-    // Notify any JS components that the value changed
-    $('.experts_by_service_cat select').html('<?php echo $opts; ?>');
-    $('.expert-preview').html('<?php echo $p; ?>');
-
-
-    var sel = $('.location_expert_search');
-    sel.html('<?php echo $location_aux; ?>');
-    var selected = sel.val();
-    var opts_list = sel.find('option');
-    opts_list.sort(function(a, b) {
-        return $(a).text() > $(b).text() ? 1 : -1;
-    });
-    sel.html('').append(opts_list);
-    sel.val(selected);
-
-    $('.expert-card').on('click', function() {
+        $('.expert-card').on('click', function() {
             $('.expert-card').each(function() {
                 $(this).removeClass('active');
             });
-        $(this).addClass('active');
-        $('.experts_by_service_cat .gfield_select').val($(this).data('expert'));
-        $('.experts_by_service_cat .gfield_select').trigger('change');
-        //MODULO SELEÇÃO DE ESCALÃO CRIADO PELO CLEVERSON
+
+            $(this).addClass('active');
+            $('.experts_by_service_cat .gfield_select').val($(this).data('expert'));
+            $('.experts_by_service_cat .gfield_select').trigger('change');
+
+            //MODULO SELEÇÃO DE ESCALÃO CRIADO PELO CLEVERSON
             //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
             var cont = 0;
             var cl_vr = $('.valor_referencia input[type="text"]');
             $(".expert-preview .expert-card").each(function() {  //Arry com os dados do escalao     
-
-
                 var cl_pre_escalao = $(this).data('escalao');
                 var cl_expert = $(this).data('expert');
                 var cl_ppc_fixo = $(this).data('ppc-fixo');
 
-                          
+                if (cl_pre_escalao!=null && $(this).hasClass('active')) {
+                    $(cl_pre_escalao).each(function(key, value) { 
+                        var cl_begin_echelon = parseInt(cl_pre_escalao[cont].begin_echelon);
+                        var cl_finish_echelon = parseInt(cl_pre_escalao[cont].finish_echelon);
+                        var cl_percentage = cl_pre_escalao[cont].percentage;
 
-                
-
-                        if (cl_pre_escalao!=null && $(this).hasClass('active')){
-                            
-                            $(cl_pre_escalao).each(function(key, value) { 
-                            var cl_begin_echelon = parseInt(cl_pre_escalao[cont].begin_echelon);
-                            var cl_finish_echelon = parseInt(cl_pre_escalao[cont].finish_echelon);
-                            var cl_percentage = cl_pre_escalao[cont].percentage;
-                            
-
-                            //alert('cl_begin_echelon '+cl_begin_echelon+' cl_finish_echelon '+cl_finish_echelon+' cl_percentage ');
-                                
-                                if (cl_vr.val() >= cl_begin_echelon && cl_vr.val() <= cl_finish_echelon) {    
-                                
-                                    var cl_orcamento = (cl_vr.val()*cl_percentage)/100;
-                                    console.log(cont);
-                                    console.log(cl_pre_escalao);
-                                    console.log(cl_begin_echelon);
-                                    console.log(cl_orcamento);
-                                    console.log(cl_expert );
-                                    console.log(cl_ppc_fixo);
-                                    $('.maximo input[type="text"]').val(cl_orcamento);
-                                    $('input[name="input_'+cl_id_campo_PPC_Fixo_SR+'"]').val(cl_ppc_fixo); 
-                                    return false;
-                               
-                                }
-                                cont++;
-                        });
+                        //alert('cl_begin_echelon '+cl_begin_echelon+' cl_finish_echelon '+cl_finish_echelon+' cl_percentage ');
                         
-                    }
+                        if (cl_vr.val() >= cl_begin_echelon && cl_vr.val() <= cl_finish_echelon) {    
+                            var cl_orcamento = (cl_vr.val()*cl_percentage)/100;
+                            console.log(cont);
+                            console.log(cl_pre_escalao);
+                            console.log(cl_begin_echelon);
+                            console.log(cl_orcamento);
+                            console.log(cl_expert );
+                            console.log(cl_ppc_fixo);
+                            $('.maximo input[type="text"]').val(cl_orcamento);
+                            $('input[name="input_'+cl_id_campo_PPC_Fixo_SR+'"]').val(cl_ppc_fixo); 
+                            return false;
+                        }
+                        cont++;
+                    });
+                }
             })
             //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-    });
-
-
-
-    $('.single-counceling .ginput_container_custom_taxonomy select').on('change', function(event) {
-        event.preventDefault();
-        var id = $(this).val();
-        $('.expert-card').css('display', 'none');
-        $('.service_cat_' + id).css('display', 'flex');
-
-
-
-        var selected_location = $('.location_expert_search').val();
-
-        $('.location_expert_search option').css('display', 'block');
-        $('.service_cat_' + id).each(function() {
-
-                                    var locs = $(this).data('locations');
-                        if (locs.indexOf(',') >= 0) {
-                            locs = $(this).data('locations').split(",");
-                        }
-
-
-            for (var i = 0; i < locs.length; i++) {
-                $('.location_expert_search option[value="' + locs[i] + '"]').css('display','block');
-            }
         });
-        $('.location_expert_search option[value="all"]').css('display', 'block');
 
-        if($('.location_expert_search option[value="'+selected_location+'"]').css('display') === 'block'){
-                      $('.location_expert_search option[value='+selected_location+']').attr('selected','selected');
-                    }else{
-                        $('.location_expert_search option[value=all]').attr('selected','selected');
-                    }
+        $('.single-counceling .ginput_container_custom_taxonomy select').on('change', function(event) {
+            event.preventDefault();
+            var id = $(this).val();
+            $('.expert-card').css('display', 'none');
+            $('.service_cat_' + id).css('display', 'flex');
 
-                    $('.location_expert_search').trigger('change');
+            var selected_location = $('.location_expert_search').val();
 
-    });
-    $('.single-counceling .ginput_container_custom_taxonomy select').trigger('change');
+            $('.location_expert_search option').css('display', 'block');
+            $('.service_cat_' + id).each(function() {
+                var locs = $(this).data('locations');
 
-    $('.location_expert_search').on('change', function(event) {
-        event.preventDefault();
-        $('.expert-preview').find('#result_D').html('<?php /* echo __('Enter the reference value and Budget available in the fields above.','idealbiz') */ ?>');
-
-                var val = $(this).val();
-        var found = 0;
-        var cat = $('.single-counceling .ginput_container_custom_taxonomy select').val();
-        if (val != 'all') {
-            $('.expert-preview .expert-card').each(function() {
-                var l = $(this).data('locations');
-                if (l.indexOf(val) >= 0 && $(this).hasClass('service_cat_' + cat)) {
-                    $(this).css('display', 'flex');
-                    found++;
-                    window.cl_care2 = 1
-                } else {
-                    $(this).css('display', 'none');
-                    window.cl_care = 1
-                                /* $('.expert-preview .customer_care').attr('style', 'display:block !important;'); */
+                if (locs.indexOf(',') >= 0) {
+                    locs = $(this).data('locations').split(",");
                 }
-            });
-        } else {
-            $('.expert-preview .expert-card').each(function() {
-                if ($(this).hasClass('service_cat_' + cat)) {
-                    $(this).css('display', 'flex');
-                    found++;
-                } else {
-                    $(this).css('display', 'none');
+
+                for (var i = 0; i < locs.length; i++) {
+                    $('.location_expert_search option[value="' + locs[i] + '"]').css('display','block');
                 }
             });
 
-        }
-                    if (found == 0) {
-                        
-                        /* $('.expert-preview .not-found').css('display', 'flex'); */
-                        /* $('.expert-preview .customer_care').attr('style','display:block !important;'); */
-                        
+            $('.location_expert_search option[value="all"]').css('display', 'block');
+
+            if($('.location_expert_search option[value="'+selected_location+'"]').css('display') === 'block'){
+                $('.location_expert_search option[value='+selected_location+']').attr('selected','selected');
+            } else {
+                $('.location_expert_search option[value=all]').attr('selected','selected');
+            }
+
+            $('.location_expert_search').trigger('change');
+        });
+        $('.single-counceling .ginput_container_custom_taxonomy select').trigger('change');
+
+        $('.location_expert_search').on('change', function(event) {
+            event.preventDefault();
+            $('.expert-preview').find('#result_D').html('<?php /* echo __('Enter the reference value and Budget available in the fields above.','idealbiz') */ ?>');
+            
+            var val = $(this).val();
+            var found = 0;
+            var cat = $('.single-counceling .ginput_container_custom_taxonomy select').val();
+            if (val != 'all') {
+                $('.expert-preview .expert-card').each(function() {
+                    var l = $(this).data('locations');
+                    if (l.indexOf(val) >= 0 && $(this).hasClass('service_cat_' + cat)) {
+                        $(this).css('display', 'flex');
+                        found++;
+                        window.cl_care2 = 1
+                    } else {
+                        $(this).css('display', 'none');
+                        window.cl_care = 1
+                        /* $('.expert-preview .customer_care').attr('style', 'display:block !important;'); */
                     }
-                    calc_F_G();
+                });
+            } else {
+                $('.expert-preview .expert-card').each(function() {
+                    if ($(this).hasClass('service_cat_' + cat)) {
+                        $(this).css('display', 'flex');
+                        found++;
+                    } else {
+                        $(this).css('display', 'none');
+                    }
                 });
 
-    var gform_expert_validation_message = $('.experts_by_service_cat .validation_message');
+            }
+            if (found == 0) {
+                
+                /* $('.expert-preview .not-found').css('display', 'flex'); */
+                /* $('.expert-preview .customer_care').attr('style','display:block !important;'); */
+                
+            }
+            calc_F_G();
+        });
 
-    if (gform_expert_validation_message.length > 0) {
-        var validation_message_expert = $('.validation_message_expert');
-        $('#contact-this-seller').addClass('error-expert-field');
-        validation_message_expert.css('color', gform_expert_validation_message.css('color'));
-        validation_message_expert.css('font-weight', gform_expert_validation_message.css('font-weight'));
-        validation_message_expert.text(gform_expert_validation_message.text());
-        validation_message_expert.css('display', 'block');
-    }
+        var gform_expert_validation_message = $('.experts_by_service_cat .validation_message');
 
-    if ($(window).width() < 3000) {
-        $('#contact-this-seller').appendTo(".experts_by_service_cat");
-        $('.experts_by_service_cat').css('display', 'block');
-        $('.experts_by_service_cat > .gfield_label').css('display', 'none');
-        $('.experts_by_service_cat > .ginput_container').css('display', 'none');
-    }
+        if (gform_expert_validation_message.length > 0) {
+            var validation_message_expert = $('.validation_message_expert');
+            $('#contact-this-seller').addClass('error-expert-field');
+            validation_message_expert.css('color', gform_expert_validation_message.css('color'));
+            validation_message_expert.css('font-weight', gform_expert_validation_message.css('font-weight'));
+            validation_message_expert.text(gform_expert_validation_message.text());
+            validation_message_expert.css('display', 'block');
+        }
 
-    $(window).on('resize', function() {
         if ($(window).width() < 3000) {
             $('#contact-this-seller').appendTo(".experts_by_service_cat");
             $('.experts_by_service_cat').css('display', 'block');
             $('.experts_by_service_cat > .gfield_label').css('display', 'none');
             $('.experts_by_service_cat > .ginput_container').css('display', 'none');
-        } else {
-            $('#contact-this-seller').appendTo(".sidebar-service-message");
-            $('.experts_by_service_cat').css('display', 'none');
-            $('.experts_by_service_cat > .gfield_label').css('display', 'none');
-            $('.experts_by_service_cat > .ginput_container').css('display', 'none');
         }
-    });
-    gform.addFilter('gform_datepicker_options_pre_init', function(optionsObj, formId, fieldId) {
-        optionsObj.minDate = 0;
-        return optionsObj;
-    });
 
-// Parece ser o campo Location que faz a seleção do Expert
-
-                /*                 $('.location input').on('change keyup paste', function() {
-                                    var v = $(this).val().toLowerCase();
-                                    $(".location_expert_search > option").each(function() {
-                                        var s = this.value.toLowerCase();
-                                        if (s.includes(v)) {
-                                            $('.location_expert_search option[value=' + s + ']').attr('selected', 'selected');
-                                            $('.location_expert_search').trigger('change');
-                                            return;
-                                        }
-                                    });
-                                }); */
-
-    <?php if (isset($_GET['sr'])) { 
-                $rid = $_GET['rid'];
-                $user = get_field('customer', $_GET['rid']);
-                $sexpert = get_field('consultant', $_GET['rid']); // $sexpert->ID
-        ?>
-        $('.single-counceling .ginput_container_custom_taxonomy select').val(<?php echo $_GET['sr']; ?>).trigger('change');
-        
-
-        $('.single-counceling .name_first input').val('<?php echo $user->first_name; ?>');
-        $('.single-counceling .name_last input').val('<?php echo $user->last_name; ?>');
-
-        $('.single-counceling .ginput_container_textarea textarea').val('<?php echo get_field('message', $rid); ?>').prop('disabled', true);
-        $('.single-counceling .ginput_container_phone input').val('<?php echo get_field('service_request_phone', $rid); ?>');
-        $('.single-counceling .ginput_container_date input').val('<?php echo get_field('delivery_date', $rid); ?>');
-        
-
-        //console.log('<?php echo get_field('reference_value', $rid); ?>');
-
-        $('.single-counceling .valor_referencia input').val('<?php echo get_field('reference_value', $rid); ?>').prop('disabled', true);
-        $('.single-counceling .minimo input').val('<?php echo get_field('budget_min', $rid); ?>').prop('disabled', true);
-        $('.single-counceling .maximo input').val('<?php echo get_field('budget_max', $rid); ?>').prop('disabled', true);
-
-
-    <?php } ?>
-
-    <?php if (WEBSITE_SYSTEM == '' || WEBSITE_SYSTEM == '0') { ?>
-        $('.valor_referencia input[type="text"]').val(0);
-    <?php } ?>
-
-    <?php if (WEBSITE_SYSTEM == '1') { ?>
-
-                    /*
-                            $('.valor_referencia input[type="text"]').val(40000);
-                            $('.minimo input[type="text"]').val(300);
-                            $('.maximo input[type="text"]').val(1500);
-                    */
-
-
-                    $('.form-selector').find('form').append('<input type="hidden" name="idb_tax" value="" />');
-                    // Campos onde se insere o valor de Refrência, Mínimo e Máximo. 
-                    $('.valor_referencia .ginput_container_text').append(' <span class="curr_symbol"><?php echo get_woocommerce_currency_symbol(); ?></span>');
-                    $('.minimo .ginput_container_text').append(' <span class="curr_symbol"><?php echo get_woocommerce_currency_symbol(); ?></span>');
-                    $('.maximo .ginput_container_text').append(' <span class="curr_symbol"><?php echo get_woocommerce_currency_symbol(); ?></span>');                    
-                    
-                    $('.valor_referencia .gfield_label').append('<span class="gfield_required">*</span>');
-                    //Campo oculto no Gform ID23
-                    /* $('.maximo .gfield_label').append('<span class="gfield_required">*</span>'); */
-
-                    //Coloca os "i's" ao lado dos campos.
-                    $('label[for=input_'+<?php echo $form_id;?>+'_1]').append('<div class=gfield_label><button id="cl_input1" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_2]').append('<div class=gfield_label><button id="cl_input2" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_3]').append('<div class=gfield_label><button id="cl_input3" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_4]').append('<div class=gfield_label><button id="cl_input4" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_5]').append('<div class=gfield_label><button id="cl_input5" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_6]').append('<div class=gfield_label><button id="cl_input6" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_7]').append('<div class=gfield_label><button id="cl_input7" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_8]').append('<div class=gfield_label><button id="cl_input8" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_9]').append('<div class=gfield_label><button id="cl_input9" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_10]').append('<div class=gfield_label><button id="cl_input10" class="info-balloon">i</button>');
-                    /* $('label[for=input_'+<?php echo $form_id;?>+'_11]').append('<div class=gfield_label><button id="cl_input11" class="info-balloon">i</button>'); */
-                    $('label[for=input_'+<?php echo $form_id;?>+'_12]').append('<div class=gfield_label><button id="cl_input12" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_13]').append('<div class=gfield_label><button id="cl_input13" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_14]').append('<div class=gfield_label><button id="cl_input14" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_15]').append('<div class=gfield_label><button id="cl_input15" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_16]').append('<div class=gfield_label><button id="cl_input16" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_17]').append('<div class=gfield_label><button id="cl_input17" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_18]').append('<div class=gfield_label><button id="cl_input18" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_19]').append('<div class=gfield_label><button id="cl_input19" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_20]').append('<div class=gfield_label><button id="cl_input20" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_21]').append('<div class=gfield_label><button id="cl_input21" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_22]').append('<div class=gfield_label><button id="cl_input22" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_23]').append('<div class=gfield_label><button id="cl_input23" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_24]').append('<div class=gfield_label><button id="cl_input24" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_25]').append('<div class=gfield_label><button id="cl_input25" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_26]').append('<div class=gfield_label><button id="cl_input26" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_27]').append('<div class=gfield_label><button id="cl_input27" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_28]').append('<div class=gfield_label><button id="cl_input28" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_29]').append('<div class=gfield_label><button id="cl_input29" class="info-balloon">i</button>');
-                    $('label[for=input_'+<?php echo $form_id;?>+'_30]').append('<div class=gfield_label><button id="cl_input30" class="info-balloon">i</button>');
-
-                    //Chama o iziModal.
-                    $('#cl_input1').click(function() { $('#campo1').iziModal('open'); return false;});
-                    $('#cl_input2').click(function() { $('#campo2').iziModal('open'); return false;});
-                    $('#cl_input3').click(function() { $('#campo3').iziModal('open'); return false;});
-                    $('#cl_input4').click(function() { $('#campo4').iziModal('open'); return false;});
-                    $('#cl_input5').click(function() { $('#campo5').iziModal('open'); return false;});
-                    $('#cl_input6').click(function() { $('#campo6').iziModal('open'); return false;});
-                    $('#cl_input7').click(function() { $('#campo7').iziModal('open'); return false;});
-                    $('#cl_input8').click(function() { $('#campo8').iziModal('open'); return false;});
-                    $('#cl_input9').click(function() { $('#campo9').iziModal('open'); return false;});
-                    $('#cl_input10').click(function() { $('#campo10').iziModal('open'); return false;});
-                    $('#cl_input11').click(function() { $('#campo11').iziModal('open'); return false;});
-                    $('#cl_input12').click(function() { $('#campo12').iziModal('open'); return false;});
-                    $('#cl_input13').click(function() { $('#campo13').iziModal('open'); return false;});
-                    $('#cl_input14').click(function() { $('#campo14').iziModal('open'); return false;});
-                    $('#cl_input15').click(function() { $('#campo15').iziModal('open'); return false;});
-                    $('#cl_input16').click(function() { $('#campo16').iziModal('open'); return false;});
-                    $('#cl_input17').click(function() { $('#campo17').iziModal('open'); return false;});
-                    $('#cl_input18').click(function() { $('#campo18').iziModal('open'); return false;});
-                    $('#cl_input19').click(function() { $('#campo19').iziModal('open'); return false;});
-                    $('#cl_input20').click(function() { $('#campo20').iziModal('open'); return false;});
-                    $('#cl_input21').click(function() { $('#campo21').iziModal('open'); return false;});
-                    $('#cl_input22').click(function() { $('#campo22').iziModal('open'); return false;});
-                    $('#cl_input23').click(function() { $('#campo23').iziModal('open'); return false;});
-                    $('#cl_input24').click(function() { $('#campo24').iziModal('open'); return false;});
-                    $('#cl_input25').click(function() { $('#campo25').iziModal('open'); return false;});
-                    $('#cl_input26').click(function() { $('#campo26').iziModal('open'); return false;});
-                    $('#cl_input27').click(function() { $('#campo27').iziModal('open'); return false;});
-                    $('#cl_input28').click(function() { $('#campo28').iziModal('open'); return false;});
-                    $('#cl_input29').click(function() { $('#campo29').iziModal('open'); return false;});
-                    $('#cl_input30').click(function() { $('#campo30').iziModal('open'); return false;});
-
-
-                    //Bloqueado autocomplite
-
-                    /* $(':input').on('focus', function () {
-                        $('#input_'+<?php echo $form_id;?>+'_3]').attr('autocomplete','off')
-                        $('#input_'+<?php echo $form_id;?>+'_13]').attr('autocomplete','off')
-                    }); */
-
-                    $(document).ready(function(){
-                        $(':input').live('focus',function(){
-                            $(this).attr('autocomplete', 'off');
-                        });
-                    });
-
-                    $(document).ready(function(){
-                        $( document ).on( 'focus', ':input', function(){
-                            $( this ).attr( 'autocomplete', 'off' );
-                        });
-                    });
-
-                    $(document).ready(function() {
-                        $(document).on('focus', ':input', function() {
-                            $(this).attr('autocomplete', 'off');
-                        });
-                    });
-
-                    $('input, :input').attr('autocomplete', 'off');
-
-
-                    $("#autocmpldisablechk").click(function () {
-                        if (!$(this).is(":checked")) { 
-                            // enable autocomplete
-                            $("#autocomplete").autocomplete({
-                                disabled: false
-                            });
-                        }
-                        else { 
-                            // disable autocomplete
-                            $("#autocomplete").autocomplete({
-                                disabled: true
-                            });
-                        }
-                    });
-
-
-        
-        var vr = $('.valor_referencia input[type="text"]'); //Referência
-        var min = $('.minimo input[type="text"]'); //Mínimo
-        /* var max = $('.maximo input[type="text"]'); //Máximo */
-        var max = $('.valor_referencia input[type="text"]'); //Referência
-        
-
-        //Campo valor Máximo ativa script ao alterar CL
-        /* vr.on('change', function() {
-            var vr_val = $(this).val(); 
-            if (vr_val <= 0 || isNaN(vr_val)) {
-                $(this).val(1);
+        $(window).on('resize', function() {
+            if ($(window).width() < 3000) {
+                $('#contact-this-seller').appendTo(".experts_by_service_cat");
+                $('.experts_by_service_cat').css('display', 'block');
+                $('.experts_by_service_cat > .gfield_label').css('display', 'none');
+                $('.experts_by_service_cat > .ginput_container').css('display', 'none');
             } else {
-                $(this).val(parseFloat($(this).val()).toFixed(2));
+                $('#contact-this-seller').appendTo(".sidebar-service-message");
+                $('.experts_by_service_cat').css('display', 'none');
+                $('.experts_by_service_cat > .gfield_label').css('display', 'none');
+                $('.experts_by_service_cat > .ginput_container').css('display', 'none');
             }
-            calc_F_G();
-            $('.maximo input[type="text"]').val(orcamento+' TaX '+e);
-            max = orcamento;
-            alert("Valor de max assim que isere o inpot é "+max)
-            console.log('Orcamento Calc:'+max);
-        }); */
-
-        /* min.on('change', function() {
-            var minv = $(this).val(); 
-            if (minv < 0 || isNaN(minv)) {
-                $(this).val(0); 
-            } else {
-                $(this).val(parseFloat($(this).val()).toFixed(2));
-                if (parseFloat(max.val()) < parseFloat(minv)) {
-                    max.val(parseFloat(minv).toFixed(2));
-                }
-            }
-            
-        }); */
-        
-        //ON CHANGE - Valida Campo Máximo, verifica se é nulo 0 ou String CL.
-        /* max.on('change', function() { */
-        vr.on('change', function() {
-        var max = vr.val();
-            $('.expert-preview .not-found').css('display', 'none');
-            //Aqui o Orçamento passa a ter o mesmo valor do vr
-            /* var maxv = $(this).val(); 
-            if (maxv <= 0 || isNaN(maxv)) {
-                $(this).val(1);
-            } else {
-                $(this).val(parseFloat($(this).val()).toFixed(2));
-                // Valida se Mínimo não é maio que Máximo, se for preenche Máximo com valor de Mínimo CL.
-                if (parseFloat(min.val()) > parseFloat(maxv)) {
-                    min.val(parseFloat(maxv).toFixed(2));
-                }
-            } */
-            calc_F_G();
-            /* max = vr.val(); */
         });
-                        //NPMM - ANULA ENTER DO MONTANTE ENVOLVIDO
-                         $('#input_12_22').keypress(function(event){
-                            var keycode = (event.keyCode ? event.keyCode : event.which);
-                            if(keycode == '13'){
-                                //e.preventDefault();
-                                /* alert('Select Expert');
-                                $("#seleciona_expert").focus(); */
-                                return false;
-                            }
+        gform.addFilter('gform_datepicker_options_pre_init', function(optionsObj, formId, fieldId) {
+            optionsObj.minDate = 0;
+            return optionsObj;
+        });
 
-                        });
+        <?php if (isset($_GET['sr'])) { 
+                    $rid = $_GET['rid'];
+                    $user = get_field('customer', $_GET['rid']);
+                    $sexpert = get_field('consultant', $_GET['rid']); // $sexpert->ID
+            ?>
+            $('.single-counceling .ginput_container_custom_taxonomy select').val(<?php echo $_GET['sr']; ?>).trigger('change');
+            
 
-                       /* Instruções jQuery ao perder Foco 
-                        $('#input_12_24').focusout(function() {
-                            alert('Select Expert');
-                            $("#seleciona_expert").focus();
-                            return false;
-                        });
+            $('.single-counceling .name_first input').val('<?php echo $user->first_name; ?>');
+            $('.single-counceling .name_last input').val('<?php echo $user->last_name; ?>');
 
-                        $("#gform_wrapper_12").submit(function(){
-                            alert('Select Expert');
-                            $("#seleciona_expert").focus();
-                            return false;
-                        }); */
+            $('.single-counceling .ginput_container_textarea textarea').val('<?php echo get_field('message', $rid); ?>').prop('disabled', true);
+            $('.single-counceling .ginput_container_phone input').val('<?php echo get_field('service_request_phone', $rid); ?>');
+            $('.single-counceling .ginput_container_date input').val('<?php echo get_field('delivery_date', $rid); ?>');
+            
 
-                                            
+            //console.log('<?php echo get_field('reference_value', $rid); ?>');
 
-//calculo fator de competencia -> f
-        
-        function calc_F_G() {
+            $('.single-counceling .valor_referencia input').val('<?php echo get_field('reference_value', $rid); ?>').prop('disabled', true);
+            $('.single-counceling .minimo input').val('<?php echo get_field('budget_min', $rid); ?>').prop('disabled', true);
+            $('.single-counceling .maximo input').val('<?php echo get_field('budget_max', $rid); ?>').prop('disabled', true);
+        <?php } ?>
 
-            var count_competents = 0;
-            var v_ref = parseInt(vr.val());
+        <?php if (WEBSITE_SYSTEM == '' || WEBSITE_SYSTEM == '0') { ?>
+            $('.valor_referencia input[type="text"]').val(0);
+        <?php } ?>
 
-            //Valida valor de referência e máximo não são Nulos e String.
-            var ciclo_pai = 0; // Apagar depois
-            if (vr.val() != '' && !isNaN(vr.val())) {
-                $('.expert-preview .customer_care').attr('style', '');
-                            /* $('.expert-preview').find('#result_D').html(''); */
-                $(".expert-preview .expert-card").each(function() {
-                //var e = $(this).data('competencyfactor'); // Codigo antigo 
-                   console.log(ciclo_pai + "-> Entrei ciclo Pai a variavel e é :" + e); // Apagar depois 
+        <?php if (WEBSITE_SYSTEM == '1') { ?>
+            $('.form-selector').find('form').append('<input type="hidden" name="idb_tax" value="" />');
+
+            // Campos onde se insere o valor de Refrência, Mínimo e Máximo. 
+            $('.valor_referencia .ginput_container_text').append(' <span class="curr_symbol"><?php echo get_woocommerce_currency_symbol(); ?></span>');
+            $('.minimo .ginput_container_text').append(' <span class="curr_symbol"><?php echo get_woocommerce_currency_symbol(); ?></span>');
+            $('.maximo .ginput_container_text').append(' <span class="curr_symbol"><?php echo get_woocommerce_currency_symbol(); ?></span>');                    
+            
+            $('.valor_referencia .gfield_label').append('<span class="gfield_required">*</span>');
+            //Campo oculto no Gform ID23
+            /* $('.maximo .gfield_label').append('<span class="gfield_required">*</span>'); */
+
+            //Coloca os "i's" ao lado dos campos.
+            $('label[for=input_'+<?php echo $form_id;?>+'_1]').append('<div class=gfield_label><button id="cl_input1" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_2]').append('<div class=gfield_label><button id="cl_input2" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_3]').append('<div class=gfield_label><button id="cl_input3" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_4]').append('<div class=gfield_label><button id="cl_input4" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_5]').append('<div class=gfield_label><button id="cl_input5" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_6]').append('<div class=gfield_label><button id="cl_input6" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_7]').append('<div class=gfield_label><button id="cl_input7" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_8]').append('<div class=gfield_label><button id="cl_input8" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_9]').append('<div class=gfield_label><button id="cl_input9" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_10]').append('<div class=gfield_label><button id="cl_input10" class="info-balloon">i</button>');
+            /* $('label[for=input_'+<?php echo $form_id;?>+'_11]').append('<div class=gfield_label><button id="cl_input11" class="info-balloon">i</button>'); */
+            $('label[for=input_'+<?php echo $form_id;?>+'_12]').append('<div class=gfield_label><button id="cl_input12" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_13]').append('<div class=gfield_label><button id="cl_input13" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_14]').append('<div class=gfield_label><button id="cl_input14" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_15]').append('<div class=gfield_label><button id="cl_input15" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_16]').append('<div class=gfield_label><button id="cl_input16" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_17]').append('<div class=gfield_label><button id="cl_input17" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_18]').append('<div class=gfield_label><button id="cl_input18" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_19]').append('<div class=gfield_label><button id="cl_input19" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_20]').append('<div class=gfield_label><button id="cl_input20" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_21]').append('<div class=gfield_label><button id="cl_input21" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_22]').append('<div class=gfield_label><button id="cl_input22" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_23]').append('<div class=gfield_label><button id="cl_input23" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_24]').append('<div class=gfield_label><button id="cl_input24" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_25]').append('<div class=gfield_label><button id="cl_input25" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_26]').append('<div class=gfield_label><button id="cl_input26" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_27]').append('<div class=gfield_label><button id="cl_input27" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_28]').append('<div class=gfield_label><button id="cl_input28" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_29]').append('<div class=gfield_label><button id="cl_input29" class="info-balloon">i</button>');
+            $('label[for=input_'+<?php echo $form_id;?>+'_30]').append('<div class=gfield_label><button id="cl_input30" class="info-balloon">i</button>');
+
+            //Chama o iziModal.
+            $('#cl_input1').click(function() { $('#campo1').iziModal('open'); return false;});
+            $('#cl_input2').click(function() { $('#campo2').iziModal('open'); return false;});
+            $('#cl_input3').click(function() { $('#campo3').iziModal('open'); return false;});
+            $('#cl_input4').click(function() { $('#campo4').iziModal('open'); return false;});
+            $('#cl_input5').click(function() { $('#campo5').iziModal('open'); return false;});
+            $('#cl_input6').click(function() { $('#campo6').iziModal('open'); return false;});
+            $('#cl_input7').click(function() { $('#campo7').iziModal('open'); return false;});
+            $('#cl_input8').click(function() { $('#campo8').iziModal('open'); return false;});
+            $('#cl_input9').click(function() { $('#campo9').iziModal('open'); return false;});
+            $('#cl_input10').click(function() { $('#campo10').iziModal('open'); return false;});
+            $('#cl_input11').click(function() { $('#campo11').iziModal('open'); return false;});
+            $('#cl_input12').click(function() { $('#campo12').iziModal('open'); return false;});
+            $('#cl_input13').click(function() { $('#campo13').iziModal('open'); return false;});
+            $('#cl_input14').click(function() { $('#campo14').iziModal('open'); return false;});
+            $('#cl_input15').click(function() { $('#campo15').iziModal('open'); return false;});
+            $('#cl_input16').click(function() { $('#campo16').iziModal('open'); return false;});
+            $('#cl_input17').click(function() { $('#campo17').iziModal('open'); return false;});
+            $('#cl_input18').click(function() { $('#campo18').iziModal('open'); return false;});
+            $('#cl_input19').click(function() { $('#campo19').iziModal('open'); return false;});
+            $('#cl_input20').click(function() { $('#campo20').iziModal('open'); return false;});
+            $('#cl_input21').click(function() { $('#campo21').iziModal('open'); return false;});
+            $('#cl_input22').click(function() { $('#campo22').iziModal('open'); return false;});
+            $('#cl_input23').click(function() { $('#campo23').iziModal('open'); return false;});
+            $('#cl_input24').click(function() { $('#campo24').iziModal('open'); return false;});
+            $('#cl_input25').click(function() { $('#campo25').iziModal('open'); return false;});
+            $('#cl_input26').click(function() { $('#campo26').iziModal('open'); return false;});
+            $('#cl_input27').click(function() { $('#campo27').iziModal('open'); return false;});
+            $('#cl_input28').click(function() { $('#campo28').iziModal('open'); return false;});
+            $('#cl_input29').click(function() { $('#campo29').iziModal('open'); return false;});
+            $('#cl_input30').click(function() { $('#campo30').iziModal('open'); return false;});
+
+
+            //Bloqueado autocomplite
+
+            /* $(':input').on('focus', function () {
+                $('#input_'+<?php echo $form_id;?>+'_3]').attr('autocomplete','off')
+                $('#input_'+<?php echo $form_id;?>+'_13]').attr('autocomplete','off')
+            }); */
+
+            $(document).ready(function(){
+                $(':input').live('focus',function(){
+                    $(this).attr('autocomplete', 'off');
+                });
+            });
+
+            $(document).ready(function(){
+                $( document ).on( 'focus', ':input', function(){
+                    $( this ).attr( 'autocomplete', 'off' );
+                });
+            });
+
+            $(document).ready(function() {
+                $(document).on('focus', ':input', function() {
+                    $(this).attr('autocomplete', 'off');
+                });
+            });
+
+            $('input, :input').attr('autocomplete', 'off');
+
+            $("#autocmpldisablechk").click(function () {
+                if (!$(this).is(":checked")) { 
+                    // enable autocomplete
+                    $("#autocomplete").autocomplete({
+                        disabled: false
+                    });
+                }
+                else { 
+                    // disable autocomplete
+                    $("#autocomplete").autocomplete({
+                        disabled: true
+                    });
+                }
+            });
+            
+            var vr = $('.valor_referencia input[type="text"]'); //Referência
+            var min = $('.minimo input[type="text"]'); //Mínimo
+            /* var max = $('.maximo input[type="text"]'); //Máximo */
+            var max = $('.valor_referencia input[type="text"]'); //Referência
+            
+            //ON CHANGE - Valida Campo Máximo, verifica se é nulo 0 ou String CL.
+            /* max.on('change', function() { */
+            vr.on('change', function() {
+            var max = vr.val();
+                $('.expert-preview .not-found').css('display', 'none');
+                //Aqui o Orçamento passa a ter o mesmo valor do vr
+                calc_F_G();
+                /* max = vr.val(); */
+            });
+
+            //NPMM - ANULA ENTER DO MONTANTE ENVOLVIDO
+            $('#input_12_22').keypress(function(event){
+                var keycode = (event.keyCode ? event.keyCode : event.which);
+                if(keycode == '13'){
+                    //e.preventDefault();
+                    /* alert('Select Expert');
+                    $("#seleciona_expert").focus(); */
+                    return false;
+                }
+
+            });                                 
+
+            //calculo fator de competencia -> f
+            
+            function calc_F_G() {
+                var count_competents = 0;
+                var v_ref = parseInt(vr.val());
+
+                //Valida valor de referência e máximo não são Nulos e String.
+                var ciclo_pai = 0; // Apagar depois
+                if (vr.val() != '' && !isNaN(vr.val())) {
+                    $('.expert-preview .customer_care').attr('style', '');
+                    /* $('.expert-preview').find('#result_D').html(''); */
+                    $(".expert-preview .expert-card").each(function() {
+                        //var e = $(this).data('competencyfactor'); // Codigo antigo 
+                        console.log(ciclo_pai + "-> Entrei ciclo Pai a variavel e é :" + e); // Apagar depois 
                         var mostra_card = 0;
                         var tx = '';
                         var pre_escalao = $(this).data('escalao'); //Arry com os dados do escalao
@@ -1278,101 +1175,60 @@ jQuery(document).ready(($) => {
                             
                             console.log(" O Valor do percentagem que vou utlizar é : " + percentage); // Apagar depois
                             console.log(i + " ----> Estou TENTADO entrar no IF com VR= " + v_ref + " begin_echelon = " + begin_echelon + " finish_echelon = " + finish_echelon); // Apagar depois
-                                if (v_ref >= begin_echelon && v_ref <= finish_echelon) {                           
-                                    console.log(" CONSEGUI ENTRAR!!! no IF " + i + " com valor de ref : " + v_ref); // Apagar depois
-                                    window.e = percentage;
-                                    var calc_max = (v_ref/100)*e;
-                                    window.orcamento = calc_max;
-                                    var max = orcamento;
-                                    console.log('Valor do Orcamento dentro do ciclo: '+orcamento);
-                                    console.log(" Guardei " + e + " na variavel  e e já sai do IF " + i); // Apagar depois
-                                    console.log(' ---->Sai do ciclo Filho com valor de e Filho : ' + e); // Apagar depois 
-                                    
-                                    return false;  
-                                } 
+                            if (v_ref >= begin_echelon && v_ref <= finish_echelon) {                           
+                                console.log(" CONSEGUI ENTRAR!!! no IF " + i + " com valor de ref : " + v_ref); // Apagar depois
+                                window.e = percentage;
+                                var calc_max = (v_ref/100)*e;
+                                window.orcamento = calc_max;
+                                var max = orcamento;
+                                console.log('Valor do Orcamento dentro do ciclo: '+orcamento);
+                                console.log(" Guardei " + e + " na variavel  e e já sai do IF " + i); // Apagar depois
+                                console.log(' ---->Sai do ciclo Filho com valor de e Filho : ' + e); // Apagar depois 
                                 
-                                i++;
-                            
-                                    
+                                return false;  
+                            }
+
+                            i++;
                         });
-
- 
-                    console.log(ciclo_pai + " -> Sai do ciclo Pai variavel e é :" + e); // Apagar depois
-                    ciclo_pai = ciclo_pai + 1;
-                    
-
-                    if (pre_escalao==null){
-                        $(this).addClass('non-competent');
-                        /* alert('Costumecare'); */
-                    }   
-                    
-                    
-                        /* alert('Valor de i'+i+ ' VR-'+vr.val()+' - '+cl_ini_echlon+' - '+cl_fim_echlon); */
-                      
-                                
-                            if (vr.val() >= cl_ini_echlon && vr.val() <= cl_fim_echlon){
-                                            $(this).removeClass('non-competent');
-                                            window.cl_ini_echlon = '';
-                                            window.cl_fim_echlon = '';
-                                            count_competents++;
-
-                            }else{
-                                $(this).addClass('non-competent');  
-                            }   
-
-
-                    
-                    
-                    /* if (!$(this).hasClass('.customer_care')) {
-                        $(this).addClass('non-competent');
-                        var fc = (parseFloat(e) / 100) * vr.val();
-                        $(this).attr('data-f', fc);
-
-
-                        alert('max.val()'+max.val()) ;
-                        //calculo valor de aceitaçao -> g
-                        if (fc <= max.val()) { // f <= c
-                          
-                            // calculo d 
-                            var d = (parseFloat(max.val()) / parseFloat(vr.val())) * 100;
-                            if (e < d) { // e < d
-                                count_competents++;
-                                $(this).removeClass('non-competent');
-                                alert('fc:'+fc+' e:'+e+' d:'+d) ;
-                            }
-                        }   
-                        var g = (max.val()/100)*e;
-                        //alert("Valor  de g é "+g); 
-                        //$(this).find('.competencyfactor_test').html(g);
-                    } */
-
-
-                });
-                
-                    /* alert('count_competents'+count_competents+' cl_care-'+cl_care+' cl_care2-'+cl_care2); */
-                
-                        if (count_competents == 0 || cl_care == 1 && cl_care2 == '' ) {
-                                $('.expert-preview .customer_care').attr('style', 'display:flex !important;');
-                                $('.expert-preview').find('#result_D').html('<?php echo __($descicao[12][12]);?>');
-                            
-                            }else{
-                                $('.expert-preview .customer_care').attr('style', 'display:none !important;');
-                                cl_care2 = '';
-                            }
-            }else{
-                $('.expert-preview .expert-card').each(function() {
-                    $(this).addClass('non-competent');
-                });
-            }
-        }
-
-        calc_F_G();
-
-    <?php } ?>
-
- 
     
-});
+                        console.log(ciclo_pai + " -> Sai do ciclo Pai variavel e é :" + e); // Apagar depois
+                        ciclo_pai = ciclo_pai + 1;
+
+                        if (pre_escalao==null){
+                            $(this).addClass('non-competent');
+                        }   
+
+                        if (vr.val() >= cl_ini_echlon && vr.val() <= cl_fim_echlon) {
+                            $(this).removeClass('non-competent');
+                            window.cl_ini_echlon = '';
+                            window.cl_fim_echlon = '';
+                            count_competents++;
+                        } else {
+                            $(this).addClass('non-competent');  
+                        }
+                    });
+                    
+                        /* alert('count_competents'+count_competents+' cl_care-'+cl_care+' cl_care2-'+cl_care2); */
+                    
+                            if (count_competents == 0 || cl_care == 1 && cl_care2 == '' ) {
+                                    $('.expert-preview .customer_care').attr('style', 'display:flex !important;');
+                                    $('.expert-preview').find('#result_D').html('<?php echo __($descicao[12][12]);?>');
+                                
+                                }else{
+                                    $('.expert-preview .customer_care').attr('style', 'display:none !important;');
+                                    cl_care2 = '';
+                                }
+                } else {
+                    $('.expert-preview .expert-card').each(function() {
+                        $(this).addClass('non-competent');
+                    });
+                }
+            }
+
+            calc_F_G();
+
+        <?php } ?>    
+    });
 </script>
 
 <style>
