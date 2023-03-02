@@ -625,9 +625,8 @@ if ($cl_membro) {
 <!-- End Modal Template -->
 
 <?php
-
-
     $show_expert = 1;
+
     if (isset($_GET['sr'])) { 
         $sexpert = get_field('consultant', $_GET['rid']); 
         if ($sexpert->ID == get_user_by('email', get_field('expert_email', $post->ID))->ID) {
@@ -635,101 +634,90 @@ if ($cl_membro) {
         }
     }
 
-                                    if ($show_expert) {
+    if ($show_expert) {
+        $fee = 1;
+        if (WEBSITE_SYSTEM == '1') {
+            $userIDFee = get_user_by('email', get_field('expert_email', $post->ID))->ID;
+            if (!userHasActiveExpertFeeSubscription($userIDFee)) {
 
-                                       
-                                        
-                                        $fee = 1;
-                                        if (WEBSITE_SYSTEM == '1') {
-                                            $userIDFee = get_user_by('email', get_field('expert_email', $post->ID))->ID;
-                                            if (!userHasActiveExpertFeeSubscription($userIDFee)) {
-                    
-                                                $fee = 0;
-                                            }
-                                            //var_dump($userIDFee);
-                                        }
-                    
-                                        $aux_class = '';
-                                        if (get_field('idealbiz_support_expert', $post->ID) == '1') {
-                                            $aux_class = ' customer_care ';
-                                            $fee = 1;
-                                        }
-                    
-                                        $escalao = get_field('echelon_competency_factor', $post->ID);
-                                        $cl_fixed_ppc_value = get_field('fixed_ppc_value',$post->ID);
-                                        /* var_dump($cl_fixed_ppc_value); */
-                                        $cl_sr_pay_lead_mode = '<span class="cl_icon-local dashicons dashicons-yes-alt"></span>'.consultLeadModeServieceRequest($post->ID,true);
-                                        
+                $fee = 0;
+            }
+            //var_dump($userIDFee);
+        }
 
+        $aux_class = '';
+        if (get_field('idealbiz_support_expert', $post->ID) == '1') {
+            $aux_class = ' customer_care ';
+            $fee = 1;
+        }
 
-                                        $array_ppc_fixo =json_encode($cl_fixed_ppc_value); 
-                                        $arry_escalao = json_encode($escalao);
-                    
-                                        //Este pedaço de codigo exibe na tela de forma legivel os escalões.
-                                        
-                                        if (isset($_GET['escalao'])){
-                                        foreach ($escalao as $key => $vazio) {
-                                            $vazio['begin_echelon'];
-                    
-                                            
-                                            //print_r($escalao);
-                    
-                                            if ($vazio) {
-                                                echo ' ' . get_the_title() . ' = ';
-                                                foreach ($escalao as $key => $nivel) {
-                                                    //print_r($nivel);
-                    
-                                                    echo $nivel['begin_echelon'] . ' <> ';
-                                                    echo $nivel['finish_echelon'];
-                                                    echo ' - ' . $nivel['percentage'] . '% |';
-                                                }
-                                                echo '<br>';
-                                                $vazio = '';
-                                                break;
-                                            }
-                                        }
-                                    }
-                                       
-                                        if ($fee == 1) {
-                                            $p .= '<div data-escalao=' . $arry_escalao . ' data-fee="' . $fee . '" data-ppc-fixo='.$array_ppc_fixo.'  data-f="" data-competencyfactor="" data-expert="' . $post->ID . '" data-locations="' . join(',', wp_list_pluck($location_objs, 'slug')) . '" style="display: none;" class="p-20 m-b-20 ' . $classes . $aux_class . ' ' . $location_as_classes . ' expert-card position-relative flex-column black--color white--background dropshadow font-weight-medium"  >';
-                                            $p .= '<div class="d-flex flex-row center-content">';
-                                            $p .= '<div class="w-100px h-100px b-r d-block o-hidden no-decoration">';
-                                            $p .= '<img class="w-100 h-100 object-cover" src="' . get_field('foto', $post->ID)['sizes']['medium'] . '">';
-                                            $p .= '</div>'; 
-                                            $p .= '<div class="calc-100-120 h-100 d-flex justify-content-between flex-column p-y-10 p-x-17">';
-                                            $p .= '<div>';
-                                            $p .= '<h3 class="font-weight-semi-bold base_color--color">' . get_the_title() . '</h3> ';
-                                            $p .= '</div>';
-                                            $p .= '<span class="small">' . join(', ', wp_list_pluck($term_obj_list, 'name')) . '</span>';
-                                            $p .= '<div class="cl_icon location p-t-10 font-weight-bold">'.$cl_sr_pay_lead_mode.'</div>';
-                                            $p .= '' . ($location_objs ? '<span class="small location p-t-10 font-weight-bold"><i class="icon-local"></i><span class="text-uppercase">' . join(', ', wp_list_pluck($location_objs, 'name')) . '</span></span>' : '') . '';
-                                            $p .= '</div>';
-                                            $p .= '<a href="#" data-izimodal-open="#modal_' . $post->ID . '" class="info-balloon info-modal">i</a>' . '</div>';
-                                            $p .= '</div>';
-                                            $opts .= '<option value="' . $post->ID . '">' . $post->post_title . '</option>';                                          
-                                        }
-                                    }
-                                    }
-                                    wp_reset_postdata();
-                                }
+        $escalao = get_field('echelon_competency_factor', $post->ID);
+        $cl_fixed_ppc_value = get_field('fixed_ppc_value',$post->ID);
+        /* var_dump($cl_fixed_ppc_value); */
+        $cl_sr_pay_lead_mode = '<span class="cl_icon-local dashicons dashicons-yes-alt"></span>'.consultLeadModeServieceRequest($post->ID,true);
+        
+        $array_ppc_fixo =json_encode($cl_fixed_ppc_value); 
+        $arry_escalao = json_encode($escalao);
 
-                                $p .= '<div class="not-found" style="display:none;"><p class="not-found">' . __('Experts not found.', 'idealbiz') . '</p></div>';
-                                
-                                $p .= '<span id="result_D" class="cl_aviso" ></span>';
+        //Este pedaço de codigo exibe na tela de forma legivel os escalões.
+        
+        if (isset($_GET['escalao'])){
+            foreach ($escalao as $key => $vazio) {
+                $vazio['begin_echelon'];
 
+                //print_r($escalao);
 
+                if ($vazio) {
+                    echo ' ' . get_the_title() . ' = ';
+                    foreach ($escalao as $key => $nivel) {
+                        //print_r($nivel);
 
+                        echo $nivel['begin_echelon'] . ' <> ';
+                        echo $nivel['finish_echelon'];
+                        echo ' - ' . $nivel['percentage'] . '% |';
+                    }
+                    echo '<br>';
+                    $vazio = '';
+                    break;
+                }
+            }
+        }
+        
+        if ($fee == 1) {
+            $p .= '<div data-escalao=' . $arry_escalao . ' data-fee="' . $fee . '" data-ppc-fixo='.$array_ppc_fixo.'  data-f="" data-competencyfactor="" data-expert="' . $post->ID . '" data-locations="' . join(',', wp_list_pluck($location_objs, 'slug')) . '" style="display: none;" class="p-20 m-b-20 ' . $classes . $aux_class . ' ' . $location_as_classes . ' expert-card position-relative flex-column black--color white--background dropshadow font-weight-medium"  >';
+            $p .= '<div class="d-flex flex-row center-content">';
+            $p .= '<div class="w-100px h-100px b-r d-block o-hidden no-decoration">';
+            $p .= '<img class="w-100 h-100 object-cover" src="' . get_field('foto', $post->ID)['sizes']['medium'] . '">';
+            $p .= '</div>'; 
+            $p .= '<div class="calc-100-120 h-100 d-flex justify-content-between flex-column p-y-10 p-x-17">';
+            $p .= '<div>';
+            $p .= '<h3 class="font-weight-semi-bold base_color--color">' . get_the_title() . '</h3> ';
+            $p .= '</div>';
+            $p .= '<span class="small">' . join(', ', wp_list_pluck($term_obj_list, 'name')) . '</span>';
+            $p .= '<div class="cl_icon location p-t-10 font-weight-bold">'.$cl_sr_pay_lead_mode.'</div>';
+            $p .= '' . ($location_objs ? '<span class="small location p-t-10 font-weight-bold"><i class="icon-local"></i><span class="text-uppercase">' . join(', ', wp_list_pluck($location_objs, 'name')) . '</span></span>' : '') . '';
+            $p .= '</div>';
+            $p .= '<a href="#" data-izimodal-open="#modal_' . $post->ID . '" class="info-balloon info-modal">i</a>' . '</div>';
+            $p .= '</div>';
+            $opts .= '<option value="' . $post->ID . '">' . $post->post_title . '</option>';
+        }
+    }
+    }
+    wp_reset_postdata();
+}
+
+$p .= '<div class="not-found" style="display:none;"><p class="not-found">' . __('Experts not found.', 'idealbiz') . '</p></div>';
+
+$p .= '<span id="result_D" class="cl_aviso" ></span>';
 ?>
 
-
 <style>
-.experts_by_service_cat,
-.experts_by_service_cat>.gfield_label,
-.experts_by_service_cat>.ginput_container {
-    display: none;
-}
+    .experts_by_service_cat,
+    .experts_by_service_cat>.gfield_label,
+    .experts_by_service_cat>.ginput_container {
+        display: none;
+    }
 </style>
-
 
 <script>
     //NPMM - Funções referente ao form de parametros
