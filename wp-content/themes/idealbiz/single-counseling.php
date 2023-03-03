@@ -12,16 +12,16 @@
     get_header();
 
 
-    /* Find the correct Gravity Form via CSS Class (configured on the form):
-     *  > Store the Form ID to load
-     *  > Store Field IDs if we need them, also found via CSS Class (configured on the field)
-     */
     $form_id = -1;
     $form_fields = array();
+
+    // Find the correct Gravity Form via CSS Class (configured on the form):
     foreach( GFAPI::get_forms() as $form ) {
         if ( $form['cssClass'] === 'service-request' ) {
+            // Store the Form ID
             $form_id = $form['id'];
 
+            // Find fields via CSS Class (configured on the fields):
             foreach( $form['fields'] as $field) {
                 if     ( str_contains( $field->cssClass, 'service-request-service-category' ) ) {
                     $form_fields['service_category'] = array( 'id' => $field['id'] );
@@ -1289,8 +1289,6 @@
                                 $(this).addClass('non-competent');  
                             }
                         });
-                        
-                        /* alert('count_competents'+count_competents+' cl_care-'+cl_care+' cl_care2-'+cl_care2); */
                         
                         if (count_competents == 0 || cl_care == 1 && cl_care2 == '' ) {
                                 $('.expert-preview .customer_care').attr('style', 'display:flex !important;');
