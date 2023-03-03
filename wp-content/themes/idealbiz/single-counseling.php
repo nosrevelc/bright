@@ -23,18 +23,14 @@
             $form_id = $form['id'];
 
             foreach( $form['fields'] as $field) {
-                switch ($field['cssClass']) {
-                    case 'service-request-service-category':
-                        $form_fields['service_category'] = array( 'id' => $field['id'] );
-                        break;
-
-                    case 'service-request-amount':
-                        $form_fields['amount'] = array( 'id' => $field['id'] );
-                        break;
-
-                    case 'service-request-location':
-                        $form_fields['location'] = array( 'id' => $field['id'] );
-                        break;
+                if     ( str_contains( $field->cssClass, 'service-request-category' ) ) {
+                    $form_fields['service_category'] = array( 'id' => $field['id'] );
+                }
+                elseif ( str_contains( $field->cssClass, 'valor_referencia' ) ) {
+                    $form_fields['amount'] = array( 'id' => $field['id'] );
+                }
+                elseif ( str_contains( $field->cssClass, 'service-request-location' ) ) {
+                    $form_fields['location'] = array( 'id' => $field['id'] );
                 }
             }
 
@@ -293,7 +289,7 @@
                         add_filter( "gform_pre_render_{$form_id}", 'service_request_form_pre_render' );
                         function service_request_form_pre_render( $form ) {
                             foreach ( $form['fields'] as &$field ) {
-                                if ( $field->type === 'select' && str_contains($field->cssClass, 'service-request-location' ) ) {
+                                if ( $field->id == $form_fields['location']['id'] && $field->type === 'select' ) {
                                     $terms = get_terms(
                                         array(
                                             'taxonomy'   => 'location',
