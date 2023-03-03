@@ -16,8 +16,9 @@
      */
     $form_id = -1;
     foreach( GFAPI::get_forms() as $form ) {
-        if ( $form->cssClass === 'service-request' ) {
-            $form_id = $form->id;
+        if ( $form['cssClass'] === 'service-request' ) {
+            $form_id = $form['id'];
+            break;
         }
     }
 ?>
@@ -274,9 +275,12 @@
                             return $form;
                         }
                     }
-
-                    echo do_shortcode(get_post_field('post_content', getIdByTemplate('single-counseling.php'))); 
                 ?>
+                <div class="d-flex flex-row flex-wrap justify-content-center container">
+                    <p class="has-text-align-center">
+                        <?php echo do_shortcode("[gravityform id=\"{$form_id}\" title=\"false\" description=\"false\"]") ?>
+                    </p>
+                </div>
             </div>
 
             <?php 
