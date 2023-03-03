@@ -256,7 +256,7 @@
                         add_filter( 'gform_pre_render', 'populate_posts' );
                         function populate_posts( $form ) {
                             foreach ( $form['fields'] as &$field ) {
-                                if ( $field->type === 'select' && str_contains($field->class, 'service-request-location' ) ) {
+                                if ( $field->type === 'select' && str_contains($field->cssClass, 'service-request-location' ) ) {
                                     $terms = get_terms(
                                         array(
                                             'taxonomy'   => 'location',
