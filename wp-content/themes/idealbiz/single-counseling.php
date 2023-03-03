@@ -668,7 +668,6 @@
 
                     $fee = 0;
                 }
-                //var_dump($userIDFee);
             }
 
             $aux_class = '';
@@ -690,8 +689,6 @@
             if (isset($_GET['escalao'])){
                 foreach ($escalao as $key => $vazio) {
                     $vazio['begin_echelon'];
-
-                    //print_r($escalao);
 
                     if ($vazio) {
                         echo ' ' . get_the_title() . ' = ';
@@ -796,6 +793,10 @@
             }
         }
 
+        function onInputChange( elem, formId, fieldId ) {
+            console.log('Change detected for ', elem, ', Form Id: "', formId, '", Field Id: "', fieldId, '"');
+        }
+
         // REFATURAÇÃO PARA REENCAMINHAMENTO E RECOMENDAÇÃO.
 
         let cl_id_campo_origem = '<?php echo $cl_sr_type_origin_id_field;?>'
@@ -817,6 +818,8 @@
         var cl_fim_echlon = '';
 
         jQuery(document).ready(($) => {
+            gform.addAction( 'gform_input_change', onInputChange );
+
             // GS: Disable entire jQuery code
             if(true) {
                 return;
