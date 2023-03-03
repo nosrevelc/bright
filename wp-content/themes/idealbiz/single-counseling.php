@@ -253,15 +253,14 @@
                             return get_field('message',$_GET['rid']);
                         }
 
-                        add_filter( 'gform_pre_render', 'populate_posts' );
-                        function populate_posts( $form ) {
+                        add_filter( 'gform_pre_render', 'service_request_form_pre_render' );
+                        function service_request_form_pre_render( $form ) {
                             foreach ( $form['fields'] as &$field ) {
                                 if ( $field->type === 'select' && str_contains($field->cssClass, 'service-request-location' ) ) {
                                     $terms = get_terms(
                                         array(
                                             'taxonomy'   => 'location',
                                             'parent'     => 0,
-                                            'hide_empty' => false,
                                             'orderby'    => 'name',
                                             'order'      => 'ASC'
                                         )
