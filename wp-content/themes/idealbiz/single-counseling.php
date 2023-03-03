@@ -256,19 +256,21 @@
                         add_filter( 'gform_pre_render', 'populate_posts' );
                         function populate_posts( $form ) {
                             foreach ( $form['fields'] as &$field ) {
-                                if ( $field->type != 'select' || strpos( $field->cssClass, 'service-request-location' ) === false ) {
-                                    continue;
-                                }
+                                if ( $field->type === 'select' && str_contains($field->class, 'service-request-location' ) ) {
+                                    $terms = get_terms(
+                                        array(
+                                            'taxonomy'   => 'location',
+                                            'parent'     => 0,
+                                            'hide_empty' => false,
+                                            'orderby'    => 'name',
+                                            'order'      => 'ASC'
+                                        )
+                                    );
 
-                                $terms = get_terms(
-                                    array('taxonomy' => 'service_cat', 'hide_empty' => false, 'parent' => 0) //change to true after
-                                );
-
-                                $choices = array();
-                                foreach ( $terms as $term ) {
-                                    $choices[] = array( 'text' => $term->name, 'value' => $term->term_id );
+                                    foreach ( $terms as $term ) {
+                                        $field->choices[] = array( 'text' => $term->name, 'value' => $term->term_id );
+                                    }
                                 }
-                                $field->choices = $choices;
                             }
 
                             return $form;
