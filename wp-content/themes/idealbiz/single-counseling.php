@@ -11,15 +11,52 @@
  
     get_header();
 
-    /* Find the correct Gravity Form via CSS Class configured on the form.
-     * This allows us to load the form via ID.
+
+    /* Find the correct Gravity Form via CSS Class (configured on the form):
+     *  > Store the Form ID to load
+     *  > Store Field IDs if we need them, also found via CSS Class (configured on the field)
      */
     $form_id = -1;
+    $form_fields = array();
     foreach( GFAPI::get_forms() as $form ) {
         if ( $form['cssClass'] === 'service-request' ) {
             $form_id = $form['id'];
+
+            foreach( $form['fields'] as $field) {
+                switch ($field['cssClass']) {
+                    case 'service-request-service-category':
+                        $form_fields[] = array( 'service_category' => array( 'id' => $field['id'] ) );
+                        break;
+
+                    case 'service-request-amount':
+                        $form_fields[] = array( 'amount' => array( 'id' => $field['id'] ));
+                        break;
+
+                    case 'service-request-location':
+                        $form_fields[] = array( 'location' => array( 'id' => $field['id'] ));
+                        break;
+                }
+            }
+
             break;
         }
+    }
+
+    /* AJAX Handler
+     * This function is responsible for returning search results based on values selected in the Gravity Form
+     */
+    add_action( 'wp_enqueue_scripts', 'my_enqueue' );
+    function my_enqueue( $hook ) {
+        if ( 'myplugin_settings.php' !== $hook ) {
+            return;
+        }
+        /*wp_enqueue_script(
+            'ajax-script',
+            plugins_url( '/js/myjquery.js', __FILE__ ),
+            array( 'jquery' ),
+            '1.0.0',
+            true
+        );*/
     }
 ?>
 
@@ -276,6 +313,7 @@
                         }
                     }
                 ?>
+                <!-- Gravity Form: <?php echo $form_id ?> -->
                 <div class="d-flex flex-row flex-wrap justify-content-center container">
                     <p class="has-text-align-center">
                         <?php echo do_shortcode("[gravityform id=\"{$form_id}\" title=\"false\" description=\"false\"]") ?>
@@ -795,6 +833,28 @@
 
         function onInputChange( elem, formId, fieldId ) {
             console.log('Change detected for ', elem, ', Form Id: "', formId, '", Field Id: "', fieldId, '"');
+
+            var serviceCategoryValue = jQuery("#input_<?php echo $form_id ?>_<?php echo $form_fields['service_category']['id'] ?>").val();
+            var amountValue   = jQuery("#input_<?php echo $form_id ?>_<?php echo $form_fields['amount']['id'] ?>").val();
+            var locationValue = jQuery("#input_<?php echo $form_id ?>_<?php echo $form_fields['location']['id'] ?>").val();
+
+            console.log('Values: ServiceCategory ', serviceCategoryValue, ', Amount: "', amountValue, '", Location: "', locationValue, '"');
+
+            /*$.post(
+                my_ajax_obj.ajax_url,
+                {
+                    _ajax_nonce: my_ajax_obj.nonce,
+                    action: "my_tag_count",
+                    data: {
+                        "serviceCategoryValue": serviceCategoryValue,
+                        "amountValue": amountValue,
+                        "locationValue": locationValue
+                    }
+                },
+                function(data) {
+                    console.log("AJAX call successful");
+                }
+            );*/
         }
 
         // REFATURAÇÃO PARA REENCAMINHAMENTO E RECOMENDAÇÃO.
