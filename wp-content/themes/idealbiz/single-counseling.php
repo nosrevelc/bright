@@ -25,15 +25,15 @@
             foreach( $form['fields'] as $field) {
                 switch ($field['cssClass']) {
                     case 'service-request-service-category':
-                        $form_fields[] = array( 'service_category' => array( 'id' => $field['id'] ) );
+                        $form_fields['service_category'] = array( 'id' => $field['id'] );
                         break;
 
                     case 'service-request-amount':
-                        $form_fields[] = array( 'amount' => array( 'id' => $field['id'] ));
+                        $form_fields['amount'] = array( 'id' => $field['id'] );
                         break;
 
                     case 'service-request-location':
-                        $form_fields[] = array( 'location' => array( 'id' => $field['id'] ));
+                        $form_fields['location'] = array( 'id' => $field['id'] );
                         break;
                 }
             }
@@ -834,9 +834,9 @@
         function onInputChange( elem, formId, fieldId ) {
             console.log('Change detected for ', elem, ', Form Id: "', formId, '", Field Id: "', fieldId, '"');
 
-            var serviceCategoryValue = jQuery("#input_<?php echo $form_id ?>_<?php echo $form_fields['service_category']['id'] ?>").val();
-            var amountValue   = jQuery("#input_<?php echo $form_id ?>_<?php echo $form_fields['amount']['id'] ?>").val();
-            var locationValue = jQuery("#input_<?php echo $form_id ?>_<?php echo $form_fields['location']['id'] ?>").val();
+            var serviceCategoryValue = jQuery(<?php echo "#input_{$form_id}_{$form_fields['service_category']['id']}" ?>).val();
+            var amountValue          = jQuery(<?php echo "#input_{$form_id}_{$form_fields['amount']['id']}" ?>).val();
+            var locationValue        = jQuery(<?php echo "#input_{$form_id}_{$form_fields['location']['id']}" ?>).val();
 
             console.log('Values: ServiceCategory ', serviceCategoryValue, ', Amount: "', amountValue, '", Location: "', locationValue, '"');
 
