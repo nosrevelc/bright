@@ -834,9 +834,9 @@
         function onInputChange( elem, formId, fieldId ) {
             console.log('Change detected for ', elem, ', Form Id: "', formId, '", Field Id: "', fieldId, '"');
 
-            var serviceCategoryValue = jQuery(<?php echo "#input_{$form_id}_{$form_fields['service_category']['id']}" ?>).val();
-            var amountValue          = jQuery(<?php echo "#input_{$form_id}_{$form_fields['amount']['id']}" ?>).val();
-            var locationValue        = jQuery(<?php echo "#input_{$form_id}_{$form_fields['location']['id']}" ?>).val();
+            var serviceCategoryValue = jQuery('<?php echo "#input_{$form_id}_{$form_fields['service_category']['id']}" ?>').val();
+            var amountValue          = jQuery('<?php echo "#input_{$form_id}_{$form_fields['amount']['id']}" ?>').val();
+            var locationValue        = jQuery('<?php echo "#input_{$form_id}_{$form_fields['location']['id']}" ?>').val();
 
             console.log('Values: ServiceCategory ', serviceCategoryValue, ', Amount: "', amountValue, '", Location: "', locationValue, '"');
 
