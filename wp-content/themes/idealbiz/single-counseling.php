@@ -10,6 +10,17 @@
     }
  
     get_header();
+
+    /* Find the correct Gravity Form via CSS Class configured on the form.
+     * This allows us to load the form via ID.
+     */
+    $forms = GFAPI::get_forms();
+    $form_id = -1;
+    foreach( $forms as $form ) {
+        if ( $form->cssClass === 'service-request' ) {
+            $form_id = $form->id;
+        }
+    }
 ?>
 
 <?php
