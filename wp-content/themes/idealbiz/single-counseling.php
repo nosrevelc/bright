@@ -140,9 +140,6 @@
 
     if (have_posts()) : the_post();
         $post_id = get_the_ID();
-        $title = get_the_title();
-        $description = get_field('text');
-        //echo 'Post ID ' . $post_id . ' Titulo ' . $title . ' Descrição ' . $description;
 ?>
 
     <?php
@@ -204,16 +201,6 @@
                 <i class="icon-dropdown"></i>
                 <span class="font-weight-bold m-l-5"><?php _e('Go back', 'idealbiz'); ?></span>
             </a>
-        </div>
-        <div class="container d-flex flex-row flex-wrap justify-content-around">
-            <div>
-                <!-- <h3 class="font-weight-semi-bold"><?php echo $title ?></h3> -->
-            </div>
-        </div>
-        <div class="container d-flex flex-row flex-wrap justify-content-around">
-            <div>
-                <p><?php /* echo $description; */ ?></p>
-            </div>
         </div>
 
         <div class="container container d-flex flex-row flex-wrap justify-content-around">
@@ -349,7 +336,7 @@
     </section>
 
     <?php
-        $terms =  wp_get_object_terms($post_id, 'service_cat', array('fields' => 'ids'));
+        //$terms =  wp_get_object_terms($post_id, 'service_cat', array('fields' => 'ids'));
 
         $post_args = array(
             'posts_per_page' => -1,
@@ -883,9 +870,9 @@
                 return;
             }
 
-            //var e='';
-            $('.single-counceling .ginput_container_custom_taxonomy select').val(
-                <?php echo $terms[0]; ?>); // Select the option with a value of '1'
+            // Select the option with a value of '1'
+            // $('.single-counceling .ginput_container_custom_taxonomy select').val(< ?php echo $terms[0]; ? >);
+            
             // Notify any JS components that the value changed
             $('.experts_by_service_cat select').html('<?php echo $opts; ?>');
             $('.expert-preview').html('<?php echo $p; ?>');
