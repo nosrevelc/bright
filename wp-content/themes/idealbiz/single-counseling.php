@@ -253,12 +253,22 @@
                             return get_field('message',$_GET['rid']);
                         }
 
-                        add_filter( 'gform_pre_render', 'service_request_add_dynamic_opts' );
-                        function service_request_add_dynamic_opts( $form ) {
-                            foreach( $form['fields'] as &$field ) {
-                                if ( str_contains($field->class, 'service-request-location' ) ) {
-                                    $field->choices = array( 'value' => '999', 'text' => 'Algarve' );
+                        add_filter( 'gform_pre_render', 'populate_posts' );
+                        function populate_posts( $form ) {
+                            foreach ( $form['fields'] as &$field ) {
+                                if ( $field->type != 'select' || strpos( $field->cssClass, 'service-request-location' ) === false ) {
+                                    continue;
                                 }
+
+                                $terms = get_terms(
+                                    array('taxonomy' => 'service_cat', 'hide_empty' => false, 'parent' => 0) //change to true after
+                                );
+
+                                $choices = array();
+                                foreach ( $terms as $term ) {
+                                    $choices[] = array( 'text' => $term->name, 'value' => $term->term_id );
+                                }
+                                $field->choices = $choices;
                             }
 
                             return $form;
