@@ -926,12 +926,12 @@
                             
                             if (cl_vr.val() >= cl_begin_echelon && cl_vr.val() <= cl_finish_echelon) {    
                                 var cl_orcamento = (cl_vr.val()*cl_percentage)/100;
-                                console.log(cont);
-                                console.log(cl_pre_escalao);
-                                console.log(cl_begin_echelon);
-                                console.log(cl_orcamento);
-                                console.log(cl_expert );
-                                console.log(cl_ppc_fixo);
+                                //console.log(cont);
+                                //console.log(cl_pre_escalao);
+                                //console.log(cl_begin_echelon);
+                                //console.log(cl_orcamento);
+                                //console.log(cl_expert );
+                                //console.log(cl_ppc_fixo);
                                 $('.maximo input[type="text"]').val(cl_orcamento);
                                 $('input[name="input_'+cl_id_campo_PPC_Fixo_SR+'"]').val(cl_ppc_fixo); 
                                 return false;
@@ -1239,7 +1239,7 @@
 
                         $(".expert-preview .expert-card").each(function() {
                             //var e = $(this).data('competencyfactor'); // Codigo antigo 
-                            console.log(ciclo_pai + "-> Entrei ciclo Pai a variavel e é :" + e); // Apagar depois 
+                            //console.log(ciclo_pai + "-> Entrei ciclo Pai a variavel e é :" + e); // Apagar depois 
                             var mostra_card = 0;
                             var tx = '';
                             var pre_escalao = $(this).data('escalao'); //Arry com os dados do escalao
@@ -1253,17 +1253,17 @@
                                 window.cl_fim_echlon = finish_echelon;
                                 //console.log(typeof v_ref); //Verifica o Typo do v_ref Ex: Saída -> number
                                 
-                                console.log(" O Valor do percentagem que vou utlizar é : " + percentage); // Apagar depois
-                                console.log(i + " ----> Estou TENTADO entrar no IF com VR= " + v_ref + " begin_echelon = " + begin_echelon + " finish_echelon = " + finish_echelon); // Apagar depois
+                                //console.log(" O Valor do percentagem que vou utlizar é : " + percentage); // Apagar depois
+                                //console.log(i + " ----> Estou TENTADO entrar no IF com VR= " + v_ref + " begin_echelon = " + begin_echelon + " finish_echelon = " + finish_echelon); // Apagar depois
                                 if (v_ref >= begin_echelon && v_ref <= finish_echelon) {                           
-                                    console.log(" CONSEGUI ENTRAR!!! no IF " + i + " com valor de ref : " + v_ref); // Apagar depois
+                                    //console.log(" CONSEGUI ENTRAR!!! no IF " + i + " com valor de ref : " + v_ref); // Apagar depois
                                     window.e = percentage;
                                     var calc_max = (v_ref/100)*e;
                                     window.orcamento = calc_max;
                                     var max = orcamento;
-                                    console.log('Valor do Orcamento dentro do ciclo: '+orcamento);
-                                    console.log(" Guardei " + e + " na variavel  e e já sai do IF " + i); // Apagar depois
-                                    console.log(' ---->Sai do ciclo Filho com valor de e Filho : ' + e); // Apagar depois 
+                                    //console.log('Valor do Orcamento dentro do ciclo: '+orcamento);
+                                    //console.log(" Guardei " + e + " na variavel  e e já sai do IF " + i); // Apagar depois
+                                    //console.log(' ---->Sai do ciclo Filho com valor de e Filho : ' + e); // Apagar depois 
                                     
                                     return false;  
                                 }
@@ -1271,7 +1271,7 @@
                                 i++;
                             });
         
-                            console.log(ciclo_pai + " -> Sai do ciclo Pai variavel e é :" + e); // Apagar depois
+                            //console.log(ciclo_pai + " -> Sai do ciclo Pai variavel e é :" + e); // Apagar depois
                             ciclo_pai = ciclo_pai + 1;
 
                             if (pre_escalao==null){
