@@ -1145,25 +1145,7 @@
                 $('#cl_input30').click(function() { $('#campo30').iziModal('open'); return false;});
 
 
-                //Bloqueado autocomplite
-
-                /* $(':input').on('focus', function () {
-                    $('#input_'+<?php echo $form_id;?>+'_3]').attr('autocomplete','off')
-                    $('#input_'+<?php echo $form_id;?>+'_13]').attr('autocomplete','off')
-                }); */
-
-                $(document).ready(function(){
-                    $(':input').live('focus',function(){
-                        $(this).attr('autocomplete', 'off');
-                    });
-                });
-
-                $(document).ready(function(){
-                    $( document ).on( 'focus', ':input', function(){
-                        $( this ).attr( 'autocomplete', 'off' );
-                    });
-                });
-
+                //Bloquear autocomplete
                 $(document).ready(function() {
                     $(document).on('focus', ':input', function() {
                         $(this).attr('autocomplete', 'off');
@@ -1192,8 +1174,7 @@
                 /* var max = $('.maximo input[type="text"]'); //Máximo */
                 var max = $('.valor_referencia input[type="text"]'); //Referência
                 
-                //ON CHANGE - Valida Campo Máximo, verifica se é nulo 0 ou String CL.
-                /* max.on('change', function() { */
+                //ON CHANGE - Valida Campo Máximo, verifica se é nulo 0 ou String CL
                 vr.on('change', function() {
                 var max = vr.val();
                     $('.expert-preview .not-found').css('display', 'none');
