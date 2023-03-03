@@ -23,7 +23,7 @@
             $form_id = $form['id'];
 
             foreach( $form['fields'] as $field) {
-                if     ( str_contains( $field->cssClass, 'service-request-category' ) ) {
+                if     ( str_contains( $field->cssClass, 'service-request-service-category' ) ) {
                     $form_fields['service_category'] = array( 'id' => $field['id'] );
                 }
                 elseif ( str_contains( $field->cssClass, 'valor_referencia' ) ) {
