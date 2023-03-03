@@ -288,6 +288,8 @@
 
                         add_filter( "gform_pre_render_{$form_id}", 'service_request_form_pre_render' );
                         function service_request_form_pre_render( $form ) {
+                            global $form_fields;
+
                             foreach ( $form['fields'] as &$field ) {
                                 if ( $field->id == $form_fields['location']['id'] && $field->type === 'select' ) {
                                     $terms = get_terms(
