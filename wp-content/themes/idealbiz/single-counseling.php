@@ -14,9 +14,8 @@
     /* Find the correct Gravity Form via CSS Class configured on the form.
      * This allows us to load the form via ID.
      */
-    $forms = GFAPI::get_forms();
     $form_id = -1;
-    foreach( $forms as $form ) {
+    foreach( GFAPI::get_forms() as $form ) {
         if ( $form->cssClass === 'service-request' ) {
             $form_id = $form->id;
         }
@@ -113,19 +112,8 @@
 ?>
 
     <?php
-        $cl_shortcode_old = get_post_field('post_content', getIdByTemplate('single-counseling.php'));
-        $cl_shortcode_satizado = filter_var($cl_shortcode_old, FILTER_SANITIZE_STRING);
-        $replace = array("\"",",","'","’"," ","[","]",'"','="',' "','= ','&#34;',"t");
-        $cl_shortcode = str_replace( $replace,"",$cl_shortcode_satizado);
-        $cl_par = 'id=';
-        $cl_posicao = intval(strpos($cl_shortcode, $cl_par));
-        $cl_id_old = substr($cl_shortcode,14,3);
-        $replace = array("\"",",","'","’"," ","[","]",'"','="',' "','= ','&#34;',"t","i","l");
-        $cl_id = str_replace( $replace,"",$cl_id_old);
-
         //Inicio preenchar os izModal co a descrição dos campos
         //id do Formulário
-        $form_id = $cl_id;
         $form = RGFormsModel::get_form_meta($form_id);
 
         // Run through the fields to grab an object of the desired field
@@ -264,7 +252,7 @@
                             return get_field('message',$_GET['rid']);
                         }
 
-                        add_filter( 'gform_pre_render', 'service_request_form_pre_render' );
+                        add_filter( "gform_pre_render_{$form_id}", 'service_request_form_pre_render' );
                         function service_request_form_pre_render( $form ) {
                             foreach ( $form['fields'] as &$field ) {
                                 if ( $field->type === 'select' && str_contains($field->cssClass, 'service-request-location' ) ) {
