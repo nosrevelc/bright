@@ -767,9 +767,6 @@
 
     <script>
         //NPMM - Funções referente ao form de parametros
-        function callback(event) {
-            event.preventDefault()
-        }
 
         function showMessage() {
             let par1 = document.getElementById("parametro1").value;
@@ -997,10 +994,8 @@
 
                 }
                 if (found == 0) {
-                    
                     /* $('.expert-preview .not-found').css('display', 'flex'); */
                     /* $('.expert-preview .customer_care').attr('style','display:block !important;'); */
-                    
                 }
                 calc_F_G();
             });
@@ -1036,6 +1031,7 @@
                     $('.experts_by_service_cat > .ginput_container').css('display', 'none');
                 }
             });
+
             gform.addFilter('gform_datepicker_options_pre_init', function(optionsObj, formId, fieldId) {
                 optionsObj.minDate = 0;
                 return optionsObj;
@@ -1047,7 +1043,6 @@
                         $sexpert = get_field('consultant', $_GET['rid']); // $sexpert->ID
                 ?>
                 $('.single-counceling .ginput_container_custom_taxonomy select').val(<?php echo $_GET['sr']; ?>).trigger('change');
-                
 
                 $('.single-counceling .name_first input').val('<?php echo $user->first_name; ?>');
                 $('.single-counceling .name_last input').val('<?php echo $user->last_name; ?>');
@@ -1055,9 +1050,6 @@
                 $('.single-counceling .ginput_container_textarea textarea').val('<?php echo get_field('message', $rid); ?>').prop('disabled', true);
                 $('.single-counceling .ginput_container_phone input').val('<?php echo get_field('service_request_phone', $rid); ?>');
                 $('.single-counceling .ginput_container_date input').val('<?php echo get_field('delivery_date', $rid); ?>');
-                
-
-                //console.log('<?php echo get_field('reference_value', $rid); ?>');
 
                 $('.single-counceling .valor_referencia input').val('<?php echo get_field('reference_value', $rid); ?>').prop('disabled', true);
                 $('.single-counceling .minimo input').val('<?php echo get_field('budget_min', $rid); ?>').prop('disabled', true);
@@ -1077,8 +1069,6 @@
                 $('.maximo .ginput_container_text').append(' <span class="curr_symbol"><?php echo get_woocommerce_currency_symbol(); ?></span>');                    
                 
                 $('.valor_referencia .gfield_label').append('<span class="gfield_required">*</span>');
-                //Campo oculto no Gform ID23
-                /* $('.maximo .gfield_label').append('<span class="gfield_required">*</span>'); */
 
                 //Coloca os "i's" ao lado dos campos.
                 $('label[for=input_'+<?php echo $form_id;?>+'_1]').append('<div class=gfield_label><button id="cl_input1" class="info-balloon">i</button>');
