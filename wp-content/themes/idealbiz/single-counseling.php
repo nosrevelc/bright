@@ -138,8 +138,11 @@
         }
     }
 
-    if (have_posts()) : the_post();
-        $post_id = get_the_ID();
+    if ( have_posts() ) :
+        while ( have_posts() ) : the_post();
+            $post_id = get_the_ID();
+        endwhile;
+    endif;
 ?>
 
     <?php
@@ -1412,8 +1415,6 @@
             }
         <?php endif; ?>
     </style>
-
-<?php endif; ?>
 
 <?php
     //$terms = get_terms(array('taxonomy' => 'service_cat', 'hide_empty' => false, 'parent' => 0));
