@@ -823,8 +823,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
 
         console.log('Values: ServiceCategory ', serviceCategoryValue, ', Amount: "', amountValue, '", Location: "', locationValue, '"');
 
-        jQuery.ajax({
-            type: "POST",
+        jQuery.post({
             url: "<?php echo admin_url('admin-ajax.php') ?>",
             data: {
                 /* WP Fields */
@@ -840,6 +839,8 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
                 console.log("AJAX call successful");
                 $("body").append(data);
             }
+        }).fail(function() {
+            console.log("AJAX call failed");
         });
     }
 
