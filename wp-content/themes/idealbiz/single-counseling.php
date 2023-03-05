@@ -810,7 +810,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
 
         jQuery.post({
             url: "<?php echo admin_url('admin-ajax.php') ?>",
-            data: JSON.stringify({
+            data: {
                 /* WP Fields */
                 //_ajax_nonce: "<?php wp_create_nonce('single_counseling_search_members') ?>",
                 action: "single_counseling_search_members",
@@ -819,7 +819,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
                 serviceCategoryValue: serviceCategoryValue,
                 amountValue: amountValue,
                 locationValue: locationValue
-            }),
+            },
             success: function(data) {
                 console.log("AJAX call successful");
                 jQuery("body").append(data);
