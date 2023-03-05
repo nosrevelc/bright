@@ -4245,3 +4245,18 @@ function meberPITModal($srid)
     // always return
     return $content;
 }
+
+add_action( 'wp_ajax_single_counseling_search_members', 'single_counseling_search_members' );
+function single_counseling_search_members() {
+	//check_ajax_referer( 'single_counseling_search_members' );
+
+	/*$args = array(
+        'tag' => $title,
+	);
+	$the_query = new WP_Query( $args );*/
+
+    //wp_send_json( array ("Hello" => "World!") );
+
+	echo '<p>Hello, World!</p>';
+    wp_die();
+}

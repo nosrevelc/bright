@@ -37,24 +37,6 @@ foreach( GFAPI::get_forms() as $form ) {
         break;
     }
 }
-
-/* AJAX Handler
- * This function is responsible for returning search results based on values selected in the Gravity Form
- */
-add_action( 'wp_ajax_single_counseling_search_members', 'single_counseling_search_members' );
-function single_counseling_search_members() {
-	check_ajax_referer( 'single_counseling_search_members' );
-
-	/*$args = array(
-        'tag' => $title,
-	);
-	$the_query = new WP_Query( $args );*/
-
-    //wp_send_json( array ("Hello" => "World!") );
-
-	echo '<p>Hello, World!</p>';
-    wp_die();
-}
 ?>
 
 <?php
@@ -830,7 +812,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
             url: "<?php echo admin_url('admin-ajax.php') ?>",
             data: JSON.stringify({
                 /* WP Fields */
-                _ajax_nonce: "<?php wp_create_nonce('single_counseling_search_members') ?>",
+                //_ajax_nonce: "<?php wp_create_nonce('single_counseling_search_members') ?>",
                 action: "single_counseling_search_members",
 
                 /* Our data fields */
@@ -840,7 +822,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
             }),
             success: function(data) {
                 console.log("AJAX call successful");
-                $("body").append(data);
+                jQuery("body").append(data);
             }
         }).fail(function() {
             console.error("AJAX call failed");
