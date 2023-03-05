@@ -823,7 +823,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
 
         console.log('Values: ServiceCategory ', serviceCategoryValue, ', Amount: "', amountValue, '", Location: "', locationValue, '"');
 
-        $.ajax(
+        $.ajax({
             type: "POST",
             url: "<?php echo admin_url('admin-ajax.php') ?>",
             data: {
@@ -840,7 +840,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
                 console.log("AJAX call successful");
                 $("body").append(data);
             }
-        );
+        });
     }
 
     // REFATURAÇÃO PARA REENCAMINHAMENTO E RECOMENDAÇÃO.
