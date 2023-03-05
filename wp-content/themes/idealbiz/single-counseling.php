@@ -39,8 +39,8 @@ foreach( GFAPI::get_forms() as $form ) {
 }
 
 /* AJAX Handler
-    * This function is responsible for returning search results based on values selected in the Gravity Form
-    */
+ * This function is responsible for returning search results based on values selected in the Gravity Form
+ */
 add_action( 'wp_enqueue_scripts', 'my_enqueue' );
 function my_enqueue( $hook ) {
     if ( 'myplugin_settings.php' !== $hook ) {
@@ -311,9 +311,9 @@ endif;
 
         <?php 
         /*
-            * GS: Remove additional dropdown not added via Gravity Forms.
-            * This dropdown is moved inside the Gravity Form via jQuery appendTo
-            * 
+         * GS: Remove additional dropdown not added via Gravity Forms.
+         * This dropdown is moved inside the Gravity Form via jQuery appendTo
+         *
         <div class="sidebar-service-message m-t-28">
             <div id="contact-this-seller" class="form-content">
                 <div class="expert-field-message d-flex flex-wrap justify-content-between">
