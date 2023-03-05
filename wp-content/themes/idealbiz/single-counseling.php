@@ -41,18 +41,16 @@ foreach( GFAPI::get_forms() as $form ) {
 /* AJAX Handler
  * This function is responsible for returning search results based on values selected in the Gravity Form
  */
-add_action( 'wp_enqueue_scripts', 'my_enqueue' );
-function my_enqueue( $hook ) {
-    if ( 'myplugin_settings.php' !== $hook ) {
-        return;
-    }
-    /*wp_enqueue_script(
-        'ajax-script',
-        plugins_url( '/js/myjquery.js', __FILE__ ),
-        array( 'jquery' ),
-        '1.0.0',
-        true
-    );*/
+add_action( 'wp_ajax_single_counseling_search_members', 'single_counseling_search_members' );
+function single_counseling_search_members() {
+	check_ajax_referer( 'single_counseling_search_members' );
+
+	/*$args = array(
+        'tag' => $title,
+	);
+	$the_query = new WP_Query( $args );*/
+	echo '<p>Hello, World!</p>';
+    wp_die();
 }
 ?>
 
@@ -825,21 +823,24 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
 
         console.log('Values: ServiceCategory ', serviceCategoryValue, ', Amount: "', amountValue, '", Location: "', locationValue, '"');
 
-        /*$.post(
-            my_ajax_obj.ajax_url,
-            {
-                _ajax_nonce: my_ajax_obj.nonce,
-                action: "my_tag_count",
-                data: {
-                    "serviceCategoryValue": serviceCategoryValue,
-                    "amountValue": amountValue,
-                    "locationValue": locationValue
-                }
+        $.ajax(
+            type: "POST",
+            url: "<?php echo admin_url('admin-ajax.php') ?>",
+            data: {
+                /* WP Fields */
+                _ajax_nonce: "<?php wp_create_nonce('single_counseling_search_members') ?>",
+                action: 'single_counseling_search_members',
+
+                /* Our data fields */
+                serviceCategoryValue: serviceCategoryValue,
+                amountValue: amountValue,
+                locationValue: locationValue
             },
-            function(data) {
+            success: function(data) {
                 console.log("AJAX call successful");
+                $("body").append(data);
             }
-        );*/
+        );
     }
 
     // REFATURAÇÃO PARA REENCAMINHAMENTO E RECOMENDAÇÃO.
