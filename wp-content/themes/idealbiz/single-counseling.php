@@ -49,8 +49,11 @@ function single_counseling_search_members() {
         'tag' => $title,
 	);
 	$the_query = new WP_Query( $args );*/
-	echo '<p>Hello, World!</p>';
-    wp_die();
+
+    wp_send_json( array ("Hello" => "World!") );
+
+	//echo '<p>Hello, World!</p>';
+    //wp_die();
 }
 ?>
 
@@ -825,7 +828,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
 
         jQuery.post({
             url: "<?php echo admin_url('admin-ajax.php') ?>",
-            data: {
+            data: JSON.stringify({
                 /* WP Fields */
                 _ajax_nonce: "<?php wp_create_nonce('single_counseling_search_members') ?>",
                 action: "single_counseling_search_members",
@@ -834,13 +837,15 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
                 serviceCategoryValue: serviceCategoryValue,
                 amountValue: amountValue,
                 locationValue: locationValue
-            },
+            }),
+            dataType: "json",
+            contentType: "application/json",
             success: function(data) {
                 console.log("AJAX call successful");
                 $("body").append(data);
             }
         }).fail(function() {
-            console.log("AJAX call failed");
+            console.error("AJAX call failed");
         });
     }
 
