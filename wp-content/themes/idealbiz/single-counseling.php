@@ -50,10 +50,10 @@ function single_counseling_search_members() {
 	);
 	$the_query = new WP_Query( $args );*/
 
-    wp_send_json( array ("Hello" => "World!") );
+    //wp_send_json( array ("Hello" => "World!") );
 
-	//echo '<p>Hello, World!</p>';
-    //wp_die();
+	echo '<p>Hello, World!</p>';
+    wp_die();
 }
 ?>
 
@@ -838,8 +838,6 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
                 amountValue: amountValue,
                 locationValue: locationValue
             }),
-            dataType: "json",
-            contentType: "application/json",
             success: function(data) {
                 console.log("AJAX call successful");
                 $("body").append(data);
