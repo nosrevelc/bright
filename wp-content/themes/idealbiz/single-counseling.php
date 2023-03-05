@@ -823,13 +823,13 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
 
         console.log('Values: ServiceCategory ', serviceCategoryValue, ', Amount: "', amountValue, '", Location: "', locationValue, '"');
 
-        $.ajax({
+        jQuery.ajax({
             type: "POST",
             url: "<?php echo admin_url('admin-ajax.php') ?>",
             data: {
                 /* WP Fields */
                 _ajax_nonce: "<?php wp_create_nonce('single_counseling_search_members') ?>",
-                action: 'single_counseling_search_members',
+                action: "single_counseling_search_members",
 
                 /* Our data fields */
                 serviceCategoryValue: serviceCategoryValue,
