@@ -23,19 +23,19 @@ $query_args = array(
         )
     ),
     //'meta_key' => 'echelon_competency_factor'
-    'meta_query' => array(
+    /*'meta_query' => array(
         'relation' => 'AND',
         array(
             'key'     => 'echelon_competency_factor_$_begin_echelon',
-            //'compare' => '<=',
-            //'value'   => (int) $args['amount']
+            'compare' => '<=',
+            'value'   => (int) $args['amount']
         ),
         array(
             'key'     => 'echelon_competency_factor_$_finish_echelon',
-            //'compare' => '>=',
-            //'value'   => (int) $args['amount']
+            'compare' => '>=',
+            'value'   => (int) $args['amount']
         )
-    )
+    )*/
 );
 $experts = get_posts($query_args);
 ?>
