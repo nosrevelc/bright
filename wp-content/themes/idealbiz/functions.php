@@ -4257,6 +4257,6 @@ function single_counseling_search_members() {
 
     //wp_send_json( array ("Hello" => "World!") );
 
-	echo '<p>Hello, World!</p>';
+	echo get_template_part('elements/member-search/member', 'search');
     wp_die();
 }

@@ -336,7 +336,6 @@ endif;
         ?>
 
         <div class="loader" style="left: 50%; position: relative; display: none; margin-left: -15px; margin-top: 30px;"></div>
-        <div class="expert-preview m-t-20"></div>
     </div>
 </section>
 
@@ -864,9 +863,9 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
                 amountValue: amountValue,
                 locationValue: locationValue
             },
-            success: function(data) {
+            success: function(xml) {
                 console.log("AJAX call successful");
-                jQuery("body").append(data);
+                jQuery(".service-category-member-search-results div").html(xml);
             }
         }).fail(function() {
             console.error("AJAX call failed");
@@ -884,11 +883,9 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
     let cl_id_campo_PPC_Fixo_SR = '<?php echo $cl_input_sr_fixed_ppc_value_id_field;?>'
     let $cl_origin = document.querySelector('input[name="input_'+cl_id_campo_Origin_SR+'"]');
     let sr_type_origin = document.querySelector('input[name="input_'+cl_id_campo_origem +'"]');
-    /* let input_sr_fixed_ppc_value = document.querySelector('input[name="input_'+cl_id_campo_PPC_Fixo_SR +'"]'); */
 
     $cl_origin.value = '<?php echo $cl_rid; ?>';
     sr_type_origin.value = '<?php echo $cl_sr_type_origin; ?>';
-    /* input_sr_fixed_ppc_value.value = '<?php echo $cl_sr_type_origin; ?>'; */
 
     var e;
     var  cl_care;
