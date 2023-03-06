@@ -13,7 +13,14 @@ get_header();
 
 
 $form_id = -1;
-$form_fields = array();
+$form_fields = array(
+    'service_category' => array( 'id' => -1 ),
+    'amount'           => array( 'id' => -1 ),
+    'location'         => array( 'id' => -1 ),
+
+    'member_search_results' => array( 'id' => -1 ),
+    'member_selection'      => array( 'id' => -1 )
+);
 
 // Find the correct Gravity Form via CSS Class (configured on the form):
 foreach( GFAPI::get_forms() as $form ) {
@@ -23,14 +30,26 @@ foreach( GFAPI::get_forms() as $form ) {
 
         // Find fields via CSS Class (configured on the fields):
         foreach( $form['fields'] as $field) {
+            $field_to_update  = '';
+
             if     ( str_contains( $field->cssClass, 'service-request-service-category' ) ) {
-                $form_fields['service_category'] = array( 'id' => $field['id'] );
+                $field_to_update = 'service_category';
             }
             elseif ( str_contains( $field->cssClass, 'valor_referencia' ) ) {
-                $form_fields['amount'] = array( 'id' => $field['id'] );
+                $field_to_update = 'amount';
             }
             elseif ( str_contains( $field->cssClass, 'service-request-location' ) ) {
-                $form_fields['location'] = array( 'id' => $field['id'] );
+                $field_to_update = 'location';
+            }
+            elseif ( str_contains( $field->cssClass, 'service-category-member-search-results' ) ) {
+                $field_to_update = 'member_search_results';
+            }
+            elseif ( str_contains( $field->cssClass, 'service-category-member-selection' ) ) {
+                $field_to_update = 'member_selection';
+            }
+
+            if ( $field_to_update !== '' ) {
+                $form_fields[$field_to_update] = array( 'id' => $field['id'] );
             }
         }
 
@@ -800,33 +819,57 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
     }
 
     function onInputChange( elem, formId, fieldId ) {
+
+        function onChangeMemberSearch() {
+            var serviceCategoryValue = jQuery('<?php echo "#input_{$form_id}_{$form_fields['service_category']['id']}" ?>').val();
+            var amountValue          = jQuery('<?php echo "#input_{$form_id}_{$form_fields['amount']['id']}" ?>').val();
+            var locationValue        = jQuery('<?php echo "#input_{$form_id}_{$form_fields['location']['id']}" ?>').val();
+
+            console.log('Values: ServiceCategory ', serviceCategoryValue, ', Amount: "', amountValue, '", Location: "', locationValue, '"');
+
+            jQuery.post({
+                url: "<?php echo admin_url('admin-ajax.php') ?>",
+                data: {
+                    /* WP Fields */
+                    //_ajax_nonce: "<?php wp_create_nonce('single_counseling_search_members') ?>",
+                    action: "single_counseling_search_members",
+
+                    /* Our data fields */
+                    serviceCategoryValue: serviceCategoryValue,
+                    amountValue: amountValue,
+                    locationValue: locationValue
+                },
+                success: function(data) {
+                    console.log("AJAX call successful");
+                    jQuery("body").append(data);
+                }
+            }).fail(function() {
+                console.error("AJAX call failed");
+            });
+        }
+
+        function onChangeMemberSelection() {
+            return;
+        }
+
         console.log('Change detected for ', elem, ', Form Id: "', formId, '", Field Id: "', fieldId, '"');
 
-        var serviceCategoryValue = jQuery('<?php echo "#input_{$form_id}_{$form_fields['service_category']['id']}" ?>').val();
-        var amountValue          = jQuery('<?php echo "#input_{$form_id}_{$form_fields['amount']['id']}" ?>').val();
-        var locationValue        = jQuery('<?php echo "#input_{$form_id}_{$form_fields['location']['id']}" ?>').val();
+        // We only care about the following fields
+        var FIELD_ON_CHANGE = {
+            "<?php echo "{$form_fields['service_category']['id']}" ?>": onChangeMemberSearch,
+            "<?php echo "{$form_fields['amount']['id']}" ?>":           onChangeMemberSearch,
+            "<?php echo "{$form_fields['location']['id']}" ?>":         onChangeMemberSearch,
 
-        console.log('Values: ServiceCategory ', serviceCategoryValue, ', Amount: "', amountValue, '", Location: "', locationValue, '"');
+            "<?php echo "{$form_fields['member_search_results']['id']}" ?>":   onChangeMemberSelection,
+            "<?php echo "{$form_fields['member_search_selection']['id']}" ?>": onChangeMemberSelection
+        };
 
-        jQuery.post({
-            url: "<?php echo admin_url('admin-ajax.php') ?>",
-            data: {
-                /* WP Fields */
-                //_ajax_nonce: "<?php wp_create_nonce('single_counseling_search_members') ?>",
-                action: "single_counseling_search_members",
+        // Call associated function
+        if(FIELD_ON_CHANGE[fieldId]) {
+            FIELD_ON_CHANGE[fieldId]();
+        }
 
-                /* Our data fields */
-                serviceCategoryValue: serviceCategoryValue,
-                amountValue: amountValue,
-                locationValue: locationValue
-            },
-            success: function(data) {
-                console.log("AJAX call successful");
-                jQuery("body").append(data);
-            }
-        }).fail(function() {
-            console.error("AJAX call failed");
-        });
+        return;
     }
 
     // REFATURAÇÃO PARA REENCAMINHAMENTO E RECOMENDAÇÃO.
