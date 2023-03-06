@@ -5,21 +5,34 @@
  * Usage: get_template_part( 'elements/member-search/member-search', null, array( 'service_category' => '', 'amount' => '', 'location' => '' ) );
  */
 
-/*$args = array(
-    'tag' => $title,
-);
-$the_query = new WP_Query( $args );*/
-
-$args = array(
+$query_args = array(
     'post_type' => 'expert',
     'post_status' => 'publish',
-    'posts_per_page' => -1
+    'posts_per_page' => -1,
+    'tax_query' => array(
+        'relation' => 'AND',
+        array(
+            'taxonomy' => 'service_cat',
+            'field'    => 'name',
+            'terms'    => sanitize_key( $args['service_category'] ),
+        )
+        /*array(
+            'taxonomy' => '',
+            'field'    => '',
+            'terms'    => sanitize_key( $args['amount'] ),
+        ),
+        array(
+            'taxonomy' => 'location',
+            'field'    => 'name',
+            'terms'    => sanitize_key( $args['location'] ),
+        )*/
+    )
 );
-$experts = get_posts($args);
+$experts = get_posts($query_args);
 ?>
 
 <div class="expert-preview m-t-20">
-    <?php foreach ($experts as $e) {
+    <?php foreach ($experts as $expert) {
         ?>
         <div data-escalao="" data-fee="" data-ppc-fixo="" data-f="" data-competencyfactor="" data-expert="" data-locations="" class="p-20 m-b-20 service_cat_[TODO] location_[TODO] expert-card position-relative flex-column black--color white--background dropshadow font-weight-medium">
             <div class="d-flex flex-row center-content">
@@ -27,7 +40,7 @@ $experts = get_posts($args);
                     <img class="w-100 h-100 object-cover" src="[TODO]"/>
                     <div class="calc-100-120 h-100 d-flex justify-content-between flex-column p-y-10 p-x-17">
                         <div>
-                            <h3 class="font-weight-semi-bold base_color--color">[Member]</h3>
+                            <h3 class="font-weight-semi-bold base_color--color">$expert->title</h3>
                         </div>
                         <span class="small">[Role]</span>
                         <div class="cl_icon location p-t-10 font-weight-bold">
