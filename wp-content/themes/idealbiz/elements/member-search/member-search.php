@@ -18,7 +18,7 @@ $query_args = array(
         ),
         array(
             'taxonomy' => 'location',
-            'field'    => 'name',
+            'field'    => 'term_id',
             'terms'    => $args['location']
         )
     ),
