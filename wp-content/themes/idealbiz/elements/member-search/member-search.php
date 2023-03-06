@@ -14,12 +14,12 @@ $query_args = array(
         array(
             'taxonomy' => 'service_cat',
             'field'    => 'term_id',
-            'terms'    => sanitize_key( $args['service_category'] )
+            'terms'    => $args['service_category']
         ),
         array(
             'taxonomy' => 'location',
             'field'    => 'name',
-            'terms'    => sanitize_key( $args['location'] )
+            'terms'    => $args['location']
         )
     ),
     //'meta_key' => 'echelon_competency_factor'
@@ -27,13 +27,13 @@ $query_args = array(
         'relation' => 'AND',
         array(
             'key'     => 'echelon_competency_factor_$_begin_echelon',
-            'compare' => '<=',
-            'value'   => sanitize_key( $args['amount'] )
+            //'compare' => '<=',
+            //'value'   => (int) $args['amount']
         ),
         array(
             'key'     => 'echelon_competency_factor_$_finish_echelon',
-            'compare' => '>=',
-            'value'   => sanitize_key( $args['amount'] )
+            //'compare' => '>=',
+            //'value'   => (int) $args['amount']
         )
     )
 );
