@@ -859,9 +859,9 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
                 action: "single_counseling_search_members",
 
                 /* Our data fields */
-                serviceCategoryValue: serviceCategoryValue,
-                amountValue: amountValue,
-                locationValue: locationValue
+                service_category: serviceCategoryValue,
+                amount: amountValue,
+                location: locationValue
             },
             success: function(xml) {
                 console.log("AJAX call successful");
