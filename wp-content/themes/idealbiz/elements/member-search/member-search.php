@@ -14,17 +14,17 @@ $query_args = array(
         array(
             'taxonomy' => 'service_cat',
             'field'    => 'term_id',
-            'terms'    => sanitize_key( $args['service_category'] ),
+            'terms'    => 3069
         )
         /*array(
             'taxonomy' => '',
             'field'    => '',
-            'terms'    => sanitize_key( $args['amount'] ),
+            'terms'    => sanitize_key( $args['amount'] )
         ),
         array(
             'taxonomy' => 'location',
             'field'    => 'name',
-            'terms'    => sanitize_key( $args['location'] ),
+            'terms'    => sanitize_key( $args['location'] )
         )*/
     )
 );
@@ -32,7 +32,10 @@ $experts = get_posts($query_args);
 ?>
 
 <div class="expert-preview m-t-20">
-    <?php foreach ($experts as $expert) {
+    <?php
+    var_dump($experts);
+
+    foreach ($experts as $expert) {
         ?>
         <div data-escalao="" data-fee="" data-ppc-fixo="" data-f="" data-competencyfactor="" data-expert="" data-locations="" class="p-20 m-b-20 service_cat_[TODO] location_[TODO] expert-card position-relative flex-column black--color white--background dropshadow font-weight-medium">
             <div class="d-flex flex-row center-content">
@@ -40,7 +43,7 @@ $experts = get_posts($query_args);
                     <img class="w-100 h-100 object-cover" src="[TODO]"/>
                     <div class="calc-100-120 h-100 d-flex justify-content-between flex-column p-y-10 p-x-17">
                         <div>
-                            <h3 class="font-weight-semi-bold base_color--color">$expert->post_title</h3>
+                            <h3 class="font-weight-semi-bold base_color--color"><?php echo $expert->post_title; ?></h3>
                         </div>
                         <span class="small">[Role]</span>
                         <div class="cl_icon location p-t-10 font-weight-bold">
