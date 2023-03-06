@@ -62,20 +62,20 @@ $members = get_posts($query_args);
             <div class="d-flex flex-row center-content">
                 <div class="w-100px h-100px b-r d-block o-hidden no-decoration">
                     <img class="w-100 h-100 object-cover" src="<?php echo $member_photo_url ?>"/>
-                    <div class="calc-100-120 h-100 d-flex justify-content-between flex-column p-y-10 p-x-17">
-                        <div>
-                            <h3 class="font-weight-semi-bold base_color--color"><?php echo $member_name; ?></h3>
-                        </div>
-                        <span class="small"><?php echo join(', ', member_service_cats_list); ?></span>
-                        <div class="cl_icon location p-t-10 font-weight-bold">
-                            <span class="cl_icon-local dashicons dashicons-yes-alt"/>[Payment]</div>
-                        <span class="small location p-t-10 font-weight-bold">
-                            <i class="icon-local"/>
-                            <span class="text-uppercase"><?php echo join(', ', member_locations_list); ?></span>
-                        </span>
-                    </div>
-                    <a href="#" data-izimodal-open="#[TODO]" class="info-balloon info-modal">i</a>
                 </div>
+                <div class="calc-100-120 h-100 d-flex justify-content-between flex-column p-y-10 p-x-17">
+                    <div>
+                        <h3 class="font-weight-semi-bold base_color--color"><?php echo $member_name; ?></h3>
+                    </div>
+                    <span class="small"><?php echo join(', ', member_service_cats_list); ?></span>
+                    <div class="cl_icon location p-t-10 font-weight-bold">
+                        <span class="cl_icon-local dashicons dashicons-yes-alt"/>[Payment]</div>
+                    <span class="small location p-t-10 font-weight-bold">
+                        <i class="icon-local"/>
+                        <span class="text-uppercase"><?php echo join(', ', member_locations_list); ?></span>
+                    </span>
+                </div>
+                <a href="#" data-izimodal-open="#[TODO]" class="info-balloon info-modal">i</a>
             </div>
         </div>
         <?php
