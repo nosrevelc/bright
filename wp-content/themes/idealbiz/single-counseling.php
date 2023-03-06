@@ -818,57 +818,62 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
         }
     }
 
-    function onInputChange( elem, formId, fieldId ) {
+    // Fields we want to track "onChange"
+    var GF_FIELDS = {
+        "<?php echo "{$form_fields['service_category']['id']}" ?>": { prevValue: '', onChange: onInputChangeMemberSearch },
+        "<?php echo "{$form_fields['amount']['id']}" ?>":           { prevValue: '', onChange: onInputChangeMemberSearch },
+        "<?php echo "{$form_fields['location']['id']}" ?>":         { prevValue: '', onChange: onInputChangeMemberSearch },
 
-        function onChangeMemberSearch() {
-            var serviceCategoryValue = jQuery('<?php echo "#input_{$form_id}_{$form_fields['service_category']['id']}" ?>').val();
-            var amountValue          = jQuery('<?php echo "#input_{$form_id}_{$form_fields['amount']['id']}" ?>').val();
-            var locationValue        = jQuery('<?php echo "#input_{$form_id}_{$form_fields['location']['id']}" ?>').val();
+        "<?php echo "{$form_fields['member_search_results']['id']}" ?>":   { prevValue: '', onChange: onInputChangeMemberSelection },
+        "<?php echo "{$form_fields['member_search_selection']['id']}" ?>": { prevValue: '', onChange: onInputChangeMemberSelection }
+    };
 
-            console.log('Values: ServiceCategory ', serviceCategoryValue, ', Amount: "', amountValue, '", Location: "', locationValue, '"');
-
-            jQuery.post({
-                url: "<?php echo admin_url('admin-ajax.php') ?>",
-                data: {
-                    /* WP Fields */
-                    //_ajax_nonce: "<?php wp_create_nonce('single_counseling_search_members') ?>",
-                    action: "single_counseling_search_members",
-
-                    /* Our data fields */
-                    serviceCategoryValue: serviceCategoryValue,
-                    amountValue: amountValue,
-                    locationValue: locationValue
-                },
-                success: function(data) {
-                    console.log("AJAX call successful");
-                    jQuery("body").append(data);
-                }
-            }).fail(function() {
-                console.error("AJAX call failed");
-            });
-        }
-
-        function onChangeMemberSelection() {
-            return;
-        }
-
+    function onInputChange( gfElem, gfFormId, gfFieldId ) {
         console.log('Change detected for ', elem, ', Form Id: "', formId, '", Field Id: "', fieldId, '"');
 
-        // We only care about the following fields
-        var FIELD_ON_CHANGE = {
-            "<?php echo "{$form_fields['service_category']['id']}" ?>": onChangeMemberSearch,
-            "<?php echo "{$form_fields['amount']['id']}" ?>":           onChangeMemberSearch,
-            "<?php echo "{$form_fields['location']['id']}" ?>":         onChangeMemberSearch,
+        if(GF_FIELDS[`${gfFieldId}`]) {
+            var field = FIELD_ON_CHANGE[`${gfFieldId}`];
+            var currValue = jQuery(`#input_${gfFormId}_${gfFieldId}`).val();
 
-            "<?php echo "{$form_fields['member_search_results']['id']}" ?>":   onChangeMemberSelection,
-            "<?php echo "{$form_fields['member_search_selection']['id']}" ?>": onChangeMemberSelection
-        };
-
-        // Call associated function
-        if(FIELD_ON_CHANGE[fieldId]) {
-            FIELD_ON_CHANGE[fieldId]();
+            // Only fire if value actually changes (GravityForms fires onChange for keyup+onchange events)
+            if(field.prevValue !== currValue) {
+                field.prevValue = currValue;
+                field.onChange(gfElem, gfFormId, gfFieldId);
+            }
         }
 
+        return;
+    }
+
+    function onInputChangeMemberSearch( gfElem, gfFormId, gfFieldId ) {
+        var serviceCategoryValue = jQuery('<?php echo "#input_{$form_id}_{$form_fields['service_category']['id']}" ?>').val();
+        var amountValue          = jQuery('<?php echo "#input_{$form_id}_{$form_fields['amount']['id']}" ?>').val();
+        var locationValue        = jQuery('<?php echo "#input_{$form_id}_{$form_fields['location']['id']}" ?>').val();
+
+        console.log('Values: ServiceCategory ', serviceCategoryValue, ', Amount: "', amountValue, '", Location: "', locationValue, '"');
+
+        jQuery.post({
+            url: "<?php echo admin_url('admin-ajax.php') ?>",
+            data: {
+                /* WP Fields */
+                //_ajax_nonce: "<?php wp_create_nonce('single_counseling_search_members') ?>",
+                action: "single_counseling_search_members",
+
+                /* Our data fields */
+                serviceCategoryValue: serviceCategoryValue,
+                amountValue: amountValue,
+                locationValue: locationValue
+            },
+            success: function(data) {
+                console.log("AJAX call successful");
+                jQuery("body").append(data);
+            }
+        }).fail(function() {
+            console.error("AJAX call failed");
+        });
+    }
+
+    function onInputChangeMemberSelection( gfElem, gfFormId, gfFieldId ) {
         return;
     }
 
