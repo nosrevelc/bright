@@ -15,32 +15,33 @@ $query_args = array(
             'taxonomy' => 'service_cat',
             'field'    => 'term_id',
             'terms'    => sanitize_key( $args['service_category'] )
-        )
-        /*array(
-            'taxonomy' => '',
-            'field'    => '',
-            'terms'    => sanitize_key( $args['amount'] )
         ),
         array(
             'taxonomy' => 'location',
             'field'    => 'name',
             'terms'    => sanitize_key( $args['location'] )
-        )*/
-    )
+        )
+    ),
+    'meta_key' => 'echelon_competency_factor'
+    /*'meta_query' => array(
+        'relation' => 'AND',
+        array(
+            'key' => 
+        ),
+        array(
+
+        )
+    )*/
 );
 $experts = get_posts($query_args);
 ?>
 
 <div class="expert-preview m-t-20">
     <?php
-    
-    echo "<p>";
-    var_dump($args);
-    echo "</p>";
 
-    echo "<p>";
+    echo "<pre>";
     var_dump($experts);
-    echo "</p>";
+    echo "</pre>";
 
     foreach ($experts as $expert) {
         ?>
