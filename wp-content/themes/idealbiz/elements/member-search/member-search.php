@@ -23,7 +23,7 @@ $query_args = array(
         )
     ),
     //'meta_key' => 'echelon_competency_factor'
-    'meta_query' => array(
+    /*'meta_query' => array(
         'relation' => 'AND',
         array(
             'key'     => 'echelon_competency_factor_$_begin_echelon',
@@ -35,7 +35,7 @@ $query_args = array(
             'compare' => '>=',
             'value'   => (int) $args['amount']
         )
-    )
+    )*/
 );
 $members = get_posts($query_args);
 ?>
