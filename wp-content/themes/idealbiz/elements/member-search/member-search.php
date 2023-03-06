@@ -33,7 +33,14 @@ $experts = get_posts($query_args);
 
 <div class="expert-preview m-t-20">
     <?php
+    
+    echo "<p>";
+    var_dump($args);
+    echo "</p>";
+
+    echo "<p>";
     var_dump($experts);
+    echo "</p>";
 
     foreach ($experts as $expert) {
         ?>
