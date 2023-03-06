@@ -69,9 +69,10 @@ $members = get_posts($query_args);
                     </div>
                     <span class="small"><?php echo join(', ', member_service_cats_list); ?></span>
                     <div class="cl_icon location p-t-10 font-weight-bold">
-                        <span class="cl_icon-local dashicons dashicons-yes-alt"/>[Payment]</div>
+                        <span class="cl_icon-local dashicons dashicons-yes-alt"/>[Payment]</span>
+                    </div>
                     <span class="small location p-t-10 font-weight-bold">
-                        <i class="icon-local"/>
+                        <i class="icon-local"></i>
                         <span class="text-uppercase"><?php echo join(', ', member_locations_list); ?></span>
                     </span>
                 </div>
