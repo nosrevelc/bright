@@ -832,7 +832,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
         console.log('Change detected for ', gfElem, ', Form Id: "', gfFormId, '", Field Id: "', gfFieldId, '"');
 
         if(GF_FIELDS[`${gfFieldId}`]) {
-            var field = FIELD_ON_CHANGE[`${gfFieldId}`];
+            var field = GF_FIELDS[`${gfFieldId}`];
             var currValue = jQuery(`#input_${gfFormId}_${gfFieldId}`).val();
 
             // Only fire if value actually changes (GravityForms fires onChange for keyup+onchange events)
