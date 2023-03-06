@@ -4250,11 +4250,12 @@ add_action( 'wp_ajax_single_counseling_search_members', 'single_counseling_searc
 function single_counseling_search_members() {
     //check_ajax_referer( 'single_counseling_search_members' );
 
-    echo get_template_part('elements/member-search/member-search', null, array(
+    var_dump($_POST);
+    /*echo get_template_part('elements/member-search/member-search', null, array(
         'service_category' => $_POST['service_category'],
         'amount'   => $_POST['amount'],
         'location' => $_POST['location']
-    ));
+    ));*/
 
     wp_die();
 }
