@@ -22,16 +22,20 @@ $query_args = array(
             'terms'    => sanitize_key( $args['location'] )
         )
     ),
-    'meta_key' => 'echelon_competency_factor'
-    /*'meta_query' => array(
+    //'meta_key' => 'echelon_competency_factor'
+    'meta_query' => array(
         'relation' => 'AND',
         array(
-            'key' => 
+            'key'     => 'echelon_competency_factor_$_begin_echelon',
+            'compare' => '<=',
+            'value'   => sanitize_key( $args['amount'] )
         ),
         array(
-
+            'key'     => 'echelon_competency_factor_$_finish_echelon',
+            'compare' => '>=',
+            'value'   => sanitize_key( $args['amount'] )
         )
-    )*/
+    )
 );
 $experts = get_posts($query_args);
 ?>
