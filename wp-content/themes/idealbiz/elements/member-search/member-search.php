@@ -14,7 +14,7 @@ $query_args = array(
         array(
             'taxonomy' => 'service_cat',
             'field'    => 'term_id',
-            'terms'    => 3069
+            'terms'    => sanitize_key( $args['service_category'] )
         )
         /*array(
             'taxonomy' => '',
