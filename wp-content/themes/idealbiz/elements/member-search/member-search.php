@@ -40,7 +40,7 @@ $experts = get_posts($query_args);
                     <img class="w-100 h-100 object-cover" src="[TODO]"/>
                     <div class="calc-100-120 h-100 d-flex justify-content-between flex-column p-y-10 p-x-17">
                         <div>
-                            <h3 class="font-weight-semi-bold base_color--color">$expert->title</h3>
+                            <h3 class="font-weight-semi-bold base_color--color"><?php var_dump($expert); ?></h3>
                         </div>
                         <span class="small">[Role]</span>
                         <div class="cl_icon location p-t-10 font-weight-bold">
