@@ -829,7 +829,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
     };
 
     function onInputChange( gfElem, gfFormId, gfFieldId ) {
-        console.log('Change detected for ', elem, ', Form Id: "', formId, '", Field Id: "', fieldId, '"');
+        console.log('Change detected for ', gfElem, ', Form Id: "', gfFormId, '", Field Id: "', gfFieldId, '"');
 
         if(GF_FIELDS[`${gfFieldId}`]) {
             var field = FIELD_ON_CHANGE[`${gfFieldId}`];
