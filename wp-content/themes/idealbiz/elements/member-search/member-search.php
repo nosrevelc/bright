@@ -1,13 +1,25 @@
 <?php
-/* Member search results
- * Presents members in card form
+/* Member search results.
+ * Presents members in card form.
+ *
+ * Usage: get_template_part( 'elements/member-search/member-search', null, array( 'service_category' => '', 'amount' => '', 'location' => '' ) );
  */
 
-$array = array (1, 2, 3, 4, 5);
+/*$args = array(
+    'tag' => $title,
+);
+$the_query = new WP_Query( $args );*/
+
+$args = array(
+    'post_type' => 'expert',
+    'post_status' => 'publish',
+    'posts_per_page' => -1
+);
+$experts = get_posts($args);
 ?>
 
 <div class="expert-preview m-t-20">
-    <?php foreach ($array as $a) {
+    <?php foreach ($experts as $e) {
         ?>
         <div data-escalao="" data-fee="" data-ppc-fixo="" data-f="" data-competencyfactor="" data-expert="" data-locations="" class="p-20 m-b-20 service_cat_[TODO] location_[TODO] expert-card position-relative flex-column black--color white--background dropshadow font-weight-medium">
             <div class="d-flex flex-row center-content">
@@ -30,7 +42,7 @@ $array = array (1, 2, 3, 4, 5);
             </div>
         </div>
         <?php
-    } 
+    }
     ?>
 
     <div class="not-found" style="display:none;">
