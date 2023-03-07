@@ -15,21 +15,22 @@ $query_args = array(
     'post_status' => 'publish',
     'posts_per_page' => -1,
     'tax_query' => array(
-        //'relation' => 'AND',
         array(
             'taxonomy' => 'service_cat',
             'field'    => 'term_id',
             'terms'    => $args['service_category']
         ),
-        array(
-            'taxonomy' => 'location',
-            'field'    => 'term_id',
-            'terms'    => $args['location']
+        (($args['location'] !== '') ?
+            array(
+                'taxonomy' => 'location',
+                'field'    => 'term_id',
+                'terms'    => $args['location']
+            ) : 
+            array()
         )
     ),
     //'meta_key' => 'echelon_competency_factor'
     'meta_query' => array(
-        //'relation' => 'AND',
         array(
             'key'     => 'echelon_competency_factor_$_begin_echelon',
             'compare' => '<=',
