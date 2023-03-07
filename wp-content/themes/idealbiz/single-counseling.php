@@ -853,11 +853,12 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
         }
     };
     (function() {
+        var keys = Object.keys(GF_FIELDS);
         var key, id;
-        for(key in Object.keys(GF_FIELDS)) {
-            id = GF_FIELDS[key].id;
+        for(var i in keys) {
+            id = GF_FIELDS[keys[i]].id;
             if(id) {
-                GF_FIELDS.id_map[id] = key;
+                GF_FIELDS.fieldIdMap[id] = keys[i];
             }
         }
     })();
