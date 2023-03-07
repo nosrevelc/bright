@@ -335,7 +335,7 @@ endif;
         */ 
         ?>
 
-        <div id="#member-search-loader" class="loader hidden-desktop hidden-mobile" style="left: 50%; position: relative; margin-left: -15px; margin-top: 30px;"></div>
+        <div id="member-search-loader" class="loader hidden-desktop hidden-mobile" style="left: 50%; position: relative; margin-left: -15px; margin-top: 30px;"></div>
     </div>
 </section>
 
