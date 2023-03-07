@@ -335,7 +335,7 @@ endif;
         */ 
         ?>
 
-        <div id="member-search-loader" class="loader hidden-desktop hidden-mobile" style="left: 50%; position: relative; margin-left: -15px; margin-top: 30px;"></div>
+        <div id="member-search-loader" class="loader" style="left: 50%; position: relative; margin-left: -15px; margin-top: 30px; display: none; "></div>
     </div>
 </section>
 
@@ -847,8 +847,9 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
 
             loaderSelector: "#member-search-loader",
             loaderPlaceholderSelector: ".service-category-member-search-results-loading",
-            placeholderSelector: ".service-category-member-search-results-list",
-            allCardsSelector: ".expert-card",
+
+            cardsPlaceholderSelector: ".service-category-member-search-results-list",
+            cardsSelector: ".expert-card",
             prevValue: ''
         },
 
@@ -897,8 +898,8 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
         if(serviceCategoryValue && amountValue) {
             console.log("AJAX: calling");
 
-            jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.loaderSelector)
-                .removeClass(["hidden-desktop", "hidden-mobile"]);
+            jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsPlaceholderSelector).hide();
+            jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.loaderSelector).show();
 
             jQuery.post({
                 url: "<?php echo admin_url('admin-ajax.php') ?>",
@@ -913,14 +914,13 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
                 },
                 success: function(xml) {
                     console.log("AJAX: call successful");
-                    jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.placeholderSelector).html(xml);
-                    jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.allCardsSelector).on("click", onClickMemberCard);
+                    jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsPlaceholderSelector).show().html(xml);
+                    jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsSelector).on("click", onClickMemberCard);
                 }
             }).fail(function() {
                 console.error("AJAX: call failed");
             }).done(function() {
-                jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.loaderSelector)
-                    .addClass(["hidden-desktop", "hidden-mobile"]);
+                jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.loaderSelector).hide();
             });
         }
     }
@@ -932,7 +932,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
         var memberId = jQuery(event.currentTarget).data('member-id');
 
         // Highlight the selected card
-        jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.allCardsSelector).removeClass('active');
+        jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsSelector).removeClass('active');
         jQuery(event.currentTarget).addClass('active');
 
         // Update hidden field and notify Gravity Forms
