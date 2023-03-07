@@ -80,7 +80,14 @@ echo "</pre>"; */
                 $member_lead_mode = consultLeadModeServiceRequest($member->ID, true);
 
                 $member_service_cats_list = get_the_terms($member->ID, 'service_cat');
+                echo "<pre>";
+                var_dump($member_service_cats_list);
+                echo "</pre>";
+
                 $member_locations_list = get_the_terms($member->ID, 'location');
+                echo "<pre>";
+                var_dump($member_locations_list);
+                echo "</pre>";
 
                 $css_classes_service_cats = 'service_cat_' . join(' service_cat_', wp_list_pluck(member_service_cats_list, 'term_id'));
                 $css_classes_locations    = 'location_' . join(' location_', wp_list_pluck(member_locations_list, 'slug'));
