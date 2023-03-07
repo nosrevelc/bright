@@ -376,7 +376,8 @@ if ($myposts) {
         $pcontent = get_field('pitch', $post->ID); 
         ?>
 
-        <!-- Begin Modal Template
+        <?php /*
+        <!-- Begin Modal Template -->
         <div id="modal_<?php echo $post->ID; ?>" class="iziModal expert-details-modal">
             <div class="content p-x-20">
                 <button data-izimodal-close="" class="icon-close"></button>
@@ -676,6 +677,7 @@ if ($myposts) {
             </div>
         </div>
         End Modal Template -->
+        */ ?>
 
         <?php
         $show_expert = 1;
