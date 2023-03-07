@@ -735,19 +735,19 @@ if ($myposts) {
             
             if ($fee == 1) {
                 $p .= '<div data-escalao=' . $arry_escalao . ' data-fee="' . $fee . '" data-ppc-fixo='.$array_ppc_fixo.'  data-f="" data-competencyfactor="" data-expert="' . $post->ID . '" data-locations="' . join(',', wp_list_pluck($location_objs, 'slug')) . '" style="display: none;" class="p-20 m-b-20 ' . $classes . $aux_class . ' ' . $location_as_classes . ' expert-card position-relative flex-column black--color white--background dropshadow font-weight-medium"  >';
-                $p .= '<div class="d-flex flex-row center-content">';
-                $p .= '<div class="w-100px h-100px b-r d-block o-hidden no-decoration">';
-                $p .= '<img class="w-100 h-100 object-cover" src="' . get_field('foto', $post->ID)['sizes']['medium'] . '">';
-                $p .= '</div>'; 
-                $p .= '<div class="calc-100-120 h-100 d-flex justify-content-between flex-column p-y-10 p-x-17">';
-                $p .= '<div>';
-                $p .= '<h3 class="font-weight-semi-bold base_color--color">' . get_the_title() . '</h3> ';
-                $p .= '</div>';
-                $p .= '<span class="small">' . join(', ', wp_list_pluck($term_obj_list, 'name')) . '</span>';
-                $p .= '<div class="cl_icon location p-t-10 font-weight-bold">'.$cl_sr_pay_lead_mode.'</div>';
-                $p .= '' . ($location_objs ? '<span class="small location p-t-10 font-weight-bold"><i class="icon-local"></i><span class="text-uppercase">' . join(', ', wp_list_pluck($location_objs, 'name')) . '</span></span>' : '') . '';
-                $p .= '</div>';
-                $p .= '<a href="#" data-izimodal-open="#modal_' . $post->ID . '" class="info-balloon info-modal">i</a>' . '</div>';
+                $p .=   '<div class="d-flex flex-row center-content">';
+                $p .=       '<div class="w-100px h-100px b-r d-block o-hidden no-decoration">';
+                $p .=           '<img class="w-100 h-100 object-cover" src="' . get_field('foto', $post->ID)['sizes']['medium'] . '">';
+                $p .=       '</div>';
+                $p .=       '<div class="calc-100-120 h-100 d-flex justify-content-between flex-column p-y-10 p-x-17">';
+                $p .=           '<div>';
+                $p .=               '<h3 class="font-weight-semi-bold base_color--color">' . get_the_title() . '</h3> ';
+                $p .=           '</div>';
+                $p .=           '<span class="small">' . join(', ', wp_list_pluck($term_obj_list, 'name')) . '</span>';
+                $p .=           '<div class="cl_icon location p-t-10 font-weight-bold">'.$cl_sr_pay_lead_mode.'</div>';
+                $p .=           '' . ($location_objs ? '<span class="small location p-t-10 font-weight-bold"><i class="icon-local"></i><span class="text-uppercase">' . join(', ', wp_list_pluck($location_objs, 'name')) . '</span></span>' : '') . '';
+                $p .=       '</div>';
+                $p .=       '<a href="#" data-izimodal-open="#modal_' . $post->ID . '" class="info-balloon info-modal">i</a>' . '</div>';
                 $p .= '</div>';
                 $opts .= '<option value="' . $post->ID . '">' . $post->post_title . '</option>';
             }
