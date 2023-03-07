@@ -59,7 +59,7 @@ if(empty($members)) {
         'posts_per_page' => 1,
 
         'meta_key'   => 'idealbiz_support_expert',
-        'meta_value' => true
+        'meta_value' => '1'
     );
 
     $members = new WP_Query( $query_args );
