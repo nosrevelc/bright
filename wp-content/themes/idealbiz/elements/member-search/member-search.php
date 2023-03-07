@@ -80,17 +80,10 @@ echo "</pre>"; */
                 $member_lead_mode = consultLeadModeServiceRequest($member->ID, true);
 
                 $member_service_cats_list = get_the_terms($member->ID, 'service_cat');
-                echo "<pre>";
-                var_dump($member_service_cats_list);
-                echo "</pre>";
-
                 $member_locations_list = get_the_terms($member->ID, 'location');
-                echo "<pre>";
-                var_dump($member_locations_list);
-                echo "</pre>";
 
-                $css_classes_service_cats = 'service_cat_' . join(' service_cat_', wp_list_pluck(member_service_cats_list, 'term_id'));
-                $css_classes_locations    = 'location_' . join(' location_', wp_list_pluck(member_locations_list, 'slug'));
+                $css_classes_service_cats = 'service_cat_' . join(' service_cat_', wp_list_pluck($member_service_cats_list, 'term_id'));
+                $css_classes_locations    = 'location_' . join(' location_', wp_list_pluck($member_locations_list, 'slug'));
 
                 ?>
                 <div data-member-id="<?php echo $member->ID; ?>" class="p-20 m-b-20 expert-card <?php echo "{$css_classes_service_cats} {$css_classes_locations}"?> position-relative flex-column black--color white--background dropshadow font-weight-medium">
@@ -102,14 +95,14 @@ echo "</pre>"; */
                             <div>
                                 <h3 class="font-weight-semi-bold base_color--color"><?php echo $member_name; ?></h3>
                             </div>
-                            <span class="small"><?php echo join(', ', wp_list_pluck(member_service_cats_list, 'name')); ?></span>
+                            <span class="small"><?php echo join(', ', wp_list_pluck($member_service_cats_list, 'name')); ?></span>
                             <div class="cl_icon location p-t-10 font-weight-bold">
                                 <span class="cl_icon-local dashicons dashicons-yes-alt"></span>
                                 <?php echo $member_lead_mode ?>
                             </div>
                             <span class="small location p-t-10 font-weight-bold">
                                 <i class="icon-local"></i>
-                                <span class="text-uppercase"><?php echo join(', ', wp_list_pluck(member_locations_list, 'name')); ?></span>
+                                <span class="text-uppercase"><?php echo join(', ', wp_list_pluck($member_locations_list, 'name')); ?></span>
                             </span>
                         </div>
                         <a href="#" data-izimodal-open="#[TODO]" class="info-balloon info-modal">i</a>
