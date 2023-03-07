@@ -842,7 +842,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
 
         MEMBER_SEARCH_RESULTS: {
             id: "<?php echo "{$form_fields['member_search_results']['id']}" ?>",
-            placeholderSelector: ".service-category-member-search-results div:first-child",
+            placeholderSelector: ".service-category-member-search-results div",
             allCardsSelector: ".expert-card",
             prevValue: ''
         },
