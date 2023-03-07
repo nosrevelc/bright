@@ -2,7 +2,12 @@
 /* Member search results.
  * Presents members in card form.
  *
- * Usage: get_template_part( 'elements/member-search/member-search', null, array( 'service_category' => '', 'amount' => '', 'location' => '' ) );
+ * Usage:
+ *  get_template_part(
+ *      'elements/member-search/member-search',
+ *      null,
+ *      array( 'service_category' => '', 'amount' => '', 'location' => '' ) 
+ *  );
  */
 function cl_repeater_field( $where ) {
     $where = str_replace( "meta_key = 'echelon_competency_factor_$", "meta_key LIKE 'echelon_competency_factor_%", $where );
@@ -21,7 +26,6 @@ $query_args = array(
             'terms'    => $args['service_category']
         )
     ),
-    //'meta_key' => 'echelon_competency_factor'
     'meta_query' => array(
         array(
             'key'     => 'echelon_competency_factor_$_begin_echelon',
@@ -48,6 +52,19 @@ if($args['location'] !== '') {
 
 $members = new WP_Query( $query_args );
 
+// If no members are found, return the default expert
+if(empty($members)) {
+    $query_args = array(
+        'post_type'      => 'expert',
+        'posts_per_page' => 1,
+
+        'meta_key'   => 'idealbiz_support_expert',
+        'meta_value' => true
+    );
+
+    $members = new WP_Query( $query_args );
+}
+
 /* echo "<pre>";
 var_dump($members);
 echo "</pre>"; */
@@ -56,9 +73,6 @@ echo "</pre>"; */
 <div class="expert-preview m-t-20">
 <?php
     foreach ($members as $member) {
-        /* echo "<pre>";
-        var_dump($members);
-        echo "</pre>"; */
 
         if(isset($member->ID)) {
             $member_name      = $member->post_title;
@@ -99,7 +113,8 @@ echo "</pre>"; */
     }
 ?>
 
-<div class="not-found" style="display:none;">
-    <p class="not-found" style="display: none;">[Not found]</p>
+    <div class="not-found" style="display:none;">
+        <p class="not-found" style="display: none;">[Not found]</p>
+    </div>
+    <span id="result_D" class="cl_aviso">[Not found Message]</span>
 </div>
-<span id="result_D" class="cl_aviso">[Not found Message]</span>
