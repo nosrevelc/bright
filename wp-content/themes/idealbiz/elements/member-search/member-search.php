@@ -5,12 +5,23 @@
  * Usage: get_template_part( 'elements/member-search/member-search', null, array( 'service_category' => '', 'amount' => '', 'location' => '' ) );
  */
 
+
+
+
+
+ function cl_repeater_field( $where ) {
+    $where = str_replace( "meta_key = 'echelon_competency_factor_$", "meta_key LIKE 'echelon_competency_factor_%", $where );
+    return $where;
+}
+add_filter( 'posts_where', 'cl_repeater_field' );
+
+
 $query_args = array(
     'post_type' => 'expert',
     'post_status' => 'publish',
     'posts_per_page' => -1,
     'tax_query' => array(
-        'relation' => 'AND',
+        //'relation' => 'AND',
         array(
             'taxonomy' => 'service_cat',
             'field'    => 'term_id',
@@ -23,31 +34,42 @@ $query_args = array(
         )
     ),
     //'meta_key' => 'echelon_competency_factor'
-    /*'meta_query' => array(
-        'relation' => 'AND',
+    'meta_query' => array(
+        //'relation' => 'AND',
         array(
             'key'     => 'echelon_competency_factor_$_begin_echelon',
             'compare' => '<=',
-            'value'   => (int) $args['amount']
+            'value'   => $args['amount'],
+            'type' => 'NUMERIC'
         ),
         array(
             'key'     => 'echelon_competency_factor_$_finish_echelon',
             'compare' => '>=',
-            'value'   => (int) $args['amount']
+            'value'   => $args['amount'],
+            'type' => 'NUMERIC'
         )
-    )*/
+    )
 );
-$members = get_posts($query_args);
+
+$members = new WP_Query( $query_args );
+//$members = get_posts($query_args);
 ?>
 
 <div class="expert-preview m-t-20">
     <?php
 
-    echo "<pre>";
-    var_dump($members);
-    echo "</pre>";
+        /* echo "<pre>";
+        var_dump($members);
+        echo "</pre>"; */
 
     foreach ($members as $member) {
+
+        /* echo "<pre>";
+        var_dump($members);
+        echo "</pre>"; */
+
+
+       if(isset($member->ID)){
         $member_name      = $member->post_title;
         $member_photo_url = get_field('foto', $member->ID)['sizes']['medium'];
 
@@ -58,7 +80,7 @@ $members = get_posts($query_args);
         $css_classes_locations    = 'location_' . join(' location_', member_locations_list);
 
         ?>
-        <div data-escalao="" data-fee="" data-ppc-fixo="" data-f="" data-competencyfactor="" data-expert="" data-locations="" class="p-20 m-b-20 expert-card <?php echo "{$css_classes_service_cats} {$css_classes_locations}"?> position-relative flex-column black--color white--background dropshadow font-weight-medium">
+        <div data-member-id="<?php echo $member->ID; ?>" data-escalao="" data-fee="" data-ppc-fixo="" data-f="" data-competencyfactor="" data-expert="" data-locations="" class="p-20 m-b-20 expert-card <?php echo "{$css_classes_service_cats} {$css_classes_locations}"?> position-relative flex-column black--color white--background dropshadow font-weight-medium">
             <div class="d-flex flex-row center-content">
                 <div class="w-100px h-100px b-r d-block o-hidden no-decoration">
                     <img class="w-100 h-100 object-cover" src="<?php echo $member_photo_url ?>"/>
@@ -80,6 +102,7 @@ $members = get_posts($query_args);
             </div>
         </div>
         <?php
+      }
     }
     ?>
 
@@ -87,4 +110,3 @@ $members = get_posts($query_args);
         <p class="not-found" style="display: none;">[Not found]</p>
     </div>
     <span id="result_D" class="cl_aviso">[Not found Message]</span>
-</div>
