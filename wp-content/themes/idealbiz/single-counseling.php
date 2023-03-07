@@ -817,27 +817,64 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
         }
     }
 
-    // Fields we want to track "onChange"
+    // Fields we want to track
     var GF_FIELDS = {
-        "<?php echo "{$form_fields['service_category']['id']}" ?>": { prevValue: '', onChange: onInputChangeMemberSearch },
-        "<?php echo "{$form_fields['amount']['id']}" ?>":           { prevValue: '', onChange: onInputChangeMemberSearch },
-        "<?php echo "{$form_fields['location']['id']}" ?>":         { prevValue: '', onChange: onInputChangeMemberSearch },
+        fieldIdMap: {},
 
-        "<?php echo "{$form_fields['member_search_results']['id']}" ?>":   { prevValue: '', onChange: onInputChangeMemberSelection },
-        "<?php echo "{$form_fields['member_search_selection']['id']}" ?>": { prevValue: '', onChange: onInputChangeMemberSelection }
+        SERVICE_CATEGORY: {
+            id: "<?php echo "{$form_fields['service_category']['id']}" ?>",
+            selector: "<?php echo "#input_{$form_id}_{$form_fields['service_category']['id']}" ?>",
+            prevValue: '',
+            onChange: onInputChangeMemberSearch
+        },
+        AMOUNT: {
+            id: "<?php echo "{$form_fields['amount']['id']}" ?>",
+            selector: "<?php echo "#input_{$form_id}_{$form_fields['amount']['id']}" ?>",
+            prevValue: '',
+            onChange: onInputChangeMemberSearch
+        },
+        LOCATION: {
+            id: "<?php echo "{$form_fields['location']['id']}" ?>",
+            selector: "<?php echo "#input_{$form_id}_{$form_fields['location']['id']}" ?>",
+            prevValue: '',
+            onChange: onInputChangeMemberSearch
+        },
+
+        MEMBER_SEARCH_RESULTS: {
+            id: "<?php echo "{$form_fields['member_search_results']['id']}" ?>",
+            placeholderSelector: ".service-category-member-search-results div:first-child",
+            allCardsSelector: ".expert-card",
+            prevValue: ''
+        },
+
+        MEMBER_SELECTION: {
+            id: "<?php echo "{$form_fields['member_selection']['id']}" ?>",
+            selector: "<?php echo "#input_{$form_id}_{$form_fields['member_selection']['id']}" ?>"
+        }
     };
+    (function() {
+        var key, id;
+        for(key in Object.keys(GF_FIELDS)) {
+            id = GF_FIELDS[key].id;
+            if(id) {
+                GF_FIELDS.id_map[id] = key;
+            }
+        }
+    })();
 
     function onInputChange( gfElem, gfFormId, gfFieldId ) {
         console.log('Change detected for ', gfElem, ', Form Id: "', gfFormId, '", Field Id: "', gfFieldId, '"');
 
-        if(GF_FIELDS[`${gfFieldId}`]) {
-            var field = GF_FIELDS[`${gfFieldId}`];
+        if(GF_FIELDS.fieldIdMap[gfFieldId]) {
+            var field = GF_FIELDS[GF_FIELDS.fieldIdMap[gfFieldId]];
             var currValue = jQuery(`#input_${gfFormId}_${gfFieldId}`).val();
 
             // Only fire if value actually changes (GravityForms fires onChange for keyup+onchange events)
             if(field.prevValue !== currValue) {
                 field.prevValue = currValue;
-                field.onChange(gfElem, gfFormId, gfFieldId);
+                if(field.onChange) {
+                    field.onChange(gfElem, gfFormId, gfFieldId);
+                }
             }
         }
 
@@ -845,9 +882,9 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
     }
 
     function onInputChangeMemberSearch( gfElem, gfFormId, gfFieldId ) {
-        var serviceCategoryValue = jQuery('<?php echo "#input_{$form_id}_{$form_fields['service_category']['id']}" ?>').val();
-        var amountValue          = jQuery('<?php echo "#input_{$form_id}_{$form_fields['amount']['id']}" ?>').val();
-        var locationValue        = jQuery('<?php echo "#input_{$form_id}_{$form_fields['location']['id']}" ?>').val();
+        var serviceCategoryValue = jQuery(GF_FIELDS.SERVICE_CATEGORY.selector).val();
+        var amountValue          = jQuery(GF_FIELDS.AMOUNT.selector).val();
+        var locationValue        = jQuery(GF_FIELDS.LOCATION.selector).val();
 
         console.log('Values: ServiceCategory ', serviceCategoryValue, ', Amount: "', amountValue, '", Location: "', locationValue, '"');
 
@@ -855,7 +892,6 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
             url: "<?php echo admin_url('admin-ajax.php') ?>",
             data: {
                 /* WP Fields */
-                //_ajax_nonce: "<?php wp_create_nonce('single_counseling_search_members') ?>",
                 action: "single_counseling_search_members",
 
                 /* Our data fields */
@@ -865,15 +901,27 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
             },
             success: function(xml) {
                 console.log("AJAX call successful");
-                jQuery(".service-category-member-search-results div").html(xml);
+                jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.placeholderSelector).html(xml);
+                jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.allCardsSelector).on("click", onClickMemberCard);
             }
         }).fail(function() {
             console.error("AJAX call failed");
         });
     }
 
-    function onInputChangeMemberSelection( gfElem, gfFormId, gfFieldId ) {
-        return;
+    function onClickMemberCard(event) {
+        event.preventDefault();
+
+        // Find memberId from the selected card
+        var memberId = jQuery(event.currentTarget).data('member-id');
+
+        // Highlight the selected card
+        jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.allCardsSelector).removeClass('active');
+        jQuery(event.currentTarget).addClass('active');
+
+        // Update hidden field and notify Gravity Forms
+        jQuery(GF_FIELDS.MEMBER_SELECTION.selector).val(memberId);
+        jQuery(GF_FIELDS.MEMBER_SELECTION.selector).trigger('change');
     }
 
     // REFATURAÇÃO PARA REENCAMINHAMENTO E RECOMENDAÇÃO.
