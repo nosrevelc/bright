@@ -3887,7 +3887,7 @@ function opportunityRegisterViewLead($cl_id_view_lead_opportunity){
                      
 }
 
-function consultLeadModeServieceRequest($id_member,$cl_onlyMode=null){
+function consultLeadModeServiceRequest($id_member, $cl_onlyMode=null){
 
     $cl_expert = isExpert();
     $cl_expertDsplayName = $cl_expert[0]->post_title;

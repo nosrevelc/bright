@@ -708,7 +708,7 @@ if ($myposts) {
             $escalao = get_field('echelon_competency_factor', $post->ID);
             $cl_fixed_ppc_value = get_field('fixed_ppc_value',$post->ID);
             /* var_dump($cl_fixed_ppc_value); */
-            $cl_sr_pay_lead_mode = '<span class="cl_icon-local dashicons dashicons-yes-alt"></span>'.consultLeadModeServieceRequest($post->ID,true);
+            $cl_sr_pay_lead_mode = '<span class="cl_icon-local dashicons dashicons-yes-alt"></span>'.consultLeadModeServiceRequest($post->ID,true);
             
             $array_ppc_fixo =json_encode($cl_fixed_ppc_value); 
             $arry_escalao = json_encode($escalao);

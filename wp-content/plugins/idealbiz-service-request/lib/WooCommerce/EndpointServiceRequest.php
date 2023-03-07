@@ -15,7 +15,7 @@ class EndpointServiceRequest {
 			$expert = isExpert();
 
 			if ( in_array( 'consultant', $current_user->roles, true ) || $expert ) {
-				consultLeadModeServieceRequest($expert[0]->ID);
+				consultLeadModeServiceRequest($expert[0]->ID);
 			}
 		}	
 
