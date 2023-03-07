@@ -335,7 +335,7 @@ endif;
         */ 
         ?>
 
-        <div class="loader" style="left: 50%; position: relative; display: none; margin-left: -15px; margin-top: 30px;"></div>
+        <div id="#member-search-loader" class="loader hidden-desktop hidden-mobile" style="left: 50%; position: relative; margin-left: -15px; margin-top: 30px;"></div>
     </div>
 </section>
 
@@ -844,7 +844,10 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
 
         MEMBER_SEARCH_RESULTS: {
             id: "<?php echo "{$form_fields['member_search_results']['id']}" ?>",
-            placeholderSelector: ".service-category-member-search-results div",
+
+            loaderSelector: "#member-search-loader",
+            loaderPlaceholderSelector: ".service-category-member-search-results-loading",
+            placeholderSelector: ".service-category-member-search-results-list",
             allCardsSelector: ".expert-card",
             prevValue: ''
         },
@@ -856,8 +859,8 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
     };
     (function() {
         var keys = Object.keys(GF_FIELDS);
-        var key, id;
-        for(var i in keys) {
+        var i, id;
+        for(i in keys) {
             id = GF_FIELDS[keys[i]].id;
             if(id) {
                 GF_FIELDS.fieldIdMap[id] = keys[i];
@@ -889,27 +892,37 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
         var amountValue          = jQuery(GF_FIELDS.AMOUNT.selector).val();
         var locationValue        = jQuery(GF_FIELDS.LOCATION.selector).val();
 
-        console.log('Values: ServiceCategory ', serviceCategoryValue, ', Amount: "', amountValue, '", Location: "', locationValue, '"');
+        console.log(`Values: ServiceCategory "${serviceCategoryValue}", Amount: "${amountValue}", Location: "${locationValue}"`);
 
-        jQuery.post({
-            url: "<?php echo admin_url('admin-ajax.php') ?>",
-            data: {
-                /* WP Fields */
-                action: "single_counseling_search_members",
+        if(serviceCategoryValue && amountValue) {
+            console.log("AJAX: calling");
 
-                /* Our data fields */
-                service_category: serviceCategoryValue,
-                amount: amountValue,
-                location: locationValue
-            },
-            success: function(xml) {
-                console.log("AJAX call successful");
-                jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.placeholderSelector).html(xml);
-                jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.allCardsSelector).on("click", onClickMemberCard);
-            }
-        }).fail(function() {
-            console.error("AJAX call failed");
-        });
+            jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.loaderSelector)
+                .removeClass(["hidden-desktop", "hidden-mobile"]);
+
+            jQuery.post({
+                url: "<?php echo admin_url('admin-ajax.php') ?>",
+                data: {
+                    /* WP Fields */
+                    action: "single_counseling_search_members",
+
+                    /* Our data fields */
+                    service_category: serviceCategoryValue,
+                    amount: amountValue,
+                    location: locationValue
+                },
+                success: function(xml) {
+                    console.log("AJAX: call successful");
+                    jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.placeholderSelector).html(xml);
+                    jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.allCardsSelector).on("click", onClickMemberCard);
+                }
+            }).fail(function() {
+                console.error("AJAX: call failed");
+            }).done(function() {
+                jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.loaderSelector)
+                    .addClass(["hidden-desktop", "hidden-mobile"]);
+            });
+        }
     }
 
     function onClickMemberCard(event) {
@@ -947,6 +960,9 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
 
     jQuery(document).ready(($) => {
         gform.addAction( 'gform_input_change', onInputChange );
+
+        $(GF_FIELDS.MEMBER_SEARCH_RESULTS.loaderSelector)
+            .appendTo(GF_FIELDS.MEMBER_SEARCH_RESULTS.loaderPlaceholderSelector);
 
         // GS: Disable entire jQuery code
         if(true) {
