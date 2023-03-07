@@ -8,7 +8,7 @@ function cl_repeater_field( $where ) {
     $where = str_replace( "meta_key = 'echelon_competency_factor_$", "meta_key LIKE 'echelon_competency_factor_%", $where );
     return $where;
 }
-//add_filter( 'posts_where', 'cl_repeater_field' );
+add_filter( 'posts_where', 'cl_repeater_field' );
 
 $query_args = array(
     'post_type' => 'expert',
@@ -24,13 +24,13 @@ $query_args = array(
     //'meta_key' => 'echelon_competency_factor'
     'meta_query' => array(
         array(
-            'key'     => 'echelon_competency_factor_%_begin_echelon',
+            'key'     => 'echelon_competency_factor_$_begin_echelon',
             'compare' => '<=',
             'value'   => $args['amount'],
             'type' => 'NUMERIC'
         ),
         array(
-            'key'     => 'echelon_competency_factor_%_finish_echelon',
+            'key'     => 'echelon_competency_factor_$_finish_echelon',
             'compare' => '>=',
             'value'   => $args['amount'],
             'type' => 'NUMERIC'
