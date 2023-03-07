@@ -19,14 +19,6 @@ $query_args = array(
             'taxonomy' => 'service_cat',
             'field'    => 'term_id',
             'terms'    => $args['service_category']
-        ),
-        (($args['location'] !== '') ?
-            array(
-                'taxonomy' => 'location',
-                'field'    => 'term_id',
-                'terms'    => $args['location']
-            ) : 
-            array()
         )
     ),
     //'meta_key' => 'echelon_competency_factor'
@@ -45,6 +37,14 @@ $query_args = array(
         )
     )
 );
+
+if($args['location'] !== '') {
+    $query_args['tax_query'][] = array(
+        'taxonomy' => 'location',
+        'field'    => 'term_id',
+        'terms'    => $args['location']
+    );
+}
 
 $members = new WP_Query( $query_args );
 
