@@ -796,10 +796,6 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
             $('.single-counceling .maximo input').val('<?php echo get_field('budget_max', $rid); ?>').prop('disabled', true);*/
         <?php } ?>
 
-        <?php if (WEBSITE_SYSTEM == '' || WEBSITE_SYSTEM == '0') { ?>
-            //$('.valor_referencia input[type="text"]').val(0);
-        <?php } ?>
-
         <?php if (WEBSITE_SYSTEM == '1') { ?>
             //$('.form-selector').find('form').append('<input type="hidden" name="idb_tax" value="" />');
 
