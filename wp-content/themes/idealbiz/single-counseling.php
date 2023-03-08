@@ -325,12 +325,14 @@ $post_args = array(
     'post_status' => 'publish'
 );
 
-$opts = '';
 $p = '';
-$myposts = get_posts($post_args);
-$opts .= '<option value=""></option>';
+
 $location_aux = '<option value="all">' . __('All Locations', 'idealbiz') . '</option>';
-if ($myposts) {
+
+// GS: TODO: remover
+if (false) {
+    $myposts = get_posts($post_args);
+
     foreach ($myposts as $post) {
         $term_obj_list = get_the_terms($post->ID, 'service_cat');
 
@@ -406,22 +408,8 @@ if ($myposts) {
             }
             
             if ($fee == 1) {
-                $p .= '<div data-escalao=' . $arry_escalao . ' data-fee="' . $fee . '" data-ppc-fixo='.$array_ppc_fixo.'  data-f="" data-competencyfactor="" data-expert="' . $post->ID . '" data-locations="' . join(',', wp_list_pluck($location_objs, 'slug')) . '" style="display: none;" class="p-20 m-b-20 ' . $classes . $aux_class . ' ' . $location_as_classes . ' expert-card position-relative flex-column black--color white--background dropshadow font-weight-medium"  >';
-                $p .=   '<div class="d-flex flex-row center-content">';
-                $p .=       '<div class="w-100px h-100px b-r d-block o-hidden no-decoration">';
-                $p .=           '<img class="w-100 h-100 object-cover" src="' . get_field('foto', $post->ID)['sizes']['medium'] . '">';
-                $p .=       '</div>';
-                $p .=       '<div class="calc-100-120 h-100 d-flex justify-content-between flex-column p-y-10 p-x-17">';
-                $p .=           '<div>';
-                $p .=               '<h3 class="font-weight-semi-bold base_color--color">' . get_the_title() . '</h3> ';
-                $p .=           '</div>';
-                $p .=           '<span class="small">' . join(', ', wp_list_pluck($term_obj_list, 'name')) . '</span>';
-                $p .=           '<div class="cl_icon location p-t-10 font-weight-bold">'.$cl_sr_pay_lead_mode.'</div>';
-                $p .=           '' . ($location_objs ? '<span class="small location p-t-10 font-weight-bold"><i class="icon-local"></i><span class="text-uppercase">' . join(', ', wp_list_pluck($location_objs, 'name')) . '</span></span>' : '') . '';
-                $p .=       '</div>';
-                $p .=       '<a href="#" data-izimodal-open="#modal_' . $post->ID . '" class="info-balloon info-modal">i</a>' . '</div>';
+                $p .= '<div>';
                 $p .= '</div>';
-                $opts .= '<option value="' . $post->ID . '">' . $post->post_title . '</option>';
             }
         }
     }
@@ -634,19 +622,12 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
         $(GF_FIELDS.MEMBER_SEARCH_RESULTS.loaderSelector)
             .appendTo(GF_FIELDS.MEMBER_SEARCH_RESULTS.loaderPlaceholderSelector);
 
-        // GS: Disable entire jQuery code
-        if(true) {
-            return;
-        }
-
         // Select the option with a value of '1'
         // $('.single-counceling .ginput_container_custom_taxonomy select').val(< ?php echo $terms[0]; ? >);
         
         // Notify any JS components that the value changed
-        $('.experts_by_service_cat select').html('<?php echo $opts; ?>');
-        $('.expert-preview').html('<?php echo $p; ?>');
 
-        var sel = $('.location_expert_search');
+        /*var sel = $('.location_expert_search');
         sel.html('<?php echo $location_aux; ?>');
         var selected = sel.val();
         var opts_list = sel.find('option');
@@ -654,9 +635,9 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
             return $(a).text() > $(b).text() ? 1 : -1;
         });
         sel.html('').append(opts_list);
-        sel.val(selected);
+        sel.val(selected);*/
 
-        $('.expert-card').on('click', function() {
+        /*$('.expert-card').on('click', function() {
             $('.expert-card').each(function() {
                 $(this).removeClass('active');
             });
@@ -666,7 +647,6 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
             $('.experts_by_service_cat .gfield_select').trigger('change');
 
             //MODULO SELEÇÃO DE ESCALÃO CRIADO PELO CLEVERSON
-            //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
             var cont = 0;
             var cl_vr = $('.valor_referencia input[type="text"]');
             $(".expert-preview .expert-card").each(function() {  //Arry com os dados do escalao     
@@ -692,10 +672,9 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
                     });
                 }
             })
-            //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-        });
+        });*/
 
-        $('.single-counceling .ginput_container_custom_taxonomy select').on('change', function(event) {
+        /*$('.single-counceling .ginput_container_custom_taxonomy select').on('change', function(event) {
             event.preventDefault();
             var id = $(this).val();
             $('.expert-card').css('display', 'none');
@@ -726,11 +705,11 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
 
             $('.location_expert_search').trigger('change');
         });
-        $('.single-counceling .ginput_container_custom_taxonomy select').trigger('change');
+        $('.single-counceling .ginput_container_custom_taxonomy select').trigger('change');*/
 
-        $('.location_expert_search').on('change', function(event) {
+        /*$('.location_expert_search').on('change', function(event) {
             event.preventDefault();
-            $('.expert-preview').find('#result_D').html('<?php /* echo __('Enter the reference value and Budget available in the fields above.','idealbiz') */ ?>');
+            $('.expert-preview').find('#result_D').html('');
             
             var val = $(this).val();
             var found = 0;
@@ -745,7 +724,6 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
                     } else {
                         $(this).css('display', 'none');
                         window.cl_care = 1
-                        /* $('.expert-preview .customer_care').attr('style', 'display:block !important;'); */
                     }
                 });
             } else {
@@ -759,14 +737,10 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
                 });
 
             }
-            if (found == 0) {
-                /* $('.expert-preview .not-found').css('display', 'flex'); */
-                /* $('.expert-preview .customer_care').attr('style','display:block !important;'); */
-            }
             calc_F_G();
-        });
+        });*/
 
-        var gform_expert_validation_message = $('.experts_by_service_cat .validation_message');
+        /*var gform_expert_validation_message = $('.experts_by_service_cat .validation_message');
 
         if (gform_expert_validation_message.length > 0) {
             var validation_message_expert = $('.validation_message_expert');
@@ -796,7 +770,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
                 $('.experts_by_service_cat > .gfield_label').css('display', 'none');
                 $('.experts_by_service_cat > .ginput_container').css('display', 'none');
             }
-        });
+        });*/
 
         gform.addFilter('gform_datepicker_options_pre_init', function(optionsObj, formId, fieldId) {
             optionsObj.minDate = 0;
@@ -808,7 +782,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
                     $user = get_field('customer', $_GET['rid']);
                     $sexpert = get_field('consultant', $_GET['rid']); // $sexpert->ID
             ?>
-            $('.single-counceling .ginput_container_custom_taxonomy select').val(<?php echo $_GET['sr']; ?>).trigger('change');
+            /*$('.single-counceling .ginput_container_custom_taxonomy select').val(<?php echo $_GET['sr']; ?>).trigger('change');
 
             $('.single-counceling .name_first input').val('<?php echo $user->first_name; ?>');
             $('.single-counceling .name_last input').val('<?php echo $user->last_name; ?>');
@@ -819,22 +793,22 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
 
             $('.single-counceling .valor_referencia input').val('<?php echo get_field('reference_value', $rid); ?>').prop('disabled', true);
             $('.single-counceling .minimo input').val('<?php echo get_field('budget_min', $rid); ?>').prop('disabled', true);
-            $('.single-counceling .maximo input').val('<?php echo get_field('budget_max', $rid); ?>').prop('disabled', true);
+            $('.single-counceling .maximo input').val('<?php echo get_field('budget_max', $rid); ?>').prop('disabled', true);*/
         <?php } ?>
 
         <?php if (WEBSITE_SYSTEM == '' || WEBSITE_SYSTEM == '0') { ?>
-            $('.valor_referencia input[type="text"]').val(0);
+            //$('.valor_referencia input[type="text"]').val(0);
         <?php } ?>
 
         <?php if (WEBSITE_SYSTEM == '1') { ?>
-            $('.form-selector').find('form').append('<input type="hidden" name="idb_tax" value="" />');
+            /*$('.form-selector').find('form').append('<input type="hidden" name="idb_tax" value="" />');
 
             // Campos onde se insere o valor de Refrência, Mínimo e Máximo. 
             $('.valor_referencia .ginput_container_text').append(' <span class="curr_symbol"><?php echo get_woocommerce_currency_symbol(); ?></span>');
             $('.minimo .ginput_container_text').append(' <span class="curr_symbol"><?php echo get_woocommerce_currency_symbol(); ?></span>');
             $('.maximo .ginput_container_text').append(' <span class="curr_symbol"><?php echo get_woocommerce_currency_symbol(); ?></span>');                    
             
-            $('.valor_referencia .gfield_label').append('<span class="gfield_required">*</span>');
+            $('.valor_referencia .gfield_label').append('<span class="gfield_required">*</span>');*/
 
             //Coloca os "i's" ao lado dos campos.
             $('label[for=input_'+<?php echo $form_id;?>+'_1]').append('<div class=gfield_label><button id="cl_input1" class="info-balloon">i</button>');
@@ -847,7 +821,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
             $('label[for=input_'+<?php echo $form_id;?>+'_8]').append('<div class=gfield_label><button id="cl_input8" class="info-balloon">i</button>');
             $('label[for=input_'+<?php echo $form_id;?>+'_9]').append('<div class=gfield_label><button id="cl_input9" class="info-balloon">i</button>');
             $('label[for=input_'+<?php echo $form_id;?>+'_10]').append('<div class=gfield_label><button id="cl_input10" class="info-balloon">i</button>');
-            /* $('label[for=input_'+<?php echo $form_id;?>+'_11]').append('<div class=gfield_label><button id="cl_input11" class="info-balloon">i</button>'); */
+            // $('label[for=input_'+<?php echo $form_id;?>+'_11]').append('<div class=gfield_label><button id="cl_input11" class="info-balloon">i</button>');
             $('label[for=input_'+<?php echo $form_id;?>+'_12]').append('<div class=gfield_label><button id="cl_input12" class="info-balloon">i</button>');
             $('label[for=input_'+<?php echo $form_id;?>+'_13]').append('<div class=gfield_label><button id="cl_input13" class="info-balloon">i</button>');
             $('label[for=input_'+<?php echo $form_id;?>+'_14]').append('<div class=gfield_label><button id="cl_input14" class="info-balloon">i</button>');
@@ -925,9 +899,8 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
                 }
             });
             
-            var vr = $('.valor_referencia input[type="text"]'); //Referência
+            /*var vr = $('.valor_referencia input[type="text"]'); //Referência
             var min = $('.minimo input[type="text"]'); //Mínimo
-            /* var max = $('.maximo input[type="text"]'); //Máximo */
             var max = $('.valor_referencia input[type="text"]'); //Referência
             
             //ON CHANGE - Valida Campo Máximo, verifica se é nulo 0 ou String CL
@@ -936,7 +909,6 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
                 $('.expert-preview .not-found').css('display', 'none');
                 //Aqui o Orçamento passa a ter o mesmo valor do vr
                 calc_F_G();
-                /* max = vr.val(); */
             });
 
             //NPMM - ANULA ENTER DO MONTANTE ENVOLVIDO
@@ -944,12 +916,11 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
                 var keycode = (event.keyCode ? event.keyCode : event.which);
                 if(keycode == '13'){
                     //e.preventDefault();
-                    /* alert('Select Expert');
-                    $("#seleciona_expert").focus(); */
+                    // alert('Select Expert');
+                    // $("#seleciona_expert").focus();
                     return false;
                 }
-
-            });                                 
+            });*/
 
             //calculo fator de competencia -> f
             
@@ -961,7 +932,6 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
                 var ciclo_pai = 0; // Apagar depois
                 if (vr.val() != '' && !isNaN(vr.val())) {
                     $('.expert-preview .customer_care').attr('style', '');
-                    /* $('.expert-preview').find('#result_D').html(''); */
 
                     $(".expert-preview .expert-card").each(function() {
                         //var e = $(this).data('competencyfactor'); // Codigo antigo 
@@ -987,9 +957,6 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
                                 var calc_max = (v_ref/100)*e;
                                 window.orcamento = calc_max;
                                 var max = orcamento;
-                                //console.log('Valor do Orcamento dentro do ciclo: '+orcamento);
-                                //console.log(" Guardei " + e + " na variavel  e e já sai do IF " + i); // Apagar depois
-                                //console.log(' ---->Sai do ciclo Filho com valor de e Filho : ' + e); // Apagar depois 
                                 
                                 return false;  
                             }
@@ -1028,7 +995,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
                 }
             }
 
-            calc_F_G();
+            //calc_F_G();
 
         <?php } ?>    
     });
