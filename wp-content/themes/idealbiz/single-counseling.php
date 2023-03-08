@@ -22,6 +22,9 @@ $form_fields = array(
     'member_selection'      => array( 'id' => -1 )
 );
 
+$show_tooltips = (WEBSITE_SYSTEM == '1');  // Show tooltips on desktop
+$form_tooltips = array();
+
 // Find the correct Gravity Form via CSS Class (configured on the form):
 foreach( GFAPI::get_forms() as $form ) {
     if ( $form['cssClass'] === 'service-request' ) {
@@ -32,6 +35,7 @@ foreach( GFAPI::get_forms() as $form ) {
         foreach( $form['fields'] as $field) {
             $field_to_update  = '';
 
+            // Store fields we need to interact with in JavaScript
             if     ( str_contains( $field->cssClass, 'service-request-service-category' ) ) {
                 $field_to_update = 'service_category';
             }
@@ -50,6 +54,12 @@ foreach( GFAPI::get_forms() as $form ) {
 
             if ( $field_to_update !== '' ) {
                 $form_fields[$field_to_update] = array( 'id' => $field['id'] );
+            }
+
+
+            // Store field information to generate tooltips
+            if ($show_tooltips) {
+                $form_tooltips[] = array( 'id' => $field['id'], 'description' => $field['description'] );
             }
         }
 
@@ -146,53 +156,13 @@ endif;
 <?php
     //Inicio preenchar os izModal co a descrição dos campos
     //id do Formulário
-    $form = RGFormsModel::get_form_meta($form_id);
 
-    // Run through the fields to grab an object of the desired field
-    $i = 0;
-    for ($i = 1; ; $i++) {
-        if ($i > 30) {
-            break;
-        }
-        $field = RGFormsModel::get_field($form, $i);
-        if($field) {
-            $descicao[$i]= array($field->id => $field->description);
+    if ( $show_tooltips ) {
+        foreach( $form_tooltips as $tooltip ) {
+            infoModal('<h3>' . __($tooltip['description'], 'idealbiz') . '</h3>', "tooltip_{$tooltip['id']}", 'd-none');
         }
     }
 
-    infoModal('<h3>' . __($descicao[1][1], 'idealbiz') . '</h3>', 'campo1', 'd-none');
-    infoModal('<h3>' . __($descicao[2][2], 'idealbiz') . '</h3>', 'campo2', 'd-none');
-    infoModal('<h3>' . __($descicao[3][3], 'idealbiz') . '</h3>', 'campo3', 'd-none');
-    infoModal('<h3>' . __($descicao[4][4], 'idealbiz') . '</h3>', 'campo4', 'd-none');
-    infoModal('<h3>' . __($descicao[5][5], 'idealbiz') . '</h3>', 'campo5', 'd-none');
-    infoModal('<h3>' . __($descicao[6][6], 'idealbiz') . '</h3>', 'campo6', 'd-none');
-    infoModal('<h3>' . __($descicao[7][7], 'idealbiz') . '</h3>', 'campo7', 'd-none');
-    infoModal('<h3>' . __($descicao[8][8], 'idealbiz') . '</h3>', 'campo8', 'd-none');
-    infoModal('<h3>' . __($descicao[9][9], 'idealbiz') . '</h3>', 'campo9', 'd-none');
-    infoModal('<h3>' . __($descicao[10][10], 'idealbiz') . '</h3>', 'campo10', 'd-none');
-    infoModal('<h3>' . __($descicao[11][11], 'idealbiz') . '</h3>', 'campo11', 'd-none');
-    infoModal('<h3>' . __($descicao[12][12], 'idealbiz') . '</h3>', 'campo12', 'd-none');
-    infoModal('<h3>' . __($descicao[13][13], 'idealbiz') . '</h3>', 'campo13', 'd-none');
-    infoModal('<h3>' . __($descicao[14][14], 'idealbiz') . '</h3>', 'campo14', 'd-none');
-    infoModal('<h3>' . __($descicao[15][15], 'idealbiz') . '</h3>', 'campo15', 'd-none');
-    infoModal('<h3>' . __($descicao[16][16], 'idealbiz') . '</h3>', 'campo16', 'd-none');
-    infoModal('<h3>' . __($descicao[17][17], 'idealbiz') . '</h3>', 'campo17', 'd-none');
-    infoModal('<h3>' . __($descicao[18][18], 'idealbiz') . '</h3>', 'campo18', 'd-none');
-    infoModal('<h3>' . __($descicao[19][19], 'idealbiz') . '</h3>', 'campo19', 'd-none');
-    infoModal('<h3>' . __($descicao[20][20], 'idealbiz') . '</h3>', 'campo20', 'd-none');
-    infoModal('<h3>' . __($descicao[21][21], 'idealbiz') . '</h3>', 'campo21', 'd-none');
-    infoModal('<h3>' . __($descicao[22][22], 'idealbiz') . '</h3>', 'campo22', 'd-none');
-    infoModal('<h3>' . __($descicao[23][23], 'idealbiz') . '</h3>', 'campo23', 'd-none');
-    infoModal('<h3>' . __($descicao[24][24], 'idealbiz') . '</h3>', 'campo24', 'd-none');
-    infoModal('<h3>' . __($descicao[25][25], 'idealbiz') . '</h3>', 'campo25', 'd-none');
-    infoModal('<h3>' . __($descicao[26][26], 'idealbiz') . '</h3>', 'campo26', 'd-none');
-    infoModal('<h3>' . __($descicao[27][27], 'idealbiz') . '</h3>', 'campo27', 'd-none');
-    infoModal('<h3>' . __($descicao[28][28], 'idealbiz') . '</h3>', 'campo28', 'd-none');
-    infoModal('<h3>' . __($descicao[29][29], 'idealbiz') . '</h3>', 'campo29', 'd-none');
-    infoModal('<h3>' . __($descicao[30][30], 'idealbiz') . '</h3>', 'campo30', 'd-none');
-
-
-    $cl_descicao12='teste'.$descicao[12][12];
     //Fim preenchar os izModal co a descrição dos campos
 ?>
 
@@ -792,6 +762,27 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
             $('.single-counceling .maximo input').val('<?php echo get_field('budget_max', $rid); ?>').prop('disabled', true);*/
         <?php } ?>
 
+        <?php
+        // Only show tooltips on desktop
+        if ( $show_tooltips ) {
+            ?>
+            function insertTooltips() {
+                $(".gfield").each(function(index, element) {
+                    var gfFieldId = (element.id || '').split('_')[2];
+                    if(gfFieldId && gfField !== '11') {
+                        $(element)
+                            .append('<div class=gfield_label><button class="info-balloon">i</button>')           //Coloca os "i's" ao lado dos campos.
+                            .find('button')
+                            .click(function(event) { event.preventDefault(); $(`#tooltip_${gfFieldId}`).iziModal('open'); })    //Chama o iziModal onClick
+                    }
+                });
+                return;
+            }
+            insertTooltips();
+            <?php
+        }
+        ?>
+
         <?php if (WEBSITE_SYSTEM == '1') { ?>
             //$('.form-selector').find('form').append('<input type="hidden" name="idb_tax" value="" />');
 
@@ -802,71 +793,6 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
             $('.maximo .ginput_container_text').append(currencySymbolHtml);
             
             //$('.valor_referencia .gfield_label').append('<span class="gfield_required">*</span>');*/
-
-            //Coloca os "i's" ao lado dos campos.
-            $('label[for=input_'+<?php echo $form_id;?>+'_1]').append('<div class=gfield_label><button id="cl_input1" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_2]').append('<div class=gfield_label><button id="cl_input2" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_3]').append('<div class=gfield_label><button id="cl_input3" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_4]').append('<div class=gfield_label><button id="cl_input4" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_5]').append('<div class=gfield_label><button id="cl_input5" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_6]').append('<div class=gfield_label><button id="cl_input6" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_7]').append('<div class=gfield_label><button id="cl_input7" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_8]').append('<div class=gfield_label><button id="cl_input8" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_9]').append('<div class=gfield_label><button id="cl_input9" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_10]').append('<div class=gfield_label><button id="cl_input10" class="info-balloon">i</button>');
-            // $('label[for=input_'+<?php echo $form_id;?>+'_11]').append('<div class=gfield_label><button id="cl_input11" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_12]').append('<div class=gfield_label><button id="cl_input12" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_13]').append('<div class=gfield_label><button id="cl_input13" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_14]').append('<div class=gfield_label><button id="cl_input14" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_15]').append('<div class=gfield_label><button id="cl_input15" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_16]').append('<div class=gfield_label><button id="cl_input16" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_17]').append('<div class=gfield_label><button id="cl_input17" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_18]').append('<div class=gfield_label><button id="cl_input18" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_19]').append('<div class=gfield_label><button id="cl_input19" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_20]').append('<div class=gfield_label><button id="cl_input20" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_21]').append('<div class=gfield_label><button id="cl_input21" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_22]').append('<div class=gfield_label><button id="cl_input22" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_23]').append('<div class=gfield_label><button id="cl_input23" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_24]').append('<div class=gfield_label><button id="cl_input24" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_25]').append('<div class=gfield_label><button id="cl_input25" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_26]').append('<div class=gfield_label><button id="cl_input26" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_27]').append('<div class=gfield_label><button id="cl_input27" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_28]').append('<div class=gfield_label><button id="cl_input28" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_29]').append('<div class=gfield_label><button id="cl_input29" class="info-balloon">i</button>');
-            $('label[for=input_'+<?php echo $form_id;?>+'_30]').append('<div class=gfield_label><button id="cl_input30" class="info-balloon">i</button>');
-
-            //Chama o iziModal.
-            $('#cl_input1').click(function() { $('#campo1').iziModal('open'); return false;});
-            $('#cl_input2').click(function() { $('#campo2').iziModal('open'); return false;});
-            $('#cl_input3').click(function() { $('#campo3').iziModal('open'); return false;});
-            $('#cl_input4').click(function() { $('#campo4').iziModal('open'); return false;});
-            $('#cl_input5').click(function() { $('#campo5').iziModal('open'); return false;});
-            $('#cl_input6').click(function() { $('#campo6').iziModal('open'); return false;});
-            $('#cl_input7').click(function() { $('#campo7').iziModal('open'); return false;});
-            $('#cl_input8').click(function() { $('#campo8').iziModal('open'); return false;});
-            $('#cl_input9').click(function() { $('#campo9').iziModal('open'); return false;});
-            $('#cl_input10').click(function() { $('#campo10').iziModal('open'); return false;});
-            $('#cl_input11').click(function() { $('#campo11').iziModal('open'); return false;});
-            $('#cl_input12').click(function() { $('#campo12').iziModal('open'); return false;});
-            $('#cl_input13').click(function() { $('#campo13').iziModal('open'); return false;});
-            $('#cl_input14').click(function() { $('#campo14').iziModal('open'); return false;});
-            $('#cl_input15').click(function() { $('#campo15').iziModal('open'); return false;});
-            $('#cl_input16').click(function() { $('#campo16').iziModal('open'); return false;});
-            $('#cl_input17').click(function() { $('#campo17').iziModal('open'); return false;});
-            $('#cl_input18').click(function() { $('#campo18').iziModal('open'); return false;});
-            $('#cl_input19').click(function() { $('#campo19').iziModal('open'); return false;});
-            $('#cl_input20').click(function() { $('#campo20').iziModal('open'); return false;});
-            $('#cl_input21').click(function() { $('#campo21').iziModal('open'); return false;});
-            $('#cl_input22').click(function() { $('#campo22').iziModal('open'); return false;});
-            $('#cl_input23').click(function() { $('#campo23').iziModal('open'); return false;});
-            $('#cl_input24').click(function() { $('#campo24').iziModal('open'); return false;});
-            $('#cl_input25').click(function() { $('#campo25').iziModal('open'); return false;});
-            $('#cl_input26').click(function() { $('#campo26').iziModal('open'); return false;});
-            $('#cl_input27').click(function() { $('#campo27').iziModal('open'); return false;});
-            $('#cl_input28').click(function() { $('#campo28').iziModal('open'); return false;});
-            $('#cl_input29').click(function() { $('#campo29').iziModal('open'); return false;});
-            $('#cl_input30').click(function() { $('#campo30').iziModal('open'); return false;});
-
 
             //Bloquear autocomplete
             $(document).ready(function() {
