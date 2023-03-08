@@ -139,361 +139,363 @@ if(empty($members) || $members[0] === NULL) {
 
             // INÍCIO: Member Modal
 
-            $pcontent = get_field('pitch', $member->ID);
+            if (!$show_customercare) {
+                $pcontent = get_field('pitch', $member->ID);
 
-            $expert_schedule_available = get_field('expert_schedule_available', $member->ID);
-            $expert_looking_for_projects_on = get_post_meta($member->ID, 'expert_looking_for_projects_on')[0];
-            $expert_has_expertise = get_post_meta($member->ID, 'expert_has_expertise')[0];
-            $experts_professional_experience = get_field('experts_professional_experience', $member->ID);
+                $expert_schedule_available = get_field('expert_schedule_available', $member->ID);
+                $expert_looking_for_projects_on = get_post_meta($member->ID, 'expert_looking_for_projects_on')[0];
+                $expert_has_expertise = get_post_meta($member->ID, 'expert_has_expertise')[0];
+                $experts_professional_experience = get_field('experts_professional_experience', $member->ID);
 
-            $experts_studies = get_field('experts_studies', $member->ID);
-            $expert_projects = get_field('expert_projects', $member->ID);
+                $experts_studies = get_field('experts_studies', $member->ID);
+                $expert_projects = get_field('expert_projects', $member->ID);
 
-            $mother_tongue   = get_field('expert_mother_tongue', $member->ID);
-            $other_languages = get_field('other_languages', $member->ID);
+                $mother_tongue   = get_field('expert_mother_tongue', $member->ID);
+                $other_languages = get_field('other_languages', $member->ID);
 
-            $expert_it_knowledge = get_field('expert_it_knowledge', $member->ID);
+                $expert_it_knowledge = get_field('expert_it_knowledge', $member->ID);
 
-            ?>
-            <div id="<?php echo $modal_id ?>" class="iziModal expert-details-modal">
-                <div class="content p-x-20">
-                    <button data-izimodal-close="" class="icon-close"></button>
-                    <h1 class="text-center m-b-20"><?php echo $member_name ?></h1>
+                ?>
+                <div id="<?php echo $modal_id ?>" class="iziModal expert-details-modal">
+                    <div class="content p-x-20">
+                        <button data-izimodal-close="" class="icon-close"></button>
+                        <h1 class="text-center m-b-20"><?php echo $member_name ?></h1>
 
-                    <div class="accordion" id="accordion_<?php echo $member->ID; ?>">
-                        <div class="card">
-                            <div class="card-header" id="heading_pitch_<?php echo $member->ID; ?>">
-                                <h3 class="mb-0">
-                                    <a class="btn btn-link" data-toggle="collapse" data-target="#pitch_<?php echo $member->ID; ?>" aria-expanded="true" aria-controls="pitch_<?php echo $member->ID; ?>">
-                                        <?php echo _e('Pitch', 'idealbiz'); ?>
-                                    </a>
-                                </h3>
-                            </div>
-
-                            <div id="pitch_<?php echo $member->ID; ?>" class="collapse show" aria-labelledby="heading_pitch_<?php echo $member->ID; ?>" data-parent="#accordion_<?php echo $member->ID; ?>">
-                                <div class="card-body">
-                                    <?php echo $pcontent; ?>
-                                </div>
-                            </div>
-                        </div>
-
-                        <?php
-                        if ($expert_schedule_available) {
-                            ?>
+                        <div class="accordion" id="accordion_<?php echo $member->ID; ?>">
                             <div class="card">
-                                <div class="card-header" id="heading_availability_<?php echo $member->ID; ?>">
+                                <div class="card-header" id="heading_pitch_<?php echo $member->ID; ?>">
                                     <h3 class="mb-0">
-                                        <a class="btn btn-link" data-toggle="collapse" data-target="#availability_<?php echo $member->ID; ?>" aria-expanded="false" aria-controls="availability_<?php echo $member->ID; ?>">
-                                            <?php _e('Availability', 'idealbiz'); ?>
+                                        <a class="btn btn-link" data-toggle="collapse" data-target="#pitch_<?php echo $member->ID; ?>" aria-expanded="true" aria-controls="pitch_<?php echo $member->ID; ?>">
+                                            <?php echo _e('Pitch', 'idealbiz'); ?>
                                         </a>
                                     </h3>
                                 </div>
 
-                                <div id="availability_<?php echo $member->ID; ?>" class="collapse" aria-labelledby="heading_availability_<?php echo $member->ID; ?>" data-parent="#accordion_<?php echo $member->ID; ?>">
+                                <div id="pitch_<?php echo $member->ID; ?>" class="collapse show" aria-labelledby="heading_pitch_<?php echo $member->ID; ?>" data-parent="#accordion_<?php echo $member->ID; ?>">
                                     <div class="card-body">
-                                        <?php echo $expert_schedule_available; ?>
+                                        <?php echo $pcontent; ?>
                                     </div>
                                 </div>
                             </div>
+
                             <?php
-                        }
+                            if ($expert_schedule_available) {
+                                ?>
+                                <div class="card">
+                                    <div class="card-header" id="heading_availability_<?php echo $member->ID; ?>">
+                                        <h3 class="mb-0">
+                                            <a class="btn btn-link" data-toggle="collapse" data-target="#availability_<?php echo $member->ID; ?>" aria-expanded="false" aria-controls="availability_<?php echo $member->ID; ?>">
+                                                <?php _e('Availability', 'idealbiz'); ?>
+                                            </a>
+                                        </h3>
+                                    </div>
 
-                        if ($expert_looking_for_projects_on || $expert_has_expertise) {
-                            ?>
-                            <div class="card">
-                                <div class="card-header" id="heading_business_sectors_<?php echo $member->ID; ?>">
-                                    <h3 class="mb-0">
-                                        <a class="btn btn-link" data-toggle="collapse" data-target="#business_sectors_<?php echo $member->ID; ?>" aria-expanded="false" aria-controls="business_sectors_<?php echo $member->ID; ?>">
-                                            <?php _e('Business Sectors and Expertise Areas', 'idealbiz'); ?>
-                                        </a>
-                                    </h3>
+                                    <div id="availability_<?php echo $member->ID; ?>" class="collapse" aria-labelledby="heading_availability_<?php echo $member->ID; ?>" data-parent="#accordion_<?php echo $member->ID; ?>">
+                                        <div class="card-body">
+                                            <?php echo $expert_schedule_available; ?>
+                                        </div>
+                                    </div>
                                 </div>
+                                <?php
+                            }
 
-                                <div id="business_sectors_<?php echo $member->ID; ?>" class="collapse" aria-labelledby="heading_business_sectors_<?php echo $member->ID; ?>" data-parent="#accordion_<?php echo $member->ID; ?>">
-                                    <div class="card-body">
-                                        <?php
-                                        if ($expert_looking_for_projects_on) {
+                            if ($expert_looking_for_projects_on || $expert_has_expertise) {
+                                ?>
+                                <div class="card">
+                                    <div class="card-header" id="heading_business_sectors_<?php echo $member->ID; ?>">
+                                        <h3 class="mb-0">
+                                            <a class="btn btn-link" data-toggle="collapse" data-target="#business_sectors_<?php echo $member->ID; ?>" aria-expanded="false" aria-controls="business_sectors_<?php echo $member->ID; ?>">
+                                                <?php _e('Business Sectors and Expertise Areas', 'idealbiz'); ?>
+                                            </a>
+                                        </h3>
+                                    </div>
+
+                                    <div id="business_sectors_<?php echo $member->ID; ?>" class="collapse" aria-labelledby="heading_business_sectors_<?php echo $member->ID; ?>" data-parent="#accordion_<?php echo $member->ID; ?>">
+                                        <div class="card-body">
+                                            <?php
+                                            if ($expert_looking_for_projects_on) {
+                                                ?>
+                                                <h4><?php _e('Looking for Projects on:', 'idealbiz'); ?></h4>
+                                                <div class="d-flex flex-column m-b-10">
+                                                    <?php foreach ($expert_looking_for_projects_on as $term) : ?>
+                                                        <span><?php echo get_term_by('id', $term, 'service_cat')->name; ?></span>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                                <?php
+                                            }
+
+                                            if ($expert_has_expertise) {
+                                                ?>
+                                                <h4><?php _e('Have expertise on the following areas:', 'idealbiz'); ?></h4>
+                                                <div class="d-flex flex-column">
+                                                    <?php 
+                                                    foreach ($expert_has_expertise as $term) {
+                                                        ?>
+                                                        <span><?php echo get_term_by('id', $term, 'service_cat')->name; ?></span>
+                                                        <?php 
+                                                    }
+                                                    ?>
+                                                </div>
+                                                <?php
+                                            }
                                             ?>
-                                            <h4><?php _e('Looking for Projects on:', 'idealbiz'); ?></h4>
-                                            <div class="d-flex flex-column m-b-10">
-                                                <?php foreach ($expert_looking_for_projects_on as $term) : ?>
-                                                    <span><?php echo get_term_by('id', $term, 'service_cat')->name; ?></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+
+                            if ($experts_professional_experience) {
+                                ?>
+                                <div class="card">
+                                    <div class="card-header" id="heading_professional_experience_<?php echo $member->ID; ?>">
+                                        <h3 class="mb-0">
+                                            <a class="btn btn-link" data-toggle="collapse" data-target="#professional_experience_<?php echo $member->ID; ?>" aria-expanded="false" aria-controls="professional_experience_<?php echo $member->ID; ?>">
+                                                <?php _e('Professional Experience', 'idealbiz'); ?>
+                                            </a>
+                                        </h3>
+                                    </div>
+
+                                    <div id="professional_experience_<?php echo $member->ID; ?>" class="collapse" aria-labelledby="heading_professional_experience_<?php echo $member->ID; ?>" data-parent="#accordion_<?php echo $member->ID; ?>">
+                                        <div class="card-body">
+                                            <?php
+                                            $i = 1;
+
+                                            foreach ($experts_professional_experience as $experience) {
+                                                ?>
+                                                <h4 class="<?php echo $i > 1 ? 'm-t-10' : ''; ?>">
+                                                    <strong><?php echo $experience['company']; ?> - </strong>
+                                                </h4>
+
+                                                <?php
+                                                if ($experience['start_date'] || $experience['end_date']) {
+                                                    ?>
+                                                    <div class="d-flex flex-row m-b-5">
+                                                        <strong><?php _e('Duration:', 'idealbiz'); ?>&nbsp;</strong>
+                                                        <span><?php echo $experience['start_date']; ?> - <?php echo $experience['end_date']; ?></span>
+                                                    </div>
+                                                    <?php
+                                                }
+                                                if ($experience['field']) {
+                                                    ?>
+                                                    <div class="d-flex flex-row m-b-5">
+                                                        <strong><?php _e('Field:', 'idealbiz'); ?>&nbsp;</strong>
+                                                        <span><?php echo $experience['field']->name; ?></span>
+                                                    </div>
+                                                    <?php
+                                                }
+                                                if ($experience['role']) {
+                                                    ?>
+                                                    <div class="d-flex flex-row m-b-5">
+                                                        <strong><?php _e('Role:', 'idealbiz'); ?>&nbsp;</strong>
+                                                        <span><?php echo $experience['role']; ?></span>
+                                                    </div>
+                                                    <?php
+                                                }
+                                                if ($experience['description']) {
+                                                    ?>
+                                                    <div class="d-flex flex-row m-b-5">
+                                                        <strong><?php _e('Description:', 'idealbiz'); ?>&nbsp;</strong>
+                                                        <span><?php echo $experience['description']; ?></span>
+                                                    </div>
+                                                    <?php
+                                                }
+
+                                                $i++;
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+
+                            if ($experts_studies) {
+                                ?>
+                                <div class="card">
+                                    <div class="card-header" id="heading_studies_<?php echo $member->ID; ?>">
+                                        <h3 class="mb-0">
+                                            <a class="btn btn-link" data-toggle="collapse" data-target="#studies_<?php echo $member->ID; ?>" aria-expanded="false" aria-controls="studies_<?php echo $member->ID; ?>">
+                                                <?php _e('Studies', 'idealbiz'); ?>
+                                            </a>
+                                        </h3>
+                                    </div>
+
+                                    <div id="studies_<?php echo $member->ID; ?>" class="collapse" aria-labelledby="heading_studies_<?php echo $member->ID; ?>" data-parent="#accordion_<?php echo $member->ID; ?>">
+                                        <div class="card-body">
+                                            <?php 
+                                            $i = 1;
+                                            foreach ($experts_studies as $study) {
+                                                ?>
+                                                <h4 class="<?php echo $i > 1 ? 'm-t-10' : ''; ?>">
+                                                    <strong><?php echo $study['course']; ?> - </strong>
+                                                </h4>
+                                                <?php
+                                                if ($study['start_date'] || $study['end_date']) {
+                                                    ?>
+                                                    <div class="d-flex flex-row m-b-5">
+                                                        <strong><?php _e('Duration:', 'idealbiz'); ?>&nbsp;</strong>
+                                                        <span><?php echo $study['start_date']; ?> - <?php echo $study['end_date']; ?></span>
+                                                    </div>
+                                                    <?php
+                                                }
+
+                                                if ($study['school']) {
+                                                    ?>
+                                                    <div class="d-flex flex-row m-b-5">
+                                                        <strong><?php _e('School:', 'idealbiz'); ?>&nbsp;</strong>
+                                                        <span><?php echo $study['school']; ?></span>
+                                                    </div>
+                                                    <?php
+                                                }
+
+                                                $i++;
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+
+                            if ($mother_tongue || $other_languages) {
+                                ?>
+                                <div class="card">
+                                    <div class="card-header" id="heading_languages_<?php echo $member->ID; ?>">
+                                        <h3 class="mb-0">
+                                            <a class="btn btn-link" data-toggle="collapse" data-target="#languages_<?php echo $member->ID; ?>" aria-expanded="false" aria-controls="languages_<?php echo $member->ID; ?>">
+                                                <?php _e('Languages', 'idealbiz'); ?>
+                                            </a>
+                                        </h3>
+                                    </div>
+
+                                    <div id="languages_<?php echo $member->ID; ?>" class="collapse" aria-labelledby="heading_languages_<?php echo $member->ID; ?>" data-parent="#accordion_<?php echo $member->ID; ?>">
+                                        <div class="card-body">
+                                            <?php 
+                                            if ($mother_tongue) {
+                                                ?>
+                                                <h4><?php _e('Mother tongue:', 'idealbiz'); ?></h4>
+                                                <div class="d-flex flex-column m-b-10">
+                                                    <strong><span><?php echo $mother_tongue; ?></span></strong>
+                                                </div>
+                                                <?php
+                                            }
+                                            if ($other_languages) {
+                                                ?>
+                                                <h4><?php _e('Other languages:', 'idealbiz'); ?></h4>
+                                                <div class="d-flex flex-column">
+                                                    <?php 
+                                                    foreach ($other_languages as $other_language) {
+                                                        ?>
+                                                        <div><strong><?php echo $other_language['language']; ?> -
+                                                            </strong><span><?php _e($other_language['level'], 'idealbiz'); ?></span>
+                                                        </div>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </div>
+                                                <?php
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+
+                            if ($expert_projects) {
+                                $showprojects = 0;
+                                foreach ($expert_projects as $project) {
+                                    if ($project['project'] != '') {
+                                        $showprojects = 1;
+                                    }
+                                }
+
+                                if ($showprojects) {
+                                    ?>
+                                    <div class="card">
+                                        <div class="card-header" id="heading_other_projects_<?php echo $member->ID; ?>">
+                                            <h3 class="mb-0">
+                                                <a class="btn btn-link" data-toggle="collapse" data-target="#other_projects_<?php echo $member->ID; ?>" aria-expanded="false" aria-controls="other_projects_<?php echo $member->ID; ?>">
+                                                    <?php _e('Other Projects', 'idealbiz'); ?>
+                                                </a>
+                                            </h3>
+                                        </div>
+
+                                        <div id="other_projects_<?php echo $member->ID; ?>" class="collapse" aria-labelledby="heading_other_projects_<?php echo $member->ID; ?>" data-parent="#accordion_<?php echo $member->ID; ?>">
+                                            <div class="card-body">
+                                                <?php $i = 1; ?>
+                                                <?php foreach ($expert_projects as $project) : ?>
+                                                    <h4 class="<?php echo $i > 1 ? 'm-t-10' : ''; ?>"><strong><?php echo $project['project']; ?> - </strong></h4>
+
+                                                    <?php if ($project['start_date'] || $project['end_date']) : ?>
+                                                    <div class="d-flex flex-row m-b-5">
+                                                        <strong><?php _e('Duration:', 'idealbiz'); ?>&nbsp;</strong>
+                                                        <span><?php echo $project['start_date']; ?> - <?php echo $project['end_date']; ?></span>
+                                                    </div>
+                                                    <?php endif; ?>
+
+                                                    <?php if ($project['small_description']) : ?>
+                                                        <div class="d-flex flex-row m-b-5">
+                                                            <strong><?php _e('Small Description:', 'idealbiz'); ?>&nbsp;</strong>
+                                                            <span><?php echo $project['small_description']; ?></span>
+                                                        </div>
+                                                    <?php endif; ?>
+
+                                                    <?php $i++; ?>
                                                 <?php endforeach; ?>
                                             </div>
-                                            <?php
-                                        }
-
-                                        if ($expert_has_expertise) {
-                                            ?>
-                                            <h4><?php _e('Have expertise on the following areas:', 'idealbiz'); ?></h4>
-                                            <div class="d-flex flex-column">
-                                                <?php 
-                                                foreach ($expert_has_expertise as $term) {
-                                                    ?>
-                                                    <span><?php echo get_term_by('id', $term, 'service_cat')->name; ?></span>
-                                                    <?php 
-                                                }
-                                                ?>
-                                            </div>
-                                            <?php
-                                        }
-                                        ?>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <?php
-                        }
-
-                        if ($experts_professional_experience) {
-                            ?>
-                            <div class="card">
-                                <div class="card-header" id="heading_professional_experience_<?php echo $member->ID; ?>">
-                                    <h3 class="mb-0">
-                                        <a class="btn btn-link" data-toggle="collapse" data-target="#professional_experience_<?php echo $member->ID; ?>" aria-expanded="false" aria-controls="professional_experience_<?php echo $member->ID; ?>">
-                                            <?php _e('Professional Experience', 'idealbiz'); ?>
-                                        </a>
-                                    </h3>
-                                </div>
-
-                                <div id="professional_experience_<?php echo $member->ID; ?>" class="collapse" aria-labelledby="heading_professional_experience_<?php echo $member->ID; ?>" data-parent="#accordion_<?php echo $member->ID; ?>">
-                                    <div class="card-body">
-                                        <?php
-                                        $i = 1;
-
-                                        foreach ($experts_professional_experience as $experience) {
-                                            ?>
-                                            <h4 class="<?php echo $i > 1 ? 'm-t-10' : ''; ?>">
-                                                <strong><?php echo $experience['company']; ?> - </strong>
-                                            </h4>
-
-                                            <?php
-                                            if ($experience['start_date'] || $experience['end_date']) {
-                                                ?>
-                                                <div class="d-flex flex-row m-b-5">
-                                                    <strong><?php _e('Duration:', 'idealbiz'); ?>&nbsp;</strong>
-                                                    <span><?php echo $experience['start_date']; ?> - <?php echo $experience['end_date']; ?></span>
-                                                </div>
-                                                <?php
-                                            }
-                                            if ($experience['field']) {
-                                                ?>
-                                                <div class="d-flex flex-row m-b-5">
-                                                    <strong><?php _e('Field:', 'idealbiz'); ?>&nbsp;</strong>
-                                                    <span><?php echo $experience['field']->name; ?></span>
-                                                </div>
-                                                <?php
-                                            }
-                                            if ($experience['role']) {
-                                                ?>
-                                                <div class="d-flex flex-row m-b-5">
-                                                    <strong><?php _e('Role:', 'idealbiz'); ?>&nbsp;</strong>
-                                                    <span><?php echo $experience['role']; ?></span>
-                                                </div>
-                                                <?php
-                                            }
-                                            if ($experience['description']) {
-                                                ?>
-                                                <div class="d-flex flex-row m-b-5">
-                                                    <strong><?php _e('Description:', 'idealbiz'); ?>&nbsp;</strong>
-                                                    <span><?php echo $experience['description']; ?></span>
-                                                </div>
-                                                <?php
-                                            }
-
-                                            $i++;
-                                        }
-                                        ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php
-                        }
-
-                        if ($experts_studies) {
-                            ?>
-                            <div class="card">
-                                <div class="card-header" id="heading_studies_<?php echo $member->ID; ?>">
-                                    <h3 class="mb-0">
-                                        <a class="btn btn-link" data-toggle="collapse" data-target="#studies_<?php echo $member->ID; ?>" aria-expanded="false" aria-controls="studies_<?php echo $member->ID; ?>">
-                                            <?php _e('Studies', 'idealbiz'); ?>
-                                        </a>
-                                    </h3>
-                                </div>
-
-                                <div id="studies_<?php echo $member->ID; ?>" class="collapse" aria-labelledby="heading_studies_<?php echo $member->ID; ?>" data-parent="#accordion_<?php echo $member->ID; ?>">
-                                    <div class="card-body">
-                                        <?php 
-                                        $i = 1;
-                                        foreach ($experts_studies as $study) {
-                                            ?>
-                                            <h4 class="<?php echo $i > 1 ? 'm-t-10' : ''; ?>">
-                                                <strong><?php echo $study['course']; ?> - </strong>
-                                            </h4>
-                                            <?php
-                                            if ($study['start_date'] || $study['end_date']) {
-                                                ?>
-                                                <div class="d-flex flex-row m-b-5">
-                                                    <strong><?php _e('Duration:', 'idealbiz'); ?>&nbsp;</strong>
-                                                    <span><?php echo $study['start_date']; ?> - <?php echo $study['end_date']; ?></span>
-                                                </div>
-                                                <?php
-                                            }
-
-                                            if ($study['school']) {
-                                                ?>
-                                                <div class="d-flex flex-row m-b-5">
-                                                    <strong><?php _e('School:', 'idealbiz'); ?>&nbsp;</strong>
-                                                    <span><?php echo $study['school']; ?></span>
-                                                </div>
-                                                <?php
-                                            }
-
-                                            $i++;
-                                        }
-                                        ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php
-                        }
-
-                        if ($mother_tongue || $other_languages) {
-                            ?>
-                            <div class="card">
-                                <div class="card-header" id="heading_languages_<?php echo $member->ID; ?>">
-                                    <h3 class="mb-0">
-                                        <a class="btn btn-link" data-toggle="collapse" data-target="#languages_<?php echo $member->ID; ?>" aria-expanded="false" aria-controls="languages_<?php echo $member->ID; ?>">
-                                            <?php _e('Languages', 'idealbiz'); ?>
-                                        </a>
-                                    </h3>
-                                </div>
-
-                                <div id="languages_<?php echo $member->ID; ?>" class="collapse" aria-labelledby="heading_languages_<?php echo $member->ID; ?>" data-parent="#accordion_<?php echo $member->ID; ?>">
-                                    <div class="card-body">
-                                        <?php 
-                                        if ($mother_tongue) {
-                                            ?>
-                                            <h4><?php _e('Mother tongue:', 'idealbiz'); ?></h4>
-                                            <div class="d-flex flex-column m-b-10">
-                                                <strong><span><?php echo $mother_tongue; ?></span></strong>
-                                            </div>
-                                            <?php
-                                        }
-                                        if ($other_languages) {
-                                            ?>
-                                            <h4><?php _e('Other languages:', 'idealbiz'); ?></h4>
-                                            <div class="d-flex flex-column">
-                                                <?php 
-                                                foreach ($other_languages as $other_language) {
-                                                    ?>
-                                                    <div><strong><?php echo $other_language['language']; ?> -
-                                                        </strong><span><?php _e($other_language['level'], 'idealbiz'); ?></span>
-                                                    </div>
-                                                    <?php
-                                                }
-                                                ?>
-                                            </div>
-                                            <?php
-                                        }
-                                        ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php
-                        }
-
-                        if ($expert_projects) {
-                            $showprojects = 0;
-                            foreach ($expert_projects as $project) {
-                                if ($project['project'] != '') {
-                                    $showprojects = 1;
+                                    <?php
                                 }
                             }
 
-                            if ($showprojects) {
-                                ?>
-                                <div class="card">
-                                    <div class="card-header" id="heading_other_projects_<?php echo $member->ID; ?>">
-                                        <h3 class="mb-0">
-                                            <a class="btn btn-link" data-toggle="collapse" data-target="#other_projects_<?php echo $member->ID; ?>" aria-expanded="false" aria-controls="other_projects_<?php echo $member->ID; ?>">
-                                                <?php _e('Other Projects', 'idealbiz'); ?>
-                                            </a>
-                                        </h3>
-                                    </div>
-
-                                    <div id="other_projects_<?php echo $member->ID; ?>" class="collapse" aria-labelledby="heading_other_projects_<?php echo $member->ID; ?>" data-parent="#accordion_<?php echo $member->ID; ?>">
-                                        <div class="card-body">
-                                            <?php $i = 1; ?>
-                                            <?php foreach ($expert_projects as $project) : ?>
-                                                <h4 class="<?php echo $i > 1 ? 'm-t-10' : ''; ?>"><strong><?php echo $project['project']; ?> - </strong></h4>
-
-                                                <?php if ($project['start_date'] || $project['end_date']) : ?>
-                                                <div class="d-flex flex-row m-b-5">
-                                                    <strong><?php _e('Duration:', 'idealbiz'); ?>&nbsp;</strong>
-                                                    <span><?php echo $project['start_date']; ?> - <?php echo $project['end_date']; ?></span>
-                                                </div>
-                                                <?php endif; ?>
-
-                                                <?php if ($project['small_description']) : ?>
-                                                    <div class="d-flex flex-row m-b-5">
-                                                        <strong><?php _e('Small Description:', 'idealbiz'); ?>&nbsp;</strong>
-                                                        <span><?php echo $project['small_description']; ?></span>
-                                                    </div>
-                                                <?php endif; ?>
-
-                                                <?php $i++; ?>
-                                            <?php endforeach; ?>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php
-                            }
-                        }
-
-                        if ($expert_it_knowledge) {
-                            $showit = 0;
-                            foreach ($expert_it_knowledge as $it_knowledge) {
-                                if ($it_knowledge['name'] != '') {
-                                    $showit = 1;
+                            if ($expert_it_knowledge) {
+                                $showit = 0;
+                                foreach ($expert_it_knowledge as $it_knowledge) {
+                                    if ($it_knowledge['name'] != '') {
+                                        $showit = 1;
+                                    }
                                 }
-                            }
 
-                            if ($showit) {
-                                ?>
-                                <div class="card">
-                                    <div class="card-header" id="heading_it_knowledge_<?php echo $member->ID; ?>">
-                                        <h3 class="mb-0">
-                                            <a class="btn btn-link" data-toggle="collapse" data-target="#it_knowledge_<?php echo $member->ID; ?>" aria-expanded="false" aria-controls="it_knowledge_<?php echo $member->ID; ?>">
-                                                <?php _e('IT Knowledge', 'idealbiz'); ?>
-                                            </a>
-                                        </h3>
-                                    </div>
-                                    <div id="it_knowledge_<?php echo $member->ID; ?>" class="collapse" aria-labelledby="heading_it_knowledge_<?php echo $member->ID; ?>" data-parent="#accordion_<?php echo $member->ID; ?>">
-                                        <div class="card-body">
-                                            <div class="d-flex flex-column">
-                                                <?php 
-                                                foreach ($expert_it_knowledge as $it_knowledge) {
-                                                    ?>
-                                                    <div>
-                                                        <strong><?php echo $it_knowledge['name']; ?> - </strong>
-                                                        <span><?php _e($it_knowledge['level'], 'idealbiz'); ?></span>
-                                                    </div>
+                                if ($showit) {
+                                    ?>
+                                    <div class="card">
+                                        <div class="card-header" id="heading_it_knowledge_<?php echo $member->ID; ?>">
+                                            <h3 class="mb-0">
+                                                <a class="btn btn-link" data-toggle="collapse" data-target="#it_knowledge_<?php echo $member->ID; ?>" aria-expanded="false" aria-controls="it_knowledge_<?php echo $member->ID; ?>">
+                                                    <?php _e('IT Knowledge', 'idealbiz'); ?>
+                                                </a>
+                                            </h3>
+                                        </div>
+                                        <div id="it_knowledge_<?php echo $member->ID; ?>" class="collapse" aria-labelledby="heading_it_knowledge_<?php echo $member->ID; ?>" data-parent="#accordion_<?php echo $member->ID; ?>">
+                                            <div class="card-body">
+                                                <div class="d-flex flex-column">
                                                     <?php
-                                                }
-                                                ?>
+                                                    foreach ($expert_it_knowledge as $it_knowledge) {
+                                                        ?>
+                                                        <div>
+                                                            <strong><?php echo $it_knowledge['name']; ?> - </strong>
+                                                            <span><?php _e($it_knowledge['level'], 'idealbiz'); ?></span>
+                                                        </div>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <?php
+                                    <?php
+                                }
                             }
-                        }
-                        ?>
+                            ?>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <?php
+                <?php
+            }
 
             // FIM: Member Modal
         }
