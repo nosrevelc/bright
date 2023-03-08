@@ -769,7 +769,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
             function insertTooltips() {
                 $(".gfield").each(function(index, element) {
                     var gfFieldId = (element.id || '').split('_')[2];
-                    if(gfFieldId && gfField !== '11') {
+                    if(gfFieldId && gfFieldId !== '11') {
                         $(element)
                             .append('<div class=gfield_label><button class="info-balloon">i</button>')           //Coloca os "i's" ao lado dos campos.
                             .find('button')
