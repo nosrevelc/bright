@@ -56,31 +56,27 @@ foreach( GFAPI::get_forms() as $form ) {
         break;
     }
 }
-?>
 
-<?php
 //NPMM - Resolve que tipo serviço - E o nomeia.
-if($_GET["refer"]==1 && !$_GET['rid']) :
+if($_GET["refer"]==1 && !$_GET['rid']) {
     $cl_sr_type_origin = 'recommende_service';
     $cl_sr_Type_origin_tittle = __('_str_REFERENCE BETWEEN MEMBERS','idealbiz'); 
-?>
+    ?>
     <style>
         input[name=input_2],input[name="input_1.3"],input[name="input_1.6"] {
             pointer-events: none;
             background-color:#f5f5f5;
         }
     </style>
-<?php 
-elseif ($_GET["refer"]==1 && $_GET['rid']!= null) :
+    <?php
+} elseif ($_GET["refer"]==1 && $_GET['rid']!= null) {
     $cl_sr_type_origin = 'forward_service';
     $cl_sr_Type_origin_tittle = __('_str Forward to Member', 'idealbiz');
-else:
+} else {
     $cl_sr_type_origin = 'normal_service';
     $cl_sr_Type_origin_tittle = '';
-endif;
-?>
+}
 
-<?php
 $cl_rid = $_GET['rid'];
 
 //EDITADO PELO CLEVERSON VIEIRA

@@ -217,9 +217,13 @@ if(empty($members) || $members[0] === NULL) {
                                                 ?>
                                                 <h4><?php _e('Looking for Projects on:', 'idealbiz'); ?></h4>
                                                 <div class="d-flex flex-column m-b-10">
-                                                    <?php foreach ($expert_looking_for_projects_on as $term) : ?>
+                                                    <?php 
+                                                    foreach ($expert_looking_for_projects_on as $term) {
+                                                        ?>
                                                         <span><?php echo get_term_by('id', $term, 'service_cat')->name; ?></span>
-                                                    <?php endforeach; ?>
+                                                        <?php
+                                                    }
+                                                    ?>
                                                 </div>
                                                 <?php
                                             }
@@ -425,25 +429,33 @@ if(empty($members) || $members[0] === NULL) {
                                         <div id="other_projects_<?php echo $member->ID; ?>" class="collapse" aria-labelledby="heading_other_projects_<?php echo $member->ID; ?>" data-parent="#accordion_<?php echo $member->ID; ?>">
                                             <div class="card-body">
                                                 <?php $i = 1; ?>
-                                                <?php foreach ($expert_projects as $project) : ?>
+                                                <?php 
+                                                foreach ($expert_projects as $project) {
+                                                    ?>
                                                     <h4 class="<?php echo $i > 1 ? 'm-t-10' : ''; ?>"><strong><?php echo $project['project']; ?> - </strong></h4>
 
-                                                    <?php if ($project['start_date'] || $project['end_date']) : ?>
-                                                    <div class="d-flex flex-row m-b-5">
-                                                        <strong><?php _e('Duration:', 'idealbiz'); ?>&nbsp;</strong>
-                                                        <span><?php echo $project['start_date']; ?> - <?php echo $project['end_date']; ?></span>
-                                                    </div>
-                                                    <?php endif; ?>
+                                                    <?php
+                                                    if ($project['start_date'] || $project['end_date']) {
+                                                        ?>
+                                                        <div class="d-flex flex-row m-b-5">
+                                                            <strong><?php _e('Duration:', 'idealbiz'); ?>&nbsp;</strong>
+                                                            <span><?php echo $project['start_date']; ?> - <?php echo $project['end_date']; ?></span>
+                                                        </div>
+                                                        <?php
+                                                    }
 
-                                                    <?php if ($project['small_description']) : ?>
+                                                    if ($project['small_description']) {
+                                                        ?>
                                                         <div class="d-flex flex-row m-b-5">
                                                             <strong><?php _e('Small Description:', 'idealbiz'); ?>&nbsp;</strong>
                                                             <span><?php echo $project['small_description']; ?></span>
                                                         </div>
-                                                    <?php endif; ?>
+                                                        <?php
+                                                    }
 
-                                                    <?php $i++; ?>
-                                                <?php endforeach; ?>
+                                                    $i++;
+                                                }
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
