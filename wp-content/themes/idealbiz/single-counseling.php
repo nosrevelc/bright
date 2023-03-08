@@ -1091,12 +1091,6 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
         width: 10px;
     }
 
-    .valor_referencia input[type="text"]::before,
-    .minimo input[type="text"]::before,
-    .maximo input[type="text"]::before {
-        content: "<?php echo get_woocommerce_currency_symbol(); ?>"
-    }
-
     .curr_symbol {
         margin-left: 1px;
         position: absolute;
