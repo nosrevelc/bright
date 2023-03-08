@@ -76,6 +76,8 @@ echo "</pre>"; */
     foreach ($members as $member) {
 
         if(isset($member->ID)) {
+            // INÍCIO: Member Card
+
             $member_name      = $member->post_title;
             $member_photo_url = get_field('foto', $member->ID)['sizes']['medium'];
             $member_lead_mode = consultLeadModeServiceRequest($member->ID, true);
@@ -113,6 +115,12 @@ echo "</pre>"; */
             </div>
 
             <?php
+            // FIM: Member Card
+
+
+
+            // INÍCIO: Member Modal
+
             $expert_schedule_available = get_field('expert_schedule_available', $member->ID);
             $expert_looking_for_projects_on = get_post_meta($member->ID, 'expert_looking_for_projects_on')[0];
             $expert_has_expertise = get_post_meta($member->ID, 'expert_has_expertise')[0];
@@ -125,9 +133,8 @@ echo "</pre>"; */
             $other_languages = get_field('other_languages', $member->ID);
 
             $expert_it_knowledge = get_field('expert_it_knowledge', $member->ID);
-            ?>
 
-            <!-- Begin Modal Template -->
+            ?>
             <div id="<?php echo $modal_id ?>" class="iziModal expert-details-modal">
                 <div class="content p-x-20">
                     <button data-izimodal-close="" class="icon-close"></button>
@@ -465,9 +472,10 @@ echo "</pre>"; */
                     </div>
                 </div>
             </div>
-            <!-- End Modal Template -->
 
             <?php
+
+            // FIM: Member Modal
         }
     }
     ?>
