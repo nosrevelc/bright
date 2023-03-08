@@ -110,7 +110,7 @@ echo "</pre>"; */
                             <span class="text-uppercase"><?php echo join(', ', wp_list_pluck($member_locations_list, 'name')); ?></span>
                         </span>
                     </div>
-                    <a href="#" onclick='jQuery(<?php echo "#{$modal_id}"; ?>).iziModal("open"); return false; ' class="info-balloon info-modal">i</a>
+                    <a href="#" onclick='jQuery("#<?php echo $modal_id ?>").iziModal("open"); return false; ' class="info-balloon info-modal">i</a>
                 </div>
             </div>
 
