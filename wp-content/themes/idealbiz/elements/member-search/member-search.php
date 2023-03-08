@@ -51,11 +51,11 @@ if($args['location'] !== '') {
     );
 }
 
-$members = new WP_Query( $query_args );
+$members = (new WP_Query( $query_args ))->posts;
 $show_customercare = false;
 
 // If no members are found, return the default expert
-if(empty($members) || $members->posts[0] === NULL) {
+if(empty($members) || $members[0] === NULL) {
     $show_customercare = true;
     $query_args = array(
         'post_type'      => 'expert',
@@ -71,7 +71,7 @@ if(empty($members) || $members->posts[0] === NULL) {
         )
     );
 
-    $members = new WP_Query( $query_args );
+    $members = (new WP_Query( $query_args ))->posts;
 }
 
 //echo "<pre>".var_dump($members)."</pre>"
