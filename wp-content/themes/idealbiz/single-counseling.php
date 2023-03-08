@@ -801,14 +801,15 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
         <?php } ?>
 
         <?php if (WEBSITE_SYSTEM == '1') { ?>
-            /*$('.form-selector').find('form').append('<input type="hidden" name="idb_tax" value="" />');
+            //$('.form-selector').find('form').append('<input type="hidden" name="idb_tax" value="" />');
 
             // Campos onde se insere o valor de Refrência, Mínimo e Máximo. 
-            $('.valor_referencia .ginput_container_text').append(' <span class="curr_symbol"><?php echo get_woocommerce_currency_symbol(); ?></span>');
-            $('.minimo .ginput_container_text').append(' <span class="curr_symbol"><?php echo get_woocommerce_currency_symbol(); ?></span>');
-            $('.maximo .ginput_container_text').append(' <span class="curr_symbol"><?php echo get_woocommerce_currency_symbol(); ?></span>');                    
+            var currencySymbolHtml = `<span class="curr_symbol"><?php echo get_woocommerce_currency_symbol(); ?></span>`;
+            $('.valor_referencia .ginput_container_text').append(currencySymbolHtml);
+            $('.minimo .ginput_container_text').append(currencySymbolHtml);
+            $('.maximo .ginput_container_text').append(currencySymbolHtml);
             
-            $('.valor_referencia .gfield_label').append('<span class="gfield_required">*</span>');*/
+            //$('.valor_referencia .gfield_label').append('<span class="gfield_required">*</span>');*/
 
             //Coloca os "i's" ao lado dos campos.
             $('label[for=input_'+<?php echo $form_id;?>+'_1]').append('<div class=gfield_label><button id="cl_input1" class="info-balloon">i</button>');
