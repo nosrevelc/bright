@@ -52,23 +52,29 @@ if($args['location'] !== '') {
 }
 
 $members = new WP_Query( $query_args );
+$show_customercare = false;
 
 // If no members are found, return the default expert
-if(empty($members)) {
+if(empty($members) || $members->posts[0] === NULL) {
+    $show_customercare = true;
     $query_args = array(
         'post_type'      => 'expert',
         'posts_per_page' => 1,
 
-        'meta_key'   => 'idealbiz_support_expert',
-        'meta_value' => '1'
+        'meta_query' => array(
+            array(
+                'key'     => 'idealbiz_support_expert',
+                'compare' => '=',
+                'value'   => 1,
+                'type' => 'NUMERIC'
+            )
+        )
     );
 
     $members = new WP_Query( $query_args );
 }
 
-/* echo "<pre>";
-var_dump($members);
-echo "</pre>"; */
+//echo "<pre>".var_dump($members)."</pre>"
 ?>
 
 <div class="expert-preview m-t-20">
@@ -100,17 +106,29 @@ echo "</pre>"; */
                         <div>
                             <h3 class="font-weight-semi-bold base_color--color"><?php echo $member_name; ?></h3>
                         </div>
-                        <span class="small"><?php echo join(', ', wp_list_pluck($member_service_cats_list, 'name')); ?></span>
-                        <div class="cl_icon location p-t-10 font-weight-bold">
-                            <span class="cl_icon-local dashicons dashicons-yes-alt"></span>
-                            <?php echo $member_lead_mode ?>
-                        </div>
-                        <span class="small location p-t-10 font-weight-bold">
-                            <i class="icon-local"></i>
-                            <span class="text-uppercase"><?php echo join(', ', wp_list_pluck($member_locations_list, 'name')); ?></span>
-                        </span>
+                        <?php
+                        if (!$show_customercare) {
+                            ?>
+                            <span class="small"><?php echo join(', ', wp_list_pluck($member_service_cats_list, 'name')); ?></span>
+                            <div class="cl_icon location p-t-10 font-weight-bold">
+                                <span class="cl_icon-local dashicons dashicons-yes-alt"></span>
+                                <?php echo $member_lead_mode ?>
+                            </div>
+                            <span class="small location p-t-10 font-weight-bold">
+                                <i class="icon-local"></i>
+                                <span class="text-uppercase"><?php echo join(', ', wp_list_pluck($member_locations_list, 'name')); ?></span>
+                            </span>
+                            <?php
+                        }
+                        ?>
                     </div>
-                    <a href="#" onclick='jQuery("#<?php echo $modal_id ?>").iziModal().iziModal("open"); return false; ' class="info-balloon info-modal">i</a>
+                    <?php
+                    if(!$show_customercare) {
+                        ?>
+                        <a href="#" onclick='jQuery("#<?php echo $modal_id ?>").iziModal().iziModal("open"); return false; ' class="info-balloon info-modal">i</a>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
 
@@ -481,5 +499,4 @@ echo "</pre>"; */
         }
     }
     ?>
-    <span id="result_D" class="cl_aviso">[Not found Message]</span>
 </div>
