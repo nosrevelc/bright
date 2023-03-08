@@ -121,6 +121,8 @@ echo "</pre>"; */
 
             // INÍCIO: Member Modal
 
+            $pcontent = get_field('pitch', $member->ID);
+
             $expert_schedule_available = get_field('expert_schedule_available', $member->ID);
             $expert_looking_for_projects_on = get_post_meta($member->ID, 'expert_looking_for_projects_on')[0];
             $expert_has_expertise = get_post_meta($member->ID, 'expert_has_expertise')[0];
