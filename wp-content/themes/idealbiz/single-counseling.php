@@ -684,12 +684,6 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
                         
                         if (cl_vr.val() >= cl_begin_echelon && cl_vr.val() <= cl_finish_echelon) {    
                             var cl_orcamento = (cl_vr.val()*cl_percentage)/100;
-                            //console.log(cont);
-                            //console.log(cl_pre_escalao);
-                            //console.log(cl_begin_echelon);
-                            //console.log(cl_orcamento);
-                            //console.log(cl_expert );
-                            //console.log(cl_ppc_fixo);
                             $('.maximo input[type="text"]').val(cl_orcamento);
                             $('input[name="input_'+cl_id_campo_PPC_Fixo_SR+'"]').val(cl_ppc_fixo); 
                             return false;
