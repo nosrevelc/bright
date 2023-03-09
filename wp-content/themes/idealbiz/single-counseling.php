@@ -164,16 +164,19 @@ endif;
 
     <div class="container container d-flex flex-row flex-wrap justify-content-around">
         <div>
-            <?php if($cl_membro && $cl_member_cat != false) : ?>
-                <div>
-                    <h1 style="text-align: center;">'.$cl_sr_Type_origin_tittle.' </h1>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-            <?php else :
-                echo the_content();
-            endif;
+            <?php
+                if($cl_membro && $cl_member_cat != false) {
+                    ?>
+                    <div>
+                        <h1 style="text-align: center;">'.$cl_sr_Type_origin_tittle.' </h1>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <?php
+                } else {
+                    echo the_content();
+                }
             ?>
         </div>
     </div>
@@ -1042,28 +1045,28 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
     }
 
     <?php
-    if ($is_desktop) {
-        ?>
-        .system1{
-            display: block !important;
+        if ($is_desktop) {
+            ?>
+            .system1{
+                display: block !important;
+            }
+            .gf_inline.system1{
+                display: inline-block !important;
+            }
+            .inline_label.system1{
+                display: flex !important;
+            }
+            .customer_care{
+                display: none !important;
+            }
+            .non-competent{
+                display: none !important;
+            }
+            div[data-fee="0"]{
+                display: none !important;
+            }
+            <?php
         }
-        .gf_inline.system1{
-            display: inline-block !important;
-        }
-        .inline_label.system1{
-            display: flex !important;
-        }
-        .customer_care{
-            display: none !important;
-        }
-        .non-competent{
-            display: none !important;
-        }
-        div[data-fee="0"]{
-            display: none !important;
-        }
-        <?php
-    }
     ?>
 </style>
 
