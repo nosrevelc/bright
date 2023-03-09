@@ -229,7 +229,7 @@ endif;
 
 <?php
 
-if(WEBSITE_SYSTEM == '1') {
+if($is_desktop) {
     add_filter( 'gform_field_value_valor_referencia', 'valor_referencia_population_function' );
     function valor_referencia_population_function( $value ) {
         return get_field('reference_value',$_GET['rid']);
@@ -765,7 +765,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
         }
         ?>
 
-        var isDesktop = <?php echo $show_tooltips ?>;
+        var isDesktop = <?php echo $is_desktop ?>;
         if (isDesktop) {
             function insertTooltips() {
                 $(".gfield").each(function(index, element) {
@@ -782,12 +782,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
             }
 
             insertTooltips();
-        }
 
-        <?php
-        if (WEBSITE_SYSTEM == '1')
-        {
-            ?>
             //$('.form-selector').find('form').append('<input type="hidden" name="idb_tax" value="" />');
 
             // Campos onde se insere o valor de Refrência, Mínimo e Máximo. 
@@ -919,10 +914,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
             }
 
             //calc_F_G();
-
-            <?php
         }
-        ?>
     });
 </script>
 
@@ -1049,15 +1041,17 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
         font-size: 1.0em;
     }
 
-    <?php if (WEBSITE_SYSTEM == '1') : ?>
-        .system1{ 
-            display: block !important; 
+    <?php
+    if ($is_desktop) {
+        ?>
+        .system1{
+            display: block !important;
         }
         .gf_inline.system1{
-            display: inline-block !important; 
+            display: inline-block !important;
         }
         .inline_label.system1{
-            display: flex !important; 
+            display: flex !important;
         }
         .customer_care{
             display: none !important;
@@ -1068,7 +1062,9 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
         div[data-fee="0"]{
             display: none !important;
         }
-    <?php endif; ?>
+        <?php
+    }
+    ?>
 </style>
 
 <?php
