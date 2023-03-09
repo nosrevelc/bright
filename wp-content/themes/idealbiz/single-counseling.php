@@ -154,16 +154,12 @@ endif;
 ?>
 
 <?php
-    //Inicio preenchar os izModal co a descrição dos campos
-    //id do Formulário
-
+    //Tooltips: iziModal com a descrição dos campos
     if ( $show_tooltips ) {
         foreach( $form_tooltips as $tooltip ) {
             infoModal('<h3>' . __($tooltip['description'], 'idealbiz') . '</h3>', "tooltip_{$tooltip['id']}", 'd-none');
         }
     }
-
-    //Fim preenchar os izModal co a descrição dos campos
 ?>
 
 <section class="single-counceling">
@@ -762,10 +758,8 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
             $('.single-counceling .maximo input').val('<?php echo get_field('budget_max', $rid); ?>').prop('disabled', true);*/
         <?php } ?>
 
-        <?php
-        // Only show tooltips on desktop
-        if ( $show_tooltips ) {
-            ?>
+        var isDesktop = <?php echo $show_tooltips ?>;
+        if (isDesktop) {
             function insertTooltips() {
                 $(".gfield").each(function(index, element) {
                     var gfFieldId = (element.id || '').split('_')[2];
@@ -779,10 +773,9 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
                 });
                 return;
             }
+
             insertTooltips();
-            <?php
         }
-        ?>
 
         <?php if (WEBSITE_SYSTEM == '1') { ?>
             //$('.form-selector').find('form').append('<input type="hidden" name="idb_tax" value="" />');
