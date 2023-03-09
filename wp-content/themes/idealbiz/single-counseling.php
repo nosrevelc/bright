@@ -13,50 +13,47 @@ get_header();
 
 
 $form_id = -1;
-$form_fields = array(
-    'service_category' => array( 'id' => -1 ),
-    'amount'           => array( 'id' => -1 ),
-    'location'         => array( 'id' => -1 ),
+$form_field_ids = array(
+    'service_category' => -1,
+    'amount'           => -1,
+    'location'         => -1,
 
-    'member_search_results' => array( 'id' => -1 ),
-    'member_selection'      => array( 'id' => -1 )
+    'member_search_results' => -1,
+    'member_selection'      => -1
 );
 
-$show_tooltips = (WEBSITE_SYSTEM == '1');  // Show tooltips on desktop
+$is_desktop = (WEBSITE_SYSTEM == '1');
+
+// Apenas apresentar Tooltips em Desktop
+$show_tooltips = $is_desktop;
 $form_tooltips = array();
 
-// Find the correct Gravity Form via CSS Class (configured on the form):
+// Descobrir o ID e campos do Gravity Form. Usamos uma Class CSS configurada no Form.
 foreach( GFAPI::get_forms() as $form ) {
     if ( $form['cssClass'] === 'service-request' ) {
         $form_id = $form['id'];
 
-        // Find fields via CSS Class (configured on the fields):
+        // Descobrir campos com que queremos interagir. Usamos Classes CSS configuradas nos Fields.
         foreach( $form['fields'] as $field) {
-            $field_to_update  = '';
 
-            // Store fields we need to interact with in JavaScript
+            // Guardar ids que queremos passar para o código JavaScript
             if     ( str_contains( $field->cssClass, 'service-request-service-category' ) ) {
-                $field_to_update = 'service_category';
+                $form_field_ids['service_category'] = $field->id;
             }
             elseif ( str_contains( $field->cssClass, 'valor_referencia' ) ) {
-                $field_to_update = 'amount';
+                $form_field_ids['amount'] = $field->id;
             }
             elseif ( str_contains( $field->cssClass, 'service-request-location' ) ) {
-                $field_to_update = 'location';
+                $form_field_ids['location'] = $field->id;
             }
             elseif ( str_contains( $field->cssClass, 'service-category-member-search-results' ) ) {
-                $field_to_update = 'member_search_results';
+                $form_field_ids['member_search_results'] = $field->id;
             }
             elseif ( str_contains( $field->cssClass, 'service-category-member-selection' ) ) {
-                $field_to_update = 'member_selection';
+                $form_field_ids['member_selection'] = $field->id;
             }
 
-            if ( $field_to_update !== '' ) {
-                $form_fields[$field_to_update] = array( 'id' => $field->id );
-            }
-
-
-            // Store field information to generate tooltips
+            // Guardar IDs e descrições que queremos apresentar nas tooltips
             if ($show_tooltips) {
                 if ( $field->type !== 'hidden' && $field->visibility === 'visible' && $field->type !== 'captcha' && $field->description ) {
                     $form_tooltips[] = array(
@@ -262,12 +259,12 @@ if(WEBSITE_SYSTEM == '1') {
 // Alterações ao formulário GravityForm $form_id
 add_filter( "gform_pre_render_{$form_id}", 'service_request_form_pre_render' );
 function service_request_form_pre_render( $form ) {
-    global $form_fields;
+    global $form_field_ids;
 
     foreach ( $form['fields'] as &$field ) {
 
         // Adicionar locations à Dropdown
-        if ( $field->id == $form_fields['location']['id'] && $field->type === 'select' ) {
+        if ( $field->id == $form_field_ids['location'] && $field->type === 'select' ) {
             $terms = get_terms(
                 array(
                     'taxonomy'   => 'location',
@@ -451,26 +448,26 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
         fieldIdMap: {},
 
         SERVICE_CATEGORY: {
-            id: "<?php echo "{$form_fields['service_category']['id']}" ?>",
-            selector: "<?php echo "#input_{$form_id}_{$form_fields['service_category']['id']}" ?>",
+            id: "<?php echo "{$form_field_ids['service_category']}" ?>",
+            selector: "<?php echo "#input_{$form_id}_{$form_field_ids['service_category']}" ?>",
             prevValue: '',
             onChange: onInputChangeMemberSearch
         },
         AMOUNT: {
-            id: "<?php echo "{$form_fields['amount']['id']}" ?>",
-            selector: "<?php echo "#input_{$form_id}_{$form_fields['amount']['id']}" ?>",
+            id: "<?php echo "{$form_field_ids['amount']}" ?>",
+            selector: "<?php echo "#input_{$form_id}_{$form_field_ids['amount']}" ?>",
             prevValue: '',
             onChange: onInputChangeMemberSearch
         },
         LOCATION: {
-            id: "<?php echo "{$form_fields['location']['id']}" ?>",
-            selector: "<?php echo "#input_{$form_id}_{$form_fields['location']['id']}" ?>",
+            id: "<?php echo "{$form_field_ids['location']}" ?>",
+            selector: "<?php echo "#input_{$form_id}_{$form_field_ids['location']}" ?>",
             prevValue: '',
             onChange: onInputChangeMemberSearch
         },
 
         MEMBER_SEARCH_RESULTS: {
-            id: "<?php echo "{$form_fields['member_search_results']['id']}" ?>",
+            id: "<?php echo "{$form_field_ids['member_search_results']}" ?>",
 
             loaderSelector: "#member-search-loader",
             loaderPlaceholderSelector: ".service-category-member-search-results-loading",
@@ -481,8 +478,8 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
         },
 
         MEMBER_SELECTION: {
-            id: "<?php echo "{$form_fields['member_selection']['id']}" ?>",
-            selector: "<?php echo "#input_{$form_id}_{$form_fields['member_selection']['id']}" ?>"
+            id: "<?php echo "{$form_field_ids['member_selection']}" ?>",
+            selector: "<?php echo "#input_{$form_id}_{$form_field_ids['member_selection']}" ?>"
         }
     };
     (function() {
@@ -746,10 +743,11 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
             return optionsObj;
         });
 
-        <?php if (isset($_GET['sr'])) { 
-                    $rid = $_GET['rid'];
-                    $user = get_field('customer', $_GET['rid']);
-                    $sexpert = get_field('consultant', $_GET['rid']); // $sexpert->ID
+        <?php
+        if (isset($_GET['sr'])) {
+            $rid = $_GET['rid'];
+            $user = get_field('customer', $_GET['rid']);
+            $sexpert = get_field('consultant', $_GET['rid']); // $sexpert->ID
             ?>
             /*$('.single-counceling .ginput_container_custom_taxonomy select').val(<?php echo $_GET['sr']; ?>).trigger('change');
 
@@ -763,7 +761,9 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
             $('.single-counceling .valor_referencia input').val('<?php echo get_field('reference_value', $rid); ?>').prop('disabled', true);
             $('.single-counceling .minimo input').val('<?php echo get_field('budget_min', $rid); ?>').prop('disabled', true);
             $('.single-counceling .maximo input').val('<?php echo get_field('budget_max', $rid); ?>').prop('disabled', true);*/
-        <?php } ?>
+            <?php 
+        }
+        ?>
 
         var isDesktop = <?php echo $show_tooltips ?>;
         if (isDesktop) {
@@ -784,7 +784,10 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
             insertTooltips();
         }
 
-        <?php if (WEBSITE_SYSTEM == '1') { ?>
+        <?php
+        if (WEBSITE_SYSTEM == '1')
+        {
+            ?>
             //$('.form-selector').find('form').append('<input type="hidden" name="idb_tax" value="" />');
 
             // Campos onde se insere o valor de Refrência, Mínimo e Máximo. 
@@ -917,7 +920,9 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
 
             //calc_F_G();
 
-        <?php } ?>    
+            <?php
+        }
+        ?>
     });
 </script>
 
@@ -1067,9 +1072,5 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
 </style>
 
 <?php
-//$terms = get_terms(array('taxonomy' => 'service_cat', 'hide_empty' => false, 'parent' => 0));
-//$terms = get_terms(array('taxonomy' => 'location', 'hide_empty' => false, 'parent' => 0));
-//get_template_part('elements/member-search/member', 'search');
-
 get_footer();
 ?>
