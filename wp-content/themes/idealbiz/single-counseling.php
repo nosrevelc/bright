@@ -53,13 +53,15 @@ foreach( GFAPI::get_forms() as $form ) {
             }
 
             if ( $field_to_update !== '' ) {
-                $form_fields[$field_to_update] = array( 'id' => $field['id'] );
+                $form_fields[$field_to_update] = array( 'id' => $field->id );
             }
 
 
             // Store field information to generate tooltips
             if ($show_tooltips) {
-                $form_tooltips[] = array( 'id' => $field['id'], 'description' => $field['description'] );
+                if ( $field->type !== 'hidden' && $field->visibility === 'visible' && $field->$description ) {
+                    $form_tooltips[] = array( 'id' => $field->id, 'description' => $field->description );
+                }
             }
         }
 
