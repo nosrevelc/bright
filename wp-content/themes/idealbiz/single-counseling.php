@@ -28,7 +28,6 @@ $form_tooltips = array();
 // Find the correct Gravity Form via CSS Class (configured on the form):
 foreach( GFAPI::get_forms() as $form ) {
     if ( $form['cssClass'] === 'service-request' ) {
-        // Store the Form ID
         $form_id = $form['id'];
 
         // Find fields via CSS Class (configured on the fields):
@@ -158,15 +157,6 @@ if ( have_posts() ) :
 endif;
 ?>
 
-<?php
-    //Tooltips: iziModal com a descrição dos campos
-    if ( $show_tooltips ) {
-        foreach( $form_tooltips as $tooltip ) {
-            infoModal('<h3>' . __($tooltip['description'], 'idealbiz') . '</h3>', "tooltip_{$tooltip['id']}", 'd-none');
-        }
-    }
-?>
-
 <section class="single-counceling">
     <div class="container m-b-25">
         <a class="go-search font-weight-medium d-flex align-items-center" href="javascript: history.go(-1);">
@@ -216,62 +206,10 @@ endif;
         </form>
     </div>
 
+    <!-- Gravity Form: <?php echo $form_id ?> -->
+
     <div class="container m-b-25 form_sr_hidden " id="form_sr">
         <div class="div-to-align">
-            <?php 
-                if(WEBSITE_SYSTEM == '1') {
-                    add_filter( 'gform_field_value_valor_referencia', 'valor_referencia_population_function' );
-                    function valor_referencia_population_function( $value ) {
-                        return get_field('reference_value',$_GET['rid']);
-                    }
-
-                    add_filter( 'gform_field_value_minimo', 'minimo_population_function' );
-                    function minimo_population_function( $value ) {
-                        return get_field('budget_min',$_GET['rid']);
-                    }
-
-                    add_filter( 'gform_field_value_maximo', 'maximo_population_function' );
-                    function maximo_population_function( $value ) {
-                        return get_field('budget_max',$_GET['rid']);
-                    }
-
-                    add_filter( 'gform_field_value_data_entrega', 'data_entrega_population_function' );
-                    function data_entrega_population_function( $value ) {
-                        return get_field('delivery_date',$_GET['rid']);
-                    }
-
-                    add_filter( 'gform_field_value_mensagem', 'mensagem_population_function' );
-                    function mensagem_population_function( $value ) {
-                        return get_field('message',$_GET['rid']);
-                    }
-
-                    add_filter( "gform_pre_render_{$form_id}", 'service_request_form_pre_render' );
-                    function service_request_form_pre_render( $form ) {
-                        global $form_fields;
-
-                        foreach ( $form['fields'] as &$field ) {
-                            if ( $field->id == $form_fields['location']['id'] && $field->type === 'select' ) {
-                                $terms = get_terms(
-                                    array(
-                                        'taxonomy'   => 'location',
-                                        'parent'     => 0,
-                                        'orderby'    => 'name',
-                                        'order'      => 'ASC'
-                                    )
-                                );
-
-                                foreach ( $terms as $term ) {
-                                    $field->choices[] = array( 'text' => $term->name, 'value' => $term->term_id );
-                                }
-                            }
-                        }
-
-                        return $form;
-                    }
-                }
-            ?>
-
-            <!-- Gravity Form: <?php echo $form_id ?> -->
             <div class="d-flex flex-row flex-wrap justify-content-center container">
                 <p class="has-text-align-center">
                     <?php echo do_shortcode("[gravityform id=\"{$form_id}\" title=\"false\" description=\"false\"]") ?>
@@ -280,10 +218,74 @@ endif;
         </div>
 
         <div id="member-search-loader" class="loader" style="left: 50%; position: relative; margin-left: -15px; margin-top: 30px; display: none; "></div>
+
+        <?php
+            //Tooltips: iziModal com a descrição dos campos
+            if ( $show_tooltips ) {
+                foreach( $form_tooltips as $tooltip ) {
+                    infoModal('<h3>' . __($tooltip['description'], 'idealbiz') . '</h3>', "tooltip_{$tooltip['id']}", 'd-none');
+                }
+            }
+        ?>
     </div>
 </section>
 
 <?php
+
+if(WEBSITE_SYSTEM == '1') {
+    add_filter( 'gform_field_value_valor_referencia', 'valor_referencia_population_function' );
+    function valor_referencia_population_function( $value ) {
+        return get_field('reference_value',$_GET['rid']);
+    }
+
+    add_filter( 'gform_field_value_minimo', 'minimo_population_function' );
+    function minimo_population_function( $value ) {
+        return get_field('budget_min',$_GET['rid']);
+    }
+
+    add_filter( 'gform_field_value_maximo', 'maximo_population_function' );
+    function maximo_population_function( $value ) {
+        return get_field('budget_max',$_GET['rid']);
+    }
+
+    add_filter( 'gform_field_value_data_entrega', 'data_entrega_population_function' );
+    function data_entrega_population_function( $value ) {
+        return get_field('delivery_date',$_GET['rid']);
+    }
+
+    add_filter( 'gform_field_value_mensagem', 'mensagem_population_function' );
+    function mensagem_population_function( $value ) {
+        return get_field('message',$_GET['rid']);
+    }
+}
+
+// Alterações ao formulário GravityForm $form_id
+add_filter( "gform_pre_render_{$form_id}", 'service_request_form_pre_render' );
+function service_request_form_pre_render( $form ) {
+    global $form_fields;
+
+    foreach ( $form['fields'] as &$field ) {
+
+        // Adicionar locations à Dropdown
+        if ( $field->id == $form_fields['location']['id'] && $field->type === 'select' ) {
+            $terms = get_terms(
+                array(
+                    'taxonomy'   => 'location',
+                    'parent'     => 0,
+                    'orderby'    => 'name',
+                    'order'      => 'ASC'
+                )
+            );
+
+            foreach ( $terms as $term ) {
+                $field->choices[] = array( 'text' => $term->name, 'value' => $term->term_id );
+            }
+        }
+    }
+
+    return $form;
+}
+
 //$terms =  wp_get_object_terms($post_id, 'service_cat', array('fields' => 'ids'));
 
 $post_args = array(
