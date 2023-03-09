@@ -59,8 +59,11 @@ foreach( GFAPI::get_forms() as $form ) {
 
             // Store field information to generate tooltips
             if ($show_tooltips) {
-                if ( $field->type !== 'hidden' && $field->visibility === 'visible' && $field->type !== 'captcha' && $field->$description ) {
-                    $form_tooltips[] = array( 'id' => $field->id, 'description' => $field->description );
+                if ( $field->type !== 'hidden' && $field->visibility === 'visible' && $field->type !== 'captcha' && $field->description ) {
+                    $form_tooltips[] = array(
+                        'id'          => $field->id,
+                        'description' => $field->description
+                    );
                 }
             }
         }
