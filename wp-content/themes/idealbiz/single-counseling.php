@@ -59,7 +59,7 @@ foreach( GFAPI::get_forms() as $form ) {
 
             // Store field information to generate tooltips
             if ($show_tooltips) {
-                if ( $field->type !== 'hidden' && $field->visibility === 'visible' && $field->$description ) {
+                if ( $field->type !== 'hidden' && $field->visibility === 'visible' && $field->type !== 'captcha' && $field->$description ) {
                     $form_tooltips[] = array( 'id' => $field->id, 'description' => $field->description );
                 }
             }
@@ -765,7 +765,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
             function insertTooltips() {
                 $(".gfield").each(function(index, element) {
                     var gfFieldId = (element.id || '').split('_')[2];
-                    if(gfFieldId && gfFieldId !== '11') {
+                    if(gfFieldId) {
                         $(element)
                             .find('label')
                             .append('<div class=gfield_label><button class="info-balloon">i</button>')           //Coloca os "i's" ao lado dos campos.
