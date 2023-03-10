@@ -46,10 +46,65 @@ class HelperServiceRequest {
                     }
                 }
             }
+
+            calculate_service_request_fields($post_data, $form, $entry);
+
             return $post_data;
         }
     }
 
+    function calculate_service_request_fields( &$post_data, &$form, &$entry ) {
+        $form_field_ids = array(
+            'member_selection' => -1
+        );
+
+        // Procurar o campo onde está guardado o ID do membro selecionado. Usamos Classes CSS configuradas nos Fields.
+        foreach ( $form['fields'] as $field ) {
+            if ( str_contains( $field->cssClass, 'service-category-member-selection' ) ) {
+                $form_field_ids['member_selection'] = $field->id;
+            }
+        }
+
+        // Buscar info do membro
+        $member_id   = $entry[$form_field_ids['member_selection']];
+        $member      = get_post($member_id);
+        $member_meta = get_post_meta($member_id);
+
+        echo "<div><p>post_data</p>";
+        echo var_dump($post_data);
+        echo "</div><div><p>form</p>";
+        echo var_dump($form);
+        echo "</div><div><p>entry</p>";
+        echo var_dump($entry);
+        echo "</div><div><p>member</p>";
+        echo var_dump($member);
+        echo "</div><div><p>member_meta</p>";
+        echo var_dump($member_meta);
+        echo "</div>";
+
+        // Campos ACF que iremos calcular
+        $meta_acf_fields = array(
+            'sr_fixed_ppc_value' => array( 'acf_key' => '', 'value' => 0 )
+        );
+
+        if (true) {
+            return $post_meta;
+        }
+
+        // Atribuir valores dos campos ACF ao post
+        // Documentação: https://support.advancedcustomfields.com/forums/topic/meta_input-wp_insert_post-acf-gallery/
+        foreach ( $meta_acf_fields as $key => $info ) {
+            // [GS] TODO: campos já vem preenchidos?
+            if( ! isset($post_data['meta_input'][$key]) ) {
+                $post_data['meta_input'][] = array(
+                    "{$key}"  => $info['value'],
+                    "_{$key}" => $info['acf_key']
+                );
+            }
+        }
+
+        return $post_data;
+    }
 
     public function gt($toTranslate, $domain= ''){
         global $wpdb;
