@@ -22,10 +22,13 @@ $form_field_ids = array(
     'member_selection'      => -1
 );
 
-$is_desktop = (WEBSITE_SYSTEM == '1');
+// Definição do funcionamento Service Request a partir da variável global "WEBSITE_SYSTEM"
+$USE_SR_SYSTEM_3STEP_PURCHASE = (WEBSITE_SYSTEM == '' || WEBSITE_SYSTEM == '0');
+$USE_SR_SYSTEM_LEAD_PURCHASE  = (WEBSITE_SYSTEM == '1');
 
-// Apenas apresentar Tooltips em Desktop
-$show_tooltips = $is_desktop;
+
+// Informação das tooltips
+$show_tooltips = $USE_SR_SYSTEM_LEAD_PURCHASE;
 $form_tooltips = array();
 
 // Descobrir o ID e campos do Gravity Form. Usamos uma Class CSS configurada no Form.
@@ -157,7 +160,7 @@ endif;
 
 <?php
 
-if($is_desktop) {
+if($USE_SR_SYSTEM_LEAD_PURCHASE) {
     add_filter( 'gform_field_value_valor_referencia', 'valor_referencia_population_function' );
     function valor_referencia_population_function( $value ) {
         return get_field('reference_value',$_GET['rid']);
@@ -338,10 +341,9 @@ if (false) {
 
         if ($show_expert) {
             $fee = 1;
-            if (WEBSITE_SYSTEM == '1') {
+            if ($USE_SR_SYSTEM_LEAD_PURCHASE) {
                 $userIDFee = get_user_by('email', get_field('expert_email', $post->ID))->ID;
                 if (!userHasActiveExpertFeeSubscription($userIDFee)) {
-
                     $fee = 0;
                 }
             }
@@ -758,6 +760,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
             $user = get_field('customer', $_GET['rid']);
             $sexpert = get_field('consultant', $_GET['rid']); // $sexpert->ID
             ?>
+
             /*$('.single-counceling .ginput_container_custom_taxonomy select').val(<?php echo $_GET['sr']; ?>).trigger('change');
 
             $('.single-counceling .name_first input').val('<?php echo $user->first_name; ?>');
@@ -772,10 +775,17 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
             $('.single-counceling .maximo input').val('<?php echo get_field('budget_max', $rid); ?>').prop('disabled', true);*/
             <?php 
         }
-        ?>
 
-        var isDesktop = <?php echo $is_desktop ?>;
-        if (isDesktop) {
+        if ($USE_SR_SYSTEM_3STEP_PURCHASE) {
+            ?>
+
+            $('.valor_referencia input[type="text"]').val(0);
+
+            <?php
+        }
+
+        if ($USE_SR_SYSTEM_LEAD_PURCHASE) {
+            ?>
             function insertTooltips() {
                 $(".gfield").each(function(index, element) {
                     var gfFieldId = (element.id || '').split('_')[2];
@@ -923,7 +933,9 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
             }
 
             //calc_F_G();
+            <?php
         }
+        ?>
     });
 </script>
 
@@ -1051,7 +1063,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
     }
 
     <?php
-        if ($is_desktop) {
+        if ($USE_SR_SYSTEM_LEAD_PURCHASE) {
             ?>
             .system1{
                 display: block !important;
