@@ -47,7 +47,7 @@ class HelperServiceRequest {
                 }
             }
 
-            calculate_service_request_fields($post_data, $form, $entry);
+            $this->calculate_service_request_fields($post_data, $form, $entry);
 
             return $post_data;
         }
@@ -70,17 +70,17 @@ class HelperServiceRequest {
         $member      = get_post($member_id);
         $member_meta = get_post_meta($member_id);
 
-        echo "<div><p>post_data</p>";
-        echo var_dump($post_data);
-        echo "</div><div><p>form</p>";
-        echo var_dump($form);
-        echo "</div><div><p>entry</p>";
-        echo var_dump($entry);
-        echo "</div><div><p>member</p>";
-        echo var_dump($member);
-        echo "</div><div><p>member_meta</p>";
-        echo var_dump($member_meta);
-        echo "</div>";
+        //echo "<div><p>post_data</p>";
+        //echo var_dump($post_data);
+        //echo "</div><div><p>form</p>";
+        //echo var_dump($form);
+        //echo "</div><div><p>entry</p>";
+        //echo var_dump($entry);
+        //echo "</div><div><p>member</p>";
+        //echo var_dump($member);
+        //echo "</div><div><p>member_meta</p>";
+        //echo var_dump($member_meta);
+        //echo "</div>";
 
         // Campos ACF que iremos calcular
         $meta_acf_fields = array(
