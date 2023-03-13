@@ -88,7 +88,7 @@ class HelperServiceRequest {
         );
 
         if (true) {
-            return $post_meta;
+            return $post_data;
         }
 
         // Atribuir valores dos campos ACF ao post
