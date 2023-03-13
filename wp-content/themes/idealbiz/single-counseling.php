@@ -505,8 +505,6 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
     })();
 
     function onInputChange( gfElem, gfFormId, gfFieldId ) {
-        console.log('Change detected for ', gfElem, ', Form Id: "', gfFormId, '", Field Id: "', gfFieldId, '"');
-
         if(GF_FIELDS.fieldIdMap[gfFieldId]) {
             var field = GF_FIELDS[GF_FIELDS.fieldIdMap[gfFieldId]];
             var currValue = jQuery(`#input_${gfFormId}_${gfFieldId}`).val();
@@ -528,10 +526,8 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
         var amountValue          = jQuery(GF_FIELDS.AMOUNT.selector).val();
         var locationValue        = jQuery(GF_FIELDS.LOCATION.selector).val();
 
-        console.log(`Values: ServiceCategory "${serviceCategoryValue}", Amount: "${amountValue}", Location: "${locationValue}"`);
-
         if(serviceCategoryValue && amountValue && locationValue) {
-            console.log("AJAX: calling");
+            console.log(`AJAX: calling with values {"ServiceCategory":"${serviceCategoryValue}", "Amount":"${amountValue}", "Location":"${locationValue}"}`);
 
             jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsPlaceholderSelector).hide();
             jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.loaderSelector).show();
