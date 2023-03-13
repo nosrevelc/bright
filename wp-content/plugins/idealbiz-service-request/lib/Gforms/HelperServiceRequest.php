@@ -53,7 +53,7 @@ class HelperServiceRequest {
         }
     }
 
-    function calculate_service_request_fields( &$post_data, &$form, &$entry ) {
+    function calculate_service_request_fields( &$post_data, $form, $entry ) {
         $form_field_ids = array(
             'member_selection' => -1,
             'amount'           => -1
