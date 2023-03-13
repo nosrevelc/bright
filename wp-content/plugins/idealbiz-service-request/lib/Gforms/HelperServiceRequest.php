@@ -96,9 +96,7 @@ class HelperServiceRequest {
         // Buscar definição ACF do Service Request
         $sr_acf_definition = acf_get_field_groups(
             array(
-                'param' => 'post_type',
-                'operator' => '==',
-                'value' => 'service_request',
+                'post_type' => 'service_request'
             )
         );
 
