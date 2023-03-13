@@ -17,9 +17,12 @@ get_header(); ?>
 ?>
 
 <section class="page">
-            <div class="chat container position-relative p-b-30 m-t-30">
-            <?php echo do_shortcode(get_post_field('post_content', getIdByTemplate('page-qualificatio-lead_oport.php'))); ?>
-    </div>             
+    <div class="chat container position-relative p-b-30 m-t-30">
+        <?php $cl_formId = cl_searchGFormIdByClassCss('form-qualification-lead-oport');
+        $cl_classBody = "#gform_wrapper_$cl_formId";
+        echo do_shortcode("[gravityform id='$cl_formId' title='true' description='true' ajax='true']");
+        ?>
+    </div>
 </section>
 
 
