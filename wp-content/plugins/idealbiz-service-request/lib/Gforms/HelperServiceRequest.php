@@ -94,17 +94,15 @@ class HelperServiceRequest {
         );
 
         // Buscar definição ACF do Service Request
-        $sr_acf_definition = acf_get_field_groups(
-            array(
-                'post_type' => 'service_request'
-            )
-        );
-
+        $sr_acf_parent = acf_get_field_groups( array('post_type' => 'service_request') )[0]['key'];
+        $sr_acf_fields = acf_get_fields($sr_acf_parent);
 
         echo "<div><p>member_meta 2</p>";
         echo var_dump($member_meta);
-        echo "</div><div><p>sr_acf_definition</p>";
-        echo var_dump($sr_acf_definition);
+        echo "</div><div><p>sr_acf_parent</p>";
+        echo var_dump($sr_acf_parent);
+        echo "</div><div><p>sr_acf_fields</p>";
+        echo var_dump($sr_acf_fields);
         echo "</div>";
 
 
