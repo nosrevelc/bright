@@ -93,13 +93,15 @@ class HelperServiceRequest {
 
         // Atribuir valores dos campos ACF ao post
         // Documentação: https://support.advancedcustomfields.com/forums/topic/meta_input-wp_insert_post-acf-gallery/
+
+        if ( ! isset($post_data['meta_input']) ) {
+            $post_data['meta_input'] = array();
+        }
+
         foreach ( $meta_acf_fields as $key => $info ) {
-            // [GS] TODO: campos já vem preenchidos?
             if( ! isset($post_data['meta_input'][$key]) ) {
-                $post_data['meta_input'][] = array(
-                    "{$key}"  => $info['value'],
-                    "_{$key}" => $info['acf_key']
-                );
+                $post_data['meta_input']["{$key}"]  = $info['value'];
+                $post_data['meta_input']["_{$key}"] = $info['acf_key'];
             }
         }
 
