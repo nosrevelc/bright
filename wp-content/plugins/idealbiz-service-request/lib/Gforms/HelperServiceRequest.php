@@ -81,7 +81,7 @@ class HelperServiceRequest {
             'idb_tax'         => 0.0,
             'echelon_competency_factor' => array()
         );
-        foreach ( $member_meta as $f ) {
+        foreach ( $member_meta as $f => $v ) {
             $member_meta[$f] = get_field($f, $member_id);
         }
 
@@ -115,6 +115,10 @@ class HelperServiceRequest {
             $sr_meta['rs_comission']       = $member_meta['fixed_ppc_value'] * $member_meta['idb_tax'];
         } else {
             // Membro usa taxas variáveis por escalão
+
+            echo "<div><p>echelon</p>";
+            echo var_dump($echelon);
+            echo "</div>";
 
             foreach ( $member_meta['echelon_competency_factor'] as $e ) {
                 if ( $e['begin_echelon'] <= $reference_value && $reference_value <= $e['finish_echelon'] ) {
