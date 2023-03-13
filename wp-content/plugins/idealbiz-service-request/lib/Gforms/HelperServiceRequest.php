@@ -110,7 +110,7 @@ class HelperServiceRequest {
             // Membro usa taxa fixa
 
             $sr_meta['sr_fixed_ppc_value'] = $member_meta['fixed_ppc_value'];
-            $sr_meta['rs_comission']       = $member_meta['fixed_ppc_value'] * $member_meta['idb_tax'];
+            $sr_meta['rs_comission']       = $member_meta['fixed_ppc_value'] * $member_meta['idb_tax'] / 100;
         } else {
             // Membro usa taxas variáveis por escalão
             foreach ( $member_meta['echelon_competency_factor'] as $i => $e ) {
@@ -120,7 +120,7 @@ class HelperServiceRequest {
 
                 if ( $e_begin <= $reference_value && $reference_value <= $e_finish ) {
                     $sr_meta['sr_fixed_ppc_value'] = $reference_value * $e_percent;
-                    $sr_meta['rs_comission']       = $sr_meta['sr_fixed_ppc_value'] * $member_meta['idb_tax'];
+                    $sr_meta['rs_comission']       = $sr_meta['sr_fixed_ppc_value'] * $member_meta['idb_tax'] / 100;
 
                     break;
                 }
