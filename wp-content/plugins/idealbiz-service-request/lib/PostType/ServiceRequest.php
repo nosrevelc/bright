@@ -141,12 +141,9 @@ class ServiceRequest extends \WidgiLabs\WP\Plugin\IdealBiz\Service\Request\PostT
 			$cl_member_data = get_userdata($cl_member_id);
 			$cl_member_f_name = $cl_member_data->first_name;
 			$cl_member_l_name = $cl_member_data->last_name;
-			$cl_valor_referencia = get_field('reference_value', $post_id);
-			$cl_date = get_field('delivery_date', $post_id);
+			$cl_valor_referencia = wc_price(get_field('reference_value', $post_id));
+			$cl_date = cl_formatDateByWordpress(get_field('delivery_date', $post_id));
 			$new_user_email = $new_user->user_email;
-
-			//cl_alerta('Passo2');
-
 
 
 			$user_compliment  = __('Hello', 'idealbiz-service-request');
@@ -156,7 +153,7 @@ class ServiceRequest extends \WidgiLabs\WP\Plugin\IdealBiz\Service\Request\PostT
 				$user_compliment .= '<br /><br />'.__('Details data');
 				$user_compliment .= '<br />'.__('Reference:').' #'.$post_id;
 				$user_compliment .= '<br />' . __('Conclusion Date: ') .' '. $cl_date;
-				$user_compliment .= '<br />' . __('Reference Value:') .' '. $cl_valor_referencia.__('Money Simbol');
+				$user_compliment .= '<br />' . __('Reference Value:') .' '. $cl_valor_referencia;
 				$user_compliment .= '<br />' . __('Member:') .' '. $cl_member_f_name.' '.$cl_member_l_name;
 				$user_compliment .='<br /><br />' . __('Message:').'<br/>'. $cl_msg.'<br/><br />';
 				$user_compliment .= '<br/><span style="color:#ffffff;font-size:0.5em;">SR01</span>';
@@ -174,7 +171,7 @@ class ServiceRequest extends \WidgiLabs\WP\Plugin\IdealBiz\Service\Request\PostT
 				/* $user_compliment .= '<br />'.__('Previous reference:').' #'.$post_id; */
 				$user_compliment .= '<br />'.__('New Reference:').' #'.'<b><i>'.$post_id.'</i></b>';
 				$user_compliment .= '<br />' . __('Conclusion Date: ') .' '. $cl_date;
-				$user_compliment .= '<br />' . __('Reference Value:') .' '. $cl_valor_referencia.__('Money Simbol');
+				$user_compliment .= '<br />' . __('Reference Value:') .' '. $cl_valor_referencia;
 				$user_compliment .= '<br />' . __('Member:') .' '.'<b><i>'. $cl_member_f_name.' '.$cl_member_l_name.'</i></b>';
 				$user_compliment .='<br /><br />' . __('Message:').'<br/>'. $cl_msg.'<br/><br />';
 				$user_compliment .= '<br/><span style="color:#ffffff;font-size:0.5em;">SR02</span>';
@@ -261,7 +258,7 @@ class ServiceRequest extends \WidgiLabs\WP\Plugin\IdealBiz\Service\Request\PostT
 				wp_mail($customer_care, $subject, $body_template, $headers,);
 			} else {
 				$subject = __('[idealBiz] New service request', 'idealbiz-service-request');
-				wp_mail($customer_care, $subject, $body_template, $headers, get_field('delivery_date'));
+				wp_mail($customer_care, $subject, $body_template, $headers, cl_formatDateByWordpress(get_field('delivery_date')));
 			}
 		}
 
