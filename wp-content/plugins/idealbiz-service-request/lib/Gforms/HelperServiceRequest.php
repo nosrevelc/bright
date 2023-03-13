@@ -88,22 +88,22 @@ class HelperServiceRequest {
 
         // Campos que iremos calcular para o Service Request
         $sr_meta = array(
-            'reference_value'    => $reference_value,
-            'sr_fixed_ppc_value' => 0.0,               // [GS] DÚVIDA: usamos sempre o sr_fixed_ppc_value ?
-            'rs_comission'       => 0.0                // [GS] DÚVIDA: usamos sempre o rs_comission ?
+            'reference_value'    => $reference_value,  // Montante envolvido no negócio
+            'sr_fixed_ppc_value' => 0.0,               // Comissão paga entre membros
+            'rs_comission'       => 0.0                // Comissão paga à plataforma (IDB Tax)
         );
 
         // Buscar definição ACF do Service Request
         $sr_acf_parent = acf_get_field_groups( array('post_type' => 'service_request') )[0]['key'];
         $sr_acf_fields = acf_get_fields($sr_acf_parent);
 
-        echo "<div><p>member_meta 2</p>";
-        echo var_dump($member_meta);
-        echo "</div><div><p>sr_acf_parent</p>";
-        echo var_dump($sr_acf_parent);
-        echo "</div><div><p>sr_acf_fields</p>";
-        echo var_dump($sr_acf_fields);
-        echo "</div>";
+        // echo "<div><p>member_meta 2</p>";
+        // echo var_dump($member_meta);
+        // echo "</div><div><p>sr_acf_parent</p>";
+        // echo var_dump($sr_acf_parent);
+        // echo "</div><div><p>sr_acf_fields</p>";
+        // echo var_dump($sr_acf_fields);
+        // echo "</div>";
 
 
         // Cálculo de preços
@@ -141,7 +141,7 @@ class HelperServiceRequest {
                 $acf_key = '';
 
                 // Buscar chave ACF para associar corretamente o campo
-                foreach ( $sr_acf_definition['fields'] as $f ) {
+                foreach ( $sr_acf_fields as $f ) {
                     if ( $f['name'] == $key ) {
                         $acf_key = $f['key'];
                         break;
