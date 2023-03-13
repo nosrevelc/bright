@@ -97,9 +97,10 @@ class HelperServiceRequest {
         $sr_acf_parent = acf_get_field_groups( array('post_type' => 'service_request') )[0]['key'];
         $sr_acf_fields = acf_get_fields($sr_acf_parent);
 
-        // echo "<div><p>member_meta 2</p>";
-        // echo var_dump($member_meta);
-        // echo "</div><div><p>sr_acf_parent</p>";
+        echo "<div><p>member_meta 3</p>";
+        echo var_dump($member_meta);
+        echo "</div>";
+        //echo "<div><p>sr_acf_parent</p>";
         // echo var_dump($sr_acf_parent);
         // echo "</div><div><p>sr_acf_fields</p>";
         // echo var_dump($sr_acf_fields);
@@ -115,11 +116,6 @@ class HelperServiceRequest {
             $sr_meta['rs_comission']       = $member_meta['fixed_ppc_value'] * $member_meta['idb_tax'];
         } else {
             // Membro usa taxas variáveis por escalão
-
-            echo "<div><p>echelon</p>";
-            echo var_dump($echelon);
-            echo "</div>";
-
             foreach ( $member_meta['echelon_competency_factor'] as $e ) {
                 if ( $e['begin_echelon'] <= $reference_value && $reference_value <= $e['finish_echelon'] ) {
                     $sr_value = $reference_value * $e['percentage'];
