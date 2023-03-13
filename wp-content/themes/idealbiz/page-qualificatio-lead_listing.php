@@ -7,9 +7,12 @@ get_header(); ?>
 ?>
 
 <section class="page">
-            <div class="chat container position-relative p-b-30 m-t-30">
-            <?php echo do_shortcode(get_post_field('post_content', getIdByTemplate('page-qualificatio-lead_listing.php'))); ?>
-    </div>             
+    <div class="chat container position-relative p-b-30 m-t-30">
+        <?php $cl_formId = cl_searchGFormIdByClassCss('form-qualification-lead-listing');
+        $cl_classBody = "#gform_wrapper_$cl_formId";
+        echo do_shortcode("[gravityform id='$cl_formId' title='true' description='true' ajax='true']");
+        ?>
+    </div>
 </section>
 
 
@@ -31,7 +34,7 @@ id_Opportunity.value = '<?php echo $cl_id_Opportunity; ?>';
     /* keep it mobile friendly by only applying these styles for larger viewports */
 @media only screen and (min-width: 641px) {
   
-  body #gform_wrapper_67 { 
+  body <?php echo $cl_classBody ?> { 
    max-width: 50%;
    margin: 0 auto;
   }
