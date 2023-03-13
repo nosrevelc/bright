@@ -71,7 +71,7 @@ class HelperServiceRequest {
 
         // Buscar valores preenchidos no formulário
         $member_id       = $entry[$form_field_ids['member_selection']];
-        $reference_value = $entry[$form_field_ids['amount']];
+        $reference_value = (float) $entry[$form_field_ids['amount']];
 
 
         // Buscar informação do membro para uso no cálculo
