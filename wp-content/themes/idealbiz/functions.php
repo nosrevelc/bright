@@ -1152,9 +1152,9 @@ function makeSRLeadModal($srid,$viewLead = null)
     $m.='<br/>';
     $m.= '<b>'.pll__('Phone:').'</b> '.get_field('service_request_phone',$srid);
     $m.='<br/>';
-    $m.= '<b>'.pll__('Delivery Date:').'</b> '.get_field('delivery_date',$srid);
+    $m.= '<b>'.pll__('Delivery Date:').'</b> '.cl_formatDateByWordpress(get_field('delivery_date',$srid));
     $m.='<br/>';
-    $m.= '<b>'.pll__('Reference Value:').'</b> '.get_field('reference_value',$srid).__('Money Simbol');
+    $m.= '<b>'.pll__('Reference Value:').'</b> '.wc_price(get_field('reference_value',$srid));
     $m.='<br/>';
     /* $m.= pll__('Budget Min:').' '.get_field('budget_min',$srid).' '.pll__('Budget Max:').' '.get_field('budget_max',$srid);
     $m.='<br/>'; */
@@ -3886,8 +3886,7 @@ function opportunityRegisterViewLead($cl_id_view_lead_opportunity){
     }
                      
 }
-
-function consultLeadModeServieceRequest($id_member,$cl_onlyMode=null){
+function consultLeadModeServiceRequest($id_member, $cl_onlyMode=null){
 
     $cl_expert = isExpert();
     $cl_expertDsplayName = $cl_expert[0]->post_title;
@@ -3896,6 +3895,7 @@ function consultLeadModeServieceRequest($id_member,$cl_onlyMode=null){
     if($cl_sr_pay_lead_mode === NULL){
         $cl_sr_pay_lead_mode = ['value'=>'sr_pay_before','label'=>'Pay Before'];
     }
+
 
     if($cl_sr_pay_lead_mode['value']==='sr_pay_before'){
     $mode = __('_str Pay Before','idealbiz');
@@ -4244,4 +4244,55 @@ function meberPITModal($srid)
     </div>';
     // always return
     return $content;
+}
+
+add_action( 'wp_ajax_single_counseling_search_members', 'single_counseling_search_members' );
+function single_counseling_search_members() {
+    //check_ajax_referer( 'single_counseling_search_members' );
+
+    echo get_template_part('elements/member-search/member-search', null, array(
+        'service_category' => $_POST['service_category'],
+        'amount'   => $_POST['amount'],
+        'location' => $_POST['location']
+    ));
+
+    wp_die();
+}
+add_filter( 'avatar_defaults', 'wpb_new_gravatar' );
+function wpb_new_gravatar ($avatar_defaults) {
+$cl_img_gravatar = get_field('img_gravatar', 'option')['url'];
+$myavatar = $cl_img_gravatar;
+$site_title = get_bloginfo( 'name' );
+$avatar_defaults[$myavatar] = "Default Gravatar $site_title";
+return $avatar_defaults;
+}
+function cl_formatDateByWordpress($old_date){
+    $new_date = preg_replace("([^0-9/])", "",$old_date);
+    $new_date = str_replace('/', '-', $new_date);
+    $dateOk = false;
+    if ($dateFormate = \DateTime::createFromFormat('d-m-Y', $new_date)){
+        $dateOk = true;
+    }elseif($dateFormate = \DateTime::createFromFormat('Y-m-d', $new_date)){
+        $dateOk = true;
+    }elseif($dateFormate = \DateTime::createFromFormat('m-d-Y', $new_date)){
+        $dateOk = true;
+    }else{
+        $dateOk = false;
+    }
+    if ($dateOk === true){
+    $new_date =  wp_date( get_option( 'date_format' ), strtotime($new_date) );
+    return $new_date;
+    }else{
+        return $old_date;
+    }
+}
+
+function cl_searchGFormIdByClassCss($cl_classCss){
+    foreach (GFAPI::get_forms() as $form) {
+        if ($form['cssClass'] === $cl_classCss) {
+            // Store the Form ID
+            $form_id = $form['id'];
+            return $form_id;
+        }
+    }
 }
