@@ -270,12 +270,12 @@ class HelperServiceRequest {
         */
 
         $cl_sr_type_origin_id_field = get_field('sr_type_origin_id_field', 'options');
-        $cl_input_sr_fixed_ppc_value_id_field = get_field('sr_input_sr_fixed_ppc_value_id_field', 'options');
+        //$cl_input_sr_fixed_ppc_value_id_field = get_field('sr_input_sr_fixed_ppc_value_id_field', 'options');
         $cl_comp_par1 = $entry[get_field('sr_company_parameter_1', 'options')];
         $cl_comp_par2 = $entry[get_field('sr_company_parameter_2', 'options')];
 
         $cl_sr_type_origin = $entry[$cl_sr_type_origin_id_field];
-        $cl_sr_ppc_fixed = $entry[$cl_input_sr_fixed_ppc_value_id_field];
+        //$cl_sr_ppc_fixed = $entry[$cl_input_sr_fixed_ppc_value_id_field];
 
         $post = get_post( $post_id );
         global $wpdb;
@@ -289,7 +289,7 @@ class HelperServiceRequest {
         update_field( 'form_registry_id', $entry['id'], $post_id );
         update_field( 'rs_id_request_type' ,$post_id, $post_id );
         update_field( 'sr_type_origin' ,$cl_sr_type_origin, $post_id );
-        update_field( 'sr_fixed_ppc_value' ,$cl_sr_ppc_fixed, $post_id );
+        //update_field( 'sr_fixed_ppc_value' ,$cl_sr_ppc_fixed, $post_id );
         update_field( 'sr_company_par_1' ,$cl_comp_par1, $post_id );
         update_field( 'sr_company_par_2' ,$cl_comp_par2, $post_id );
 
@@ -491,7 +491,7 @@ class HelperServiceRequest {
 
             if(WEBSITE_SYSTEM == '1'){
                 if($x==12){ //valor de referencia
-                    update_field( 'reference_value', $a , $post_id );
+                    //update_field( 'reference_value', $a , $post_id );
 
                 } 
                 if($x==13){ //minimo
