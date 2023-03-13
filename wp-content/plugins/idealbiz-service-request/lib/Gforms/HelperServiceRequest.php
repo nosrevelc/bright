@@ -59,7 +59,7 @@ class HelperServiceRequest {
             'amount'           => -1
         );
 
-        // Procurar o campo onde está guardado o ID do membro selecionado. Usamos Classes CSS configuradas nos Fields.
+        // Procurar IDs dos campos a partir de Classes CSS configuradas nos Fields.
         foreach ( $form['fields'] as $field ) {
             if     ( str_contains( $field->cssClass, 'service-category-member-selection' ) ) {
                 $form_field_ids['member_selection'] = $field->id;
@@ -69,21 +69,22 @@ class HelperServiceRequest {
             }
         }
 
-        // Buscar valores preenchidos no formulário
+        // Cruzar IDs do Form para ler valores efetivos do $entry
         $member_id       = $entry[$form_field_ids['member_selection']];
         $reference_value = (float) $entry[$form_field_ids['amount']];
 
 
         // Buscar informação do membro para uso no cálculo
         $member_meta = array(
+            'idealbiz_support_expert' => (bool) get_field('idealbiz_support_expert', $member_id),
+
             'fixed_ppc'       => (bool)  get_field('fixed_ppc',       $member_id),
             'fixed_ppc_value' => (float) get_field('fixed_ppc_value', $member_id),
             'idb_tax'         => (float) get_field('idb_tax',         $member_id),
             'echelon_competency_factor'  => get_field('echelon_competency_factor', $member_id)
         );
 
-
-        // Campos que iremos calcular para o Service Request
+        // Campos que iremos calcular e persistir para o Service Request
         $sr_meta = array(
             'reference_value'    => $reference_value,  // Montante envolvido no negócio
             'sr_fixed_ppc_value' => 0.0,               // Comissão paga entre membros
@@ -97,29 +98,38 @@ class HelperServiceRequest {
 
         // Cálculo de preços
 
-        if( $member_meta['fixed_ppc'] == '1' ) {
+
+        if( $member_meta['idealbiz_support_expert'] ) {
+            // Enviar para o Customer Care
+            // Não calcular taxas, terão de ser preenchidas pelo Customer Care
+
+            $sr_meta['sr_fixed_ppc_value'] = 0.0;
+            $sr_meta['rs_comission']       = 0.0;
+        } elseif( $member_meta['fixed_ppc'] ) {
             // Membro usa taxa fixa
 
             $sr_meta['sr_fixed_ppc_value'] = $member_meta['fixed_ppc_value'];
             $sr_meta['rs_comission']       = $member_meta['fixed_ppc_value'] * $member_meta['idb_tax'] / 100;
         } else {
             // Membro usa taxas variáveis por escalão
+            $e_percent = 0.0;
+
             foreach ( $member_meta['echelon_competency_factor'] as $i => $e ) {
                 $e_begin   = (float) $e['begin_echelon'];
                 $e_finish  = (float) $e['finish_echelon'];
-                $e_percent = (float) $e['percentage'];
 
                 if ( $e_begin <= $reference_value && $reference_value <= $e_finish ) {
-                    $sr_meta['sr_fixed_ppc_value'] = $reference_value * $e_percent;
-                    $sr_meta['rs_comission']       = $sr_meta['sr_fixed_ppc_value'] * $member_meta['idb_tax'] / 100;
-
+                    $e_percent = (float) $e['percentage'];
                     break;
                 }
             }
+
+            $sr_meta['sr_fixed_ppc_value'] = $reference_value * $e_percent;
+            $sr_meta['rs_comission']       = $sr_meta['sr_fixed_ppc_value'] * $member_meta['idb_tax'] / 100;
         }
 
 
-        // Colocar valores calculados no Service Request
+        // Persistir valores calculados no Service Request
 
 
         if ( ! isset($post_data['meta_input']) ) {
@@ -139,8 +149,8 @@ class HelperServiceRequest {
                 }
 
                 // https://support.advancedcustomfields.com/forums/topic/meta_input-wp_insert_post-acf-gallery/
-                $post_data['meta_input']["{$key}"]  = $value;
-                $post_data['meta_input']["_{$key}"] = $acf_key;
+                $post_data['meta_input']["$key"]  = $value;
+                $post_data['meta_input']["_$key"] = $acf_key;
             }
         }
 
