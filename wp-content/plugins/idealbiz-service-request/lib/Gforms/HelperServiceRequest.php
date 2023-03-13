@@ -519,8 +519,8 @@ class HelperServiceRequest {
             $cl_member_data = get_userdata($cl_member_id);
             $cl_member_f_name = $cl_member_data->first_name;
             $cl_member_l_name = $cl_member_data->last_name;
-            $cl_valor_referencia = get_field('reference_value', $post_id);
-            $cl_date = get_field('delivery_date', $post_id);
+            $cl_valor_referencia = wc_price(get_field('reference_value', $post_id));
+            $cl_date = cl_formatDateByWordpress(get_field('delivery_date', $post_id)) ;
             $new_user_email = $current_user->user_email;
             $cl_servico = get_the_title($post_id);
             $service_requests_url = get_permalink(get_option('woocommerce_myaccount_page_id')) . 'service_request'.'/?home=1';
@@ -537,7 +537,7 @@ class HelperServiceRequest {
             $user_compliment .= '<br /><br /><b>'.__('Details data').':</b>';
             $user_compliment .= '<br />'.__('Reference:').' #'.$post_id;
             $user_compliment .= '<br />' . __('Conclusion Date: ') .' '. $cl_date;
-            $user_compliment .= '<br />' . __('Reference Value:') .' '. $cl_valor_referencia.__('Money Simbol');
+            $user_compliment .= '<br />' . __('Reference Value:') .' '. $cl_valor_referencia;
             $user_compliment .= '<br />' . __('Member:') .' '. $cl_member_f_name.' '.$cl_member_l_name;
             $user_compliment .='<br /><br /><b>' . __('Message:').'</b><br/>'. $cl_msg.'<br/><br />';
             $user_compliment .= sprintf(
@@ -571,7 +571,7 @@ class HelperServiceRequest {
         //Alteção Cleverson - Buscar email do costumercare para informar do novo serviço do expert.
         $customer_care = get_field('costumer_care_email', 'option');
 
-        $cl_reference_value = get_field('reference_value',$post_id,'');
+        $cl_reference_value = wc_price(get_field('reference_value',$post_id,''));
 
         $cl_servico_id = get_field('request_type',$post_id,'');
         //Cacula valor do serviço
@@ -585,6 +585,7 @@ class HelperServiceRequest {
         }else{
             $cl_v_para_member = $cl_sr_fixed_ppc_value;
         }
+        $cl_v_para_member = wc_price($cl_v_para_member);
 
         function get_product_category_by_id( $category_id ) {
             $term = get_term_by( 'id', $category_id, 'service_cat', 'ARRAY_A' );
@@ -637,7 +638,8 @@ class HelperServiceRequest {
                 if ($cl_rb_pay_lead_mode_value !='sr_not_pay'){
                     // to expert
                     // Contact Lead Purchase Codigo do email - 
-                    $cl_date = get_field('delivery_date', $post_id);
+                    $cl_date = cl_formatDateByWordpress(get_field('delivery_date', $post_id));
+
                     $cl_dateSendThis = get_the_date( 'd M Y', $post_id);
                     $subject = pll__('New service request in your account').' '.$cl_servico;
                     $hi = $subject;
@@ -649,8 +651,8 @@ class HelperServiceRequest {
                     $message .= '<br /><br /><b>'.__('Details data').':</b>';
                     $message .= '<br />'.__('Reference:').' #'.$post_id;
                     $message .= '<br />' . __('Conclusion Date: ') .' '. $cl_date;
-                    $message .=  __('with the Reference Value').' '.number_format((float)$cl_reference_value, 2, '.', '').__('Money Simbol');
-                    $message .= '<br />'.__('Lead purchase amount').':'.number_format((float)$cl_v_para_member, 2, '.', '').__('Money Simbol');
+                    $message .=  __('with the Reference Value').' '.$cl_reference_value;
+                    $message .= '<br />'.__('Lead purchase amount').':'.$cl_v_para_member;
                     $message .= '<br/>'.__('_str Your profile','idealbiz').' '.__('_str Mode','idealbiz').' '.$mode;
                     $message .= '<br /><br />'.__('To accept, decline or reference the Service Request go to your Orders Dashboard at:{{service_requests_page}}');
                     $message .= '<br /><br />'.__('Thank you');
@@ -694,8 +696,8 @@ class HelperServiceRequest {
 
                     $message  = __('Hello').' ' .' {{expert}}';
                     $message .= '<br/>'.__('_str Your profile','idealbiz').' '.__('_str Mode','idealbiz').' '.$mode;
-                    $message .= '<br />'.'<br />'.__('It received a new Service Request for its Area of Expertise').' '.$cl_servico.' '. __('with the Reference Value').' '.number_format((float)$cl_reference_value, 2, '.', '').__('Money Simbol');
-                    $message .= '<br />'.__('Lead purchase amount').':'.number_format((float)$cl_v_para_member, 2, '.', '').__('Money Simbol');
+                    $message .= '<br />'.'<br />'.__('It received a new Service Request for its Area of Expertise').' '.$cl_servico.' '. __('with the Reference Value').' '.$cl_reference_value;
+                    $message .= '<br />'.__('Lead purchase amount').':'.$cl_v_para_member;
                     $message .= '<br /><br />'.__('_str You have been referred by the member').' : '.$cl_display_name;
                     $message .= '<br />'.__('_str Email of the member who referred you').' : '.'<a href=mailto:"'.$mailadresje.'">'.$mailadresje.'</a>';
                     $message .= '<br /><br />'.__('To accept, decline or reference the Service Request go to your Orders Dashboard at:{{service_requests_page}}');
@@ -711,8 +713,8 @@ class HelperServiceRequest {
                     $headers = array('Content-Type: text/html; charset=UTF-8');
 
                     $message  = __('_str Hello').' ' .' {{expert}}';
-                    $message .= '<br />'.'<br />'.__('_str Received a Member Service Request Reference for its Area of Expertise').' '.$cl_servico.' '. __('with the Reference Value').' '.(double)$cl_reference_value.__('Money Simbol').'.<br />'.__('made by the Member').' <b><i>'.$cl_member_f_name.' '.$cl_member_l_name.'</b></i>.';
-                    $message .= '<br />'.__('_str Lead purchase amount').':'.(double)$cl_v_para_member.__('Money Simbol');
+                    $message .= '<br />'.'<br />'.__('_str Received a Member Service Request Reference for its Area of Expertise').' '.$cl_servico.' '. __('with the Reference Value').' '.$cl_reference_value.'.<br />'.__('made by the Member').' <b><i>'.$cl_member_f_name.' '.$cl_member_l_name.'</b></i>.';
+                    $message .= '<br />'.__('_str Lead purchase amount').':'.$cl_v_para_member;
                     $message .= '<br /><br />'.__('_str To accept, decline or reference the Service Request go to your Orders Dashboard at:{{service_requests_page}}');
                     $message .= '<br /><br />'.__('_str Thank you');
                     $message .= '<br />'.__('_str The iDealBiz Team');

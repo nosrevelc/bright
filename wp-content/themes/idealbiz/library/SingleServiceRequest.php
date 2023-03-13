@@ -62,7 +62,7 @@ class SingleServiceRequest {
 			<p style="font-size:13px;"><span class="small m-r-10">'.__('Nome:','idealbiz').'</span>'.get_field('customer')->display_name.'</p>';
 			//<p style="font-size:13px;"><span class="small m-r-10">'.__('Email:','idealbiz').'</span>'.get_field('customer')->user_email.'</p>
 			//<p style="font-size:13px;"><span class="small m-r-10">'.__('Phone:','idealbiz').'</span>'.get_field('service_request_phone').'</p>
-		$fm .= '<p style="font-size:13px;"><span class="small m-r-10">'.__('Delivery date:','idealbiz').'</span>'.get_field('delivery_date').'</p>
+		$fm .= '<p style="font-size:13px;"><span class="small m-r-10">'.__('Delivery date:','idealbiz').'</span>'.cl_formatDateByWordpress(get_field('delivery_date')).'</p>
 			<p style="font-size:13px;"><span class="small m-r-10">'.__('Message:','idealbiz').'</span>'.get_field('message').'</p>
 			';
 		$messages .= sprintf(
