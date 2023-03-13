@@ -55,53 +55,106 @@ class HelperServiceRequest {
 
     function calculate_service_request_fields( &$post_data, &$form, &$entry ) {
         $form_field_ids = array(
-            'member_selection' => -1
+            'member_selection' => -1,
+            'amount'           => -1
         );
 
         // Procurar o campo onde está guardado o ID do membro selecionado. Usamos Classes CSS configuradas nos Fields.
         foreach ( $form['fields'] as $field ) {
-            if ( str_contains( $field->cssClass, 'service-category-member-selection' ) ) {
+            if     ( str_contains( $field->cssClass, 'service-category-member-selection' ) ) {
                 $form_field_ids['member_selection'] = $field->id;
+            }
+            elseif ( str_contains( $field->cssClass, 'valor_referencia' ) ) {
+                $form_field_ids['amount'] = $field->id;
             }
         }
 
-        // Buscar info do membro
-        $member_id   = $entry[$form_field_ids['member_selection']];
-        $member      = get_post($member_id);
-        $member_meta = get_post_meta($member_id);
+        // Buscar valores preenchidos no formulário
+        $member_id       = $entry[$form_field_ids['member_selection']];
+        $reference_value = $entry[$form_field_ids['amount']];
 
-        //echo "<div><p>post_data</p>";
-        //echo var_dump($post_data);
-        //echo "</div><div><p>form</p>";
-        //echo var_dump($form);
-        //echo "</div><div><p>entry</p>";
-        //echo var_dump($entry);
-        //echo "</div><div><p>member</p>";
-        //echo var_dump($member);
-        //echo "</div><div><p>member_meta</p>";
-        //echo var_dump($member_meta);
-        //echo "</div>";
 
-        // Campos ACF que iremos calcular
-        $meta_acf_fields = array(
-            'sr_fixed_ppc_value' => array( 'acf_key' => '', 'value' => 0 )
+        // Buscar informação do membro para uso no cálculo
+        $member_meta = array(
+            'fixed_ppc'       =>  '0',
+            'fixed_ppc_value' => 0.0,
+            'idb_tax'         => 0.0,
+            'echelon_competency_factor' => array()
         );
-
-        if (true) {
-            return $post_data;
+        foreach ( $member_meta as $f ) {
+            $member_meta[$f] = get_field($f, $member_id);
         }
 
-        // Atribuir valores dos campos ACF ao post
-        // Documentação: https://support.advancedcustomfields.com/forums/topic/meta_input-wp_insert_post-acf-gallery/
+
+        // Campos que iremos calcular para o Service Request
+        $sr_meta = array(
+            'reference_value'    => $reference_value,
+            'sr_fixed_ppc_value' => 0.0,               // [GS] DÚVIDA: usamos sempre o sr_fixed_ppc_value ?
+            'rs_comission'       => 0.0                // [GS] DÚVIDA: usamos sempre o rs_comission ?
+        );
+
+        // Buscar definição ACF do Service Request
+        $sr_acf_definition = acf_get_field_groups(array(
+            array(
+                'param' => 'post_type',
+                'operator' => '==',
+                'value' => 'service_request',
+            )
+        ));
+
+
+        echo "<div><p>member_meta 2</p>";
+        echo var_dump($member_meta);
+        echo "</div><div><p>sr_acf_definition</p>";
+        echo var_dump($sr_acf_definition);
+        echo "</div>";
+
+
+        // Cálculo de preços
+
+        if( $member_meta['fixed_ppc'] == '1' ) {
+            // Membro usa taxa fixa
+
+            $sr_meta['sr_fixed_ppc_value'] = $member_meta['fixed_ppc_value'];
+            $sr_meta['rs_comission']       = $member_meta['fixed_ppc_value'] * $member_meta['idb_tax'];
+        } else {
+            // Membro usa taxas variáveis por escalão
+
+            foreach ( $member_meta['echelon_competency_factor'] as $e ) {
+                if ( $e['begin_echelon'] <= $reference_value && $reference_value <= $e['finish_echelon'] ) {
+                    $sr_value = $reference_value * $e['percentage'];
+
+                    $sr_meta['sr_fixed_ppc_value'] = $sr_value;
+                    $sr_meta['rs_comission']       = $sr_value * $idb_tax;
+
+                    break;
+                }
+            }
+        }
+
+
+        // Colocar valores calculados no Service Request
+
 
         if ( ! isset($post_data['meta_input']) ) {
             $post_data['meta_input'] = array();
         }
 
-        foreach ( $meta_acf_fields as $key => $info ) {
+        foreach ( $sr_meta as $key => $value ) {
             if( ! isset($post_data['meta_input'][$key]) ) {
-                $post_data['meta_input']["{$key}"]  = $info['value'];
-                $post_data['meta_input']["_{$key}"] = $info['acf_key'];
+                $acf_key = '';
+
+                // Buscar chave ACF para associar corretamente o campo
+                foreach ( $sr_acf_definition['fields'] as $f ) {
+                    if ( $f['name'] == $key ) {
+                        $acf_key = $f['key'];
+                        break;
+                    }
+                }
+
+                // https://support.advancedcustomfields.com/forums/topic/meta_input-wp_insert_post-acf-gallery/
+                $post_data['meta_input']["{$key}"]  = $value;
+                $post_data['meta_input']["_{$key}"] = $acf_key;
             }
         }
 
