@@ -154,6 +154,10 @@ class HelperServiceRequest {
             }
         }
 
+        echo "<div><p>post_data </p>";
+        echo var_dump($post_data);
+        echo "</div>";
+
         return $post_data;
     }
 
