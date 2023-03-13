@@ -76,14 +76,11 @@ class HelperServiceRequest {
 
         // Buscar informação do membro para uso no cálculo
         $member_meta = array(
-            'fixed_ppc'       =>  '0',
-            'fixed_ppc_value' => 0.0,
-            'idb_tax'         => 0.0,
-            'echelon_competency_factor' => array()
+            'fixed_ppc'       => (bool)  get_field('fixed_ppc',       $member_id),
+            'fixed_ppc_value' => (float) get_field('fixed_ppc_value', $member_id),
+            'idb_tax'         => (float) get_field('idb_tax',         $member_id),
+            'echelon_competency_factor'  => get_field('echelon_competency_factor', $member_id)
         );
-        foreach ( $member_meta as $f => $v ) {
-            $member_meta[$f] = get_field($f, $member_id);
-        }
 
 
         // Campos que iremos calcular para o Service Request
@@ -116,12 +113,14 @@ class HelperServiceRequest {
             $sr_meta['rs_comission']       = $member_meta['fixed_ppc_value'] * $member_meta['idb_tax'];
         } else {
             // Membro usa taxas variáveis por escalão
-            foreach ( $member_meta['echelon_competency_factor'] as $e ) {
-                if ( $e['begin_echelon'] <= $reference_value && $reference_value <= $e['finish_echelon'] ) {
-                    $sr_value = $reference_value * $e['percentage'];
+            foreach ( $member_meta['echelon_competency_factor'] as $i => $e ) {
+                $e_begin   = (float) $e['begin_echelon'];
+                $e_finish  = (float) $e['finish_echelon'];
+                $e_percent = (float) $e['percentage'];
 
-                    $sr_meta['sr_fixed_ppc_value'] = $sr_value;
-                    $sr_meta['rs_comission']       = $sr_value * $idb_tax;
+                if ( $e_begin <= $reference_value && $reference_value <= $e_finish ) {
+                    $sr_meta['sr_fixed_ppc_value'] = $reference_value * $e_percent;
+                    $sr_meta['rs_comission']       = $sr_meta['sr_fixed_ppc_value'] * $member_meta['idb_tax'];
 
                     break;
                 }
