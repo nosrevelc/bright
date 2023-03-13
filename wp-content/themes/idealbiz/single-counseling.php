@@ -530,7 +530,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
 
         console.log(`Values: ServiceCategory "${serviceCategoryValue}", Amount: "${amountValue}", Location: "${locationValue}"`);
 
-        if(serviceCategoryValue && amountValue) {
+        if(serviceCategoryValue && amountValue && locationValue) {
             console.log("AJAX: calling");
 
             jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsPlaceholderSelector).hide();

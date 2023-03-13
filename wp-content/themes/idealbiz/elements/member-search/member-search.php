@@ -43,7 +43,7 @@ $query_args = array(
     )
 );
 
-if($args['location'] !== '') {
+if($args['location'] !== '-1') {
     $query_args['tax_query'][] = array(
         'taxonomy' => 'location',
         'field'    => 'term_id',
