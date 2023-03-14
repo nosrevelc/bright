@@ -349,27 +349,31 @@ function service_request_form_pre_render( $form ) {
         }
     }
 
-    // Fields we want to track
+    // Campos do formulário que queremos interagir:
+    //   - id: ID do campo no GravityForms
+    //   - selector: ID para uso com jQuery
+    //   - onChange: Função a chamar quando campo for alterado
+    //   - prevValue: Valor anterior do campo (para detetar alterações)
     var GF_FIELDS = {
         fieldIdMap: {},
 
         SERVICE_CATEGORY: {
             id: "<?php echo "{$form_field_ids['service_category']}" ?>",
             selector: "<?php echo "#input_{$form_id}_{$form_field_ids['service_category']}" ?>",
-            prevValue: '',
-            onChange: onInputChangeMemberSearch
+            onChange: onInputChangeMemberSearch,
+            prevValue: ''
         },
         AMOUNT: {
             id: "<?php echo "{$form_field_ids['amount']}" ?>",
             selector: "<?php echo "#input_{$form_id}_{$form_field_ids['amount']}" ?>",
-            prevValue: '',
             onChange: onInputChangeMemberSearch
+            prevValue: ''
         },
         LOCATION: {
             id: "<?php echo "{$form_field_ids['location']}" ?>",
             selector: "<?php echo "#input_{$form_id}_{$form_field_ids['location']}" ?>",
-            prevValue: '',
-            onChange: onInputChangeMemberSearch
+            onChange: onInputChangeMemberSearch,
+            prevValue: ''
         },
 
         MEMBER_SEARCH_RESULTS: {
@@ -404,7 +408,7 @@ function service_request_form_pre_render( $form ) {
             var field = GF_FIELDS[GF_FIELDS.fieldIdMap[gfFieldId]];
             var currValue = jQuery(`#input_${gfFormId}_${gfFieldId}`).val();
 
-            // Only fire if value actually changes (GravityForms fires onChange for keyup+onchange events)
+            // Apenas disparar se houver alteração de valor (evitar eventos duplicados (keyup+onchange) pelo GravityForms)
             if(field.prevValue !== currValue) {
                 field.prevValue = currValue;
                 if(field.onChange) {
@@ -430,10 +434,10 @@ function service_request_form_pre_render( $form ) {
             jQuery.post({
                 url: "<?php echo admin_url('admin-ajax.php') ?>",
                 data: {
-                    /* WP Fields */
+                    // Campo obrigatório WP
                     action: "single_counseling_search_members",
 
-                    /* Our data fields */
+                    // Campos de pesquisa passados à action
                     service_category: serviceCategoryValue,
                     amount: amountValue,
                     location: locationValue
@@ -454,14 +458,14 @@ function service_request_form_pre_render( $form ) {
     function onClickMemberCard(event) {
         event.preventDefault();
 
-        // Find memberId from the selected card
+        // Identificar membro selecionado a partir do campo "member-id" no card
         var memberId = jQuery(event.currentTarget).data('member-id');
 
-        // Highlight the selected card
+        // Pintar o card selecionado
         jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsSelector).removeClass('active');
         jQuery(event.currentTarget).addClass('active');
 
-        // Update hidden field and notify Gravity Forms
+        // Atualizar campo escondido com ID do membro, e notificar o GravityForms
         jQuery(GF_FIELDS.MEMBER_SELECTION.selector).val(memberId);
         jQuery(GF_FIELDS.MEMBER_SELECTION.selector).trigger('change');
     }
