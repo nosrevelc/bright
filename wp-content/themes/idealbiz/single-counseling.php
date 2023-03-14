@@ -508,38 +508,6 @@ function service_request_form_pre_render( $form ) {
         $(GF_FIELDS.MEMBER_SEARCH_RESULTS.selector)
             .appendTo(GF_FIELDS.MEMBER_SELECTION.resultsPlaceholderSelector);
 
-        /*var gform_expert_validation_message = $('.experts_by_service_cat .validation_message');
-
-        if (gform_expert_validation_message.length > 0) {
-            var validation_message_expert = $('.validation_message_expert');
-            $('#contact-this-seller').addClass('error-expert-field');
-            validation_message_expert.css('color', gform_expert_validation_message.css('color'));
-            validation_message_expert.css('font-weight', gform_expert_validation_message.css('font-weight'));
-            validation_message_expert.text(gform_expert_validation_message.text());
-            validation_message_expert.css('display', 'block');
-        }
-
-        if ($(window).width() < 3000) {
-            $('#contact-this-seller').appendTo(".experts_by_service_cat");
-            $('.experts_by_service_cat').css('display', 'block');
-            $('.experts_by_service_cat > .gfield_label').css('display', 'none');
-            $('.experts_by_service_cat > .ginput_container').css('display', 'none');
-        }
-
-        $(window).on('resize', function() {
-            if ($(window).width() < 3000) {
-                $('#contact-this-seller').appendTo(".experts_by_service_cat");
-                $('.experts_by_service_cat').css('display', 'block');
-                $('.experts_by_service_cat > .gfield_label').css('display', 'none');
-                $('.experts_by_service_cat > .ginput_container').css('display', 'none');
-            } else {
-                $('#contact-this-seller').appendTo(".sidebar-service-message");
-                $('.experts_by_service_cat').css('display', 'none');
-                $('.experts_by_service_cat > .gfield_label').css('display', 'none');
-                $('.experts_by_service_cat > .ginput_container').css('display', 'none');
-            }
-        });*/
-
         gform.addFilter('gform_datepicker_options_pre_init', function(optionsObj, formId, fieldId) {
             optionsObj.minDate = 0;
             return optionsObj;
