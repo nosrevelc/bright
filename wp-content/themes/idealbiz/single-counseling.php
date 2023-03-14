@@ -396,7 +396,7 @@ function service_request_form_pre_render( $form ) {
         MEMBER_SELECTION: {
             id: "<?php echo "{$form_field_ids['member_selection']}" ?>",
             selector: "<?php echo "#input_{$form_id}_{$form_field_ids['member_selection']}" ?>",
-            resultsPlaceholderSelector: "<?php echo "field_{$form_id}_{$form_field_ids['member_selection']}" ?>"
+            resultsPlaceholderSelector: "<?php echo "#field_{$form_id}_{$form_field_ids['member_selection']}" ?>"
         }
     };
     (function() {
@@ -667,6 +667,10 @@ function service_request_form_pre_render( $form ) {
 
     .inline_label .ginput_container {
         margin-top: 0 !important;
+    }
+
+    .service-category-member-selection input {
+        display: none;
     }
 
     .valor_referencia,
