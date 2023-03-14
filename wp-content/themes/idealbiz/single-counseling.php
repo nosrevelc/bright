@@ -280,7 +280,13 @@ function service_request_form_pre_render( $form ) {
             </div>
         </div>
 
-        <div id="member-search-loader" class="loader" style="left: 50%; position: relative; margin-left: -15px; margin-top: 30px; display: none; "></div>
+        <div id="member-search-results">
+            <div class="loader" style="left: 50%; position: relative; margin-left: -15px; margin-top: 30px; display: none; ">
+            </div>
+            <div class="member-search-results-list">
+            </div>
+        </div>
+
 
         <?php
             //Tooltips: iziModal com a descrição dos campos
@@ -379,17 +385,18 @@ function service_request_form_pre_render( $form ) {
         MEMBER_SEARCH_RESULTS: {
             id: "<?php echo "{$form_field_ids['member_search_results']}" ?>",
 
-            loaderSelector: "#member-search-loader",
-            loaderPlaceholderSelector: ".service-category-member-search-results-loading",
+            selector: "#member-search-loader",
+            loaderSelector: "#member-search-loader .loader",
+            cardsPlaceholderSelector: "#member-search-loader .member-search-results-list",
 
-            cardsPlaceholderSelector: ".service-category-member-search-results-list",
             cardsSelector: ".expert-card",
             prevValue: ''
         },
 
         MEMBER_SELECTION: {
             id: "<?php echo "{$form_field_ids['member_selection']}" ?>",
-            selector: "<?php echo "#input_{$form_id}_{$form_field_ids['member_selection']}" ?>"
+            selector: "<?php echo "#input_{$form_id}_{$form_field_ids['member_selection']}" ?>",
+            resultsPlaceholderSelector: "<?php echo "field_{$form_id}_{$form_field_ids['member_selection']}" ?>"
         }
     };
     (function() {
@@ -491,8 +498,8 @@ function service_request_form_pre_render( $form ) {
     jQuery(document).ready(($) => {
         gform.addAction( 'gform_input_change', onInputChange );
 
-        $(GF_FIELDS.MEMBER_SEARCH_RESULTS.loaderSelector)
-            .appendTo(GF_FIELDS.MEMBER_SEARCH_RESULTS.loaderPlaceholderSelector);
+        $(GF_FIELDS.MEMBER_SEARCH_RESULTS.selector)
+            .appendTo(GF_FIELDS.MEMBER_SELECTION.resultsPlaceholderSelector);
 
         /*var gform_expert_validation_message = $('.experts_by_service_cat .validation_message');
 
