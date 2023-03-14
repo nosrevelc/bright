@@ -385,9 +385,9 @@ function service_request_form_pre_render( $form ) {
         MEMBER_SEARCH_RESULTS: {
             id: "<?php echo "{$form_field_ids['member_search_results']}" ?>",
 
-            selector: "#member-search-loader",
-            loaderSelector: "#member-search-loader .loader",
-            cardsPlaceholderSelector: "#member-search-loader .member-search-results-list",
+            selector: "#member-search-results",
+            loaderSelector: "#member-search-results .loader",
+            cardsPlaceholderSelector: "#member-search-results .member-search-results-list",
 
             cardsSelector: ".expert-card",
             prevValue: ''
