@@ -87,8 +87,9 @@ class HelperServiceRequest {
         // Campos que iremos calcular e persistir para o Service Request
         $sr_meta = array(
             'reference_value'    => $reference_value,  // Montante envolvido no negócio
-            'sr_fixed_ppc_value' => 0.0,               // Comissão paga entre membros
-            'rs_comission'       => 0.0                // Comissão paga à plataforma (IDB Tax)
+            'sr_fixed_ppc_value' => 0.0,               // Valor pago entre membros (se membro receber valor fixo por contacto)
+            'budget_max'         => 0.0,               // Valor pago entre membros (se membro receber valor variável)
+            'rs_comission'       => 0.0                // Valor pago à plataforma
         );
 
         // Buscar definição ACF do Service Request
@@ -104,28 +105,31 @@ class HelperServiceRequest {
             // Não calcular taxas, terão de ser preenchidas pelo Customer Care
 
             $sr_meta['sr_fixed_ppc_value'] = 0.0;
+            $sr_meta['budget_max']         = 0.0;
             $sr_meta['rs_comission']       = 0.0;
         } elseif( $member_meta['fixed_ppc'] ) {
             // Membro usa taxa fixa
 
             $sr_meta['sr_fixed_ppc_value'] = $member_meta['fixed_ppc_value'];
-            $sr_meta['rs_comission']       = $member_meta['fixed_ppc_value'] * $member_meta['idb_tax'] / 100;
+            $sr_meta['budget_max']         = 0.0;
+            $sr_meta['rs_comission']       = $member_meta['fixed_ppc_value'] * ($member_meta['idb_tax'] / 100);
         } else {
             // Membro usa taxas variáveis por escalão
             $e_percent = 0.0;
 
-            foreach ( $member_meta['echelon_competency_factor'] as $i => $e ) {
-                $e_begin   = (float) $e['begin_echelon'];
-                $e_finish  = (float) $e['finish_echelon'];
+            foreach ( $member_meta['echelon_competency_factor'] as $i => $echelon ) {
+                $echelon_begin   = (float) $echelon['begin_echelon'];
+                $echelon_finish  = (float) $echelon['finish_echelon'];
 
-                if ( $e_begin <= $reference_value && $reference_value <= $e_finish ) {
-                    $e_percent = (float) $e['percentage'];
+                if ( $echelon_begin <= $reference_value && $reference_value <= $echelon_finish ) {
+                    $echelon_percent = (float) $echelon['percentage'];
                     break;
                 }
             }
 
-            $sr_meta['sr_fixed_ppc_value'] = $reference_value * $e_percent;
-            $sr_meta['rs_comission']       = $sr_meta['sr_fixed_ppc_value'] * $member_meta['idb_tax'] / 100;
+            $sr_meta['sr_fixed_ppc_value'] = 0.0;
+            $sr_meta['budget_max']         = $reference_value * ($echelon_percent / 100);
+            $sr_meta['rs_comission']       = $sr_meta['budget_max'] * ($member_meta['idb_tax'] / 100);
         }
 
 
@@ -496,8 +500,7 @@ class HelperServiceRequest {
                 } 
                 if($x==8){ //máximo
                     $max= $a;
-                    update_field( 'budget_max', $a , $post_id );
-
+                    //update_field( 'budget_max', $a , $post_id );
                 } 
             }
 
