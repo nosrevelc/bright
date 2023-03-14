@@ -366,7 +366,7 @@ function service_request_form_pre_render( $form ) {
         AMOUNT: {
             id: "<?php echo "{$form_field_ids['amount']}" ?>",
             selector: "<?php echo "#input_{$form_id}_{$form_field_ids['amount']}" ?>",
-            onChange: onInputChangeMemberSearch
+            onChange: onInputChangeMemberSearch,
             prevValue: ''
         },
         LOCATION: {
