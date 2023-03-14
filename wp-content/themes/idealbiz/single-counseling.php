@@ -98,7 +98,7 @@ $cl_rid = $_GET['rid'];
 
 // Get the Form fields
 
-//Garante que não haja sessões criadas para isiciar novo processo se for membro.
+//Garante que não haja sessões criadas para iniciar novo processo se for membro.
 session_start();
 unset($_SESSION['membro']);
 unset($_SESSION['rid']);
@@ -113,9 +113,9 @@ $cl_sr_origin_sr_id_of_field = get_field('sr_origin_sr_id_of_field', 'options');
 $cl_sr_company_parameter_1 = get_field('sr_company_parameter_1', 'options');
 $cl_sr_company_parameter_2 = get_field('sr_company_parameter_2', 'options');
 
-// verifica se é membro para proceder a refereianção
+// verifica se é membro para proceder a referenciação
 if ($cl_membro) {
-    $_SESSION['rid'] = $_GET['rid'];//ID do Serviçe Resquest Original
+    $_SESSION['rid'] = $_GET['rid'];//ID do Service Request Original
     $_SESSION['sr'] =  $_GET['sr'];
 
     $cl_user = get_current_user_id();
