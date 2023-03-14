@@ -594,6 +594,9 @@ function service_request_form_pre_render( $form ) {
                     });
                 }
             });
+
+            // Workaround: Fazer uma nova pesquisa em caso de submissão com erro de modo a apresentar logo os resultados
+            $(GF_FIELDS.AMOUNT.selector).trigger('change');
             <?php
         }
         ?>
