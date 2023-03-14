@@ -293,111 +293,6 @@ function service_request_form_pre_render( $form ) {
     </div>
 </section>
 
-<?php
-
-//$terms =  wp_get_object_terms($post_id, 'service_cat', array('fields' => 'ids'));
-
-$post_args = array(
-    'posts_per_page' => -1,
-    'post_type' => 'expert',
-    'post_status' => 'publish'
-);
-
-$p = '';
-
-$location_aux = '<option value="all">' . __('All Locations', 'idealbiz') . '</option>';
-
-// GS: TODO: remover
-if (false) {
-    $myposts = get_posts($post_args);
-
-    foreach ($myposts as $post) {
-        $term_obj_list = get_the_terms($post->ID, 'service_cat');
-
-        $classes = '';
-        foreach ($term_obj_list as $t) {
-            $classes .= ' service_cat_' . $t->term_id;
-        }
-
-        $location_objs = get_the_terms($post->ID, 'location');
-        $location_as_classes = '';
-        foreach ($location_objs as $l) {
-            $location_as_classes = ' location_' . $l->slug;
-            if (strpos($location_aux, $l->slug) !== false) {
-                //echo 'true';
-            } else {
-                $location_aux .= '<option style="display: none;" value="' . $l->slug . '">' . $l->name . '</option>';
-            }
-        }
-
-        $show_expert = 1;
-
-        if (isset($_GET['sr'])) { 
-            $sexpert = get_field('consultant', $_GET['rid']); 
-            if ($sexpert->ID == get_user_by('email', get_field('expert_email', $post->ID))->ID) {
-                $show_expert = 0;
-            }
-        }
-
-        if ($show_expert) {
-            $fee = 1;
-            if ($USE_SR_SYSTEM_LEAD_PURCHASE) {
-                $userIDFee = get_user_by('email', get_field('expert_email', $post->ID))->ID;
-                if (!userHasActiveExpertFeeSubscription($userIDFee)) {
-                    $fee = 0;
-                }
-            }
-
-            $aux_class = '';
-            if (get_field('idealbiz_support_expert', $post->ID) == '1') {
-                $aux_class = ' customer_care ';
-                $fee = 1;
-            }
-
-            $escalao = get_field('echelon_competency_factor', $post->ID);
-            $cl_fixed_ppc_value = get_field('fixed_ppc_value',$post->ID);
-            /* var_dump($cl_fixed_ppc_value); */
-            $cl_sr_pay_lead_mode = '<span class="cl_icon-local dashicons dashicons-yes-alt"></span>'.consultLeadModeServiceRequest($post->ID,true);
-            
-            $array_ppc_fixo =json_encode($cl_fixed_ppc_value); 
-            $arry_escalao = json_encode($escalao);
-
-            //Este pedaço de codigo exibe na tela de forma legivel os escalões.
-            
-            if (isset($_GET['escalao'])){
-                foreach ($escalao as $key => $vazio) {
-                    $vazio['begin_echelon'];
-
-                    if ($vazio) {
-                        echo ' ' . get_the_title() . ' = ';
-                        foreach ($escalao as $key => $nivel) {
-                            //print_r($nivel);
-
-                            echo $nivel['begin_echelon'] . ' <> ';
-                            echo $nivel['finish_echelon'];
-                            echo ' - ' . $nivel['percentage'] . '% |';
-                        }
-                        echo '<br>';
-                        $vazio = '';
-                        break;
-                    }
-                }
-            }
-            
-            if ($fee == 1) {
-                $p .= '<div>';
-                $p .= '</div>';
-            }
-        }
-    }
-    wp_reset_postdata();
-}
-
-$p .= '<div class="not-found" style="display:none;"><p class="not-found">' . __('Experts not found.', 'idealbiz') . '</p></div>';
-
-$p .= '<span id="result_D" class="cl_aviso" ></span>';
-?>
-
 <style>
     .experts_by_service_cat,
     .experts_by_service_cat>.gfield_label,
@@ -595,124 +490,6 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
         $(GF_FIELDS.MEMBER_SEARCH_RESULTS.loaderSelector)
             .appendTo(GF_FIELDS.MEMBER_SEARCH_RESULTS.loaderPlaceholderSelector);
 
-        // Select the option with a value of '1'
-        // $('.single-counceling .ginput_container_custom_taxonomy select').val(< ?php echo $terms[0]; ? >);
-        
-        // Notify any JS components that the value changed
-
-        /*var sel = $('.location_expert_search');
-        sel.html('<?php echo $location_aux; ?>');
-        var selected = sel.val();
-        var opts_list = sel.find('option');
-        opts_list.sort(function(a, b) {
-            return $(a).text() > $(b).text() ? 1 : -1;
-        });
-        sel.html('').append(opts_list);
-        sel.val(selected);*/
-
-        /*$('.expert-card').on('click', function() {
-            $('.expert-card').each(function() {
-                $(this).removeClass('active');
-            });
-
-            $(this).addClass('active');
-            $('.experts_by_service_cat .gfield_select').val($(this).data('expert'));
-            $('.experts_by_service_cat .gfield_select').trigger('change');
-
-            //MODULO SELEÇÃO DE ESCALÃO CRIADO PELO CLEVERSON
-            var cont = 0;
-            var cl_vr = $('.valor_referencia input[type="text"]');
-            $(".expert-preview .expert-card").each(function() {  //Arry com os dados do escalao     
-                var cl_pre_escalao = $(this).data('escalao');
-                var cl_expert = $(this).data('expert');
-                var cl_ppc_fixo = $(this).data('ppc-fixo');
-
-                if (cl_pre_escalao!=null && $(this).hasClass('active')) {
-                    $(cl_pre_escalao).each(function(key, value) { 
-                        var cl_begin_echelon = parseInt(cl_pre_escalao[cont].begin_echelon);
-                        var cl_finish_echelon = parseInt(cl_pre_escalao[cont].finish_echelon);
-                        var cl_percentage = cl_pre_escalao[cont].percentage;
-
-                        //alert('cl_begin_echelon '+cl_begin_echelon+' cl_finish_echelon '+cl_finish_echelon+' cl_percentage ');
-                        
-                        if (cl_vr.val() >= cl_begin_echelon && cl_vr.val() <= cl_finish_echelon) {    
-                            var cl_orcamento = (cl_vr.val()*cl_percentage)/100;
-                            $('.maximo input[type="text"]').val(cl_orcamento);
-                            $('input[name="input_'+cl_id_campo_PPC_Fixo_SR+'"]').val(cl_ppc_fixo); 
-                            return false;
-                        }
-                        cont++;
-                    });
-                }
-            })
-        });*/
-
-        /*$('.single-counceling .ginput_container_custom_taxonomy select').on('change', function(event) {
-            event.preventDefault();
-            var id = $(this).val();
-            $('.expert-card').css('display', 'none');
-            $('.service_cat_' + id).css('display', 'flex');
-
-            var selected_location = $('.location_expert_search').val();
-
-            $('.location_expert_search option').css('display', 'block');
-            $('.service_cat_' + id).each(function() {
-                var locs = $(this).data('locations');
-
-                if (locs.indexOf(',') >= 0) {
-                    locs = $(this).data('locations').split(",");
-                }
-
-                for (var i = 0; i < locs.length; i++) {
-                    $('.location_expert_search option[value="' + locs[i] + '"]').css('display','block');
-                }
-            });
-
-            $('.location_expert_search option[value="all"]').css('display', 'block');
-
-            if($('.location_expert_search option[value="'+selected_location+'"]').css('display') === 'block'){
-                $('.location_expert_search option[value='+selected_location+']').attr('selected','selected');
-            } else {
-                $('.location_expert_search option[value=all]').attr('selected','selected');
-            }
-
-            $('.location_expert_search').trigger('change');
-        });
-        $('.single-counceling .ginput_container_custom_taxonomy select').trigger('change');*/
-
-        /*$('.location_expert_search').on('change', function(event) {
-            event.preventDefault();
-            $('.expert-preview').find('#result_D').html('');
-            
-            var val = $(this).val();
-            var found = 0;
-            var cat = $('.single-counceling .ginput_container_custom_taxonomy select').val();
-            if (val != 'all') {
-                $('.expert-preview .expert-card').each(function() {
-                    var l = $(this).data('locations');
-                    if (l.indexOf(val) >= 0 && $(this).hasClass('service_cat_' + cat)) {
-                        $(this).css('display', 'flex');
-                        found++;
-                        window.cl_care2 = 1
-                    } else {
-                        $(this).css('display', 'none');
-                        window.cl_care = 1
-                    }
-                });
-            } else {
-                $('.expert-preview .expert-card').each(function() {
-                    if ($(this).hasClass('service_cat_' + cat)) {
-                        $(this).css('display', 'flex');
-                        found++;
-                    } else {
-                        $(this).css('display', 'none');
-                    }
-                });
-
-            }
-            calc_F_G();
-        });*/
-
         /*var gform_expert_validation_message = $('.experts_by_service_cat .validation_message');
 
         if (gform_expert_validation_message.length > 0) {
@@ -751,27 +528,6 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
         });
 
         <?php
-        if (isset($_GET['sr'])) {
-            $rid = $_GET['rid'];
-            $user = get_field('customer', $_GET['rid']);
-            $sexpert = get_field('consultant', $_GET['rid']); // $sexpert->ID
-            ?>
-
-            /*$('.single-counceling .ginput_container_custom_taxonomy select').val(<?php echo $_GET['sr']; ?>).trigger('change');
-
-            $('.single-counceling .name_first input').val('<?php echo $user->first_name; ?>');
-            $('.single-counceling .name_last input').val('<?php echo $user->last_name; ?>');
-
-            $('.single-counceling .ginput_container_textarea textarea').val('<?php echo get_field('message', $rid); ?>').prop('disabled', true);
-            $('.single-counceling .ginput_container_phone input').val('<?php echo get_field('service_request_phone', $rid); ?>');
-            $('.single-counceling .ginput_container_date input').val('<?php echo get_field('delivery_date', $rid); ?>');
-
-            $('.single-counceling .valor_referencia input').val('<?php echo get_field('reference_value', $rid); ?>').prop('disabled', true);
-            $('.single-counceling .minimo input').val('<?php echo get_field('budget_min', $rid); ?>').prop('disabled', true);
-            $('.single-counceling .maximo input').val('<?php echo get_field('budget_max', $rid); ?>').prop('disabled', true);*/
-            <?php 
-        }
-
         if ($USE_SR_SYSTEM_3STEP_PURCHASE) {
             ?>
 
@@ -798,15 +554,11 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
 
             insertTooltips();
 
-            //$('.form-selector').find('form').append('<input type="hidden" name="idb_tax" value="" />');
-
             // Campos onde se insere o valor de Refrência, Mínimo e Máximo. 
             var currencySymbolHtml = `<span class="curr_symbol"><?php echo get_woocommerce_currency_symbol(); ?></span>`;
             $('.valor_referencia .ginput_container_text').append(currencySymbolHtml);
             $('.minimo .ginput_container_text').append(currencySymbolHtml);
             $('.maximo .ginput_container_text').append(currencySymbolHtml);
-            
-            //$('.valor_referencia .gfield_label').append('<span class="gfield_required">*</span>');*/
 
             //Bloquear autocomplete
             $(document).ready(function() {
@@ -831,104 +583,6 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
                     });
                 }
             });
-            
-            /*var vr = $('.valor_referencia input[type="text"]'); //Referência
-            var min = $('.minimo input[type="text"]'); //Mínimo
-            var max = $('.valor_referencia input[type="text"]'); //Referência
-            
-            //ON CHANGE - Valida Campo Máximo, verifica se é nulo 0 ou String CL
-            vr.on('change', function() {
-            var max = vr.val();
-                $('.expert-preview .not-found').css('display', 'none');
-                //Aqui o Orçamento passa a ter o mesmo valor do vr
-                calc_F_G();
-            });
-
-            //NPMM - ANULA ENTER DO MONTANTE ENVOLVIDO
-            $('#input_12_22').keypress(function(event){
-                var keycode = (event.keyCode ? event.keyCode : event.which);
-                if(keycode == '13'){
-                    //e.preventDefault();
-                    // alert('Select Expert');
-                    // $("#seleciona_expert").focus();
-                    return false;
-                }
-            });*/
-
-            //calculo fator de competencia -> f
-            
-            function calc_F_G() {
-                var count_competents = 0;
-                var v_ref = parseInt(vr.val());
-
-                //Valida valor de referência e máximo não são Nulos e String.
-                var ciclo_pai = 0; // Apagar depois
-                if (vr.val() != '' && !isNaN(vr.val())) {
-                    $('.expert-preview .customer_care').attr('style', '');
-
-                    $(".expert-preview .expert-card").each(function() {
-                        //var e = $(this).data('competencyfactor'); // Codigo antigo 
-                        //console.log(ciclo_pai + "-> Entrei ciclo Pai a variavel e é :" + e); // Apagar depois 
-                        var mostra_card = 0;
-                        var tx = '';
-                        var pre_escalao = $(this).data('escalao'); //Arry com os dados do escalao
-                        var i = 0;
-
-                        $(pre_escalao).each(function(key, value) { 
-                            var begin_echelon = parseInt(pre_escalao[i].begin_echelon);
-                            var finish_echelon = parseInt(pre_escalao[i].finish_echelon);
-                            var percentage = pre_escalao[i].percentage;
-                            window.cl_ini_echlon = begin_echelon;
-                            window.cl_fim_echlon = finish_echelon;
-                            //console.log(typeof v_ref); //Verifica o Typo do v_ref Ex: Saída -> number
-                            
-                            //console.log(" O Valor do percentagem que vou utlizar é : " + percentage); // Apagar depois
-                            //console.log(i + " ----> Estou TENTADO entrar no IF com VR= " + v_ref + " begin_echelon = " + begin_echelon + " finish_echelon = " + finish_echelon); // Apagar depois
-                            if (v_ref >= begin_echelon && v_ref <= finish_echelon) {                           
-                                //console.log(" CONSEGUI ENTRAR!!! no IF " + i + " com valor de ref : " + v_ref); // Apagar depois
-                                window.e = percentage;
-                                var calc_max = (v_ref/100)*e;
-                                window.orcamento = calc_max;
-                                var max = orcamento;
-                                
-                                return false;  
-                            }
-
-                            i++;
-                        });
-    
-                        //console.log(ciclo_pai + " -> Sai do ciclo Pai variavel e é :" + e); // Apagar depois
-                        ciclo_pai = ciclo_pai + 1;
-
-                        if (pre_escalao==null){
-                            $(this).addClass('non-competent');
-                        }   
-
-                        if (vr.val() >= cl_ini_echlon && vr.val() <= cl_fim_echlon) {
-                            $(this).removeClass('non-competent');
-                            window.cl_ini_echlon = '';
-                            window.cl_fim_echlon = '';
-                            count_competents++;
-                        } else {
-                            $(this).addClass('non-competent');  
-                        }
-                    });
-                    
-                    if (count_competents == 0 || cl_care == 1 && cl_care2 == '' ) {
-                            $('.expert-preview .customer_care').attr('style', 'display:flex !important;');
-                            $('.expert-preview').find('#result_D').html('<?php echo __($descicao[12][12]);?>');
-                    } else {
-                        $('.expert-preview .customer_care').attr('style', 'display:none !important;');
-                        cl_care2 = '';
-                    }
-                } else {
-                    $('.expert-preview .expert-card').each(function() {
-                        $(this).addClass('non-competent');
-                    });
-                }
-            }
-
-            //calc_F_G();
             <?php
         }
         ?>
