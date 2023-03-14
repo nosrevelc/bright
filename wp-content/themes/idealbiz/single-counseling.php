@@ -453,6 +453,13 @@ function service_request_form_pre_render( $form ) {
                     console.log("AJAX: call successful");
                     jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsPlaceholderSelector).show().html(xml);
                     jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsSelector).on("click", onClickMemberCard);
+
+                    // Se um membro tiver sido selecionado na pesquisa anterior, e aparecer na nova pesquisa, pré-selecioná-lo
+                    // (Workaround para casos de submissão com erro)
+                    var memberId = jQuery(GF_FIELDS.MEMBER_SELECTION.selector).val();
+                    if(memberId) {
+                        jQuery(`${GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsSelector}[data-member-id=${memberId}]`).click();
+                    }
                 }
             }).fail(function() {
                 console.error("AJAX: call failed");
