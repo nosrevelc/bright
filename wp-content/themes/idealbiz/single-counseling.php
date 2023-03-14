@@ -712,7 +712,7 @@ function service_request_form_pre_render( $form ) {
         background-color: #ffffff;
     }
 
-    .gfield_description {
+    .gfield_description:not(.gfield_validation_message) {
         display: none;
     }
 
