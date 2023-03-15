@@ -361,9 +361,9 @@ class HelperServiceRequest
         update_field('sr_company_par_2', $cl_comp_par2, $post_id);
 
         if ($cl_sr_type_origin === 'recommende_service' || $cl_sr_type_origin === 'normal_service') {
-            $cl_member_user_id = get_post_meta($post_id)['consultant'];
+            $cl_member_user_id = get_post_meta($post_id)['consultant'][0];
             //NPMM - Campos a Atualizar caso seja uma nova recomendação
-            update_field('consultant', $cl_member_user_id, $post_id);
+            //update_field('consultant', $cl_member_user_id, $post_id);
             $cl_Criador = $entry["created_by"];
             update_field('customer', $cl_Criador, $post_id);
         }
@@ -448,7 +448,15 @@ class HelperServiceRequest
         foreach ($_POST as $a) {
             //echo 'Clico x - '.$x.' Valor de A -'.$a.'<br>';
             if ($x == 0) {
-                $i = 0;
+
+                $user = get_field('consultant', $post_id, true);
+                $e_email = $user->user_email;
+                $e_name = $user->first_name . ' ' . $user->last_name;
+                $all_membro = isExpert(get_field('consultant', $post_id, false));
+                $id_membro = $all_membro[0]->ID;
+
+                $idb_tax = get_field('idb_tax', $id_membro);
+                /* $i = 0;
                 foreach ($_POST as $b) {
                     if ($i == 15) {
                         //echo 'Clico i  - '.$i.' Valor de b -'.$b.'<br>';
@@ -461,7 +469,7 @@ class HelperServiceRequest
                         //echo ('fator_de_compet'.$idb_tax);
                     }
                     $i++;
-                }
+                } */
             }
 
             //Alteração Cleverson  criar dados de contado para news service request.
@@ -577,13 +585,11 @@ class HelperServiceRequest
         if (WEBSITE_SYSTEM == '1') {
             //inicio enviar email a quem solicita o serviço
 
-            var_dump(get_post_meta($post_id)['member_id']);
-
             if (get_field('reference_value', $post_id)) {
                 $current_user = wp_get_current_user();
                 $cl_prev_ref = get_field('origin_sr', $post_id);
                 $cl_msg = get_field('message', $post_id);
-                $cl_member_id =get_post_meta($post_id)['member_id'];
+                $cl_member_id = get_field('consultant', $post_id, false); // Com flag false tras apenas o ID.           
                 $cl_member_data = get_userdata($cl_member_id);
                 $cl_member_f_name = $cl_member_data->first_name;
                 $cl_member_l_name = $cl_member_data->last_name;
@@ -600,7 +606,7 @@ class HelperServiceRequest
 
                 $subject = __('[idealBiz] You have a new service request in your account', 'idealbiz-service-request');
                 $hi = $subject;
-                $user_compliment  = __('Hello', 'idealbiz-service-request').$cl_member_data;
+                $user_compliment  = __('Hello', 'idealbiz-service-request');
                 $user_compliment .= ' ' . $cl_nameCurrenteUser . ',';
                 $user_compliment .= '<br /><br />' . __('_str Your order has been successfully submitted');
                 $user_compliment .= '<br /><br /><b>' . __('Details data') . ':</b>';
@@ -681,11 +687,17 @@ class HelperServiceRequest
             //$userexists = 'prestadordeservicos@idealbiz.io';// CV Teste despiste não faz redirect;
             
             
-            global $current_user;         
-            $userexists = $current_user->user_email;
+            
 
-            if (!$userexists) {
-                echo 'LINHA: ' . __LINE__ . '<br/>';
+            /* $userexists = get_field('expert_email',get_field('consultant', $post_id, false));
+            var_dump(get_field('consultant', $post_id, false));
+            var_dump($userexists);
+            $e_email = $userexists; */
+
+            $userexists = $e_email;
+
+            if ($userexists) {
+                //echo 'LINHA: ' . __LINE__ . '<br/>';
                 if (!get_field('is_referral', $post_id)) {
                     echo 'LINHA: ' . __LINE__ . '<br/>';
                     //CHECANDO MODO DA LEAD DO MEMBRO.
@@ -766,7 +778,7 @@ class HelperServiceRequest
 
 
                 if (get_field('is_referral', $post_id)) {
-                    echo 'LINHA: ' . __LINE__ . '<br/>';
+                        echo 'LINHA: ' . __LINE__ . '<br/>';
 
                     if ($_SESSION['membro']) {
                         echo 'LINHA: ' . __LINE__ . '<br/>';
@@ -823,7 +835,6 @@ class HelperServiceRequest
 
                 echo 'LINHA: ' . __LINE__ . '<br/>';
                 wp_mail($to, $subject, $emailHtml, $headers);
-                var_dump([$to, $subject, $emailHtml, $headers]);
                 echo 'LINHA: ' . __LINE__ . '<br/>';
 
                 // NPMM - REDIRECT TO FORM QUALIFICATION LEAD
