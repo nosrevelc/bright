@@ -91,13 +91,13 @@ class HelperServiceRequest
             'echelon_competency_factor'  => get_field('echelon_competency_factor', $member_id)
         );
 
-        // Campos que iremos calcular e persistir para o Service Request
+        // Campos do Service Request que iremos guardar na base de dados
         $sr_meta = array(
             'reference_value'    => $reference_value,  // Montante envolvido no negócio
-            'sr_fixed_ppc_value' => 0.0,               // Comissão paga entre membros
-            'rs_comission'       => 0.0,               // Comissão paga à plataforma (IDB Tax)
-            'consultant'         => $member_user_id,
-            'member_id'          => $member_id
+            'sr_fixed_ppc_value' => 0.0,               // Valor pago entre membros (se membro receber valor fixo por contacto)
+            'budget_max'         => 0.0,               // Valor pago entre membros (se membro receber valor variável)
+            'rs_comission'       => 0.0,               // Valor pago à plataforma
+            'consultant'         => $member_user_id
         );
 
         // Buscar definição ACF do Service Request
@@ -113,28 +113,31 @@ class HelperServiceRequest
             // Não calcular taxas, terão de ser preenchidas pelo Customer Care
 
             $sr_meta['sr_fixed_ppc_value'] = 0.0;
+            $sr_meta['budget_max']         = 0.0;
             $sr_meta['rs_comission']       = 0.0;
         } elseif ($member_meta['fixed_ppc']) {
             // Membro usa taxa fixa
 
             $sr_meta['sr_fixed_ppc_value'] = $member_meta['fixed_ppc_value'];
-            $sr_meta['rs_comission']       = $member_meta['fixed_ppc_value'] * $member_meta['idb_tax'] / 100;
+            $sr_meta['budget_max']         = 0.0;
+            $sr_meta['rs_comission']       = $member_meta['fixed_ppc_value'] * ($member_meta['idb_tax'] / 100);
         } else {
             // Membro usa taxas variáveis por escalão
-            $e_percent = 0.0;
+            $echelon_percent = 0.0;
 
-            foreach ($member_meta['echelon_competency_factor'] as $i => $e) {
-                $e_begin   = (float) $e['begin_echelon'];
-                $e_finish  = (float) $e['finish_echelon'];
+            foreach ($member_meta['echelon_competency_factor'] as $i => $echelon) {
+                $echelon_begin   = (float) $echelon['begin_echelon'];
+                $echelon_finish  = (float) $echelon['finish_echelon'];
 
-                if ($e_begin <= $reference_value && $reference_value <= $e_finish) {
-                    $e_percent = (float) $e['percentage'];
+                if ($echelon_begin <= $reference_value && $reference_value <= $echelon_finish) {
+                    $echelon_percent = (float) $echelon['percentage'];
                     break;
                 }
             }
 
-            $sr_meta['sr_fixed_ppc_value'] = $reference_value * $e_percent;
-            $sr_meta['rs_comission']       = $sr_meta['sr_fixed_ppc_value'] * $member_meta['idb_tax'] / 100;
+            $sr_meta['sr_fixed_ppc_value'] = 0.0;
+            $sr_meta['budget_max']         = $reference_value * ($echelon_percent / 100);
+            $sr_meta['rs_comission']       = $sr_meta['sr_fixed_ppc_value'] * ($member_meta['idb_tax'] / 100);
         }
 
 
@@ -166,8 +169,6 @@ class HelperServiceRequest
         return $post_data;
 
     }
-
-    
 
     public function gt($toTranslate, $domain = '')
     {
@@ -237,50 +238,7 @@ class HelperServiceRequest
 
         //error_log(print_r($entry,true));
 
-        /*
-            [id] => 1332
-            [status] => active
-            [form_id] => 12
-            [ip] => 95.92.116.156
-            [source_url] => https://idealbiz.eu/pt/pt/counseling/geral/
-            [currency] => EUR
-            [post_id] => 86654
-            [date_created] => 2023-01-27 09:36:10
-            [date_updated] => 2023-01-27 09:36:10
-            [is_starred] => 0
-            [is_read] => 0
-            [user_agent] => Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
-            [payment_status] =>
-            [payment_date] =>
-            [payment_amount] =>
-            [payment_method] =>
-            [transaction_id] =>
-            [is_fulfilled] =>
-            [created_by] => 3126
-            [transaction_type] =>
-            [10] => service_request
-            [6] =>
-            [1.2] =>
-            [1.3] => CLEVERSON
-            [1.4] =>
-            [1.6] => VIEIRA
-            [1.8] =>
-            [2] => cleverson.vieira@idealbiz.io
-            [3] => 999999999
-            [9] => 3073
-            [4] => Teste de registo dos parametros.
-            [24] => 3.5
-            [25] =>
-            [15] =>
-            [17] =>
-            [22] => 140
-            [23] =>
-            [13] => 2023-01-28
-            [12] => 83203
-            [27] => normal_service
-            [28] => 81.90
-            [29] => 30  //Parametro 1
-            [30] => 110  // Parametro 2
+        /*  var_dump($entry) exibe todos os dados capturado no form:
 
             [id] => 1390
             [status] => active
@@ -327,49 +285,39 @@ class HelperServiceRequest
             [28] => 
             [29] => 
             [30] => 
-
-
         */
 
         $cl_sr_type_origin_id_field = get_field('sr_type_origin_id_field', 'options');
-        //$cl_input_sr_fixed_ppc_value_id_field = get_field('sr_input_sr_fixed_ppc_value_id_field', 'options');
         $cl_comp_par1 = $entry[get_field('sr_company_parameter_1', 'options')];
         $cl_comp_par2 = $entry[get_field('sr_company_parameter_2', 'options')];
 
         $cl_sr_type_origin = $entry[$cl_sr_type_origin_id_field];
-        //$cl_sr_ppc_fixed = $entry[$cl_input_sr_fixed_ppc_value_id_field];
 
+
+
+        // Obter o Service Request que foi criado pelo GravityForms após a chamada ao create_service_request
+        // Iremos preencher alguns campos do Service Request usando o update_field
         $post = get_post($post_id);
-        //var_dump($post);
-        
-        //var_dump(get_post_meta($post_id));
-        //echo '--------------------------------------------';
-        
-        global $wpdb;
 
         if ($post->post_type !== 'service_request') {
             return;
         }
-        //var_dump(get_post_meta($post_id)['consultant']);
-        //NPMM - Vardampu abaixo exibe no momento da gração todos os dados capturado no form.
-        //var_dump($entry);
+
+        global $wpdb;
+
         update_field('form_registry_id', $entry['id'], $post_id);
         update_field('rs_id_request_type', $post_id, $post_id);
         update_field('sr_type_origin', $cl_sr_type_origin, $post_id);
-        //update_field( 'sr_fixed_ppc_value' ,$cl_sr_ppc_fixed, $post_id );
         update_field('sr_company_par_1', $cl_comp_par1, $post_id);
         update_field('sr_company_par_2', $cl_comp_par2, $post_id);
 
         if ($cl_sr_type_origin === 'recommende_service' || $cl_sr_type_origin === 'normal_service') {
-            $cl_member_user_id = get_post_meta($post_id)['consultant'][0];
             //NPMM - Campos a Atualizar caso seja uma nova recomendação
-            //update_field('consultant', $cl_member_user_id, $post_id);
             $cl_Criador = $entry["created_by"];
             update_field('customer', $cl_Criador, $post_id);
         }
 
         foreach ($form['fields'] as $field) {
-            //error_log(print_r($field, true));
 
             if ($field->type === 'custom_taxonomy' && $field->idealbizCustomTaxonomy === 'service_cat') {
                 if (!empty($entry[$field->id])) {
@@ -377,9 +325,7 @@ class HelperServiceRequest
                 }
             }
 
-            // Set default value for customer.
-
-            // CV Nota codigo abaixo esta obsoleto de acordo com o funcionamento actual, explanar ao Gonçalo.
+            // Criação de utilizador com valores default, caso seja pedido um Service Request em modo anónimo (sem login)
             if ($field->id == 2) {
                 $userexists = get_user_by('email', $entry[$field->id]);
                 if (!$userexists) {
@@ -393,7 +339,6 @@ class HelperServiceRequest
                         $subject = $this->gt('[idealBiz] You have a new account in our website', 'irs') . ' ' . $service_request_post->post_title;
                         $x = 0;
                         foreach ($_POST as $a) {
-                            var_dump($a);
                             if ($x == 10) {
                                 //get expert post_type
                                 $q_expert_post = "
@@ -440,36 +385,20 @@ class HelperServiceRequest
         $e_email = '';
         $e_name = '';
 
-
         $rv = 0; // valor de refenrecia
         $min = 0; // minimo
         $max = 0; // maximo
 
         foreach ($_POST as $a) {
             //echo 'Clico x - '.$x.' Valor de A -'.$a.'<br>';
-            if ($x == 0) {
 
+            if ($x == 0) {
                 $user = get_field('consultant', $post_id, true);
                 $e_email = $user->user_email;
                 $e_name = $user->first_name . ' ' . $user->last_name;
-                $all_membro = isExpert(get_field('consultant', $post_id, false));
-                $id_membro = $all_membro[0]->ID;
 
-                $idb_tax = get_field('idb_tax', $id_membro);
-                /* $i = 0;
-                foreach ($_POST as $b) {
-                    if ($i == 15) {
-                        //echo 'Clico i  - '.$i.' Valor de b -'.$b.'<br>';
-                        $user = get_user_by('email', get_field('expert_email', $b));
-                        $idb_tax = get_field('idb_tax', $b);
-                        $userId = $user->ID;
-                        $e_email = $user->user_email;
-                        $e_name = $user->first_name . ' ' . $user->last_name;
-                        //update_field( 'consultant', $userId , $post_id );
-                        //echo ('fator_de_compet'.$idb_tax);
-                    }
-                    $i++;
-                } */
+                $member_id = isExpert($user->ID)[0]->ID;
+                $idb_tax = get_field('idb_tax', $member_id);
             }
 
             //Alteração Cleverson  criar dados de contado para news service request.
@@ -506,29 +435,29 @@ class HelperServiceRequest
             }
 
             if ($_SESSION['membro']) {
-                /* echo ('Passei no 10-> '.$post_id. 'referenciado xxx'.$_SESSION['rid']); */
-                if ($_SESSION['membro']) {
-                    if ($cl_sr_type_origin === 'forward_service') {
-                        update_field('origin_sr', $_SESSION['membro'], $_SESSION['rid']);
-                        update_field('new_sr', $post_id, $_SESSION['rid']);
-                        update_field('state', __('Other Referenced Member'), $_SESSION['rid']);
-                        update_field('referral', $e_email, $post_id);
-                        update_field('is_referral', 1, $_SESSION['rid']);
-                    }
+                // echo ('Passei no 10-> '.$post_id. 'referenciado xxx'.$_SESSION['rid']);
 
-                    $current_user = wp_get_current_user();
-                    if (!session_id()) {
-                        session_start();
-                    }
+                if ($cl_sr_type_origin === 'forward_service') {
+                    update_field('origin_sr', $_SESSION['membro'], $_SESSION['rid']);
+                    update_field('new_sr', $post_id, $_SESSION['rid']);
+                    update_field('state', __('Other Referenced Member'), $_SESSION['rid']);
+                    update_field('referral', $e_email, $post_id);
+                    update_field('is_referral', 1, $_SESSION['rid']);
+                }
 
-                    $_SESSION['referral_system'] =
+                $current_user = wp_get_current_user();
+                if (!session_id()) {
+                    session_start();
+                }
+
+                $_SESSION['referral_system'] =
                         '<h3>
                                     - ' . $current_user->first_name . ' ' . $current_user->last_name . ' (' . $current_user->user_email . ')
                                     </h3>' . $this->gt('refered the expert:') . '
                                 <h3>- ' . $e_name . ' (' . $e_email . ')</h3><br/>
                                 <h5>' . $this->gt('To this Service Request:') . '</h5>';
 
-                    $_SESSION['referral_system_client'] =
+                $_SESSION['referral_system_client'] =
                         '<h3>
                                     ' . $this->gt('A Service Request was created for you') . '
                                     </h3>
@@ -539,9 +468,6 @@ class HelperServiceRequest
                                     <h4>- ' . $e_name . ' (' . $e_email . ')</h4><br/>
 
                                     <h5>' . $this->gt('Service Request details:') . '</h5>';
-                }
-                    /* var_dump('REFERAL SISTEM'.$_SESSION['referral_system']);
-                var_dump('REFERAL SISTEM CLIENTE'.$_SESSION['referral_system_client']) */;
             }
 
             /* if($x==11){ */
@@ -552,10 +478,10 @@ class HelperServiceRequest
                 update_field( 'new_sr' , $post_id, $_SESSION['rid'] );
                 update_field('state',__('Other Referenced Member'),$_SESSION['rid']);
 
-                $cl_member_id = get_field('consultant', $a,'');
-                $cl_member_data = get_userdata($cl_member_id);
-                $cl_member_f_name = $cl_member_data->first_name;
-                $cl_member_l_name = $cl_member_data->last_name;
+                $cl_member_id = get_field('consultant', $a, false);
+                $cl_member_userdata = get_userdata($cl_member_id);
+                $cl_member_f_name = $cl_member_userdata->first_name;
+                $cl_member_l_name = $cl_member_userdata->last_name;
 
             }  */
 
@@ -566,21 +492,18 @@ class HelperServiceRequest
             if (WEBSITE_SYSTEM == '1') {
                 if ($x == 12) { //valor de referencia
                     //update_field( 'reference_value', $a , $post_id );
-
                 }
                 if ($x == 13) { //minimo
                     update_field('budget_min', $a, $post_id);
                 }
                 if ($x == 8) { //máximo
                     $max = $a;
-                    update_field('budget_max', $a, $post_id);
+                    //update_field('budget_max', $a, $post_id);
                 }
             }
 
             $x++;
         }
-
-
 
         if (WEBSITE_SYSTEM == '1') {
             //inicio enviar email a quem solicita o serviço
@@ -589,14 +512,12 @@ class HelperServiceRequest
                 $current_user = wp_get_current_user();
                 $cl_prev_ref = get_field('origin_sr', $post_id);
                 $cl_msg = get_field('message', $post_id);
-                $cl_member_id = get_field('consultant', $post_id, false); // Com flag false tras apenas o ID.           
-                $cl_member_data = get_userdata($cl_member_id);
-                $cl_member_f_name = $cl_member_data->first_name;
-                $cl_member_l_name = $cl_member_data->last_name;
+                $cl_member_userdata = get_field('consultant', $post_id, true); // Com flag true tras o user completo
+                $cl_member_f_name = $cl_member_userdata->first_name;
+                $cl_member_l_name = $cl_member_userdata->last_name;
                 $cl_valor_referencia = wc_price(get_field('reference_value', $post_id));
                 $cl_date = cl_formatDateByWordpress(get_field('delivery_date', $post_id));
                 $new_user_email = $current_user->user_email;
-                //echo $new_user_email . ' LINHA: ' . __LINE__ . '<br/>';
                 $cl_servico = get_the_title($post_id);
                 $service_requests_url = get_permalink(get_option('woocommerce_myaccount_page_id')) . 'service_request' . '/?home=1';
 
@@ -634,7 +555,7 @@ class HelperServiceRequest
 
 
                 wp_mail($to, $subject, $emailHtml, $cl_headers);
-                
+
 
                 $subject2 = __('_str Service Proposal Request', 'idealbiz');
                 $to2 = get_field('costumer_care_email', 'option');
@@ -644,7 +565,6 @@ class HelperServiceRequest
                 $emailHtml .= get_email_intro('', $user_compliment, $hi2);
                 $emailHtml .= get_email_footer();
                 //wp_mail($to2,$subject2,$emailHtml,$cl_headers);
-                //CV Até aqui codigo correndo email acima sendo enviado.
             }
 
             //fim enviar email a quem solicita o serviço
@@ -652,14 +572,14 @@ class HelperServiceRequest
             //Alteção Cleverson - Buscar email do costumercare para informar do novo serviço do expert.
             $customer_care = get_field('costumer_care_email', 'option');
 
-            $cl_reference_value = wc_price(get_field('reference_value', $post_id, ''));
+            $cl_reference_value = wc_price(get_field('reference_value', $post_id, false));
 
-            $cl_servico_id = get_field('request_type', $post_id, '');
+            $cl_servico_id = get_field('request_type', $post_id, false);
             //Cacula valor do serviço
-            $cl_orcamento = get_field('budget_max', $post_id, '');
+            $cl_orcamento = get_field('budget_max', $post_id, false);
 
 
-            $cl_sr_fixed_ppc_value = get_field('sr_fixed_ppc_value', $post_id, '');
+            $cl_sr_fixed_ppc_value = get_field('sr_fixed_ppc_value', $post_id, false);
 
             if ($cl_sr_fixed_ppc_value == Null) {
                 $cl_v_para_member = ((int)$cl_orcamento * (int)$idb_tax) / 100;
@@ -676,37 +596,24 @@ class HelperServiceRequest
             $cl_servico = get_product_category_by_id($cl_servico_id);
 
 
-            $cl_new_member_id = get_field('consultant', $post_id, '');
+            $cl_new_member_id = get_field('consultant', $post_id, false);
             $cl_new_member_data = get_userdata($cl_new_member_id);
 
             if (!add_post_meta($post_id, 'website_system', '1', true)) {
                 update_post_meta($post_id, 'website_system', '1');
             }
-            //Não estava Funcionando, 12/07/21
-            /* $userexists = get_user_by( 'email', $entry[$field->id]); */
-            //$userexists = 'prestadordeservicos@idealbiz.io';// CV Teste despiste não faz redirect;
-            
-            
-            
-
-            /* $userexists = get_field('expert_email',get_field('consultant', $post_id, false));
-            var_dump(get_field('consultant', $post_id, false));
-            var_dump($userexists);
-            $e_email = $userexists; */
 
             $userexists = $e_email;
 
             if ($userexists) {
-                //echo 'LINHA: ' . __LINE__ . '<br/>';
                 if (!get_field('is_referral', $post_id)) {
-                    echo 'LINHA: ' . __LINE__ . '<br/>';
                     //CHECANDO MODO DA LEAD DO MEMBRO.
-                    $consultant = get_field('consultant', $post_id);
+                    $consultant = get_field('consultant', $post_id, true);
 
                     $current_user = $consultant;
-                    $id_expert = isExpert($current_user->ID);
+                    $id_expert = isExpert($current_user->ID)[0]->ID;
 
-                    $cl_rb_pay_lead_mode = get_field('sr_pay_lead_mode', $id_expert[0]->ID);
+                    $cl_rb_pay_lead_mode = get_field('sr_pay_lead_mode', $id_expert);
 
                     if ($cl_rb_pay_lead_mode === NULL) {
                         $cl_rb_pay_lead_mode = ['value' => 'sr_pay_before', 'label' => 'Pay Before'];
@@ -714,27 +621,20 @@ class HelperServiceRequest
                     $cl_rb_pay_lead_mode_value = $cl_rb_pay_lead_mode['value'];
 
 
-                    if ($cl_rb_pay_lead_mode === NULL) {
-                        $cl_rb_pay_lead_mode = ['value' => 'sr_pay_before', 'label' => 'Pay Before'];
-                    }
-
                     if ($cl_rb_pay_lead_mode['value'] === 'sr_pay_before') {
                         $mode = __('_str Pay Before', 'idealbiz');
                     }
                     if ($cl_rb_pay_lead_mode['value'] === 'sr_pay_later') {
                         $mode = __('_str Pay Later', 'idealbiz');
                     }
-
                     if ($cl_rb_pay_lead_mode['value'] === 'sr_not_pay') {
                         $mode = __('_str No Pay', 'idealbiz');
                     }
 
 
                     if ($cl_rb_pay_lead_mode_value != 'sr_not_pay') {
-                        echo 'LINHA: ' . __LINE__ . '<br/>';
-
                         // to expert
-                        // Contact Lead Purchase Codigo do email - 
+                        // Contact Lead Purchase Codigo do email -
                         $cl_date = cl_formatDateByWordpress(get_field('delivery_date', $post_id));
 
                         $cl_dateSendThis = get_the_date('d M Y', $post_id);
@@ -758,7 +658,6 @@ class HelperServiceRequest
                     }
 
                     if ($cl_rb_pay_lead_mode_value == 'sr_not_pay') {
-                        echo 'LINHA: ' . __LINE__ . '<br/>';
                         $subject = pll__('New service request in your account') . ' ' . $cl_servico;
                         $hi = $subject;
                         $to = $e_email . ',' . $customer_care; //Sr Alberto pediu para retirar a copia enviada para o Custumercare dia 30/06/2021 - Ativado dia 28/03/2022 Junto com Sofia.
@@ -778,10 +677,7 @@ class HelperServiceRequest
 
 
                 if (get_field('is_referral', $post_id)) {
-                        echo 'LINHA: ' . __LINE__ . '<br/>';
-
                     if ($_SESSION['membro']) {
-                        echo 'LINHA: ' . __LINE__ . '<br/>';
                         //BUSCAR QUEM REFERENCIOU
                         $user_id = get_current_user_id();
                         $user_info = get_userdata($user_id);
@@ -790,7 +686,7 @@ class HelperServiceRequest
                         //FIM BUSCAR QUEM REFERENCIOU
 
                         // to expert
-                        // Contact Lead Purchase Codigo do email - 
+                        // Contact Lead Purchase Codigo do email -
                         $subject = pll__('_str New reference service request') . ' ' . $cl_servico;
                         $hi = $subject;
                         $to = $e_email . ',' . $customer_care;
@@ -807,9 +703,8 @@ class HelperServiceRequest
                         $message .= '<br />' . __('The iDealBiz Team');
                         $message .= '<br/><span style="color:#ffffff;font-size:0.5em;">HSR03</span>';
                     } else {
-                        echo 'LINHA: ' . __LINE__ . '<br/>';
                         // to expert
-                        // Contact Lead Purchase Codigo do email - 
+                        // Contact Lead Purchase Codigo do email -
                         $subject = __('_str Received a new referral from the Member') . ' ' . $cl_member_f_name . ' ' . $cl_member_l_name;
                         $hi = __('New referencing between members');
                         $to = $e_email . ',' . $customer_care; //Sr Alberto pediu para retirar a copia enviada para o Custumercare dia 30/06/2021
@@ -833,15 +728,13 @@ class HelperServiceRequest
                 $emailHtml .= get_email_intro('', $message, $hi);
                 $emailHtml .= get_email_footer();
 
-                echo 'LINHA: ' . __LINE__ . '<br/>';
                 wp_mail($to, $subject, $emailHtml, $headers);
-                echo 'LINHA: ' . __LINE__ . '<br/>';
 
                 // NPMM - REDIRECT TO FORM QUALIFICATION LEAD
 
-
-                $cl_id_member_chosen = $entry[12];
-                $cl_emailMember = get_field('expert_email', $cl_id_member_chosen);
+                $cl_member_chosen = isExpert(get_field('consultant', $post_id, false))[0];
+                $cl_id_member_chosen = $cl_member_chosen->ID;
+                $cl_emailMember = $cl_member_chosen->expert_email;
                 $cl_page = get_the_guid(getIdByTemplate('page-qualificatio-lead.php'));
                 $cl_service_request = $post_id;
                 $cl_myservicedasboard_http = wc_get_endpoint_url('service_request', '', get_permalink(get_option('woocommerce_myaccount_page_id'))) . '?home=1';
@@ -855,10 +748,10 @@ class HelperServiceRequest
 
                 //ATENÇÃO AS SEÇÇÕES ESTÃO SENDO DESTRUDAS NO FICHEIRO ServiceRequest.php
                 /* session_start();
-            unset($_SESSION['membro']);
-            unset($_SESSION['rid']);
-            unset($_SESSION['sr']);
-            unset($_SESSION['email_referenciado']); */
+                unset($_SESSION['membro']);
+                unset($_SESSION['rid']);
+                unset($_SESSION['sr']);
+                unset($_SESSION['email_referenciado']); */
 
                 update_field('idb_competency_factor_percentage', $fc, $post_id);
             }
