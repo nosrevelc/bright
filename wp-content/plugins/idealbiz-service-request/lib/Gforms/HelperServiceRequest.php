@@ -731,9 +731,9 @@ class HelperServiceRequest
 
                 // NPMM - REDIRECT TO FORM QUALIFICATION LEAD
 
-                $cl_member_chosen = isExpert(get_field('consultant', $post_id, false))[0];
-                $cl_id_member_chosen = $cl_member_chosen->ID;
-                $cl_emailMember = $cl_member_chosen->expert_email;
+                $cl_id_member_chosen = $member_id;
+                $cl_emailMember = $e_email;
+
                 $cl_page = get_the_guid(getIdByTemplate('page-qualificatio-lead.php'));
                 $cl_service_request = $post_id;
                 $cl_myservicedasboard_http = wc_get_endpoint_url('service_request', '', get_permalink(get_option('woocommerce_myaccount_page_id'))) . '?home=1';
