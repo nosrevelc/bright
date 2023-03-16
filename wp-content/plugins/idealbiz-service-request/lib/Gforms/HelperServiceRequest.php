@@ -120,7 +120,7 @@ class HelperServiceRequest
             // Membro usa taxa fixa
 
             $sr_meta['sr_fixed_ppc_value'] = $member_meta['fixed_ppc_value'];
-            $sr_meta['budget_max']         = 0.0;
+            $sr_meta['budget_max']         = $member_meta['fixed_ppc_value'];
             $sr_meta['rs_comission']       = $member_meta['fixed_ppc_value'] * ($member_meta['idb_tax'] / 100);
         } else {
             // Membro usa taxas variáveis por escalão
@@ -386,9 +386,7 @@ class HelperServiceRequest
         $e_email = '';
         $e_name = '';
 
-        $rv = 0; // valor de refenrecia
-        $min = 0; // minimo
-        $max = 0; // maximo
+        $max = get_field('budget_max', $post_id); // maximo
 
         foreach ($_POST as $a) {
             //echo 'Clico x - '.$x.' Valor de A -'.$a.'<br>';
@@ -498,7 +496,7 @@ class HelperServiceRequest
                     update_field('budget_min', $a, $post_id);
                 }
                 if ($x == 8) { //máximo
-                    $max = $a;
+                    //$max = $a;
                     //update_field('budget_max', $a, $post_id);
                 }
             }
