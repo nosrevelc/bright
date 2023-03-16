@@ -137,7 +137,7 @@ class HelperServiceRequest
 
             $sr_meta['sr_fixed_ppc_value'] = 0.0;
             $sr_meta['budget_max']         = $reference_value * ($echelon_percent / 100);
-            $sr_meta['rs_comission']       = $sr_meta['sr_fixed_ppc_value'] * ($member_meta['idb_tax'] / 100);
+            $sr_meta['rs_comission']       = $sr_meta['budget_max'] * ($member_meta['idb_tax'] / 100);
         }
 
 
