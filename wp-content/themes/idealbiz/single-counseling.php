@@ -17,9 +17,7 @@ $form_field_ids = array(
     'service_category' => -1,
     'amount'           => -1,
     'location'         => -1,
-
-    'member_search_results' => -1,
-    'member_selection'      => -1
+    'member_selection' => -1
 );
 
 // Definição do funcionamento Service Request a partir da variável global "WEBSITE_SYSTEM"
@@ -48,9 +46,6 @@ foreach( GFAPI::get_forms() as $form ) {
             }
             elseif ( str_contains( $field->cssClass, 'service-request-location' ) ) {
                 $form_field_ids['location'] = $field->id;
-            }
-            elseif ( str_contains( $field->cssClass, 'service-category-member-search-results' ) ) {
-                $form_field_ids['member_search_results'] = $field->id;
             }
             elseif ( str_contains( $field->cssClass, 'service-category-member-selection' ) ) {
                 $form_field_ids['member_selection'] = $field->id;
@@ -383,20 +378,17 @@ function service_request_form_pre_render( $form ) {
         },
 
         MEMBER_SEARCH_RESULTS: {
-            id: "<?php echo "{$form_field_ids['member_search_results']}" ?>",
-
             selector: "#member-search-results",
             loaderSelector: "#member-search-results .loader",
             cardsPlaceholderSelector: "#member-search-results .member-search-results-list",
-
-            cardsSelector: ".expert-card",
-            prevValue: ''
+            cardsSelector: ".expert-card"
         },
 
         MEMBER_SELECTION: {
             id: "<?php echo "{$form_field_ids['member_selection']}" ?>",
             selector: "<?php echo "#input_{$form_id}_{$form_field_ids['member_selection']}" ?>",
-            resultsPlaceholderSelector: "<?php echo "#field_{$form_id}_{$form_field_ids['member_selection']}" ?>"
+            resultsPlaceholderSelector: "<?php echo "#field_{$form_id}_{$form_field_ids['member_selection']}" ?>",
+            prevValue: ''
         }
     };
     (function() {
