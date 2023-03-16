@@ -94,10 +94,11 @@ class HelperServiceRequest
         // Campos do Service Request que iremos guardar na base de dados
         $sr_meta = array(
             'reference_value'    => $reference_value,  // Montante envolvido no negócio
+            'consultant'         => $member_user_id,   // User a quem foi pedido o Service Request
+
             'sr_fixed_ppc_value' => 0.0,               // Valor pago entre membros (se membro receber valor fixo por contacto)
-            'budget_max'         => 0.0,               // Valor pago entre membros (se membro receber valor variável)
-            'rs_comission'       => 0.0,               // Valor pago à plataforma
-            'consultant'         => $member_user_id
+            'budget_max'         => 0.0,               // Valor pago entre membros (se membro receber valor variável por contacto)
+            'rs_comission'       => 0.0                // Valor pago à plataforma
         );
 
         // Buscar definição ACF do Service Request
