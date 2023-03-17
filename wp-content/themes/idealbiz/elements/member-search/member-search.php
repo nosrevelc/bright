@@ -16,6 +16,8 @@ function cl_repeater_field( $where ) {
 }
 add_filter( 'posts_where', 'cl_repeater_field' );
 
+$current_user_email = get_userdata(get_current_user_id())->user_email;
+
 $query_args = array(
     'post_type' => 'expert',
     'post_status' => 'publish',
@@ -39,6 +41,11 @@ $query_args = array(
             'compare' => '>=',
             'value'   => $args['amount'],
             'type' => 'NUMERIC'
+        ),
+        array(
+            'key'     => 'expert_email',
+            'compare' => '!=',
+            'value'   => $current_user_email
         )
     )
 );
