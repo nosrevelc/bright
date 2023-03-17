@@ -26,18 +26,16 @@ define( 'WP_CACHE', true ); // Added by WP Rocket
 /**ALL TIPE FILE */
 define('ALLOW_UNFILTERED_UPLOADS', true);
 
-define( 'DB_NAME', 'idealbizio');
+define( 'DB_NAME', 'idealbizeu_bd');
 /** MySQL database username */
-define( 'DB_USER', 'admin');
+define( 'DB_USER', 'idealbizeu_admin');
 /** MySQL database password */ 
-define( 'DB_PASSWORD', 'WGfAgWFYf!U9XD');
+define( 'DB_PASSWORD', 'unYwMsS8M3eEbEC2');
 /** MySQL hostname */
 
-/* define( 'DB_HOST', 'idb3tsmall.caao8fi1xh1g.eu-west-2.rds.amazonaws.com:3306'); */
 
-/* define( 'DB_HOST', 'db3tsmall20gb.caao8fi1xh1g.eu-west-2.rds.amazonaws.com:3306'); */
 
-define( 'DB_HOST', 'idb3tsmall20gb.caao8fi1xh1g.eu-west-2.rds.amazonaws.com:3306');
+define( 'DB_HOST', 'localhost:3306');
 
 
 
@@ -72,7 +70,7 @@ define('NONCE_SALT',       'UavWI,Dx&&)M-1X@7J#?OX9U>^<EBd-qgwI]&v4CN`z!*$C5V/+X
  */
 $table_prefix = 'ib_';
 $_SERVER['HTTPS'] = 'on';
-define('WP_MEMORY_LIMIT', '64M');
+define('WP_MEMORY_LIMIT', '1024M');
 define( 'WP_MAX_MEMORY_LIMIT', '2048M' );
 define( 'MEDIA_TRASH', true );
 /**
@@ -102,12 +100,12 @@ define( 'WP_DEBUG_DISPLAY', false );
 
 
 define( 'WPS_DEBUG', true );
-/* define('WP_HOME','https://idealbiz.io');
-define('WP_SITEURL','https://idealbiz.io'); */
+/* define('WP_HOME','https://idealbiz.eu');
+define('WP_SITEURL','https://idealbiz.eu'); */
 define('WP_ALLOW_MULTISITE', true);
 define('MULTISITE', true);
 define('SUBDOMAIN_INSTALL', false);
-define('DOMAIN_CURRENT_SITE', 'idealbiz.io');
+define('DOMAIN_CURRENT_SITE', 'idealbiz.eu');
 define('PATH_CURRENT_SITE', '/');
 define('SITE_ID_CURRENT_SITE', 1);
 define('BLOG_ID_CURRENT_SITE', 1);
