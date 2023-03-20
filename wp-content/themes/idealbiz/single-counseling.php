@@ -427,7 +427,7 @@ function service_request_form_pre_render( $form ) {
         var locationValue        = jQuery(GF_FIELDS.LOCATION.selector).val();
 
         if(serviceCategoryValue && amountValue && locationValue) {
-            console.log(`AJAX: calling with values {"ServiceCategory":"${serviceCategoryValue}", "Amount":"${amountValue}", "Location":"${locationValue}"}`);
+            console.debug(`AJAX: calling with values {"ServiceCategory":"${serviceCategoryValue}", "Amount":"${amountValue}", "Location":"${locationValue}"}`);
 
             jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsPlaceholderSelector).hide();
             jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.loaderSelector).show();
@@ -445,11 +445,11 @@ function service_request_form_pre_render( $form ) {
                 }
             }).done(function(xml, status, jqXhr) {
                 if(GF_FIELDS.MEMBER_SEARCH_RESULTS.prevRequest !== jqXhr) {
-                    console.log("AJAX: call skipped");
+                    console.debug("AJAX: call skipped");
                     return;
                 }
 
-                console.log("AJAX: call successful");
+                console.debug("AJAX: call successful");
                 jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsPlaceholderSelector).show().html(xml);
                 jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.loaderSelector).hide();
                 jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsSelector).on("click", onClickMemberCard);
@@ -462,7 +462,7 @@ function service_request_form_pre_render( $form ) {
                 }
             }).fail(function() {
                 if(GF_FIELDS.MEMBER_SEARCH_RESULTS.prevRequest !== jqXhr) {
-                    console.log("AJAX: call failure skipped");
+                    console.debug("AJAX: call failure skipped");
                     return;
                 }
 
