@@ -96,9 +96,9 @@ class HelperServiceRequest
             'reference_value'    => $reference_value,  // Montante envolvido no negócio
             'consultant'         => $member_user_id,   // User a quem foi pedido o Service Request
 
-            'sr_fixed_ppc_value' => 0.0,               // Valor pago entre membros (se membro receber valor fixo por contacto)
-            'budget_max'         => 0.0,               // Valor pago entre membros (se membro receber valor variável por contacto)
-            'rs_comission'       => 0.0                // Valor pago à plataforma
+            'sr_fixed_ppc_value' => NULL,               // Valor pago entre membros (se membro receber valor fixo por contacto)
+            'budget_max'         => NULL,               // Valor pago entre membros (se membro receber valor variável por contacto)
+            'rs_comission'       => NULL                // Valor pago à plataforma
         );
 
         // Buscar definição ACF do Service Request
@@ -113,15 +113,15 @@ class HelperServiceRequest
             // Enviar para o Customer Care
             // Não calcular taxas, terão de ser preenchidas pelo Customer Care
 
-            $sr_meta['sr_fixed_ppc_value'] = 0.0;
-            $sr_meta['budget_max']         = 0.0;
-            $sr_meta['rs_comission']       = 0.0;
+            $sr_meta['sr_fixed_ppc_value'] = NULL;
+            $sr_meta['budget_max']         = NULL;
+            $sr_meta['rs_comission']       = NULL;
         } elseif ($member_meta['fixed_ppc']) {
             // Membro usa taxa fixa
 
-            $sr_meta['sr_fixed_ppc_value'] = $member_meta['fixed_ppc_value'];
-            $sr_meta['budget_max']         = $member_meta['fixed_ppc_value'];
-            $sr_meta['rs_comission']       = $member_meta['fixed_ppc_value'] * ($member_meta['idb_tax'] / 100);
+            $sr_meta['sr_fixed_ppc_value'] = (float) $member_meta['fixed_ppc_value'];
+            $sr_meta['budget_max']         = NULL;
+            $sr_meta['rs_comission']       = (float) $member_meta['sr_fixed_ppc_value'] * ($member_meta['idb_tax'] / 100);
         } else {
             // Membro usa taxas variáveis por escalão
             $echelon_percent = 0.0;
@@ -136,9 +136,9 @@ class HelperServiceRequest
                 }
             }
 
-            $sr_meta['sr_fixed_ppc_value'] = 0.0;
-            $sr_meta['budget_max']         = $reference_value * ($echelon_percent / 100);
-            $sr_meta['rs_comission']       = $sr_meta['budget_max'] * ($member_meta['idb_tax'] / 100);
+            $sr_meta['sr_fixed_ppc_value'] = NULL;
+            $sr_meta['budget_max']         = (float) $reference_value * ($echelon_percent / 100);
+            $sr_meta['rs_comission']       = (float) $sr_meta['budget_max'] * ($member_meta['idb_tax'] / 100);
         }
 
 
