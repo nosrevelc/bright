@@ -308,7 +308,8 @@ $strings= array(
   '_str Opportunity',
   '_str Company',
   '_str Order By Name',
-  '_str Opportunity Proposal'
+  '_str Opportunity Proposal',
+  '_str New Service Recommendation'
 
 );
 
