@@ -240,7 +240,6 @@ class HelperServiceRequest
         //error_log(print_r($entry,true));
 
         /*  var_dump($entry) exibe todos os dados capturado no form:
-
             [id] => 1390
             [status] => active
             [form_id] => 12
@@ -465,23 +464,19 @@ class HelperServiceRequest
                                     - ' . $current_user->first_name . ' ' . $current_user->last_name . ' (' . $current_user->user_email . ')
                                     </h4>' . $this->gt('to expert:') . '
                                     <h4>- ' . $e_name . ' (' . $e_email . ')</h4><br/>
-
                                     <h5>' . $this->gt('Service Request details:') . '</h5>';
             }
 
             /* if($x==11){ */
             /* if($_SESSION['membro']){
                     echo ('Passei no 11 é o $a-> '.$a);
-
                 update_field( 'origin_sr', $_SESSION['membro'], $_SESSION['rid'] );
                 update_field( 'new_sr' , $post_id, $_SESSION['rid'] );
                 update_field('state',__('Other Referenced Member'),$_SESSION['rid']);
-
                 $cl_member_id = get_field('consultant', $a, false);
                 $cl_member_userdata = get_userdata($cl_member_id);
                 $cl_member_f_name = $cl_member_userdata->first_name;
                 $cl_member_l_name = $cl_member_userdata->last_name;
-
             }  */
 
             if ($x == 7) {
@@ -507,6 +502,12 @@ class HelperServiceRequest
         if (WEBSITE_SYSTEM == '1') {
             //inicio enviar email a quem solicita o serviço
 
+			if ($cl_sr_type_origin === 'recommende_service') {
+				$cl_subject = __('_str New Service Recommendation', 'idealbiz-service-request');
+			}else{
+				$cl_subject = __('[idealBiz] You have a new service request in your account', 'idealbiz-service-request');;
+			}
+
             if (get_field('reference_value', $post_id)) {
                 $current_user = wp_get_current_user();
                 $cl_prev_ref = get_field('origin_sr', $post_id);
@@ -524,7 +525,7 @@ class HelperServiceRequest
                 $to = $new_user_email;
                 $cl_headers = array('Content-Type: text/html; charset=UTF-8');
 
-                $subject = __('[idealBiz] You have a new service request in your account', 'idealbiz-service-request');
+                $subject = $cl_subject;
                 $hi = $subject;
                 $user_compliment  = __('Hello', 'idealbiz-service-request');
                 $user_compliment .= ' ' . $cl_nameCurrenteUser . ',';
