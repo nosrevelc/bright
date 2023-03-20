@@ -575,7 +575,7 @@ class HelperServiceRequest
 
             $cl_servico_id = get_field('request_type', $post_id, false);
             //Cacula valor do serviço
-            $cl_orcamento = get_field('budget_max', $post_id, false);
+            $cl_orcamento = get_field('budget_max', $post_id);
 
 
             $cl_sr_fixed_ppc_value = get_field('sr_fixed_ppc_value', $post_id, false);
