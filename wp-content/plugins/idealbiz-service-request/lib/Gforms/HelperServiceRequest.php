@@ -574,14 +574,11 @@ class HelperServiceRequest
             $cl_reference_value = wc_price(get_field('reference_value', $post_id, false));
 
             $cl_servico_id = get_field('request_type', $post_id, false);
-            //Cacula valor do serviço
-            $cl_orcamento = get_field('budget_max', $post_id);
 
-
+            // Valor do serviço
             $cl_sr_fixed_ppc_value = get_field('sr_fixed_ppc_value', $post_id, false);
-
             if ($cl_sr_fixed_ppc_value == Null) {
-                $cl_v_para_member = $cl_orcamento;
+                $cl_v_para_member = get_field('budget_max', $post_id, false);
             } else {
                 $cl_v_para_member = $cl_sr_fixed_ppc_value;
             }
