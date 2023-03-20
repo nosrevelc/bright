@@ -21,7 +21,7 @@
         top: 206px;
         left:15px;
         /* line-break: auto; */
-        line-height:1.2em ;
+        line-height:100% ;
         font-size: 1em;
         justify-content: center;
     }
