@@ -381,7 +381,9 @@ function service_request_form_pre_render( $form ) {
             selector: "#member-search-results",
             loaderSelector: "#member-search-results .loader",
             cardsPlaceholderSelector: "#member-search-results .member-search-results-list",
-            cardsSelector: ".expert-card"
+            cardsSelector: ".expert-card",
+
+            prevRequest: {}
         },
 
         MEMBER_SELECTION: {
@@ -430,7 +432,7 @@ function service_request_form_pre_render( $form ) {
             jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsPlaceholderSelector).hide();
             jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.loaderSelector).show();
 
-            jQuery.post({
+            GF_FIELDS.MEMBER_SEARCH_RESULTS.prevRequest = jQuery.post({
                 url: "<?php echo admin_url('admin-ajax.php') ?>",
                 data: {
                     // Campo obrigatório WP
@@ -440,22 +442,26 @@ function service_request_form_pre_render( $form ) {
                     service_category: serviceCategoryValue,
                     amount: amountValue,
                     location: locationValue
-                },
-                success: function(xml) {
-                    console.log("AJAX: call successful");
-                    jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsPlaceholderSelector).show().html(xml);
-                    jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsSelector).on("click", onClickMemberCard);
+                }
+            }).done(function(xml, status, jqXhr) {
+                if(GF_FIELDS.MEMBER_SEARCH_RESULTS.prevRequest !== jqXhr) {
+                    console.log("AJAX: call skipped");
+                    return;
+                }
 
-                    // Se um membro tiver sido selecionado na pesquisa anterior, e aparecer na nova pesquisa, pré-selecioná-lo
-                    // (Workaround para casos de submissão com erro)
-                    var memberId = jQuery(GF_FIELDS.MEMBER_SELECTION.selector).val();
-                    if(memberId) {
-                        jQuery(`${GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsSelector}[data-member-id=${memberId}]`).click();
-                    }
+                console.log("AJAX: call successful");
+                jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsPlaceholderSelector).show().html(xml);
+                jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsSelector).on("click", onClickMemberCard);
+
+                // Se um membro tiver sido selecionado na pesquisa anterior, e aparecer na nova pesquisa, pré-selecioná-lo
+                // (Workaround para casos de submissão com erro)
+                var memberId = jQuery(GF_FIELDS.MEMBER_SELECTION.selector).val();
+                if(memberId) {
+                    jQuery(`${GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsSelector}[data-member-id=${memberId}]`).click();
                 }
             }).fail(function() {
                 console.error("AJAX: call failed");
-            }).done(function() {
+            }).always(function() {
                 jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.loaderSelector).hide();
             });
         }
