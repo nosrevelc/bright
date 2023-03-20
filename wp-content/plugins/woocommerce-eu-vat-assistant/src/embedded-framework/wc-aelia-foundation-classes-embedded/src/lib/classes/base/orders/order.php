@@ -47,25 +47,10 @@ class Order extends \WC_Order {
 	 * @param mixed value The value to set.
 	 */
 	public function set_meta($meta_key, $value) {
-		update_post_meta($this->get_id(), $meta_key, $value);
-	}
-
-	/**
-	 * Returns the value of a meta attribute for the order.
-	 *
-	 * Updated for compatibilit with WC 2.7 in version 1.8.2.161216.
-	 *
-	 * @param string meta_key The key of the meta value to set.
-	 * @param bool $single return first found meta with key, or all with $key
-	 * @param string $context What the value is for. Valid values are view and edit.
-	 * @param mixed value The value to set.
-	 */
-	public function get_meta($key = '', $single = true, $context = 'view') {
-		if(method_exists('\WC_Order', __FUNCTION__)) {
-			return parent::get_meta($key, $single, $context);
-		}
-
-		return get_post_meta($this->get_id(), $key, $single);
+		// Use CRUD methods
+		// @since x.x
+		$this->update_meta_data($meta_key, $value);
+		$this->save_meta_data();
 	}
 
 	/**
@@ -233,7 +218,10 @@ class Order extends \WC_Order {
 	public function get_customer_vat_number() {
 		// Get the meta_key that contains the order number
 		$meta_key = apply_filters('wc_aelia_vat_number_meta_key', 'vat_number', $this);
-		return get_post_meta($this->get_id(), $meta_key, true);
+
+		// Use CRUD methods
+		// @since x.x
+		return $this->get_meta($meta_key);
 	}
 
 	/**

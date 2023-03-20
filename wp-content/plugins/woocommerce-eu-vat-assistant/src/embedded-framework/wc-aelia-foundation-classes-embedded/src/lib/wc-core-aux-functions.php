@@ -266,7 +266,7 @@ if(!function_exists('aelia_wc_registered_order_types')) {
 			$result = wc_get_order_types();
 			// Remove the "refund" order type, if requested
 			if(!$include_refunds && isset($result['shop_order_refund'])) {
-				unset($result['shop_order_refuns']);
+				unset($result['shop_order_refund']);
 			}
 		}
 		else {
@@ -381,5 +381,104 @@ if(!function_exists('aelia_set_object_read')) {
 		$original_value = $obj->get_object_read();
 		$obj->set_object_read($object_read);
 		return $original_value;
+	}
+}
+
+if(!function_exists('aelia_set_object_aux_data')) {
+	/**
+	 * Adds or replace the value of a piece of data in the data map.
+	 *
+	 * @param object $object
+	 * @param string $name
+	 * @param mixed $value
+	 * @return void
+	 * @since 2.3.0.220730
+	 */
+	function aelia_set_object_aux_data(object $object, string $name, $value): void {
+		\Aelia\WC\Object_Data_Tracking\Object_Data_Tracker::set_value($object, $name, $value);
+	}
+}
+
+if(!function_exists('aelia_get_object_aux_data')) {
+	/**
+	 * Returns the value of a piece of data from the data map linked to an object. If
+	 * the data is not found, null is returned.
+	 *
+	 * @param object $object
+	 * @param string $name
+	 * @return mixed
+	 * @since 2.3.0.220730
+	 */
+	function aelia_get_object_aux_data(object $object, $name) {
+		return \Aelia\WC\Object_Data_Tracking\Object_Data_Tracker::get_value($object, $name);
+	}
+}
+
+if(!function_exists('aelia_delete_object_aux_data')) {
+	/**
+	 * Adds or replace the value of a piece of data in the data map.
+	 *
+	 * @param object $object
+	 * @param string $name
+	 * @return void
+	 * @since 2.3.0.220730
+	 */
+	function aelia_delete_object_aux_data(object $object, string $name): void {
+		\Aelia\WC\Object_Data_Tracking\Object_Data_Tracker::delete_value($object, $name);
+	}
+}
+
+if(!function_exists('aelia_maybe_set_object_prop')) {
+	/**
+	 * Sets an object property, if that property exists against the object.
+	 * This function will be useful to set object properties that may be removed in
+	 * the future.
+	 *
+	 * @param object $object
+	 * @param string $name
+	 * @param mixed $value
+	 * @return void
+	 * @since 2.3.0.220730
+	 */
+	function aelia_maybe_set_object_prop(object $object, string $name, $value): void {
+		if(property_exists($object, $name)) {
+			$object->{$name} = $value;
+		}
+	}
+}
+
+if(!function_exists('aelia_declare_feature_support')) {
+	/**
+	 * Allows plugins to declare if a specific feature is supported.
+	 *
+	 * @param string $plugin_file
+	 * @param string $feature_name
+	 * @param bool $is_feature_supported
+	 * @return void
+	 * @since 2.4.0.230202
+	 */
+	function aelia_declare_feature_support(string $plugin_file, string $feature_name, bool $is_feature_supported): void {
+		if(class_exists(\Automattic\WooCommerce\Utilities\FeaturesUtil::class)) {
+			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility($feature_name, $plugin_file, $is_feature_supported);
+		}
+	}
+}
+
+if(!function_exists('aelia_is_hpos_feature_enabled')) {
+	/**
+	 * Indicates if the High Performance Order Tables feature is enabled.
+	 *
+	 * @return bool
+	 * @since 2.4.0.230202
+	 */
+	function aelia_is_hpos_feature_enabled(): bool {
+		if(class_exists('\Automattic\WooCommerce\Internal\DataStores\Orders\CustomOrdersTableController')) {
+			$hpos_enabled = wc_get_container()->get(\Automattic\WooCommerce\Internal\DataStores\Orders\CustomOrdersTableController::class)->custom_orders_table_usage_is_enabled();
+		}
+		else {
+			$hpos_enabled = false;
+		}
+
+		return $hpos_enabled;
 	}
 }
