@@ -581,7 +581,7 @@ class HelperServiceRequest
             $cl_sr_fixed_ppc_value = get_field('sr_fixed_ppc_value', $post_id, false);
 
             if ($cl_sr_fixed_ppc_value == Null) {
-                $cl_v_para_member = ((int)$cl_orcamento * (int)$idb_tax) / 100;
+                $cl_v_para_member = $cl_orcamento;
             } else {
                 $cl_v_para_member = $cl_sr_fixed_ppc_value;
             }
