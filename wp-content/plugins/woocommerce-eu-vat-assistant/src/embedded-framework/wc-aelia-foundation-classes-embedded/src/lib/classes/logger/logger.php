@@ -2,11 +2,9 @@
 namespace Aelia\WC;
 if(!defined('ABSPATH')) exit; // Exit if accessed directly
 
-use Monolog\Handler\StreamHandler;
-use Monolog\Handler\RotatingFileHandler ;
-use Monolog\Handler\LogglyHandler;
-use Monolog\Handler\ChromePHPHandler;
-use Monolog\Processor\ProcessIdProcessor;
+use Aelia\Dependencies\Monolog\Handler\RotatingFileHandler ;
+use Aelia\Dependencies\Monolog\Logger as Monolog_Logger;
+use Aelia\Dependencies\Monolog\Processor\ProcessIdProcessor;
 use \Exception;
 
 /**
@@ -54,12 +52,12 @@ class Logger {
 		$this->_debug_mode = $debug_mode;
 
 		if($debug_mode) {
-			$log_level = \Monolog\Logger::DEBUG;
+			$log_level = Monolog_Logger::DEBUG;
 
 			$this->init_debug_log_handlers();
 		}
 		else {
-			$log_level = \Monolog\Logger::NOTICE;
+			$log_level = Monolog_Logger::NOTICE;
 		}
 		$this->set_log_level($log_level);
 	}
@@ -70,10 +68,6 @@ class Logger {
 	 * @since 1.8.4.170118
 	 */
 	protected function init_debug_log_handlers() {
-		// The ChromePHPHandler seems to cause 404 errors, for some reason, and has
-		// been disabled. Errors verified with WC 3.3.1 and WordPress 4.9.4.
-		// @since 1.9.16.180213
-		//$this->logger->pushHandler(new ChromePHPHandler(\Monolog\Logger::DEBUG));
 	}
 
 	/**
@@ -357,19 +351,13 @@ class Logger {
 		$this->log_handlers = apply_filters('wc_aelia_log_handlers', array(
 			// Use a rotating file handler, to purge old log files automatically
 			// @since 2.0.19.200527
-			new RotatingFileHandler(self::get_log_file_name($this->log_id), apply_filters('wc_aelia_max_log_files', 30), \Monolog\Logger::NOTICE),
+			new RotatingFileHandler(self::get_log_file_name($this->log_id), apply_filters('wc_aelia_max_log_files', 30), Monolog_Logger::NOTICE),
 			// TODO Implement Loggly only if plugin is configured for that purpose
 			//new LogglyHandler('15fc33d6-ac21-44c2-a88e-a2d5bf4db398'),
 		), $this->log_id, $this);
 
-		$this->logger = new \MonoLog\Logger($this->log_id, $this->log_handlers);
+		$this->logger = new Monolog_Logger($this->log_id, $this->log_handlers);
 
-		// Only add the Process ID logger if the getmypid() function exists. Some
-		// hosting providers remove it for some reason.
-		// @since 1.9.8.171002
-		if(function_exists('getmypid')) {
-			$this->logger->pushProcessor(new ProcessIdProcessor());
-		}
 		$this->set_debug_mode($debug_mode);
 	}
 

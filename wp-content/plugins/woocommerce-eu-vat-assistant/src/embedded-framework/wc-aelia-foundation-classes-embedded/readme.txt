@@ -3,9 +3,9 @@ Contributors: daigo75, aelia
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=F8ND89AA8B8QJ
 Tags: woocommerce, utility, framework, aelia
 License: GPLv3
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 5.0
-Tested up to: 6.0.9
+Tested up to: 6.1.9
 
 Adds a set of classes that can simplify the development of other plugins for WooCommerce.
 
@@ -68,10 +68,39 @@ For more information about installation and management of plugins, please refer 
 
 == Upgrade Notice ==
 
-= 2.1.1 =
-This is a major update, which introduces several important changes. **The required PHP version is now 7.0 or newer**. Please make sure that your server is configured correctly, before installing this update.
+= 2.4.0 =
+This update adds support for the High Performance Order Storage feature. [We recommend to read the release notes and the upgrade guidelines](https://aelia.co/php-8-performance-improvements-compatibility/) before installing this update.
 
 == Changelog ==
+
+= 2.4.1.230214 =
+* Updated supported WooCommerce versions.
+
+= 2.4.0.230202 =
+* Feature - Added support for High Performance Order Storage feature.
+* Feature - Added function `aelia_declare_feature_support()`, to declare support for a specific feature.
+* Feature - Added function `aelia_is_hpos_feature_enabled()`, to detect if the High Performance Order Storage feature is enabled.
+
+= 2.3.5.230109 =
+* Updated supported WooCommerce versions.
+
+= 2.3.4.221203 =
+* Updated supported WooCommerce versions.
+
+= 2.3.3.221110 =
+* Updated supported WooCommerce versions.
+* Updated supported WordPress versions.
+
+= 2.3.2.221012 =
+* Updated supported WooCommerce versions.
+
+= 2.3.1.220830 =
+* Tweak - Added namespacing of Monolog dependency, to prevent the error caused by the version of that library bundled with WP Rocket.
+* Updated supported WooCommerce versions.
+
+= 2.3.0.220730 =
+* Improved compatibility with PHP 8.2. Introduced new logic to track auxiliary object data, without relying on dynamic properties.
+* Updated supported WooCommerce versions.
 
 = 2.2.9.220704 =
 * Updated supported WooCommerce versions.

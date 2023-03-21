@@ -44,7 +44,7 @@ id_Opportunity.value = '<?php echo $cl_id_Opportunity; ?>';
     /* keep it mobile friendly by only applying these styles for larger viewports */
 @media only screen and (min-width: 641px) {
   
-  body #gform_wrapper_67 { 
+  body <?php echo $cl_classBody ?> { 
    max-width: 50%;
    margin: 0 auto;
   }

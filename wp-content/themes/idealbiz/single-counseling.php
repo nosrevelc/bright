@@ -13,69 +13,54 @@ get_header();
 
 
 $form_id = -1;
-$form_fields = array(
-    'service_category' => array( 'id' => -1 ),
-    'amount'           => array( 'id' => -1 ),
-    'location'         => array( 'id' => -1 ),
-
-    'member_search_results' => array( 'id' => -1 ),
-    'member_selection'      => array( 'id' => -1 )
+$form_field_ids = array(
+    'service_category' => -1,
+    'amount'           => -1,
+    'location'         => -1,
+    'member_selection' => -1
 );
 
-$show_tooltips = (WEBSITE_SYSTEM == '1');  // Show tooltips on desktop
+// Definição do funcionamento Service Request a partir da variável global "WEBSITE_SYSTEM"
+$USE_SR_SYSTEM_3STEP_PURCHASE = (WEBSITE_SYSTEM == '' || WEBSITE_SYSTEM == '0');
+$USE_SR_SYSTEM_LEAD_PURCHASE  = (WEBSITE_SYSTEM == '1');
+
+
+// Informação das tooltips
+$show_tooltips = $USE_SR_SYSTEM_LEAD_PURCHASE;
 $form_tooltips = array();
 
-// Find the correct Gravity Form via CSS Class (configured on the form):
+// Descobrir o ID e campos do Gravity Form. Usamos uma Class CSS configurada no Form.
 foreach( GFAPI::get_forms() as $form ) {
     if ( $form['cssClass'] === 'service-request' ) {
-        // Store the Form ID
         $form_id = $form['id'];
 
-	echo '<div>';
-
-        // Find fields via CSS Class (configured on the fields):
+        // Descobrir campos com que queremos interagir. Usamos Classes CSS configuradas nos Fields.
         foreach( $form['fields'] as $field) {
-            $field_to_update  = '';
 
-            // Store fields we need to interact with in JavaScript
+            // Guardar ids que queremos passar para o código JavaScript
             if     ( str_contains( $field->cssClass, 'service-request-service-category' ) ) {
-                $field_to_update = 'service_category';
+                $form_field_ids['service_category'] = $field->id;
             }
             elseif ( str_contains( $field->cssClass, 'valor_referencia' ) ) {
-                $field_to_update = 'amount';
+                $form_field_ids['amount'] = $field->id;
             }
             elseif ( str_contains( $field->cssClass, 'service-request-location' ) ) {
-                $field_to_update = 'location';
-            }
-            elseif ( str_contains( $field->cssClass, 'service-category-member-search-results' ) ) {
-                $field_to_update = 'member_search_results';
+                $form_field_ids['location'] = $field->id;
             }
             elseif ( str_contains( $field->cssClass, 'service-category-member-selection' ) ) {
-                $field_to_update = 'member_selection';
+                $form_field_ids['member_selection'] = $field->id;
             }
 
-            if ( $field_to_update !== '' ) {
-                $form_fields[$field_to_update] = array( 'id' => $field->id );
-            }
-
-
-            // Store field information to generate tooltips
+            // Guardar IDs e descrições que queremos apresentar nas tooltips
             if ($show_tooltips) {
-                if ( $field->$description !== '' ) {
-			echo "<pre>";
-                	echo var_dump(array(
-                    		'id'          => $field->id,
-                    		'description' => $field->description,
-                    		'type'        => $field->type,
-                    		'visibility'  => $field->visibility,
-                	));
-			echo "</pre>";
-                    $form_tooltips[] = array( 'id' => $field->id, 'description' => $field->description );
+                if ( $field->type !== 'hidden' && $field->visibility === 'visible' && $field->type !== 'captcha' && $field->description ) {
+                    $form_tooltips[] = array(
+                        'id'          => $field->id,
+                        'description' => $field->description
+                    );
                 }
             }
         }
-
-	echo '</div>';
 
         break;
     }
@@ -108,7 +93,7 @@ $cl_rid = $_GET['rid'];
 
 // Get the Form fields
 
-//Garante que não haja sessões criadas para isiciar novo processo se for membro.
+//Garante que não haja sessões criadas para iniciar novo processo se for membro.
 session_start();
 unset($_SESSION['membro']);
 unset($_SESSION['rid']);
@@ -123,9 +108,9 @@ $cl_sr_origin_sr_id_of_field = get_field('sr_origin_sr_id_of_field', 'options');
 $cl_sr_company_parameter_1 = get_field('sr_company_parameter_1', 'options');
 $cl_sr_company_parameter_2 = get_field('sr_company_parameter_2', 'options');
 
-// verifica se é membro para proceder a refereianção
+// verifica se é membro para proceder a referenciação
 if ($cl_membro) {
-    $_SESSION['rid'] = $_GET['rid'];//ID do Serviçe Resquest Original
+    $_SESSION['rid'] = $_GET['rid'];//ID do Service Request Original
     $_SESSION['sr'] =  $_GET['sr'];
 
     $cl_user = get_current_user_id();
@@ -167,14 +152,65 @@ if ( have_posts() ) :
 endif;
 ?>
 
+
 <?php
-    //Tooltips: iziModal com a descrição dos campos
-    if ( $show_tooltips ) {
-        foreach( $form_tooltips as $tooltip ) {
-            infoModal('<h3>' . __($tooltip['description'], 'idealbiz') . '</h3>', "tooltip_{$tooltip['id']}", 'd-none');
+
+if($USE_SR_SYSTEM_LEAD_PURCHASE) {
+    add_filter( 'gform_field_value_valor_referencia', 'valor_referencia_population_function' );
+    function valor_referencia_population_function( $value ) {
+        return get_field('reference_value',$_GET['rid']);
+    }
+
+    add_filter( 'gform_field_value_minimo', 'minimo_population_function' );
+    function minimo_population_function( $value ) {
+        return get_field('budget_min',$_GET['rid']);
+    }
+
+    add_filter( 'gform_field_value_maximo', 'maximo_population_function' );
+    function maximo_population_function( $value ) {
+        return get_field('budget_max',$_GET['rid']);
+    }
+
+    add_filter( 'gform_field_value_data_entrega', 'data_entrega_population_function' );
+    function data_entrega_population_function( $value ) {
+        return get_field('delivery_date',$_GET['rid']);
+    }
+
+    add_filter( 'gform_field_value_mensagem', 'mensagem_population_function' );
+    function mensagem_population_function( $value ) {
+        return get_field('message',$_GET['rid']);
+    }
+}
+
+// Alterações ao formulário GravityForm $form_id
+add_filter( "gform_pre_render_{$form_id}", 'service_request_form_pre_render' );
+function service_request_form_pre_render( $form ) {
+    global $form_field_ids;
+
+    foreach ( $form['fields'] as &$field ) {
+
+        // Adicionar locations à Dropdown
+        if ( $field->id == $form_field_ids['location'] && $field->type === 'select' ) {
+            $terms = get_terms(
+                array(
+                    'taxonomy'   => 'location',
+                    'parent'     => 0,
+                    'orderby'    => 'name',
+                    'order'      => 'ASC'
+                )
+            );
+
+            foreach ( $terms as $term ) {
+                $field->choices[] = array( 'text' => $term->name, 'value' => $term->term_id );
+            }
         }
     }
+
+    return $form;
+}
+
 ?>
+
 
 <section class="single-counceling">
     <div class="container m-b-25">
@@ -188,7 +224,7 @@ endif;
         <div>
             <?php if($cl_membro && $cl_member_cat != false) : ?>
                 <div>
-                    <h1 style="text-align: center;">'.$cl_sr_Type_origin_tittle.' </h1>
+                    <h1 style="text-align: center;"><?php echo $cl_sr_Type_origin_tittle; ?> </h1>
                     <div></div>
                     <div></div>
                     <div></div>
@@ -225,62 +261,10 @@ endif;
         </form>
     </div>
 
+    <!-- Gravity Form: <?php echo $form_id ?> -->
+
     <div class="container m-b-25 form_sr_hidden " id="form_sr">
         <div class="div-to-align">
-            <?php 
-                if(WEBSITE_SYSTEM == '1') {
-                    add_filter( 'gform_field_value_valor_referencia', 'valor_referencia_population_function' );
-                    function valor_referencia_population_function( $value ) {
-                        return get_field('reference_value',$_GET['rid']);
-                    }
-
-                    add_filter( 'gform_field_value_minimo', 'minimo_population_function' );
-                    function minimo_population_function( $value ) {
-                        return get_field('budget_min',$_GET['rid']);
-                    }
-
-                    add_filter( 'gform_field_value_maximo', 'maximo_population_function' );
-                    function maximo_population_function( $value ) {
-                        return get_field('budget_max',$_GET['rid']);
-                    }
-
-                    add_filter( 'gform_field_value_data_entrega', 'data_entrega_population_function' );
-                    function data_entrega_population_function( $value ) {
-                        return get_field('delivery_date',$_GET['rid']);
-                    }
-
-                    add_filter( 'gform_field_value_mensagem', 'mensagem_population_function' );
-                    function mensagem_population_function( $value ) {
-                        return get_field('message',$_GET['rid']);
-                    }
-
-                    add_filter( "gform_pre_render_{$form_id}", 'service_request_form_pre_render' );
-                    function service_request_form_pre_render( $form ) {
-                        global $form_fields;
-
-                        foreach ( $form['fields'] as &$field ) {
-                            if ( $field->id == $form_fields['location']['id'] && $field->type === 'select' ) {
-                                $terms = get_terms(
-                                    array(
-                                        'taxonomy'   => 'location',
-                                        'parent'     => 0,
-                                        'orderby'    => 'name',
-                                        'order'      => 'ASC'
-                                    )
-                                );
-
-                                foreach ( $terms as $term ) {
-                                    $field->choices[] = array( 'text' => $term->name, 'value' => $term->term_id );
-                                }
-                            }
-                        }
-
-                        return $form;
-                    }
-                }
-            ?>
-
-            <!-- Gravity Form: <?php echo $form_id ?> -->
             <div class="d-flex flex-row flex-wrap justify-content-center container">
                 <p class="has-text-align-center">
                     <?php echo do_shortcode("[gravityform id=\"{$form_id}\" title=\"false\" description=\"false\"]") ?>
@@ -288,114 +272,24 @@ endif;
             </div>
         </div>
 
-        <div id="member-search-loader" class="loader" style="left: 50%; position: relative; margin-left: -15px; margin-top: 30px; display: none; "></div>
+        <div id="member-search-results">
+            <div class="loader" style="left: 50%; position: relative; margin-left: -15px; margin-top: 30px; display: none; ">
+            </div>
+            <div class="member-search-results-list">
+            </div>
+        </div>
+
+
+        <?php
+            //Tooltips: iziModal com a descrição dos campos
+            if ( $show_tooltips ) {
+                foreach( $form_tooltips as $tooltip ) {
+                    infoModal('<h3>' . __($tooltip['description'], 'idealbiz') . '</h3>', "tooltip_{$tooltip['id']}", 'd-none');
+                }
+            }
+        ?>
     </div>
 </section>
-
-<?php
-//$terms =  wp_get_object_terms($post_id, 'service_cat', array('fields' => 'ids'));
-
-$post_args = array(
-    'posts_per_page' => -1,
-    'post_type' => 'expert',
-    'post_status' => 'publish'
-);
-
-$p = '';
-
-$location_aux = '<option value="all">' . __('All Locations', 'idealbiz') . '</option>';
-
-// GS: TODO: remover
-if (false) {
-    $myposts = get_posts($post_args);
-
-    foreach ($myposts as $post) {
-        $term_obj_list = get_the_terms($post->ID, 'service_cat');
-
-        $classes = '';
-        foreach ($term_obj_list as $t) {
-            $classes .= ' service_cat_' . $t->term_id;
-        }
-
-        $location_objs = get_the_terms($post->ID, 'location');
-        $location_as_classes = '';
-        foreach ($location_objs as $l) {
-            $location_as_classes = ' location_' . $l->slug;
-            if (strpos($location_aux, $l->slug) !== false) {
-                //echo 'true';
-            } else {
-                $location_aux .= '<option style="display: none;" value="' . $l->slug . '">' . $l->name . '</option>';
-            }
-        }
-
-        $show_expert = 1;
-
-        if (isset($_GET['sr'])) { 
-            $sexpert = get_field('consultant', $_GET['rid']); 
-            if ($sexpert->ID == get_user_by('email', get_field('expert_email', $post->ID))->ID) {
-                $show_expert = 0;
-            }
-        }
-
-        if ($show_expert) {
-            $fee = 1;
-            if (WEBSITE_SYSTEM == '1') {
-                $userIDFee = get_user_by('email', get_field('expert_email', $post->ID))->ID;
-                if (!userHasActiveExpertFeeSubscription($userIDFee)) {
-
-                    $fee = 0;
-                }
-            }
-
-            $aux_class = '';
-            if (get_field('idealbiz_support_expert', $post->ID) == '1') {
-                $aux_class = ' customer_care ';
-                $fee = 1;
-            }
-
-            $escalao = get_field('echelon_competency_factor', $post->ID);
-            $cl_fixed_ppc_value = get_field('fixed_ppc_value',$post->ID);
-            /* var_dump($cl_fixed_ppc_value); */
-            $cl_sr_pay_lead_mode = '<span class="cl_icon-local dashicons dashicons-yes-alt"></span>'.consultLeadModeServiceRequest($post->ID,true);
-            
-            $array_ppc_fixo =json_encode($cl_fixed_ppc_value); 
-            $arry_escalao = json_encode($escalao);
-
-            //Este pedaço de codigo exibe na tela de forma legivel os escalões.
-            
-            if (isset($_GET['escalao'])){
-                foreach ($escalao as $key => $vazio) {
-                    $vazio['begin_echelon'];
-
-                    if ($vazio) {
-                        echo ' ' . get_the_title() . ' = ';
-                        foreach ($escalao as $key => $nivel) {
-                            //print_r($nivel);
-
-                            echo $nivel['begin_echelon'] . ' <> ';
-                            echo $nivel['finish_echelon'];
-                            echo ' - ' . $nivel['percentage'] . '% |';
-                        }
-                        echo '<br>';
-                        $vazio = '';
-                        break;
-                    }
-                }
-            }
-            
-            if ($fee == 1) {
-                $p .= '<div>';
-                $p .= '</div>';
-            }
-        }
-    }
-    wp_reset_postdata();
-}
-
-$p .= '<div class="not-found" style="display:none;"><p class="not-found">' . __('Experts not found.', 'idealbiz') . '</p></div>';
-
-$p .= '<span id="result_D" class="cl_aviso" ></span>';
-?>
 
 <style>
     .experts_by_service_cat,
@@ -453,43 +347,47 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
         }
     }
 
-    // Fields we want to track
+    // Campos do formulário que queremos interagir:
+    //   - id: ID do campo no GravityForms
+    //   - selector: ID para uso com jQuery
+    //   - onChange: Função a chamar quando campo for alterado
+    //   - prevValue: Valor anterior do campo (para detetar alterações)
     var GF_FIELDS = {
         fieldIdMap: {},
 
         SERVICE_CATEGORY: {
-            id: "<?php echo "{$form_fields['service_category']['id']}" ?>",
-            selector: "<?php echo "#input_{$form_id}_{$form_fields['service_category']['id']}" ?>",
-            prevValue: '',
-            onChange: onInputChangeMemberSearch
+            id: "<?php echo "{$form_field_ids['service_category']}" ?>",
+            selector: "<?php echo "#input_{$form_id}_{$form_field_ids['service_category']}" ?>",
+            onChange: onInputChangeMemberSearch,
+            prevValue: ''
         },
         AMOUNT: {
-            id: "<?php echo "{$form_fields['amount']['id']}" ?>",
-            selector: "<?php echo "#input_{$form_id}_{$form_fields['amount']['id']}" ?>",
-            prevValue: '',
-            onChange: onInputChangeMemberSearch
+            id: "<?php echo "{$form_field_ids['amount']}" ?>",
+            selector: "<?php echo "#input_{$form_id}_{$form_field_ids['amount']}" ?>",
+            onChange: onInputChangeMemberSearch,
+            prevValue: ''
         },
         LOCATION: {
-            id: "<?php echo "{$form_fields['location']['id']}" ?>",
-            selector: "<?php echo "#input_{$form_id}_{$form_fields['location']['id']}" ?>",
-            prevValue: '',
-            onChange: onInputChangeMemberSearch
-        },
-
-        MEMBER_SEARCH_RESULTS: {
-            id: "<?php echo "{$form_fields['member_search_results']['id']}" ?>",
-
-            loaderSelector: "#member-search-loader",
-            loaderPlaceholderSelector: ".service-category-member-search-results-loading",
-
-            cardsPlaceholderSelector: ".service-category-member-search-results-list",
-            cardsSelector: ".expert-card",
+            id: "<?php echo "{$form_field_ids['location']}" ?>",
+            selector: "<?php echo "#input_{$form_id}_{$form_field_ids['location']}" ?>",
+            onChange: onInputChangeMemberSearch,
             prevValue: ''
         },
 
+        MEMBER_SEARCH_RESULTS: {
+            selector: "#member-search-results",
+            loaderSelector: "#member-search-results .loader",
+            cardsPlaceholderSelector: "#member-search-results .member-search-results-list",
+            cardsSelector: ".expert-card",
+
+            prevRequest: {}
+        },
+
         MEMBER_SELECTION: {
-            id: "<?php echo "{$form_fields['member_selection']['id']}" ?>",
-            selector: "<?php echo "#input_{$form_id}_{$form_fields['member_selection']['id']}" ?>"
+            id: "<?php echo "{$form_field_ids['member_selection']}" ?>",
+            selector: "<?php echo "#input_{$form_id}_{$form_field_ids['member_selection']}" ?>",
+            resultsPlaceholderSelector: "<?php echo "#field_{$form_id}_{$form_field_ids['member_selection']}" ?>",
+            prevValue: ''
         }
     };
     (function() {
@@ -504,13 +402,11 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
     })();
 
     function onInputChange( gfElem, gfFormId, gfFieldId ) {
-        console.log('Change detected for ', gfElem, ', Form Id: "', gfFormId, '", Field Id: "', gfFieldId, '"');
-
         if(GF_FIELDS.fieldIdMap[gfFieldId]) {
             var field = GF_FIELDS[GF_FIELDS.fieldIdMap[gfFieldId]];
             var currValue = jQuery(`#input_${gfFormId}_${gfFieldId}`).val();
 
-            // Only fire if value actually changes (GravityForms fires onChange for keyup+onchange events)
+            // Apenas disparar se houver alteração de valor (evitar eventos duplicados (keyup+onchange) pelo GravityForms)
             if(field.prevValue !== currValue) {
                 field.prevValue = currValue;
                 if(field.onChange) {
@@ -527,33 +423,47 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
         var amountValue          = jQuery(GF_FIELDS.AMOUNT.selector).val();
         var locationValue        = jQuery(GF_FIELDS.LOCATION.selector).val();
 
-        console.log(`Values: ServiceCategory "${serviceCategoryValue}", Amount: "${amountValue}", Location: "${locationValue}"`);
-
-        if(serviceCategoryValue && amountValue) {
-            console.log("AJAX: calling");
+        if(serviceCategoryValue && amountValue && locationValue) {
+            console.debug(`AJAX: calling with values {"ServiceCategory":"${serviceCategoryValue}", "Amount":"${amountValue}", "Location":"${locationValue}"}`);
 
             jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsPlaceholderSelector).hide();
             jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.loaderSelector).show();
 
-            jQuery.post({
+            GF_FIELDS.MEMBER_SEARCH_RESULTS.prevRequest = jQuery.post({
                 url: "<?php echo admin_url('admin-ajax.php') ?>",
                 data: {
-                    /* WP Fields */
+                    // Campo obrigatório WP
                     action: "single_counseling_search_members",
 
-                    /* Our data fields */
+                    // Campos de pesquisa passados à action
                     service_category: serviceCategoryValue,
                     amount: amountValue,
                     location: locationValue
-                },
-                success: function(xml) {
-                    console.log("AJAX: call successful");
-                    jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsPlaceholderSelector).show().html(xml);
-                    jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsSelector).on("click", onClickMemberCard);
+                }
+            }).done(function(xml, status, jqXhr) {
+                if(GF_FIELDS.MEMBER_SEARCH_RESULTS.prevRequest !== jqXhr) {
+                    console.debug("AJAX: call skipped");
+                    return;
+                }
+
+                console.debug("AJAX: call successful");
+                jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsPlaceholderSelector).show().html(xml);
+                jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.loaderSelector).hide();
+                jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsSelector).on("click", onClickMemberCard);
+
+                // Se um membro tiver sido selecionado na pesquisa anterior, e aparecer na nova pesquisa, pré-selecioná-lo
+                // (Workaround para casos de submissão com erro)
+                var memberId = jQuery(GF_FIELDS.MEMBER_SELECTION.selector).val();
+                if(memberId) {
+                    jQuery(`${GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsSelector}[data-member-id=${memberId}]`).click();
                 }
             }).fail(function() {
+                if(GF_FIELDS.MEMBER_SEARCH_RESULTS.prevRequest !== jqXhr) {
+                    console.debug("AJAX: call failure skipped");
+                    return;
+                }
+
                 console.error("AJAX: call failed");
-            }).done(function() {
                 jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.loaderSelector).hide();
             });
         }
@@ -562,14 +472,14 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
     function onClickMemberCard(event) {
         event.preventDefault();
 
-        // Find memberId from the selected card
+        // Identificar membro selecionado a partir do campo "member-id" no card
         var memberId = jQuery(event.currentTarget).data('member-id');
 
-        // Highlight the selected card
+        // Pintar o card selecionado
         jQuery(GF_FIELDS.MEMBER_SEARCH_RESULTS.cardsSelector).removeClass('active');
         jQuery(event.currentTarget).addClass('active');
 
-        // Update hidden field and notify Gravity Forms
+        // Atualizar campo escondido com ID do membro, e notificar o GravityForms
         jQuery(GF_FIELDS.MEMBER_SELECTION.selector).val(memberId);
         jQuery(GF_FIELDS.MEMBER_SELECTION.selector).trigger('change');
     }
@@ -595,185 +505,25 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
     jQuery(document).ready(($) => {
         gform.addAction( 'gform_input_change', onInputChange );
 
-        $(GF_FIELDS.MEMBER_SEARCH_RESULTS.loaderSelector)
-            .appendTo(GF_FIELDS.MEMBER_SEARCH_RESULTS.loaderPlaceholderSelector);
-
-        // Select the option with a value of '1'
-        // $('.single-counceling .ginput_container_custom_taxonomy select').val(< ?php echo $terms[0]; ? >);
-        
-        // Notify any JS components that the value changed
-
-        /*var sel = $('.location_expert_search');
-        sel.html('<?php echo $location_aux; ?>');
-        var selected = sel.val();
-        var opts_list = sel.find('option');
-        opts_list.sort(function(a, b) {
-            return $(a).text() > $(b).text() ? 1 : -1;
-        });
-        sel.html('').append(opts_list);
-        sel.val(selected);*/
-
-        /*$('.expert-card').on('click', function() {
-            $('.expert-card').each(function() {
-                $(this).removeClass('active');
-            });
-
-            $(this).addClass('active');
-            $('.experts_by_service_cat .gfield_select').val($(this).data('expert'));
-            $('.experts_by_service_cat .gfield_select').trigger('change');
-
-            //MODULO SELEÇÃO DE ESCALÃO CRIADO PELO CLEVERSON
-            var cont = 0;
-            var cl_vr = $('.valor_referencia input[type="text"]');
-            $(".expert-preview .expert-card").each(function() {  //Arry com os dados do escalao     
-                var cl_pre_escalao = $(this).data('escalao');
-                var cl_expert = $(this).data('expert');
-                var cl_ppc_fixo = $(this).data('ppc-fixo');
-
-                if (cl_pre_escalao!=null && $(this).hasClass('active')) {
-                    $(cl_pre_escalao).each(function(key, value) { 
-                        var cl_begin_echelon = parseInt(cl_pre_escalao[cont].begin_echelon);
-                        var cl_finish_echelon = parseInt(cl_pre_escalao[cont].finish_echelon);
-                        var cl_percentage = cl_pre_escalao[cont].percentage;
-
-                        //alert('cl_begin_echelon '+cl_begin_echelon+' cl_finish_echelon '+cl_finish_echelon+' cl_percentage ');
-                        
-                        if (cl_vr.val() >= cl_begin_echelon && cl_vr.val() <= cl_finish_echelon) {    
-                            var cl_orcamento = (cl_vr.val()*cl_percentage)/100;
-                            $('.maximo input[type="text"]').val(cl_orcamento);
-                            $('input[name="input_'+cl_id_campo_PPC_Fixo_SR+'"]').val(cl_ppc_fixo); 
-                            return false;
-                        }
-                        cont++;
-                    });
-                }
-            })
-        });*/
-
-        /*$('.single-counceling .ginput_container_custom_taxonomy select').on('change', function(event) {
-            event.preventDefault();
-            var id = $(this).val();
-            $('.expert-card').css('display', 'none');
-            $('.service_cat_' + id).css('display', 'flex');
-
-            var selected_location = $('.location_expert_search').val();
-
-            $('.location_expert_search option').css('display', 'block');
-            $('.service_cat_' + id).each(function() {
-                var locs = $(this).data('locations');
-
-                if (locs.indexOf(',') >= 0) {
-                    locs = $(this).data('locations').split(",");
-                }
-
-                for (var i = 0; i < locs.length; i++) {
-                    $('.location_expert_search option[value="' + locs[i] + '"]').css('display','block');
-                }
-            });
-
-            $('.location_expert_search option[value="all"]').css('display', 'block');
-
-            if($('.location_expert_search option[value="'+selected_location+'"]').css('display') === 'block'){
-                $('.location_expert_search option[value='+selected_location+']').attr('selected','selected');
-            } else {
-                $('.location_expert_search option[value=all]').attr('selected','selected');
-            }
-
-            $('.location_expert_search').trigger('change');
-        });
-        $('.single-counceling .ginput_container_custom_taxonomy select').trigger('change');*/
-
-        /*$('.location_expert_search').on('change', function(event) {
-            event.preventDefault();
-            $('.expert-preview').find('#result_D').html('');
-            
-            var val = $(this).val();
-            var found = 0;
-            var cat = $('.single-counceling .ginput_container_custom_taxonomy select').val();
-            if (val != 'all') {
-                $('.expert-preview .expert-card').each(function() {
-                    var l = $(this).data('locations');
-                    if (l.indexOf(val) >= 0 && $(this).hasClass('service_cat_' + cat)) {
-                        $(this).css('display', 'flex');
-                        found++;
-                        window.cl_care2 = 1
-                    } else {
-                        $(this).css('display', 'none');
-                        window.cl_care = 1
-                    }
-                });
-            } else {
-                $('.expert-preview .expert-card').each(function() {
-                    if ($(this).hasClass('service_cat_' + cat)) {
-                        $(this).css('display', 'flex');
-                        found++;
-                    } else {
-                        $(this).css('display', 'none');
-                    }
-                });
-
-            }
-            calc_F_G();
-        });*/
-
-        /*var gform_expert_validation_message = $('.experts_by_service_cat .validation_message');
-
-        if (gform_expert_validation_message.length > 0) {
-            var validation_message_expert = $('.validation_message_expert');
-            $('#contact-this-seller').addClass('error-expert-field');
-            validation_message_expert.css('color', gform_expert_validation_message.css('color'));
-            validation_message_expert.css('font-weight', gform_expert_validation_message.css('font-weight'));
-            validation_message_expert.text(gform_expert_validation_message.text());
-            validation_message_expert.css('display', 'block');
-        }
-
-        if ($(window).width() < 3000) {
-            $('#contact-this-seller').appendTo(".experts_by_service_cat");
-            $('.experts_by_service_cat').css('display', 'block');
-            $('.experts_by_service_cat > .gfield_label').css('display', 'none');
-            $('.experts_by_service_cat > .ginput_container').css('display', 'none');
-        }
-
-        $(window).on('resize', function() {
-            if ($(window).width() < 3000) {
-                $('#contact-this-seller').appendTo(".experts_by_service_cat");
-                $('.experts_by_service_cat').css('display', 'block');
-                $('.experts_by_service_cat > .gfield_label').css('display', 'none');
-                $('.experts_by_service_cat > .ginput_container').css('display', 'none');
-            } else {
-                $('#contact-this-seller').appendTo(".sidebar-service-message");
-                $('.experts_by_service_cat').css('display', 'none');
-                $('.experts_by_service_cat > .gfield_label').css('display', 'none');
-                $('.experts_by_service_cat > .ginput_container').css('display', 'none');
-            }
-        });*/
+        $(GF_FIELDS.MEMBER_SEARCH_RESULTS.selector)
+            .appendTo(GF_FIELDS.MEMBER_SELECTION.resultsPlaceholderSelector);
 
         gform.addFilter('gform_datepicker_options_pre_init', function(optionsObj, formId, fieldId) {
             optionsObj.minDate = 0;
             return optionsObj;
         });
 
-        <?php if (isset($_GET['sr'])) { 
-                    $rid = $_GET['rid'];
-                    $user = get_field('customer', $_GET['rid']);
-                    $sexpert = get_field('consultant', $_GET['rid']); // $sexpert->ID
+        <?php
+        if ($USE_SR_SYSTEM_3STEP_PURCHASE) {
             ?>
-            /*$('.single-counceling .ginput_container_custom_taxonomy select').val(<?php echo $_GET['sr']; ?>).trigger('change');
 
-            $('.single-counceling .name_first input').val('<?php echo $user->first_name; ?>');
-            $('.single-counceling .name_last input').val('<?php echo $user->last_name; ?>');
+            $('.valor_referencia input[type="text"]').val(0);
 
-            $('.single-counceling .ginput_container_textarea textarea').val('<?php echo get_field('message', $rid); ?>').prop('disabled', true);
-            $('.single-counceling .ginput_container_phone input').val('<?php echo get_field('service_request_phone', $rid); ?>');
-            $('.single-counceling .ginput_container_date input').val('<?php echo cl_formatDateByWordpress(get_field('delivery_date', $rid)); ?>');
+            <?php
+        }
 
-            $('.single-counceling .valor_referencia input').val('<?php echo wc_price(get_field('reference_value', $rid)); ?>').prop('disabled', true);
-            $('.single-counceling .minimo input').val('<?php echo get_field('budget_min', $rid); ?>').prop('disabled', true);
-            $('.single-counceling .maximo input').val('<?php echo get_field('budget_max', $rid); ?>').prop('disabled', true);*/
-        <?php } ?>
-
-        var isDesktop = <?php echo $show_tooltips ?>;
-        if (isDesktop) {
+        if ($USE_SR_SYSTEM_LEAD_PURCHASE) {
+            ?>
             function insertTooltips() {
                 $(".gfield").each(function(index, element) {
                     var gfFieldId = (element.id || '').split('_')[2];
@@ -789,18 +539,12 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
             }
 
             insertTooltips();
-        }
-
-        <?php if (WEBSITE_SYSTEM == '1') { ?>
-            //$('.form-selector').find('form').append('<input type="hidden" name="idb_tax" value="" />');
 
             // Campos onde se insere o valor de Refrência, Mínimo e Máximo. 
             var currencySymbolHtml = `<span class="curr_symbol"><?php echo get_woocommerce_currency_symbol(); ?></span>`;
             $('.valor_referencia .ginput_container_text').append(currencySymbolHtml);
             $('.minimo .ginput_container_text').append(currencySymbolHtml);
             $('.maximo .ginput_container_text').append(currencySymbolHtml);
-            
-            //$('.valor_referencia .gfield_label').append('<span class="gfield_required">*</span>');*/
 
             //Bloquear autocomplete
             $(document).ready(function() {
@@ -825,106 +569,12 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
                     });
                 }
             });
-            
-            /*var vr = $('.valor_referencia input[type="text"]'); //Referência
-            var min = $('.minimo input[type="text"]'); //Mínimo
-            var max = $('.valor_referencia input[type="text"]'); //Referência
-            
-            //ON CHANGE - Valida Campo Máximo, verifica se é nulo 0 ou String CL
-            vr.on('change', function() {
-            var max = vr.val();
-                $('.expert-preview .not-found').css('display', 'none');
-                //Aqui o Orçamento passa a ter o mesmo valor do vr
-                calc_F_G();
-            });
 
-            //NPMM - ANULA ENTER DO MONTANTE ENVOLVIDO
-            $('#input_12_22').keypress(function(event){
-                var keycode = (event.keyCode ? event.keyCode : event.which);
-                if(keycode == '13'){
-                    //e.preventDefault();
-                    // alert('Select Expert');
-                    // $("#seleciona_expert").focus();
-                    return false;
-                }
-            });*/
-
-            //calculo fator de competencia -> f
-            
-            function calc_F_G() {
-                var count_competents = 0;
-                var v_ref = parseInt(vr.val());
-
-                //Valida valor de referência e máximo não são Nulos e String.
-                var ciclo_pai = 0; // Apagar depois
-                if (vr.val() != '' && !isNaN(vr.val())) {
-                    $('.expert-preview .customer_care').attr('style', '');
-
-                    $(".expert-preview .expert-card").each(function() {
-                        //var e = $(this).data('competencyfactor'); // Codigo antigo 
-                        //console.log(ciclo_pai + "-> Entrei ciclo Pai a variavel e é :" + e); // Apagar depois 
-                        var mostra_card = 0;
-                        var tx = '';
-                        var pre_escalao = $(this).data('escalao'); //Arry com os dados do escalao
-                        var i = 0;
-
-                        $(pre_escalao).each(function(key, value) { 
-                            var begin_echelon = parseInt(pre_escalao[i].begin_echelon);
-                            var finish_echelon = parseInt(pre_escalao[i].finish_echelon);
-                            var percentage = pre_escalao[i].percentage;
-                            window.cl_ini_echlon = begin_echelon;
-                            window.cl_fim_echlon = finish_echelon;
-                            //console.log(typeof v_ref); //Verifica o Typo do v_ref Ex: Saída -> number
-                            
-                            //console.log(" O Valor do percentagem que vou utlizar é : " + percentage); // Apagar depois
-                            //console.log(i + " ----> Estou TENTADO entrar no IF com VR= " + v_ref + " begin_echelon = " + begin_echelon + " finish_echelon = " + finish_echelon); // Apagar depois
-                            if (v_ref >= begin_echelon && v_ref <= finish_echelon) {                           
-                                //console.log(" CONSEGUI ENTRAR!!! no IF " + i + " com valor de ref : " + v_ref); // Apagar depois
-                                window.e = percentage;
-                                var calc_max = (v_ref/100)*e;
-                                window.orcamento = calc_max;
-                                var max = orcamento;
-                                
-                                return false;  
-                            }
-
-                            i++;
-                        });
-    
-                        //console.log(ciclo_pai + " -> Sai do ciclo Pai variavel e é :" + e); // Apagar depois
-                        ciclo_pai = ciclo_pai + 1;
-
-                        if (pre_escalao==null){
-                            $(this).addClass('non-competent');
-                        }   
-
-                        if (vr.val() >= cl_ini_echlon && vr.val() <= cl_fim_echlon) {
-                            $(this).removeClass('non-competent');
-                            window.cl_ini_echlon = '';
-                            window.cl_fim_echlon = '';
-                            count_competents++;
-                        } else {
-                            $(this).addClass('non-competent');  
-                        }
-                    });
-                    
-                    if (count_competents == 0 || cl_care == 1 && cl_care2 == '' ) {
-                            $('.expert-preview .customer_care').attr('style', 'display:flex !important;');
-                            $('.expert-preview').find('#result_D').html('<?php echo __($descicao[12][12]);?>');
-                    } else {
-                        $('.expert-preview .customer_care').attr('style', 'display:none !important;');
-                        cl_care2 = '';
-                    }
-                } else {
-                    $('.expert-preview .expert-card').each(function() {
-                        $(this).addClass('non-competent');
-                    });
-                }
-            }
-
-            //calc_F_G();
-
-        <?php } ?>    
+            // Workaround: Fazer uma nova pesquisa em caso de submissão com erro de modo a apresentar logo os resultados
+            $(GF_FIELDS.AMOUNT.selector).trigger('change');
+            <?php
+        }
+        ?>
     });
 </script>
 
@@ -997,6 +647,10 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
         margin-top: 0 !important;
     }
 
+    .service-category-member-selection input {
+        display: none;
+    }
+
     .valor_referencia,
     .minimo,
     .maximo {
@@ -1033,7 +687,7 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
         background-color: #ffffff;
     }
 
-    .gfield_description {
+    .gfield_description:not(.gfield_validation_message) {
         display: none;
     }
 
@@ -1051,32 +705,32 @@ $p .= '<span id="result_D" class="cl_aviso" ></span>';
         font-size: 1.0em;
     }
 
-    <?php if (WEBSITE_SYSTEM == '1') : ?>
-        .system1{ 
-            display: block !important; 
+    <?php
+        if ($USE_SR_SYSTEM_LEAD_PURCHASE) {
+            ?>
+            .system1{
+                display: block !important;
+            }
+            .gf_inline.system1{
+                display: inline-block !important;
+            }
+            .inline_label.system1{
+                display: flex !important;
+            }
+            .customer_care{
+                display: none !important;
+            }
+            .non-competent{
+                display: none !important;
+            }
+            div[data-fee="0"]{
+                display: none !important;
+            }
+            <?php
         }
-        .gf_inline.system1{
-            display: inline-block !important; 
-        }
-        .inline_label.system1{
-            display: flex !important; 
-        }
-        .customer_care{
-            display: none !important;
-        }
-        .non-competent{
-            display: none !important;
-        }
-        div[data-fee="0"]{
-            display: none !important;
-        }
-    <?php endif; ?>
+    ?>
 </style>
 
 <?php
-//$terms = get_terms(array('taxonomy' => 'service_cat', 'hide_empty' => false, 'parent' => 0));
-//$terms = get_terms(array('taxonomy' => 'location', 'hide_empty' => false, 'parent' => 0));
-//get_template_part('elements/member-search/member', 'search');
-
 get_footer();
 ?>

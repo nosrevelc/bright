@@ -13,7 +13,7 @@ use Aelia\WC\AFC\Messages;
  * Aelia Foundation Classes for WooCommerce.
  **/
 class WC_AeliaFoundationClasses extends Aelia_Plugin {
-	public static $version = '2.2.9.220704';
+	public static $version = '2.4.1.230214';
 
 	public static $plugin_slug = Definitions::PLUGIN_SLUG;
 	public static $text_domain = Definitions::TEXT_DOMAIN;
@@ -33,8 +33,7 @@ class WC_AeliaFoundationClasses extends Aelia_Plugin {
 		$settings_controller = new Settings(self::$text_domain);
 		$messages_controller = new Messages(self::$text_domain);
 
-		$plugin_instance = new self($settings_controller, $messages_controller);
-		return $plugin_instance;
+		return new self($settings_controller, $messages_controller);
 	}
 
 	/**
@@ -187,6 +186,34 @@ class WC_AeliaFoundationClasses extends Aelia_Plugin {
 	 * @since 1.9.10.171201
 	 */
 	public function show_admin_messages() {
+		// Inform admins about the upcoming versions for PHP 8.2 compatibility
+		// @since 2.3.0.220730
+		Messages::admin_message(
+			wp_kses_post(implode(' ', [
+				'<h3>',
+				'💡',
+				__('Aelia - Important notes about upcoming updates and PHP 8.2', Definitions::TEXT_DOMAIN),
+				'</h3>',
+				__('In the coming days, we will release some important updates for the Aelia plugins, to improve compatibility with PHP 8.2, while still fully supporting PHP versions from 7.1 to 8.1.', Definitions::TEXT_DOMAIN),
+				'<strong>',
+				__('Due to the number of small changes needed to support PHP 8.2 version, while keeping full backward compatibility, we strongly recommend to read the following article before installing the updates:', Definitions::TEXT_DOMAIN),
+				sprintf('<a href="%1$s" target="_blank">%2$s</a>.', 'https://aelia.co/php-8-performance-improvements-compatibility/', __('PHP 8.2 Compatibility Update for Aelia plugins', Definitions::TEXT_DOMAIN)),
+				'</strong>',
+				__('The article describes the changes in more detail.', Definitions::TEXT_DOMAIN),
+				__('It also includes a list of the affected plugins, as well as step by step instructions to perform a safe upgrade and troubleshoot possible issues.', Definitions::TEXT_DOMAIN),
+				'<br /><br />',
+				__('Should you have any questions in relation to the new versions or the upgrade process, please feel free to get in touch via our contact form:', self::$text_domain),
+				sprintf('<a href="%1$s" target="_blank">%1$s</a>.', 'https://aelia.co/contact'),
+				__('We will be happy to assist you.', self::$text_domain),
+			])),
+			[
+				'level' => E_USER_WARNING,
+				'code' => Definitions::NOTICE_UPDATES_PHP_82,
+				'dismissable' => true,
+				'permissions' => 'manage_woocommerce',
+				'message_header' => __('Important', Definitions::TEXT_DOMAIN),
+			]
+		);
 	}
 
 	/**
