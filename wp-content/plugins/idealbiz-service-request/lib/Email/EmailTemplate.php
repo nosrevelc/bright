@@ -32,18 +32,18 @@ class EmailTemplate {
 <tr>
 <td align="center" valign="top">
 <div id="template_header_image">
-<p style="margin-top: 0;" class="teste"><img style="border: none; display: inline; font-size: 14px; font-weight: bold; height: auto; line-height: 100%; outline: none; text-decoration: none; text-transform: capitalize;" src="%LOGO_IDEALBIZ%" alt="iDealBiz" /><!-- «flag» --></p>
+<p style="margin-top: 0;" class="teste"><img style="border: none; display: inline; font-size: 14px; font-weight: bold; height: auto; line-height: 100%; outline: none; text-decoration: none; text-transform: capitalize;" src="%LOGO_IDEALBIZ%" alt="iDealBiz" />«flag»</p>
 
 </div>
 <table id="template_container" style="box-shadow: 0 1px 4px rgba(0,0,0,0.1) !important; background-color: #ffffff; border: 1px solid #dedede; border-radius: 3px !important;" border="0" width="600" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
 <td align="center" valign="top"><!-- Header -->
-<table id="template_header" style="background-color: #14307b; border-radius: 3px 3px 0 0 !important; color: #ffffff; border-bottom: 0; font-weight: bold; line-height: 100%; vertical-align: middle; font-family: \'Helvetica Neue\', Helvetica, Roboto, Arial, sans-serif;" border="0" width="600" cellspacing="0" cellpadding="0">
+<table id="template_header" style="background-color: #F7984F; border-radius: 3px 3px 0 0 !important; color: #ffffff; border-bottom: 0; font-weight: bold; line-height: 100%; vertical-align: middle; font-family: \'Helvetica Neue\', Helvetica, Roboto, Arial, sans-serif;" border="0" width="600" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
 <td id="header_wrapper" style="padding: 36px 48px; display: block;">
-<h1 style="color: #ffffff; font-family: \'Helvetica Neue\', Helvetica, Roboto, Arial, sans-serif; font-size: 30px; font-weight: 300; line-height: 150%; margin: 0; text-align: center; text-shadow: 0 1px 0 #42ace7; -webkit-font-smoothing: antialiased;">
+<h1 style="color: #ffffff; font-family: \'Helvetica Neue\', Helvetica, Roboto, Arial, sans-serif; font-size: 30px; font-weight: 300; line-height: 150%; margin: 0; text-align: center; text-shadow: 0 1px 0 #353535; -webkit-font-smoothing: antialiased;">
 %%HEAD_MESSAGE%%
 </h1>
 </td>
