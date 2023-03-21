@@ -1030,7 +1030,7 @@ if(!class_exists('Aelia\WC\Aelia_Plugin')) {
 		 * @since 1.8.2.161216
 		 */
 		public function debug_mode() {
-			return apply_filters(self::$plugin_slug . '_debug_mode', false);
+			return apply_filters(static::$plugin_slug . '_debug_mode', false);
 		}
 	}
 }

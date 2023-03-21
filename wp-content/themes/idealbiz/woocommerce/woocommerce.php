@@ -2040,52 +2040,13 @@ function getExpertsWithActiveFees($post_in = NULL){
 
 //NPMM - getLeadSRValue Faz calculo do Service Request.
 function getLeadSRValue($sr){
-
     $cl_ppc_fixo = get_field('sr_fixed_ppc_value',$sr);
 
-    //var_dump($cl_ppc_fixo);
-
-    if($cl_ppc_fixo == Null){
-    
-        $budget_max= floatval(get_field('budget_max', $sr));
-        $expert= get_field('consultant', $sr);  
-        $expert_id=0;
-        $idb_tax_percentage=0;
-
-        global $wpdb;
-        $queryString = "SELECT *
-                        FROM {$wpdb->prefix}posts as p
-                        JOIN {$wpdb->prefix}postmeta as pm 
-                            ON p.ID = pm.post_id
-                        WHERE p.post_type = 'expert' 
-                        AND p.post_status = 'publish'
-                        AND pm.meta_key = 'expert_email' 
-                        AND pm.meta_value = '".$expert->user_email."'";
-                    //   echo $queryString;
-        $exps = $wpdb->get_results($queryString, OBJECT);
-        foreach ($exps as $p){
-            $expert_id=$p->ID;
-            $idb_tax_percentage=get_field('idb_tax',$expert_id);
-        }
-
-        $idb_tax = ($idb_tax_percentage*$budget_max)/100;
-
-        
-
-
-        $_product = wc_get_product(getProductByType('lead'));
-        //var_dump($_product);
-        $tax_rates = WC_Tax::get_rates( $_product->get_tax_class() );
-        $tax_val=0;
-        if (!empty($tax_rates)) {
-            $tax_rate = reset($tax_rates);
-            $tax_val = ($idb_tax*$tax_rate['rate'])/100;
-        }
-        $idb_tax = $idb_tax /* + $tax_val */;
-        return $idb_tax;
-    }else{
-        $idb_tax = $cl_ppc_fixo;
-        return $idb_tax;
+    if($cl_ppc_fixo == NULL) {
+        $budget_max = floatval(get_field('budget_max', $sr));
+        return $budget_max;
+    } else {
+        return $cl_ppc_fixo;
     }
 }
 

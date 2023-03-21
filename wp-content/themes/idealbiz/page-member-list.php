@@ -542,7 +542,7 @@ $experts = new WP_Query($args);
 
     .cl_menu_membro>.sub-menu {
         list-style-type: none;
-        font-size: 1.2em;
+        font-size: 95%;
         border: 1px solid #cccccc;
         /* border-radius: 10px; */
         padding-top: 15px;

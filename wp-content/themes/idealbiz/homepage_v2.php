@@ -454,7 +454,7 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
     }
 
     .cl_section {
-        min-width: 1439px;
+        min-width: 1200px;
         margin-top: 5px;
         text-align: center;
 
@@ -516,7 +516,6 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
         font-size: 1.7em;
         padding-left: 50px;
         background-color: #f2f2f2;
-        
     }
 
     .filters-container .text-global-search:before,

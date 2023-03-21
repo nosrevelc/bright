@@ -3886,7 +3886,8 @@ function opportunityRegisterViewLead($cl_id_view_lead_opportunity){
     }
                      
 }
-function consultLeadModeServieceRequest($id_member, $cl_onlyMode=null){
+
+function consultLeadModeServiceRequest($id_member, $cl_onlyMode=null){
 
     $cl_expert = isExpert();
     $cl_expertDsplayName = $cl_expert[0]->post_title;
@@ -4258,14 +4259,16 @@ function single_counseling_search_members() {
 
     wp_die();
 }
+
 add_filter( 'avatar_defaults', 'wpb_new_gravatar' );
 function wpb_new_gravatar ($avatar_defaults) {
-$cl_img_gravatar = get_field('img_gravatar', 'option')['url'];
-$myavatar = $cl_img_gravatar;
-$site_title = get_bloginfo( 'name' );
-$avatar_defaults[$myavatar] = "Default Gravatar $site_title";
-return $avatar_defaults;
+    $cl_img_gravatar = get_field('img_gravatar', 'option')['url'];
+    $myavatar = $cl_img_gravatar;
+    $site_title = get_bloginfo( 'name' );
+    $avatar_defaults[$myavatar] = "Default Gravatar $site_title";
+    return $avatar_defaults;
 }
+
 function cl_formatDateByWordpress($old_date){
     $new_date = preg_replace("([^0-9/])", "",$old_date);
     $new_date = str_replace('/', '-', $new_date);
@@ -4280,8 +4283,8 @@ function cl_formatDateByWordpress($old_date){
         $dateOk = false;
     }
     if ($dateOk === true){
-    $new_date =  wp_date( get_option( 'date_format' ), strtotime($new_date) );
-    return $new_date;
+        $new_date =  wp_date( get_option( 'date_format' ), strtotime($new_date) );
+        return $new_date;
     }else{
         return $old_date;
     }

@@ -781,7 +781,7 @@ if (have_posts()) : while (have_posts()) : the_post();
                     $('.single-counceling .ginput_container_email input').val('<?php echo $suser->user_email; ?>');
                     $('.single-counceling .ginput_container_textarea textarea').val(`<?php echo get_field('message',$rid); ?>`);
                     $('.single-counceling .ginput_container_phone input').val('<?php echo get_field('service_request_phone',$rid); ?>');
-                    $('.single-counceling .ginput_container_date input').val('<?php echo get_field('delivery_date',$rid); ?>');
+                    $('.single-counceling .ginput_container_date input').val('<?php echo cl_formatDateByWordpress(get_field('delivery_date',$rid)); ?>');
                     $('.referral').find('input').val('<?php echo $expert_email; ?>');
                     $('.origin_sr').find('input').val('<?php echo $_GET['rid']; ?>');
 

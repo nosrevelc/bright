@@ -174899,7 +174899,6 @@ input:checked + .slider:before {
   height: 20px;
   -webkit-animation: y 2s linear infinite;
   animation: y 2s linear infinite;
-  display: none;
 }
 @-webkit-keyframes y {
   0% {
