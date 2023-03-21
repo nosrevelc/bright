@@ -1081,7 +1081,7 @@ $pType = get_post_meta($product_id, '_product_type_meta_key', true); */
 }
 .cl_h2{
     font-weight: 600 !important;
-    color:#005882 !important;
+    color:#353535 !important;
 }
 .btn a{
     color:#ffffff !important;

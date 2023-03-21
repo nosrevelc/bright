@@ -834,7 +834,7 @@ float:left;
 }
 #bnt_parceiros{
     color:#fff;
-    background-color: #005882;
+    background-color: #353535;
     font-size: large;
     padding: 15px;
     border-radius: 25px;

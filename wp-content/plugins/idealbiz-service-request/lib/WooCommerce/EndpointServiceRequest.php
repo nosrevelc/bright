@@ -67,14 +67,31 @@ class EndpointServiceRequest {
 				//NPMM - Gera cabeçalho de Pedidos de serviços
 				printf(
 					'
+					<style>
+					.nobr{
+						font-weight: bold;
+						font-size: 1.1em;
+						color:#ffffff;
+						
+					}
+					.cl_cab{
+					
+						background-color:#F58026;
+					}
+					.cl_cab th h2{
+						margin-top: 0px;
+						text-align: center;
+						margin-bottom: 0px;
+					}
+					</style>
 					<table class="
 					woocommerce-orders-table woocommerce-MyAccount-orders shop_table 
 					shop_table_responsive my_account_orders account-orders-table
 					block stroke dropshadow p-30 m-b-25 b-r-5 white--background 
 					">
 						<thead>
-							<tr>
-								<th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-number"><h2 class="nobr">'.$cl_icon.$cl_tituloPagina.'</h2></th>
+							<tr class="cl_cab">
+								<th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-number"><h2 class="nobr">'.$cl_tituloPagina.'</h2></th>
 								<th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-date"><h2 class="nobr">'.__('Date','idealbiz').'</h2></th>
 								<th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-status"><h2 class="nobr">'.__('Status','idealbiz').'</h2></th>
 								<th class="woocommerce-orders-table__header woocommerce-orders-table__header-order-status"><h2 class="nobr">'.__('_str Reference Value','idealbiz').'</h2></th>
@@ -450,19 +467,26 @@ class EndpointServiceRequest {
 				color:#28A746;
 				font-size:1.2em;
 				font-weight: 600;
-				background-color:#28A7461C !important;
+				/* background-color:#28A7461C !important; */
 				border-radius: 5px;
 			}
 
 			.cl_list_value{
-				color:#005882;
+				color:#353535;
 				font-size:1.2em;
 				font-weight: 600;
-				background-color:#285FA75F !important;
+				/* background-color:#285FA75F !important; */
 				border-radius: 5px;
 				border: 1px solid #ccc;
 				
 			}
+
+			.cl_list_value_border{
+				border-radius: 5px;
+				border: 1px solid #ccc;
+				
+			}
+
 			.cl_al_dir {
 				text-align: center !important;
 				border: 1px solid #ccc;
@@ -484,7 +508,7 @@ class EndpointServiceRequest {
 
 			$cl_btn_View_Lead = '<div><a href="#post-'.$sr_id.'"
 			title="'.__( '_str Utilize this Buttom to View Lead', 'idealbiz-service-request' ).'" 
-			style="background: #005882 !important;color:#ffffff;" class=" btn-blue m-r-5  m-t-5 m-b-5 popUpForm info-modal" style="float:right">'.__( 'View Lead' ).'</a></div>
+			style="background: #353535 !important;color:#ffffff;" class=" btn-blue m-r-5  m-t-5 m-b-5 popUpForm info-modal" style="float:right">'.__( 'View Lead' ).'</a></div>
 			'.makeSRLeadModal($sr_id);	
 
 			$cl_btn_View_Lead_disable = '<div><a href="#post-'.$sr_id.'"
@@ -509,7 +533,7 @@ class EndpointServiceRequest {
 
 			$cl_btn_Wait_Pay = '
 			<div><a href="'.$checkout_url.'" 
-			title="" style="background: #005882 !important;color:#ffffff;" class=" btn-blue m-r-5  m-t-5" style="float:right">'.__( '_str Awaiting payment' ).'</a></div>';
+			title="" style="background: #353535 !important;color:#ffffff;" class=" btn-blue m-r-5  m-t-5" style="float:right">'.__( '_str Awaiting payment' ).'</a></div>';
 
 
 			$cl_btn_View_Lead_Pay_Later ='
@@ -689,7 +713,7 @@ class EndpointServiceRequest {
 		//CONFUIGURAÇÕES DE ACORDO COM MODO DE PAGAMENTO DA LEAD
 		if ($cl_sr_pay_lead_mode['value']==='sr_pay_before' && $cl_statusOrder === null){
 
-			$cl_state_PendingProposal = '<span style="color:#005882">'.__( 'Pending Proposal', 'idealbiz-service-request' ).'</span>';
+			$cl_state_PendingProposal = '<span style="color:#353535">'.__( 'Pending Proposal', 'idealbiz-service-request' ).'</span>';
 		}
 
 		if ($cl_sr_pay_lead_mode['value']==='sr_pay_before' && $cl_statusOrder === 'on-hold'){
@@ -703,7 +727,7 @@ class EndpointServiceRequest {
 
 		
 		if($cl_sr_pay_lead_mode['value']==='sr_pay_later' && $_GET['recommended_service']==='sent' ){
-			$cl_state_PendingExpertAcceptance ='<span style="color:#005882">'.__( 'Pending Expert Acceptance', 'idealbiz-service-request' ).'</span>';
+			$cl_state_PendingExpertAcceptance ='<span style="color:#353535">'.__( 'Pending Expert Acceptance', 'idealbiz-service-request' ).'</span>';
 			
 		}else{
 
@@ -751,7 +775,7 @@ class EndpointServiceRequest {
 				$h_title='<br/><h5 class="cl_h5"><span style="font-size:1.4em;" class="dashicons dashicons-migrate"></span>'.__('_STR SOURCE','idealbiz').': '.$cl_customer.'</h5>';
 				
 				if ($cl_sr_pay_lead_mode['value']==='sr_pay_before'){
-					$cl_state_PendingExpertAcceptance = '<span style="color:#005882">'.__( 'Pending Expert Acceptance', 'idealbiz-service-request' ).'</span>';
+					$cl_state_PendingExpertAcceptance = '<span style="color:#353535">'.__( 'Pending Expert Acceptance', 'idealbiz-service-request' ).'</span>';
 					
 					if($cl_statusOrder === "" || $cl_statusOrder === NULL){
 						$btns = $cl_btn_Pay;
@@ -770,12 +794,12 @@ class EndpointServiceRequest {
 				}
 				
 				if ($cl_sr_pay_lead_mode['value']==='sr_pay_later'){
-					$cl_state_PendingExpertAcceptance = '<span style="color:#005882">'.__( 'Pending Expert Acceptance', 'idealbiz-service-request' ).'</span>';					
+					$cl_state_PendingExpertAcceptance = '<span style="color:#353535">'.__( 'Pending Expert Acceptance', 'idealbiz-service-request' ).'</span>';					
 					$btns ='<p class="cl_no_action">'. __('_str No Action Available','').'</p>';	
 
 										
 					if (get_field('sr_confirmation_date',$sr_id) !="" || get_field('sr_confirmation_date',$sr_id) != NULL){
-						$cl_Confirmed_Lead 	=  '<span style="color:#005882">'.__( '_str Indication of Completed Business', 'idealbiz-service-request' ).'</span>';
+						$cl_Confirmed_Lead 	=  '<span style="color:#353535">'.__( '_str Indication of Completed Business', 'idealbiz-service-request' ).'</span>';
 						$cl_Confirmed_Lead .= '<div><h5 class="cl_h5 m-r-5">'.__('_STR IN','idealbiz').': '.get_field('sr_confirmation_date',$sr_id).'</h5></div>';
 						$cl_Confirmed_Lead .= '<div><h5 class="cl_h5 m-r-5">'.get_field('sr_confirmed',$sr_id).':</h5></div>';
 						$cl_state_PendingExpertAcceptance = $cl_Confirmed_Lead ;
@@ -822,7 +846,7 @@ class EndpointServiceRequest {
 				$h_title = '<h5 class="cl_h5"><span style="font-size:1.4em;" class="dashicons dashicons-upload"></span>'.__('_STR SENT TO','idealbiz').': '.$cl_consultant.'</h5>';
 			
 				if ($cl_sr_pay_lead_mode['value']==='sr_pay_before'){
-					$cl_state_PendingExpertAcceptance = '<span style="color:#005882">'.__( 'Pending Expert Acceptance', 'idealbiz-service-request' ).'</span>';					
+					$cl_state_PendingExpertAcceptance = '<span style="color:#353535">'.__( 'Pending Expert Acceptance', 'idealbiz-service-request' ).'</span>';					
 					$btns ='<p class="cl_no_action">'. __('_str No Action Available','').'</p>';
 				
 					if(get_field( 'state' ,$sr_id) === "Rejected"){
@@ -840,7 +864,7 @@ class EndpointServiceRequest {
 					}
 
 					if (get_field('sr_confirmation_date',$sr_id) !="" || get_field('sr_confirmation_date',$sr_id) != NULL){
-						$cl_Confirmed_Lead 	=  '<span style="color:#005882">'.__( '_str Indication of Completed Business', 'idealbiz-service-request' ).'</span>';
+						$cl_Confirmed_Lead 	=  '<span style="color:#353535">'.__( '_str Indication of Completed Business', 'idealbiz-service-request' ).'</span>';
 						$cl_Confirmed_Lead .= '<div><h5 class="cl_h5 m-r-5">'.__('_STR IN','idealbiz').': '.get_field('sr_confirmation_date',$sr_id).'</h5></div>';
 						$cl_Confirmed_Lead .= '<div class="text-secondary">'.get_field('sr_confirmed',$sr_id).'</div>';
 						$cl_state_PendingExpertAcceptance = $cl_Confirmed_Lead ;
@@ -877,7 +901,7 @@ class EndpointServiceRequest {
 
 				if ($cl_sr_pay_lead_mode['value']==='sr_not_pay'){
 					
-					$cl_state_PendingExpertAcceptance = '<span style="color:#005882">'.__( 'Pending Expert Acceptance', 'idealbiz-service-request' ).'</span>';					
+					$cl_state_PendingExpertAcceptance = '<span style="color:#353535">'.__( 'Pending Expert Acceptance', 'idealbiz-service-request' ).'</span>';					
 					$btns ='<p class="cl_no_action">'. __('_str No Action Available','').'</p>';
 					$btns  = $cl_btn_View_Lead;
 					
@@ -888,7 +912,7 @@ class EndpointServiceRequest {
 
 
 					if (get_field('sr_confirmation_date',$sr_id) !="" || get_field('sr_confirmation_date',$sr_id) != NULL){
-						$cl_Confirmed_Lead 	=  '<span style="color:#005882">'.__( '_str Indication of Completed Business', 'idealbiz-service-request' ).'</span>';
+						$cl_Confirmed_Lead 	=  '<span style="color:#353535">'.__( '_str Indication of Completed Business', 'idealbiz-service-request' ).'</span>';
 						$cl_Confirmed_Lead .= '<div><h5 class="cl_h5 m-r-5">'.__('_STR IN','idealbiz').': '.get_field('sr_confirmation_date',$sr_id).'</h5></div>';
 						$cl_Confirmed_Lead .= '<div class="text-secondary">'.get_field('sr_confirmed',$sr_id).'</div>';
 						$cl_state_PendingExpertAcceptance = $cl_Confirmed_Lead ;
@@ -920,7 +944,7 @@ class EndpointServiceRequest {
 				$h_title = '<h5 class="cl_h5"><span style="font-size:1.4em;" class="dashicons dashicons-download"></span>'.__('_STR SOURCE','idealbiz').': '.$cl_customer.'</h5>';
 			
 				if ($cl_sr_pay_lead_mode['value']==='sr_pay_before'){
-					$cl_state_PendingExpertAcceptance = '<span style="color:#005882">'.__( 'Pending Expert Acceptance', 'idealbiz-service-request' ).'</span>';
+					$cl_state_PendingExpertAcceptance = '<span style="color:#353535">'.__( 'Pending Expert Acceptance', 'idealbiz-service-request' ).'</span>';
 					
 					if($cl_statusOrder === "" || $cl_statusOrder === NULL){
 						$btns = $cl_btn_Pay;
@@ -939,11 +963,11 @@ class EndpointServiceRequest {
 				
 				if ($cl_sr_pay_lead_mode['value']==='sr_pay_later'){
 
-					$cl_state_PendingExpertAcceptance = '<span style="color:#005882">'.__( 'Pending Expert Acceptance', 'idealbiz-service-request' ).'</span>';					
+					$cl_state_PendingExpertAcceptance = '<span style="color:#353535">'.__( 'Pending Expert Acceptance', 'idealbiz-service-request' ).'</span>';					
 					$btns ='<p class="cl_no_action">'. __('_str No Action Available','').'</p>';			
 										
 					if (get_field('sr_confirmation_date',$sr_id) !="" || get_field('sr_confirmation_date',$sr_id) != NULL){
-						$cl_Confirmed_Lead 	=  '<span style="color:#005882">'.__( '_str Indication of Completed Business', 'idealbiz-service-request' ).'</span>';
+						$cl_Confirmed_Lead 	=  '<span style="color:#353535">'.__( '_str Indication of Completed Business', 'idealbiz-service-request' ).'</span>';
 						$cl_Confirmed_Lead .= '<div><h5 class="cl_h5 m-r-5">'.__('_STR IN','idealbiz').': '.get_field('sr_confirmation_date',$sr_id).'</h5></div>';
 						$cl_Confirmed_Lead .= '<div><h5 class="cl_h5 m-r-5">'.get_field('sr_confirmed',$sr_id).':</h5></div>';
 						$cl_state_PendingExpertAcceptance = $cl_Confirmed_Lead ;
@@ -973,7 +997,7 @@ class EndpointServiceRequest {
 				}
 
 				if ($cl_sr_pay_lead_mode['value']==='sr_not_pay'){
-					$cl_state_PendingExpertAcceptance = '<span style="color:#005882">'.__( 'Pending Expert Acceptance', 'idealbiz-service-request' ).'</span>';					
+					$cl_state_PendingExpertAcceptance = '<span style="color:#353535">'.__( 'Pending Expert Acceptance', 'idealbiz-service-request' ).'</span>';					
 					$btns ='<p class="cl_no_action">'. __('_str No Action Available','').'</p>';
 					$btns  = $cl_btn_View_Lead;
 					$btns .= $cl_btn_Reject_ID;
@@ -1350,15 +1374,15 @@ class EndpointServiceRequest {
 				'
 				<tr class="woocommerce-orders-table__row woocommerce-orders-table__row--status-processing order sr-row">
 
-					<td class="woocommerce-orders-table__cell min-w-100 woocommerce-orders-table__cell-order-number sr-title" data-title="Order">		
+					<td class="woocommerce-orders-table__cell min-w-100 woocommerce-orders-table__cell-order-number sr-title cl_list_value_border" data-title="Order">		
 						<h4 class="listing-list__title title m-t-10">%1$s</h4>	
 					</td>
 
-					<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-date " data-title="Date">
+					<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-date cl_list_value_border" data-title="Date">
 						<span>%2$s</span>
 					</td>
 
-					<td class="woocommerce-orders-table__cell min-w-155 woocommerce-orders-table__cell-order-status text-uppercase" data-title="Status">
+					<td class="woocommerce-orders-table__cell min-w-155 woocommerce-orders-table__cell-order-status text-uppercase cl_list_value_border" data-title="Status">
 						<span class="state state--active">%3$s</span>
 					</td>
 
@@ -1393,15 +1417,15 @@ class EndpointServiceRequest {
 				'
 				<tr class="woocommerce-orders-table__row woocommerce-orders-table__row--status-processing order sr-row">
 
-					<td class="woocommerce-orders-table__cell min-w-100 woocommerce-orders-table__cell-order-number sr-title" data-title="Order">		
+					<td class="woocommerce-orders-table__cell min-w-100 woocommerce-orders-table__cell-order-number sr-title cl_list_value_border" data-title="Order">		
 						<h4 class="listing-list__title title m-t-10">%1$s</h4>		
 					</td>
 
-					<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-date " data-title="Date">
+					<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-date cl_list_value_border" data-title="Date">
 						<span>%2$s</span>
 					</td>	
 
-					<td class="woocommerce-orders-table__cell min-w-155 woocommerce-orders-table__cell-order-status text-uppercase" data-title="Status">
+					<td class="woocommerce-orders-table__cell min-w-155 woocommerce-orders-table__cell-order-status text-uppercase cl_list_value_border" data-title="Status">
 						<span class="state state--active">%3$s</span>
 					</td>
 
@@ -1435,15 +1459,15 @@ class EndpointServiceRequest {
 				'
 				<tr class="woocommerce-orders-table__row woocommerce-orders-table__row--status-processing order sr-row">
 
-					<td class="woocommerce-orders-table__cell min-w-100 woocommerce-orders-table__cell-order-number sr-title" data-title="Order">		
+					<td class="woocommerce-orders-table__cell min-w-100 woocommerce-orders-table__cell-order-number sr-title cl_list_value_border" data-title="Order">		
 						<h4 class="listing-list__title title m-t-10">%1$s</h4>	
 					</td>
 
-					<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-date " data-title="Date">
+					<td class="woocommerce-orders-table__cell min-w-130 woocommerce-orders-table__cell-order-date cl_list_value_border" data-title="Date">
 						<span>%2$s</span>
 					</td>
 
-					<td class="woocommerce-orders-table__cell min-w-155 woocommerce-orders-table__cell-order-status text-uppercase" data-title="Status">
+					<td class="woocommerce-orders-table__cell min-w-155 woocommerce-orders-table__cell-order-status text-uppercase cl_list_value_border" data-title="Status">
 						<span class="state state--active ">%3$s </span>
 					</td>
 

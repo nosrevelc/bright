@@ -3916,7 +3916,7 @@ function consultLeadModeServiceRequest($id_member, $cl_onlyMode=null){
     echo
     '<style>
         .cl_Msg{
-            color:#005882;
+            color:#353535;
             font-size: 1.5em;
         }
         .cl_icon{
@@ -3970,7 +3970,7 @@ function consultLeadModeRecomendation($id_member,$cl_onlyMode=null){
     echo
     '<style>
         .cl_Msg{
-            color:#005882;
+            color:#353535;
             font-size: 1.5em;
         }
         .cl_icon{

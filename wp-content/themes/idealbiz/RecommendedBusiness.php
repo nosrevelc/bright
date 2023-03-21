@@ -307,7 +307,7 @@ if ($cl_mod === 'sent' && $check_member === true) {
 						if ($cl_rb_pay_lead_mode_value === 'rb_pay_later') {
 
 							$cl_comisOk = '';
-							$cl_Confirmed_Lead 	=  '<span style="color:#005882">' . __('_str Indication of Completed Business', 'idealbiz-service-request') . '</span>';
+							$cl_Confirmed_Lead 	=  '<span style="color:#353535">' . __('_str Indication of Completed Business', 'idealbiz-service-request') . '</span>';
 							$cl_Confirmed_Lead .= '<div><h5 class="cl_h5 m-r-5 m-b-0">' . __('_STR IN', 'idealbiz') . ': ' . get_field('rb_confirmation_date', $cl_PostId) . '</h5></div>';
 							$cl_Confirmed_Lead .= '<div><h5 class="cl_h5 m-r-5">' . get_field('rb_confirmed', $cl_PostId) . ':</h5></div>';
 
@@ -582,7 +582,7 @@ if ($cl_mod === 'received' && $check_member === true) {
 						if ($cl_rb_pay_lead_mode_value === 'rb_pay_later') {
 
 							$cl_comisOk = '';
-							$cl_Confirmed_Lead 	=  '<span style="color:#005882">' . __('_str Indication of Completed Business', 'idealbiz-service-request') . '</span>';
+							$cl_Confirmed_Lead 	=  '<span style="color:#353535">' . __('_str Indication of Completed Business', 'idealbiz-service-request') . '</span>';
 							$cl_Confirmed_Lead .= '<div><h5 class="cl_h5 m-r-5 m-b-0">' . __('_STR IN', 'idealbiz') . ': ' . get_field('rb_confirmation_date', $cl_PostId) . '</h5></div>';
 							$cl_Confirmed_Lead .= '<div><h5 class="cl_h5 m-r-5">' . get_field('rb_confirmed', $cl_PostId) . ':</h5></div>';
 
@@ -735,7 +735,7 @@ if ($cl_mod === 'received' && $check_member === true) {
 	h3 {
 		font-size: 3em;
 		font-family: var(--font-default), sans-serif;
-		color: #005882;
+		color: #353535;
 	}
 
 	.nobr {
@@ -763,7 +763,7 @@ if ($cl_mod === 'received' && $check_member === true) {
 
 	.ativo {
 
-		background-color: #005882;
+		background-color: #353535;
 		border-radius: 15px;
 		color: #fbfbfb;
 		padding: 5px 20px 5px 20px;
@@ -795,7 +795,7 @@ if ($cl_mod === 'received' && $check_member === true) {
 	}
 
 	tr:hover {
-		color: #005882;
+		color: #353535;
 		background-color: #fbfbfb;
 	}
 

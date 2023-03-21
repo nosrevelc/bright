@@ -372,7 +372,7 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
     }
 
     .cl-div-buscador {
-        background-color: #f2f2f2;
+        background-color: #fff;
         padding: 7px;
         margin: 0 auto;
 
@@ -515,7 +515,6 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
         width: 1000px;
         font-size: 1.7em;
         padding-left: 50px;
-        background-color: #f2f2f2;
     }
 
     .filters-container .text-global-search:before,
@@ -537,7 +536,7 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
     }
 
     .border-blue {
-        border: 1px solid #005882;
+        border: 1px solid #353535;
     }
 
     .b-t-l-r {
@@ -545,7 +544,7 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
     }
 
     .search-form--header .btn-blue {
-        background: #005882;
+        background: #353535;
         border-width: 0;
         border-radius: 40px;
         font-size: medium;
@@ -649,17 +648,17 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
 
     .main-form .form input[type="submit"] {
         background-color: #fff;
-        color: #005882;
+        color: #353535;
         margin-top: 45px;
     }
 
     .main-form .form .rc-anchor .rc-anchor-normal .rc-anchor-light {
-        background-color: #005882;
+        background-color: #353535;
         color: #fff;
     }
 
     .main-form .form .rc-anchor-light {
-        background: #005882;
+        background: #353535;
         color: #fff;
     }
 
@@ -769,7 +768,10 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
         text-align: left;
     }
     .comunidade .conteudo h1{
-            color:#464b4e;
+            color:#F7984F;
+            text-shadow: 1px 2px #cacaca;
+            font-family: "Yantramanav", Sans-serif;
+            font-weight: 400;
     }
 
     /** BLOCO MARKET PLACE*/
@@ -789,7 +791,7 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
         /* background-color:greenyellow ; */
         width: 100%;
         font-family: var(--font-default), sans-serif;
-        color: #005882;
+        color: #353535;
         font-size: 18px;
         font-weight: var(--font-weight);
         padding-top: 20px;
@@ -825,7 +827,7 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
         font-family: var(--font-default), sans-serif;
         font-size: 1.8em;
         font-weight: var(--font-weight);
-        color: #005882;
+        color: #353535;
         border-radius: 0px;
         padding-left: 15px;
         padding-right: 15px;
@@ -849,7 +851,7 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
         /* background-color:greenyellow ; */
         width: 100%;
         font-family: var(--font-default), sans-serif;
-        color: #005882;
+        color: #353535;
         font-size: 18px;
         font-weight: var(--font-weight);
         padding-top: 20px;
@@ -961,7 +963,7 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
     }
 
     .nh_icon {
-        color: #005882;
+        color: #353535;
         font-size: 1.7em;
         height: 2.2em;
         padding-top: 5px;
@@ -990,6 +992,10 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
 
 
         /** BLOCO FORM mobile*/
+
+        body{
+            padding-top: 0px;
+        }
 
         .cl_big_title, .comunidade h1 , .cl_section h1{
         text-align: left;
@@ -1063,6 +1069,9 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
         }
 
         .comunidade .conteudo h3 {
+            text-align: center;
+        }
+        .comunidade .conteudo h1{
             text-align: center;
         }
 
@@ -1179,7 +1188,8 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
             font-size: medium;
             padding: 7px;
             border-radius: 0px;
-            margin-top: 10px;
+            margin-top: 250px; /**Valeu to idealbiz 10px */
+            z-index:999;
         }
 
         /**TOPO DO SITE */
@@ -1243,12 +1253,19 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
             text-align: center;
         }
 
+        .cl_section h1 {
+            text-align: center !important;
+        }
+
+
+
 
         
 
         /**  FIM DO CODIGO MOBILE */
     }
 
+    
 
     #id_content_1 {
         margin-top: 0px !important;
@@ -1265,7 +1282,7 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
 
     #bnt_parceiros {
         color: #fff;
-        background-color: #005882;
+        background-color: #353535;
         font-size: medium;
         padding: 7px;
         border-radius: 0px;
@@ -1388,7 +1405,7 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
     }
 
     .dashicons-before {
-        color: #005882;
+        color: #353535;
         padding-top: 5px;
         padding-right: 5px;
     }
@@ -1462,7 +1479,7 @@ switch ($cl_blog_id) {
             <?php } ?>
         </div>
     </div> -->
-    <div class="cl-buscador">
+    <div class="cl-buscador d-none">
 
         <div class="cl-div-buscador">
             <form id="search-form--header" class="search-form--header" action="<?php echo home_url('/'); ?>" method="get">
@@ -1477,23 +1494,26 @@ switch ($cl_blog_id) {
 <!-- FIM NOVO TOPO -->
 <div class="cl_main">
 
-    <!-- INI NOVO CODIGO SLIDE COOKIES -->
-    <div class="cl_big_title p-t-20" id="cl_bg_f2f2f2"><?php echo get_field('title_cookies') ?></div>
+    <!-- INI NOVO CODIGO SLIDE COOKIES 
+    
+    <div class="cl_big_title p-t-20 " id="cl_bg_f2f2f2"><?php echo get_field('title_cookies') ?></div>
     <?php if (!$button_options) { ?>
         <?php
         if ($type_of_display_of_cookies == false) {
             $destaque = false;
-            include(MY_THEME_DIR . 'elements/static_cookies.php');
+            // NPMM - COMENTADO LINHA ABAIXO PARA OCULTAR SECÇÃO PARA SITE TGS BUSINESS 13/02/2023
+            //include(MY_THEME_DIR . 'elements/static_cookies.php');
             /* get_template_part('/elements/static_cookies'); */
         } else {
             
             $destaque = false;
-            include(MY_THEME_DIR . 'elements/cookies.php');
+            // NPMM - COMENTADO LINHA ABAIXO PARA OCULTAR SECÇÃO PARA SITE TGS BUSINESS 13/02/2023
+            //include(MY_THEME_DIR . 'elements/cookies.php');
             /* get_template_part('/elements/cookies'); */
         }
         ?>
     <?php } ?>
-    <!-- FIM NOVO CODIGO SLIDE COOKIES -->
+     FIM NOVO CODIGO SLIDE COOKIES -->
 
     <!-- INI DESTASQUES -->
     <?php if (get_field('title_detach')) { ?>

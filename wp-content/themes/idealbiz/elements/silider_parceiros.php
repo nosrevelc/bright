@@ -25,7 +25,7 @@ if($cl_varParceiro->member_category_section){
         );
     }
 
-    $loca = get_query_var('location');
+$loca = get_query_var('location');
     if ($loca) {
         $loca = array(
             'taxonomy' => 'location',
@@ -212,8 +212,8 @@ if($cl_varParceiro->member_category_section){
         <div class="cl_slider_partner o-hidden">
             <div class="swiper-wrapper">
             <?php
-
-                    if ($experts->have_posts()) :
+                    if($cl_varParceiro->member_category_section !== false){
+                    if ($experts->have_posts()) {
                         while ($experts->have_posts()) : $experts->the_post();
                         ?>
                         <div class="m-y-5 swiper-slide expert-card-2 expert-card">
@@ -221,9 +221,11 @@ if($cl_varParceiro->member_category_section){
                         </div>   
                         <?php
                         endwhile;
-                    else :
+                    }else{
                     get_template_part('/elements/no_results');
-                    endif;
+                    }
+                }
+                
                 ?>
             </div>
 

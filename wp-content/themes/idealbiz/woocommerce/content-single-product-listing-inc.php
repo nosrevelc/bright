@@ -219,7 +219,7 @@ if ( post_password_required() ) {
 .shop-page .content-area .plist .summary .phead .big-number{
 	font-family: var(--font-default), Arial;
 	font-weight: 900;
-	color:#005882;
+	color:#353535;
 }
 
 </style>

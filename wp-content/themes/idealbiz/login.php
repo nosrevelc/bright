@@ -17,7 +17,7 @@ get_header(); ?>
 
 <style>
 .checkout-button{
-	background: #005882 !important;
+	background: #353535 !important;
 	line-height: 2em !important;
 	font-size: 1.2em !important;
 	}

@@ -39,12 +39,12 @@ function get_email_header($user_id = NULL, $title = NULL){
 	$x=0;
 	foreach ( $primaryNav as $navItem ) {
 		if ( $navItem->menu_item_parent == 0 ){
-			//$site_menu.= '<a style="text-decoration: none;font-size:12px; color:#14307B; '.($x>=1 ? 'font-weight: 400;' : 'font-weight: 700;') .'" href="'.$navItem->url.'" target="_blank" title="'.$navItem->title.'">'.$navItem->title.'</a>&nbsp;&nbsp;&nbsp;&nbsp;';
+			//$site_menu.= '<a style="text-decoration: none;font-size:12px; color:#F58026; '.($x>=1 ? 'font-weight: 400;' : 'font-weight: 700;') .'" href="'.$navItem->url.'" target="_blank" title="'.$navItem->title.'">'.$navItem->title.'</a>&nbsp;&nbsp;&nbsp;&nbsp;';
 			$x++;
 		}
 	}
 
-	$username = '<a style="font-size:12px; color:#14307B; text-decoration: none;" href="'.$url.'">'.__('Login / Register','idealbiz').'</a>';
+	$username = '<a style="font-size:12px; color:#F58026; text-decoration: none;" href="'.$url.'">'.__('Login / Register','idealbiz').'</a>';
 	if($user_id == 'customer_care'){
 
 	}else{
@@ -53,10 +53,10 @@ function get_email_header($user_id = NULL, $title = NULL){
 	
 	
 	if($user_id == 'customer_care'){
-		$username = '<a style="text-decoration: none;font-size:12px; color:#14307B;" href="'.$url.'">'.__('Hi-1! Customer Care','idealbiz').'</a>';
+		$username = '<a style="text-decoration: none;font-size:12px; color:#F58026;" href="'.$url.'">'.__('Hi-1! Customer Care','idealbiz').'</a>';
 	}elseif($user_id){
 		$user_info = get_userdata($user_id);
-		$username = '<a style="text-decoration: none;font-size:12px; color:#14307B;" href="'.$url.'">'.__('Hi-2!','idealbiz').' '.$user_info->first_name.'</a>';
+		$username = '<a style="text-decoration: none;font-size:12px; color:#F58026;" href="'.$url.'">'.__('Hi-2!','idealbiz').' '.$user_info->first_name.'</a>';
 		$avatar =  '<img src="'.get_avatar_url($user_id, array("size"=>30)).'" style="border-radius: 50%; width: 50px height:50px;"/>';
 	}
 	
@@ -189,7 +189,7 @@ function get_email_header($user_id = NULL, $title = NULL){
 																<table width="100%" cellpadding="0" cellspacing="0" border="0">
 																	<tr valign="middle">
 																		<td valign="middle" align="center" style="text-align:center; padding-right: 0px; padding-left: 30px; padding-top: 0px; padding-bottom: 0px; vertical-align: middle;" >
-																		'.$site_logo./* $flag. */'
+																		'.$site_logo. $flag .'
 																		</td>
 																	</tr>
 																</table>
@@ -230,7 +230,7 @@ function get_social_links(){
         }
         $social_links .= sprintf(
             '<td style="width: 20px; word-break: break-word; vertical-align: top; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top">
-                <a href="%1$s" class="social__link" style="color: #14307b;text-decoration: none;font-size: 20px;padding: 8px 10px;">
+                <a href="%1$s" class="social__link" style="color: #F58026;text-decoration: none;font-size: 20px;padding: 8px 10px;">
                     <img src="%2$s" alt="%3$s">
                 </a>
             </td>',
@@ -348,11 +348,11 @@ function get_email_intro($user_id = NULL, $message = NULL, $hi = NULL){
     <tbody>
     <tr>
     <td align="center" valign="top"><!-- Header -->
-    <table id="template_header" style="background-color: #14307b; border-radius: 3px 3px 0 0 !important; color: #ffffff; border-bottom: 0; font-weight: bold; line-height: 100%; vertical-align: middle; font-family: \'Helvetica Neue\', Helvetica, Roboto, Arial, sans-serif;" border="0" width="600" cellspacing="0" cellpadding="0">
+    <table id="template_header" style="background-color: #F58026; border-radius: 3px 3px 0 0 !important; color: #ffffff; border-bottom: 0; font-weight: bold; line-height: 100%; vertical-align: middle; font-family: \'Helvetica Neue\', Helvetica, Roboto, Arial, sans-serif;" border="0" width="600" cellspacing="0" cellpadding="0">
     <tbody>
     <tr>
     <td id="header_wrapper" style="padding: 36px 48px; display: block; text-align: center;">
-    <h1 style="color: #ffffff; font-family: \'Helvetica Neue\', Helvetica, Roboto, Arial, sans-serif; font-size: 30px ; font-weight: 400; line-height: 1.5; margin: 0; text-align: center; text-shadow: 0 1px 0 #42ace7; -webkit-font-smoothing: antialiased;">
+    <h1 style="color: #ffffff; font-family: \'Helvetica Neue\', Helvetica, Roboto, Arial, sans-serif; font-size: 30px ; font-weight: 400; line-height: 1.5; margin: 0; text-align: center; text-shadow: 0 1px 0 #353535; -webkit-font-smoothing: antialiased;">
     '.$hi.'
     </h1>
     </td>
@@ -426,7 +426,7 @@ function get_email_listings($posts, $max_listings = 3){
 	$html='
 	<table border="0" cellpadding="0" cellspacing="0" class="divider" role="presentation" style="margin-top:15px; text-align: left; table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top" width="100%">
 	<tr>
-		<td style="font-size: 13px; font-weight: 700; text-align: center; width: 100%; padding-left: 30px; padding-right: 30px; color:#14307B; vertical-align: top; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top">
+		<td style="font-size: 13px; font-weight: 700; text-align: center; width: 100%; padding-left: 30px; padding-right: 30px; color:#F58026; vertical-align: top; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top">
 			<p style="margin-bottom:25px;">'.__('Your newly listings with less than 7 days','idealbiz').'</p>
 		</td>
 	</tr>
@@ -448,8 +448,8 @@ function get_email_listings($posts, $max_listings = 3){
 						<td style=" border:2px solid #f7f7f7; padding:15px; text-align: center; width: 100%;  vertical-align: top; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top">
 							<table border="0" cellpadding="0" cellspacing="0" class="divider" role="presentation" style="text-align: left; table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top" width="100%">
 								<tr>
-									<td style="font-weight: 700; font-size: 13px; color:#14307B; border-radius:3px; text-align: center; width: 100%;  vertical-align: top; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top">
-										<a href="'.get_the_permalink().'" style="text-decoration:none;color:#14307B; " class="">	
+									<td style="font-weight: 700; font-size: 13px; color:#F58026; border-radius:3px; text-align: center; width: 100%;  vertical-align: top; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top">
+										<a href="'.get_the_permalink().'" style="text-decoration:none;color:#F58026; " class="">	
 											<img class="" style="width: 100%; padding-bottom:10px; " src="'.get_field('featured_image')['sizes']['medium'].'">	
 											'.get_the_title().' <span style="background: #1EB3C8;padding: 2px;border: 1px solid #1EB3C8;border-radius: 5px;margin-left: 5px;color: #fff; font-size:8px;">'.__('New','idealbiz').'</span>
 											<p style="margin-top: 10px; margin-bottom:0px;">
@@ -479,7 +479,7 @@ function get_email_listings($posts, $max_listings = 3){
 	</tr>
 	<tr>
 		<td style="text-align: center; width: 100%; padding-left: 30px; padding-right: 30px; vertical-align: top; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top">
-			<a style="padding: 10px 20px; background: #14307B; color: #fff; font-weight: 700; text-decoration: none;" href="'.getLinkByTemplate('premium-buyer.php').'" target="_blank">'.__('View all Listings', 'idealbiz').'</a>
+			<a style="padding: 10px 20px; background: #F58026; color: #fff; font-weight: 700; text-decoration: none;" href="'.getLinkByTemplate('premium-buyer.php').'" target="_blank">'.__('View all Listings', 'idealbiz').'</a>
 		</td>
 	</tr>
 	<tr>
@@ -552,12 +552,12 @@ function get_email_header_recomemded($user_id = NULL, $title = NULL){
 	$x=0;
 	foreach ( $primaryNav as $navItem ) {
 		if ( $navItem->menu_item_parent == 0 ){
-			//$site_menu.= '<a style="text-decoration: none;font-size:12px; color:#14307B; '.($x>=1 ? 'font-weight: 400;' : 'font-weight: 700;') .'" href="'.$navItem->url.'" target="_blank" title="'.$navItem->title.'">'.$navItem->title.'</a>&nbsp;&nbsp;&nbsp;&nbsp;';
+			//$site_menu.= '<a style="text-decoration: none;font-size:12px; color:#F58026; '.($x>=1 ? 'font-weight: 400;' : 'font-weight: 700;') .'" href="'.$navItem->url.'" target="_blank" title="'.$navItem->title.'">'.$navItem->title.'</a>&nbsp;&nbsp;&nbsp;&nbsp;';
 			$x++;
 		}
 	}
 
-	$username = '<a style="font-size:12px; color:#14307B; text-decoration: none;" href="'.$url.'">'.__('Login / Register','idealbiz').'</a>';
+	$username = '<a style="font-size:12px; color:#F58026; text-decoration: none;" href="'.$url.'">'.__('Login / Register','idealbiz').'</a>';
 	if($user_id == 'customer_care'){
 
 	}else{
@@ -566,10 +566,10 @@ function get_email_header_recomemded($user_id = NULL, $title = NULL){
 	
 	
 	if($user_id == 'customer_care'){
-		$username = '<a style="text-decoration: none;font-size:12px; color:#14307B;" href="'.$url.'">'.__('Hi-1! Customer Care','idealbiz').'</a>';
+		$username = '<a style="text-decoration: none;font-size:12px; color:#F58026;" href="'.$url.'">'.__('Hi-1! Customer Care','idealbiz').'</a>';
 	}elseif($user_id){
 		$user_info = get_userdata($user_id);
-		$username = '<a style="text-decoration: none;font-size:12px; color:#14307B;" href="'.$url.'">'.__('Hi-2!','idealbiz').' '.$user_info->first_name.'</a>';
+		$username = '<a style="text-decoration: none;font-size:12px; color:#F58026;" href="'.$url.'">'.__('Hi-2!','idealbiz').' '.$user_info->first_name.'</a>';
 		$avatar =  '<img src="'.get_avatar_url($user_id, array("size"=>30)).'" style="border-radius: 50%; width: 50px height:50px;"/>';
 	}
 	
@@ -702,7 +702,7 @@ function get_email_header_recomemded($user_id = NULL, $title = NULL){
 																<table width="100%" cellpadding="0" cellspacing="0" border="0">
 																	<tr valign="middle">
 																		<td valign="middle" align="center" style="text-align:center; padding-right: 0px; padding-left: 30px; padding-top: 0px; padding-bottom: 0px; vertical-align: middle;" >
-																		'.$site_logo./* $flag. */'
+																		'.$site_logo.$flag.'
 																		</td>
 																	</tr>
 																</table>

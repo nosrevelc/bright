@@ -52,14 +52,15 @@ class Component_Countries_Modal
                         
                         );
     
-                        $choice = 'pt/pt'; //Caso nenhuma outra sirva
+                        //$choice = 'pt/pt'; //Caso nenhuma outra sirva
                         foreach($langs as $lang=>$q) {
                         if(in_array($lang,array_flip($ourLanguages))) {
-                            $choice=$ourLanguages[$lang];
+                            //$choice=$ourLanguages[$lang];
                             break;
                         }
                     }
                     
+                    $choice = 'international/en/';
                     $cl_dominio = $_SERVER['HTTP_HOST'];                    
                     header("Location: https://$cl_dominio/$choice/");
 

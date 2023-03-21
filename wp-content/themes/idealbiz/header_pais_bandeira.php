@@ -384,11 +384,11 @@ function country_market_only_flag() {
 	text-decoration-thickness: 2px;
 	font-size: 1.05em;
 	text-transform: uppercase;
-	color:#005882;
+	color:#353535;
 }
 
 .ico_menu_pais{
-	color:#005882;
+	color:#353535;
 	font-size: 1em;
 	margin-left:5px;
 }
