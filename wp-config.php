@@ -37,7 +37,7 @@ define( 'DB_PASSWORD', 'WGfAgWFYf!U9XD');
 
 /* define( 'DB_HOST', 'db3tsmall20gb.caao8fi1xh1g.eu-west-2.rds.amazonaws.com:3306'); */
 
-define( 'DB_HOST', 'idb3tsmall20gb.caao8fi1xh1g.eu-west-2.rds.amazonaws.com:3306');
+define( 'DB_HOST', 'tgs3tsmall20gb.caao8fi1xh1g.eu-west-2.rds.amazonaws.com:3306');
 
 
 
@@ -72,7 +72,7 @@ define('NONCE_SALT',       'UavWI,Dx&&)M-1X@7J#?OX9U>^<EBd-qgwI]&v4CN`z!*$C5V/+X
  */
 $table_prefix = 'ib_';
 $_SERVER['HTTPS'] = 'on';
-define('WP_MEMORY_LIMIT', '64M');
+define('WP_MEMORY_LIMIT', '1024M');
 define( 'WP_MAX_MEMORY_LIMIT', '2048M' );
 define( 'MEDIA_TRASH', true );
 /**
@@ -102,16 +102,16 @@ define( 'WP_DEBUG_DISPLAY', false );
 
 
 define( 'WPS_DEBUG', true );
-/* define('WP_HOME','https://idealbiz.io');
-define('WP_SITEURL','https://idealbiz.io'); */
+define('WP_HOME','https://tgs-business.io');
+define('WP_SITEURL','https://tgs-business.io');
 define('WP_ALLOW_MULTISITE', true);
 define('MULTISITE', true);
 define('SUBDOMAIN_INSTALL', false);
-define('DOMAIN_CURRENT_SITE', 'idealbiz.io'); // Different across domains!
+define('DOMAIN_CURRENT_SITE', 'tgs-business.io');
 define('PATH_CURRENT_SITE', '/');
 define('SITE_ID_CURRENT_SITE', 1);
 define('BLOG_ID_CURRENT_SITE', 1);
-define( 'WP_DEFAULT_THEME', 'idealbiz' );
+define( 'WP_DEFAULT_THEME', 'tgs-business' );
 define( 'MYCRED_DEFAULT_TYPE_KEY', 'ibz-coin' );
 define( 'MYCRED_DEFAULT_LABEL', 'iDealBiz Coin' );
 define( 'CUSTOM_USER_TABLE', 'ib_users' );
@@ -135,3 +135,4 @@ define('ALTERNATE_WP_CRON', true);
 
 //AUTORIZA UPDATE DOS PLUGIN SEM SER VIA FTP
 define("FS_METHOD", "direct");
+
