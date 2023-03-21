@@ -67,14 +67,14 @@ display: inline-block;
 color: #f3f5fa;
 border-radius: 3px;
 transition: all .2s ease;
-background-color: #14307b;
+background-color: #D15B2B;
 border: 0;
 
 }
 /*  */
 li > button, .woopspro-product-slider .slick-dots li.slick-active button {
-border: 1px solid #14307b !important;
-background: #14307b !important;
+border: 1px solid #D15B2B !important;
+background: #D15B2B !important;
 }
 
 @media (max-width: 767px) {
@@ -215,7 +215,7 @@ height: 150px !important;
 object-fit: cover;
 }
 <?php echo '#pcp_wrapper-'.$cl_shortcode.'.dots' ?>.swiper-pagination-bullet-active  {
-background: #14307b;
+background: #D15B2B;
 }
 
 <?php echo '#pcp_wrapper-'.$cl_shortcode.'.pcp-carousel-wrapper'?> .sp-pcp-post  {
@@ -229,7 +229,7 @@ padding-top: 10px;
 }
 
 <?php echo '.pcp-wrapper-'.$cl_shortcode; ?>.sp-pcp-title a:hover {
-color: #14307b;
+color: #D15B2B;
 }
 
 .sp-pcp-post .sp-pcp-post-content {
@@ -246,7 +246,7 @@ font-weight:500;
 text-transform: none;
 font-size: 14px;
 line-height: 24px;
-color: #14307b;
+color: #D15B2B;
 font-weight:700;
 
 }
@@ -271,7 +271,7 @@ text-align: center !important;
 font-family: IcoFont;
 font-style: normal;
 margin: 2px 0 0 5px;
-color: #14307b;
+color: #D15B2B;
 top: 50%;
 position: absolute;
 z-index: 9999999;
