@@ -3,7 +3,7 @@
 Plugin Name: Debug wp_redirect()
 Plugin URI: https://www.scottkclark.com/
 Description: Stops and outputs information about redirects done on the front of a site and in the admin area with wp_redirect() and wp_safe_redirect().
-Version: 2.1
+Version: 2.1.2
 Author: Scott Kingsley Clark
 Author URI: https://www.scottkclark.com/
 Text Domain: debug-wp-redirect
@@ -25,16 +25,46 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 use Debug_WP_Redirect\Settings;
 
+/**
+ * Here are a few examples of things you can define in wp-config.php.
+ *
+ * You need at least one of these:
+ * define( 'DEBUG_WP_REDIRECT_ADMIN', true ); // Enable debugging for the dashboard area.
+ * define( 'DEBUG_WP_REDIRECT', true ); // Enable debugging for frontend.
+ *
+ * And then you can limit who sees the debugging messages with at least one of these:
+ * define( 'DEBUG_WP_REDIRECT_LOGGED_IN_ADMIN', true ); // Enable debugging only for admin users.
+ * define( 'DEBUG_WP_REDIRECT_LOGGED_IN', true ); // Enable debugging only for logged in users (not needed if you enable DEBUG_WP_REDIRECT_LOGGED_IN_ADMIN).
+ * define( 'DEBUG_WP_REDIRECT_LOGGED_IN_USER_ID', true ); // Enable debugging only for specific logged in user IDs (comma-separated) (the DEBUG_WP_REDIRECT_LOGGED_IN_ADMIN and DEBUG_WP_REDIRECT_LOGGED_IN not needed).
+ */
+
 define( 'DEBUG_WP_REDIRECT_PLUGIN_FILE', __FILE__ );
 define( 'DEBUG_WP_REDIRECT_PLUGIN_DIR', __DIR__ );
 
+// Maybe enable WP Redirect debugging if the settings are enabled (if enabled for all users).
 if ( debug_wp_redirect_is_enabled() ) {
-	debug_wp_redirect_enable();
+    debug_wp_redirect_enable();
 }
 
-include_once DEBUG_WP_REDIRECT_PLUGIN_DIR . '/class-settings.php';
+/**
+ * Maybe enable WP Redirect debugging if the settings are enabled (for logged in users).
+ *
+ * @since 2.101
+ */
+function debug_wp_redirect_maybe_load() {
+    if ( debug_wp_redirect_is_enabled() ) {
+        debug_wp_redirect_enable();
+    }
+}
 
-Settings::instance();
+add_action( 'plugins_loaded', 'debug_wp_redirect_maybe_load' );
+
+// Allow for debug-wp-redirect.php to be loaded via a single file mu-plugin
+if ( file_exists( DEBUG_WP_REDIRECT_PLUGIN_DIR . '/class-settings.php' ) ) {
+    include_once DEBUG_WP_REDIRECT_PLUGIN_DIR . '/class-settings.php';
+
+    Settings::instance();
+}
 
 /**
  * Enable the wp_redirect debugging.
@@ -86,11 +116,11 @@ function debug_wp_redirect_is_user_allowed() {
 		$logged_in_user_id_check = array_filter( $logged_in_user_id_check );
 
 		if ( ! empty( $logged_in_user_id_check ) ) {
-			if ( ! is_user_logged_in() ) {
+			if ( ! function_exists( 'is_user_logged_in' ) || ! is_user_logged_in() ) {
 				return false;
 			}
 
-			return function_exists( 'is_user_logged_in' ) && is_user_logged_in() && in_array( get_current_user_id(), $logged_in_user_id_check, true );
+			return in_array( (int) get_current_user_id(), $logged_in_user_id_check, true );
 		}
 	}
 
@@ -211,7 +241,7 @@ function debug_wp_redirect( $location, $status ) {
 
 	$logged_in = __( 'No', 'debug-wp-redirect' );
 
-	if ( is_user_logged_in() ) {
+	if ( function_exists( 'is_user_logged_in' ) && is_user_logged_in() ) {
 		$logged_in = __( 'Yes', 'debug-wp-redirect' );
 	}
 
@@ -221,7 +251,7 @@ function debug_wp_redirect( $location, $status ) {
 		__( 'User Logged In', 'debug-wp-redirect' ) => $logged_in,
 	];
 
-	if ( is_user_logged_in() ) {
+	if ( function_exists( 'is_user_logged_in' ) && is_user_logged_in() ) {
 		$stats[ __( 'User ID', 'debug-wp-redirect' ) ] = get_current_user_id();
 	}
 
@@ -259,7 +289,7 @@ function debug_wp_redirect( $location, $status ) {
 	);
 
 	// Maybe show the link to manage the settings.
-	if ( is_user_logged_in() && current_user_can( 'manage_options' ) ) {
+	if ( function_exists( 'is_user_logged_in' ) && is_user_logged_in() && current_user_can( 'manage_options' ) ) {
 		printf(
 			'<p><a href="%1$s">%2$s &raquo;</a></p>',
 			esc_url( admin_url( 'options-general.php?page=debug-wp-redirect' ) ),

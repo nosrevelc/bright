@@ -240,11 +240,7 @@
          * @since  2.0.0
          */
         private function add_transient_filters() {
-            if (
-                $this->_fs->is_premium() &&
-                $this->_fs->is_registered() &&
-                ! FS_Permission_Manager::instance( $this->_fs )->is_essentials_tracking_allowed()
-            ) {
+            if ( $this->_fs->is_premium() && ! $this->_fs->is_tracking_allowed() ) {
                 $this->_logger->log( 'Opted out sites cannot receive automatic software updates.' );
 
                 return;
@@ -417,7 +413,7 @@
 
             $themes_update = get_site_transient( 'update_themes' );
             if ( ! isset( $themes_update->response[ $theme_basename ] ) ||
-                 empty( $themes_update->response[ $theme_basename ]['package'] )
+                empty( $themes_update->response[ $theme_basename ]['package'] )
             ) {
                 return $prepared_themes;
             }
@@ -614,9 +610,11 @@
                 if ( ! isset( $this->_translation_updates ) ) {
                     $this->_translation_updates = array();
 
-                    $translation_updates = $this->fetch_wp_org_module_translation_updates( $module_type, $slug );
-                    if ( ! empty( $translation_updates ) ) {
-                        $this->_translation_updates = $translation_updates;
+                    if ( current_user_can( 'update_languages' ) ) {
+                        $translation_updates = $this->fetch_wp_org_module_translation_updates( $module_type, $slug );
+                        if ( ! empty( $translation_updates ) ) {
+                            $this->_translation_updates = $translation_updates;
+                        }
                     }
                 }
 
@@ -636,7 +634,7 @@
                     foreach ( $this->_translation_updates as $translation_update ) {
                         $lang = $translation_update['language'];
                         if ( ! isset( $current_plugin_translation_updates_map[ $lang ] ) ||
-                             version_compare( $translation_update['version'], $current_plugin_translation_updates_map[ $lang ]['version'], '>' )
+                            version_compare( $translation_update['version'], $current_plugin_translation_updates_map[ $lang ]['version'], '>' )
                         ) {
                             $current_plugin_translation_updates_map[ $lang ] = $translation_update;
                         }
@@ -650,7 +648,7 @@
         }
 
         /**
-         * Get module's required data for the updates' mechanism.
+         * Get module's required data for the updates mechanism.
          *
          * @author Vova Feldman (@svovaf)
          * @since  2.0.0
@@ -660,14 +658,13 @@
          * @return object
          */
         function get_update_details( FS_Plugin_Tag $new_version ) {
-            $update               = new stdClass();
-            $update->slug         = $this->_fs->get_slug();
-            $update->new_version  = $new_version->version;
-            $update->url          = WP_FS__ADDRESS;
-            $update->package      = $new_version->url;
-            $update->tested       = self::get_tested_wp_version( $new_version->tested_up_to_version );
-            $update->requires     = $new_version->requires_platform_version;
-            $update->requires_php = $new_version->requires_programming_language_version;
+            $update              = new stdClass();
+            $update->slug        = $this->_fs->get_slug();
+            $update->new_version = $new_version->version;
+            $update->url         = WP_FS__ADDRESS;
+            $update->package     = $new_version->url;
+            $update->tested      = $new_version->tested_up_to_version;
+            $update->requires    = $new_version->requires_platform_version;
 
             $icon = $this->_fs->get_local_icon_url();
 
@@ -809,9 +806,9 @@
             $basename = $this->_fs->get_plugin_basename();
 
             if ( ! is_object( $transient_data ) ||
-                 ! isset( $transient_data->response ) ||
+                ! isset( $transient_data->response ) ||
                  ! is_array( $transient_data->response ) ||
-                 empty( $transient_data->response[ $basename ] )
+                empty( $transient_data->response[ $basename ] )
             ) {
                 return;
             }
@@ -1096,7 +1093,6 @@ if ( !isset($info->error) ) {
                 if ( ! $plugin_in_repo ) {
                     $data->last_updated = ! is_null( $new_version->updated ) ? $new_version->updated : $new_version->created;
                     $data->requires     = $new_version->requires_platform_version;
-                    $data->requires_php = $new_version->requires_programming_language_version;
                     $data->tested       = $new_version->tested_up_to_version;
                 }
 
@@ -1150,26 +1146,7 @@ if ( !isset($info->error) ) {
                 }
             }
 
-            if ( ! empty( $data->tested ) ) {
-                $data->tested = self::get_tested_wp_version( $data->tested );
-            }
-
             return $data;
-        }
-
-        /**
-         * @since 2.5.3 If the current WordPress version is a patch of the tested version (e.g., 6.1.2 is a patch of 6.1), then override the tested version with the patch so developers won't need to release a new version just to bump the latest supported WP version.
-         *
-         * @param string|null $tested_up_to
-         *
-         * @return string|null
-         */
-        private static function get_tested_wp_version( $tested_up_to ) {
-            $current_wp_version = get_bloginfo( 'version' );
-
-            return ( ! empty($tested_up_to) && fs_starts_with( $current_wp_version, $tested_up_to . '.' ) ) ?
-                $current_wp_version :
-                $tested_up_to;
         }
 
         /**

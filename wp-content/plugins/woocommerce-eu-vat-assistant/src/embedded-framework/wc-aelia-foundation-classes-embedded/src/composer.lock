@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c116f6d375d332f230b7d16d56f58a76",
+    "content-hash": "43c4142cd48d9019bbfbf446a83a0b81",
     "packages": [
         {
             "name": "composer/ca-bundle",
-            "version": "1.3.5",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "74780ccf8c19d6acb8d65c5f39cd72110e132bbd"
+                "reference": "4c679186f2aca4ab6a0f1b0b9cf9252decb44d0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/74780ccf8c19d6acb8d65c5f39cd72110e132bbd",
-                "reference": "74780ccf8c19d6acb8d65c5f39cd72110e132bbd",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/4c679186f2aca4ab6a0f1b0b9cf9252decb44d0b",
+                "reference": "4c679186f2aca4ab6a0f1b0b9cf9252decb44d0b",
                 "shasum": ""
             },
             "require": {
@@ -64,7 +64,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/composer",
                 "issues": "https://github.com/composer/ca-bundle/issues",
-                "source": "https://github.com/composer/ca-bundle/tree/1.3.5"
+                "source": "https://github.com/composer/ca-bundle/tree/1.3.1"
             },
             "funding": [
                 {
@@ -80,20 +80,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-01-11T08:27:00+00:00"
+            "time": "2021-10-28T20:44:15+00:00"
         },
         {
             "name": "freemius/wordpress-sdk",
-            "version": "2.5.3",
+            "version": "2.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Freemius/wordpress-sdk.git",
-                "reference": "2e56d683dd7b30445940679ecb401d2aff746c9e"
+                "reference": "d2c3e1c27792f34123f928ea9fa73be56c337d13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Freemius/wordpress-sdk/zipball/2e56d683dd7b30445940679ecb401d2aff746c9e",
-                "reference": "2e56d683dd7b30445940679ecb401d2aff746c9e",
+                "url": "https://api.github.com/repos/Freemius/wordpress-sdk/zipball/d2c3e1c27792f34123f928ea9fa73be56c337d13",
+                "reference": "d2c3e1c27792f34123f928ea9fa73be56c337d13",
                 "shasum": ""
             },
             "require": {
@@ -117,9 +117,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Freemius/wordpress-sdk/issues",
-                "source": "https://github.com/Freemius/wordpress-sdk/tree/2.5.3"
+                "source": "https://github.com/Freemius/wordpress-sdk/tree/2.4.3"
             },
-            "time": "2022-12-05T10:31:45+00:00"
+            "time": "2022-03-03T09:14:17+00:00"
         },
         {
             "name": "geoip2/geoip2",
@@ -294,16 +294,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.27.1",
+            "version": "1.26.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "904713c5929655dc9b97288b69cfeedad610c9a1"
+                "reference": "c6b00f05152ae2c9b04a448f99c7590beb6042f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/904713c5929655dc9b97288b69cfeedad610c9a1",
-                "reference": "904713c5929655dc9b97288b69cfeedad610c9a1",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/c6b00f05152ae2c9b04a448f99c7590beb6042f5",
+                "reference": "c6b00f05152ae2c9b04a448f99c7590beb6042f5",
                 "shasum": ""
             },
             "require": {
@@ -364,7 +364,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Seldaek/monolog/issues",
-                "source": "https://github.com/Seldaek/monolog/tree/1.27.1"
+                "source": "https://github.com/Seldaek/monolog/tree/1.26.1"
             },
             "funding": [
                 {
@@ -376,7 +376,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-06-09T08:53:42+00:00"
+            "time": "2021-05-28T08:32:12+00:00"
         },
         {
             "name": "nategood/httpful",
@@ -484,16 +484,16 @@
         },
         {
             "name": "yahnis-elsts/plugin-update-checker",
-            "version": "v4.13",
+            "version": "v4.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/YahnisElsts/plugin-update-checker.git",
-                "reference": "6eb27a6911e0e0880d09e5b11f577d3f688f7da7"
+                "reference": "3155f2d3f1ca5e7ed3f25b256f020e370515af43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/YahnisElsts/plugin-update-checker/zipball/6eb27a6911e0e0880d09e5b11f577d3f688f7da7",
-                "reference": "6eb27a6911e0e0880d09e5b11f577d3f688f7da7",
+                "url": "https://api.github.com/repos/YahnisElsts/plugin-update-checker/zipball/3155f2d3f1ca5e7ed3f25b256f020e370515af43",
+                "reference": "3155f2d3f1ca5e7ed3f25b256f020e370515af43",
                 "shasum": ""
             },
             "require": {
@@ -503,7 +503,7 @@
             "type": "library",
             "autoload": {
                 "files": [
-                    "load-v4p13.php"
+                    "load-v4p11.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -528,61 +528,12 @@
             ],
             "support": {
                 "issues": "https://github.com/YahnisElsts/plugin-update-checker/issues",
-                "source": "https://github.com/YahnisElsts/plugin-update-checker/tree/v4.13"
+                "source": "https://github.com/YahnisElsts/plugin-update-checker/tree/v4.11"
             },
-            "time": "2022-07-29T12:36:25+00:00"
+            "time": "2021-03-15T16:07:52+00:00"
         }
     ],
     "packages-dev": [
-        {
-            "name": "benmorel/weakmap-polyfill",
-            "version": "0.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/BenMorel/weakmap-polyfill.git",
-                "reference": "d8f6f172a4f37eea4b86b652b25196928c1d51fc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/BenMorel/weakmap-polyfill/zipball/d8f6f172a4f37eea4b86b652b25196928c1d51fc",
-                "reference": "d8f6f172a4f37eea4b86b652b25196928c1d51fc",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.4 || ^8.0"
-            },
-            "require-dev": {
-                "php-coveralls/php-coveralls": "^2.4",
-                "phpunit/phpunit": "^9.0"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "A WeakMap polyfill for PHP 7.4",
-            "keywords": [
-                "weakmap",
-                "weakref",
-                "weakreference"
-            ],
-            "support": {
-                "issues": "https://github.com/BenMorel/weakmap-polyfill/issues",
-                "source": "https://github.com/BenMorel/weakmap-polyfill/tree/0.3.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/BenMorel",
-                    "type": "github"
-                }
-            ],
-            "time": "2022-01-09T23:21:21+00:00"
-        },
         {
             "name": "hamcrest/hamcrest-php",
             "version": "v2.0.1",
@@ -636,16 +587,16 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.5.1",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "e92dcc83d5a51851baf5f5591d32cb2b16e3684e"
+                "reference": "c10a5f6e06fc2470ab1822fa13fa2a7380f8fbac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/e92dcc83d5a51851baf5f5591d32cb2b16e3684e",
-                "reference": "e92dcc83d5a51851baf5f5591d32cb2b16e3684e",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/c10a5f6e06fc2470ab1822fa13fa2a7380f8fbac",
+                "reference": "c10a5f6e06fc2470ab1822fa13fa2a7380f8fbac",
                 "shasum": ""
             },
             "require": {
@@ -702,9 +653,9 @@
             ],
             "support": {
                 "issues": "https://github.com/mockery/mockery/issues",
-                "source": "https://github.com/mockery/mockery/tree/1.5.1"
+                "source": "https://github.com/mockery/mockery/tree/1.5.0"
             },
-            "time": "2022-09-07T15:32:08+00:00"
+            "time": "2022-01-20T13:18:17+00:00"
         }
     ],
     "aliases": [],

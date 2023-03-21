@@ -2,18 +2,13 @@
 Contributors: daigo75
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LVSZCS2SABN7Y
 Requires at least: 5.0
-Tested up to: 6.1.9
+Tested up to: 6.0.9
 Tags: woocommerce, eu vat, vat compliance, iva, moss, vat rates, eu tax, hmrc, digital vat, tax, woocommerce taxes, aelia
 License: GPLv3
 
 Extends the standard WooCommerce sale process and assists in achieving compliance with the new EU VAT regime starting on the 1st of January 2015.
 
 == Description ==
-
-= Important =
-**The EU VAT Assistant reached its end of life on the 30th of June 2022** ([see the announcement from January 2022](https://aelia.co/ioss-compliance-aelia-eu-vat-assistant/)). The plugin is still functional and it can be used, but it's no longer maintained or supported. We're keeping it available for a while longer as a courtesy to existing users who have developers who can take care of its maintenance and troubleshooting.
-
-For more information about the plugin retirement and the recomemnded alternative, please refer to the sticky post in the support forum: [EU VAT Assistant – End of life and recommended alternative](https://wordpress.org/support/topic/eu-vat-assistant-end-of-life-and-recommended-alternative/).
 
 = This is a full version of the premium EU VAT Assistant plugin =
 
@@ -155,28 +150,6 @@ For more information about installation and management of plugins, please refer 
 This is a major update, which includes several important changes aimed at making the EU VAT Assistant more flexible and easier to extend (e.g. to cover the new rules post-Brexit). We aimed at maintaining backward compatibility as much as possible, but **we strongly advise to take a full backup of your site before installing this update and test it on a staging site first**. Should you encounter any issues, you can [download a previous version from the WordPress repository](https://wordpress.org/plugins/woocommerce-eu-vat-assistant/advanced/).
 
 == Changelog ==
-
-= 2.0.39.230214 =
-* Updated supported WooCommerce versions.
-
-= 2.0.38.230109 =
-* Updated supported WooCommerce versions.
-
-= 2.0.37.221203 =
-* Updated supported WooCommerce versions.
-
-= 2.0.36.221110 =
-* Updated supported WooCommerce versions.
-* Updated supported WordPress versions.
-
-= 2.0.35.221012 =
-* Updated supported WooCommerce versions.
-
-= 2.0.34.220830 =
-* Updated supported WooCommerce versions.
-
-= 2.0.33.220804 =
-* Updated supported WooCommerce versions.
 
 = 2.0.32.220704 =
 * Updated supported WooCommerce versions.

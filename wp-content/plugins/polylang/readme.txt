@@ -2,10 +2,10 @@
 Contributors: Chouby, manooweb, raaaahman, marianne38, sebastienserre, greglone, hugod
 Donate link: https://polylang.pro
 Tags: multilingual, bilingual, translate, translation, language, multilanguage, international, localization
-Requires at least: 5.6
-Tested up to: 6.0
+Requires at least: 5.7
+Tested up to: 6.1
 Requires PHP: 5.6
-Stable tag: 3.2.5
+Stable tag: 3.3.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -38,7 +38,7 @@ Helps optimizing the time spent translating your site with some very useful extr
 * Better integration in the new Block Editor.
 * Language switcher available as a block.
 * Language options available in the widget block editor.
-* Template parts translatable in the Full Site Editing (FSE).
+* Template parts translatable in the site editor (FSE).
 * Duplicate and/or synchronize content across post translations.
 * Improved compatibilities with other plugins such as [ACF Pro](https://polylang.pro/doc/working-with-acf-pro/).
 * Share the same URL slug for posts or terms across languages.
@@ -57,9 +57,13 @@ Helps optimizing the time spent translating your site with some very useful extr
 * Ability to use the WooCommerce REST API (available with Polylang Pro).
 * **Access to a Premium Support for personalized assistance**
 
-Neither of them will allow to do automated translation. Nevertheless, can be isntalled alongside Polylang Pro or Polylang, a third party plugin such as [Lingotek Translation](https://wordpress.org/plugins/lingotek-translation/) which offers a complete translation management system and provides services such as a translation memory or semi-automated translation processes (e.g., machine translation => human translation => legal review).
+Neither of them will allow to do automated translation.
 
-Migrating from WPML is possible using the plugin [WPML to Polylang](https://wordpress.org/plugins/wpml-to-polylang/).
+= Our other free plugins =
+
+* [WPML to Polylang](https://wordpress.org/plugins/wpml-to-polylang/) allows migrating from WPML to Polylang.
+* [DynaMo](https://wordpress.org/plugins/dynamo/) speeds up the translation of WordPress for all non-English sites.
+* [Site Editor Classic Features](https://wordpress.org/plugins/fse-classic/) allows to use legacy widgets (including the Polylang language switcher) and menus in the site editor (FSE).
 
 = Credits =
 
@@ -70,7 +74,7 @@ Wherever third party code has been used, credit has been given in the code’s c
 
 == Installation ==
 
-1. Make sure you are using WordPress 5.6 or later and that your server is running PHP 5.6 or later (same requirement as WordPress itself).
+1. Make sure you are using WordPress 5.7 or later and that your server is running PHP 5.6 or later (same requirement as WordPress itself).
 1. If you tried other multilingual plugins, deactivate them before activating Polylang, otherwise, you may get unexpected results!
 1. Install and activate the plugin as usual from the 'Plugins' menu in WordPress.
 1. The [setup wizard](https://polylang.pro/doc/setup-wizard/) is automatically launched to help you get started more easily with Polylang by configuring the main features.
@@ -90,10 +94,6 @@ Wherever third party code has been used, credit has been given in the code’s c
 
 * You need [Polylang for WooCommerce](https://polylang.pro/downloads/polylang-for-woocommerce/), premium addon described above, which will make both plugins work together.
 
-= Do you need translation services? =
-
-* If you want to use professional or automatic translation services, install and activate the [Lingotek Translation](https://wordpress.org/plugins/lingotek-translation/) plugin.
-
 == Screenshots ==
 
 1. The Polylang languages admin panel
@@ -102,6 +102,62 @@ Wherever third party code has been used, credit has been given in the code’s c
 4. The Edit Post screen with the Languages metabox
 
 == Changelog ==
+
+= 3.3.1 (2023-01-09) =
+
+* Pro: Allow to translate Oembed, URL and Email ACF fields
+* Pro: Fix ACF REST API mixing fields
+* Pro: Fix ACF compatibility loaded when no language exist
+* Pro: Fix headers of exported PO files.
+* Pro: Fix spacing in language switcher navigation block preview
+* Work around a bug in Sendinblue for WooCommerce causing a fatal error. #1156
+* Fix a regression with WooCommerce Product Add-Ons Ultimate. #1186
+
+= 3.3 (2022-11-28) =
+
+* Requires WP 5.7 as minimum version
+* Pro: Allow to export and import XLIFF files for posts
+* Pro: Honor the provided context for the navigation language switcher block.
+* Pro: Remove the parent hyperlink in the navigation language switcher block.
+* Pro: Add spacing between flag and name in the navigation language switcher block.
+* Pro: Disallow some special characters in translated slugs to avoid 404 errors.
+* Pro: Fix string translation not imported when the original is registered but has never been saved in database.
+* Pro: Fix string translation not imported when it includes an html entity.
+* Pro: Fix navigation language switcher block rendering in block editor.
+* Pro: Fix navigation language switcher may be displayed wrong color.
+* Translate the post pages in get_post_type_archive_link() on admin side too. #1000
+* Enable the block editor in page for posts translations to match the WordPress behavior since version 5.8 #1002
+* Improve the site health report #1062 #1076
+* Set the current language when saving a post #1065
+* The search block is now filtered by language #1081
+* Display slug of CPT and taxonomies in Custom post types and Taxonomies settings. Props @nicomollet #1112
+* Add support for wpml-config.xml to MU plugins #1140 Props Jeremy Simkins
+* Fix some deprecated notices fired by PHP 8.1 #975
+* Fix some missing canonical redirect taxonomies #1074
+* Fix redirect when permalink structure has no trailing slash #1080
+* Fix language switcher in legacy navigation menu widget not rendered in widgets block editor #1083
+* Fix language in tax query when an OR relation is used #1098
+* Fix parent of translated category removed when assigning an untranslated parent #1105
+* Fix is_front_page() when a static front page is not translated #1123
+* Yoast SEO: Fix posts without language displayed in the sitemap #1103
+* Yoast SEO: Avoid syncing robots meta. #1118
+
+= 3.2.8 (2022-10-17) =
+
+* Fix PHP warning when a filtered taxonomy has no query var #1124
+* Fix SQL error when attempting to get objects without languages and no language exist #1126
+* Fix error when term slugs are provided as array in WP_Query #1119, #1132 Props Susanna Häggblom
+* Fix a CSS regression in the wizard causing the default language icon to be removed #1137
+
+= 3.2.7 (2022-09-20) =
+
+* Work around a WooCommerce 6.9.x bug causing a fatal error in the wizard. #1116
+
+= 3.2.6 (2022-09-06) =
+
+* Pro: Fix a conflict with Kadence blocks
+* Pro: Fix a conflict with Flatsome builder
+* Fix media translation setting having no effect
 
 = 3.2.5 (2022-06-28) =
 

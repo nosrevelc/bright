@@ -4,12 +4,12 @@ Plugin Name: Aelia Foundation Classes for WooCommerce
 Description: This plugin implements common classes for other WooCommerce plugins developed by Aelia.
 Author: Aelia
 Author URI: https://aelia.co
-Version: 2.4.1.230214
+Version: 2.2.9.220704
 Plugin URI: https://aelia.co/shop/product-category/woocommerce/
 Text Domain: wc-aelia-foundation-classes
 Domain Path: /languages
 WC requires at least: 3.0
-WC tested up to: 7.4
+WC tested up to: 6.7
 Requires PHP: 7.1
 */
 
@@ -25,10 +25,4 @@ if(Aelia_WC_AFC_RequirementsChecks::factory()->check_requirements()) {
 	$GLOBALS['wc-aelia-foundation-classes']->set_main_plugin_file(__FILE__);
 
 	register_activation_hook(__FILE__, array($GLOBALS['wc-aelia-foundation-classes'], 'setup'));
-
-	// Declare support for HPOS tables
-	// @since 2.4.0.230202
-	add_action('before_woocommerce_init', function() {
-		aelia_declare_feature_support(__FILE__, 'custom_order_tables', true);
-	});
 }

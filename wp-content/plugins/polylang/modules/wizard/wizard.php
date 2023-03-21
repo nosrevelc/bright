@@ -39,7 +39,7 @@ class PLL_Wizard {
 	/**
 	 * The current step.
 	 *
-	 * @var string
+	 * @var string|null
 	 */
 	protected $step;
 
@@ -271,7 +271,7 @@ class PLL_Wizard {
 	 * @return void
 	 */
 	public function display_wizard_page() {
-		set_current_screen();
+		set_current_screen( 'pll-wizard' );
 		include __DIR__ . '/view-wizard-page.php';
 	}
 
