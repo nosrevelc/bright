@@ -236,6 +236,25 @@
             "step": ""
         },
         {
+            "key": "field_5f3d6f867003a",
+            "label": "IBAN",
+            "name": "iban",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_5e2f0161b6c9b",
             "label": "Address",
             "name": "expert_address",
@@ -303,15 +322,18 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "85",
+                "width": "55",
                 "class": "",
                 "id": ""
             },
+            "admin_only": 0,
             "default_value": "",
             "placeholder": "",
             "prepend": "",
             "append": "",
-            "maxlength": ""
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
         },
         {
             "key": "field_5e2f016fb6c9c",
@@ -322,10 +344,11 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "15",
+                "width": "45",
                 "class": "",
                 "id": ""
             },
+            "admin_only": 0,
             "default_value": "",
             "placeholder": "",
             "prepend": "",
@@ -335,23 +358,54 @@
             "step": ""
         },
         {
-            "key": "field_5f3d6f867003a",
-            "label": "IBAN",
-            "name": "iban",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
+            "key": "field_63f5f95210e51",
+            "label": "Show this Member in Map Network",
+            "name": "show_this_member_in_map",
+            "type": "radio",
+            "instructions": "Enter the correct zip code in the \"Postal\" field to show the correct location on the map",
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "100",
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "admin_only": 0,
+            "choices": {
+                "show_map": "Show",
+                "no_show_map": "No Show"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "show_map : Show",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_63f5f98910e52",
+            "label": "Show this Member in List Network",
+            "name": "show_this_member_in_list",
+            "type": "radio",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "admin_only": 0,
+            "choices": {
+                "show_list": "Show",
+                "no_show_list": "No Show"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "show_list : Show",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
         },
         {
             "key": "field_5e2f0268b6ca2",
@@ -1753,5 +1807,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1675350016
+    "modified": 1677064642
 }

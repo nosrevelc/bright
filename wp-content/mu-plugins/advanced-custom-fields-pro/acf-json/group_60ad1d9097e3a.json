@@ -403,7 +403,7 @@
                     "label": "Anúncio por página",
                     "name": "anuncio_por_pagina",
                     "type": "range",
-                    "instructions": "Select the number of ads to show (up to 7). The default is 7.\r\nPut -1 to show all listings.",
+                    "instructions": "Select the number of ads to show.\r\nThe maximum and default value is 7 Auncios.\r\nPut -1 to show all listings.",
                     "required": 0,
                     "conditional_logic": [
                         [
@@ -419,7 +419,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "admin_only": 0,
                     "default_value": 4,
                     "min": -1,
                     "max": 15,
@@ -659,7 +658,7 @@
                     "label": "1-Anúncio por página",
                     "name": "anuncio_por_pagina_1",
                     "type": "range",
-                    "instructions": "Select the number of ads to show (up to 7). The default is 7.\r\nPut -1 to show all listings.",
+                    "instructions": "Select the number of ads to show.\r\nThe maximum and default value is 7 Auncios.\r\nPut -1 to show all listings.",
                     "required": 0,
                     "conditional_logic": [
                         [
@@ -675,7 +674,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "admin_only": 0,
                     "default_value": "",
                     "min": -1,
                     "max": 15,
@@ -915,7 +913,7 @@
                     "label": "2-Anúncio por página",
                     "name": "anuncio_por_pagina_2",
                     "type": "range",
-                    "instructions": "Select the number of ads to show (up to 7). The default is 7.\r\nPut -1 to show all listings.",
+                    "instructions": "Select the number of ads to show.\r\nThe maximum and default value is 7 Auncios.\r\nPut -1 to show all listings.",
                     "required": 0,
                     "conditional_logic": [
                         [
@@ -931,7 +929,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "admin_only": 0,
                     "default_value": "",
                     "min": -1,
                     "max": 15,
@@ -1171,7 +1168,7 @@
                     "label": "3-Anúncio por página",
                     "name": "anuncio_por_pagina_3",
                     "type": "range",
-                    "instructions": "Select the number of ads to show (up to 7). The default is 7.\r\nPut -1 to show all listings.",
+                    "instructions": "Select the number of ads to show.\r\nThe maximum and default value is 7 Auncios.\r\nPut -1 to show all listings.",
                     "required": 0,
                     "conditional_logic": [
                         [
@@ -1187,7 +1184,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "admin_only": 0,
                     "default_value": "",
                     "min": -1,
                     "max": 15,
@@ -3231,5 +3227,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1677154396
+    "modified": 1677161332
 }

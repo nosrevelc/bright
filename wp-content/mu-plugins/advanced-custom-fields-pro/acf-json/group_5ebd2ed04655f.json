@@ -68,9 +68,35 @@
             "dropzone": 0
         },
         {
-            "key": "field_64008077e1e80",
+            "key": "field_6400928886fd8",
             "label": "Icon Map Logo",
             "name": "icon_map_logo",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "admin_only": 0,
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "dropzone": 0
+        },
+        {
+            "key": "field_6409a7944665a",
+            "label": "Image Gravatar",
+            "name": "img_gravatar",
             "type": "image",
             "instructions": "",
             "required": 0,
@@ -203,7 +229,7 @@
             "save_other_choice": 0
         },
         {
-            "key": "field_63f758f53b585",
+            "key": "field_63f7749786a1a",
             "label": "Opportunity System",
             "name": "opportunity_system",
             "type": "radio",
@@ -373,28 +399,6 @@
             "endpoint": 0
         },
         {
-            "key": "field_6399f625829d0",
-            "label": "Lead Service Request Qualification Form ID",
-            "name": "sr_id_lead_qualification_form",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "admin_only": 0,
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
-            "readonly": 0,
-            "disabled": 0
-        },
-        {
             "key": "field_63776f289096e",
             "label": "Recomemded Busines",
             "name": "",
@@ -505,5 +509,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1677758568
+    "modified": 1678722604
 }
