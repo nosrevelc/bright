@@ -1977,7 +1977,11 @@ function userHasActiveExpertFeeSubscription($user_id = NULL){
     if(!$user_id){
         $user_id= get_current_user_id();
     }
-    $subscriptions = wcs_get_users_active_subscriptions($user_id);
+    if (function_exists('wcs_get_users_active_subscriptions')) {
+        $subscriptions = wcs_get_users_active_subscriptions($user_id);
+    } else {
+        $subscriptions = array();
+    }
     //var_dump($subscriptions);
     foreach ($subscriptions as $subscription_id => $subscription) :
         $args = array('post__in' => $subscription->get_related_orders());

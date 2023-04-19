@@ -152,7 +152,11 @@ function getSubscriptionsOfUser($id = NULL, $subtype = NULL)
     if (!$id) {
         $id = get_current_user_id();
     }
-    $subscriptions = wcs_get_users_active_subscriptions($id);
+     if (function_exists('wcs_get_users_active_subscriptions')) {
+        $subscriptions = wcs_get_users_active_subscriptions($id);
+    } else {
+        $subscriptions = array();
+    }
 
     $h = '';
     $b = '';
