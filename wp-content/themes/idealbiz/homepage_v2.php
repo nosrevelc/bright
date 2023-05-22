@@ -5,9 +5,9 @@
 
 ?>
 
-<section class="cl_header">
-    <?php get_header(); ?>
+<?php get_header(); ?>
 
+<section class="cl_header">
     <div class="cl_menu">
         <?php do_action('mostra_menu_superior'); ?>
 
@@ -53,9 +53,6 @@
         $browser = detect_browser_body_class($classes)[0];
         $os = detect_browser_body_class($classes)[1];
 
-
-        /* cl_alerta('Navegador '.$browser.' ver '.$browser_version[1].' Sistema OS '.$os); */
-        
         ?>
 
 
@@ -111,26 +108,6 @@ $view_button_all_in_section_1 = $config_sub_homepage['view_button_all_in_section
 
 $description_section_partner = get_field('description_section_partner');
 
-/* //PRODUTOS
-$title_section_products = $config_sub_homepage['title_section_products'];
-$mostrar_produtos = $config_sub_homepage['mostrar_produtos'];
-$quantidade_de_produtos = $config_sub_homepage['quantidade_de_produtos'];
-$categorias_de_pordutos = $config_sub_homepage['categorias_de_pordutos'];
-$view_all_products = $config_sub_homepage['view_all_products'];
-$select_page_all_product = $config_sub_homepage['select_page_all_product'];
-
-//1-PRODUTOS
-$mostrar_produtos_1 = $config_sub_homepage['mostrar_produtos_1'];
-$quantidade_de_produtos_1 = $config_sub_homepage['quantidade_de_produtos_1'];
-$categorias_de_pordutos_1 = $config_sub_homepage['categorias_de_pordutos_1'];
-$view_all_products_1 = $config_sub_homepage['view_all_products_1'];
-$select_page_all_product_1 = $config_sub_homepage['select_page_all_product_1'];
-//2-PRODUTOS
-$mostrar_produtos_2 = $config_sub_homepage['mostrar_produtos_2'];
-$quantidade_de_produtos_2 = $config_sub_homepage['quantidade_de_produtos_2'];
-$categorias_de_pordutos_2 = $config_sub_homepage['categorias_de_pordutos_2'];
-$view_all_products_2 = $config_sub_homepage['view_all_products_2'];
-$select_page_all_product_2 = $config_sub_homepage['select_page_all_product_2']; */
 
 
 // SLIDE POSTS
@@ -154,10 +131,6 @@ $flag_contry = $config_sub_homepage['flag_contry'];
 $countries_image = $config_sub_homepage['countries_image'];
 $countries_description = $config_sub_homepage['countries_description'];
 $newsletter_shortcode = $config_sub_homepage['newsletter_shortcode'];
-
-
-
-
 
 $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_home_page.css';
 
@@ -240,7 +213,17 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
     </section>
 <?php endif; ?>
 <style>
-    img {
+
+    .login-register{
+        white-space: nowrap !important;
+    }
+   #cl_header_flag{
+    padding-top: 5px;
+   }
+   #cl_header_login_name{
+    margin-top: 10px;
+   }
+   img {
         border-radius: 0px;
     }
 
@@ -327,25 +310,10 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
     }
 
 
-    #myVideo video {
-        max-height: 645px;
-        min-width: 100%;
-        top: 0;
-        position: fixed;
-        object-fit: cover;
-        z-index: -1;
-        /* filter: brightness(40%); */
-    }
 
     .img_head{
-        height: 680px;
+        height:0px;
     }
-    #myVideo{
-        height: 675px;
-    }
-
-
-
 
     .texto-img-head {
         display: flex;
@@ -375,9 +343,9 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
         background-color: #fff;
         padding: 7px;
         margin: 0 auto;
-
         border-top-left-radius: 31px;
         border-top-right-radius: 31px;
+        display : none;
     }
 
     .cl-buscador {
@@ -394,63 +362,6 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
 
     #titulo-cookies-2 {
         margin: 30px 0;
-    }
-
-    @media only screen and (max-width: 992px) {
-       
-
-        /**TOPO DO SITE */
-                .cl_menu {
-            margin-top: -29px;
-        }
-
-
-        #myVideo{
-            height: 482px;
-        }
-       
-       
-        .img_head {
-            background-size: contain;
-            background-size: 100% 100%;
-            margin-bottom: -190px;
-        }
-
-        .cl-img-head img {
-            width: 100%;
-            max-width: 300px;
-            height: auto;
-        }
-
-        .cl-div-conteudo {
-            font-size: x-large;
-            text-align: center;
-            font-family: var(--font-default), sans-serif;
-        }
-
-        .cl-buscador {
-            min-width: 768px;
-            max-width: 768px;
-        }
-        .search-form--header .text-global-search input {
-        width: 768px;
-        }
-
-        .search-form--header .text-global-search input {
-            width: 543px !important;
-        }
-    }
-
-    @media only screen and (max-width: 1024px) {
-
-        .cl-buscador {
-            min-width: 900px;
-            max-width: 900px;
-        }
-
-        .search-form--header .text-global-search input {
-            width: 650px !important;
-        }
     }
 
     .cl_section {
@@ -481,6 +392,7 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
     .cl_main {
         width: 100%;
         background-color: #ffffff;
+
     }
 
     .swiper-wrapper {
@@ -693,19 +605,12 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
 
     }
 
-    .comunidade .img {
-        /* background-color: tomato; */
-    }
 
     .comunidade .conteudo {
         padding-bottom: 50px;
         /* background-color: greenyellow; */
     }
 
-    .comunidade .botoes {
-        /* background-color: pink; */
-
-    }
 
     .cl_botoes {
         /* background-color:tomato; */
@@ -722,10 +627,6 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
 
     .cl_botao_titulo a {
         color: #ffffff;
-    }
-
-    .cl_titulo_botao {
-        /* background-color:#649FD5; */
     }
 
     .comunidade .dir .botoes {
@@ -949,10 +850,6 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
         padding-bottom: 20px;
     }
 
-    .nh_bloco_sevicos div {
-        /* background-color:yellowgreen; */
-    }
-
     .nh_titulo {
         font-family: var(--font-default), sans-serif;
         color: #000;
@@ -987,286 +884,6 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
     .nh_link a {
         color: #c4c4c4;
     }
-
-    @media only screen and (max-width: 768px) {
-
-
-        /** BLOCO FORM mobile*/
-
-        body{
-            padding-top: 0px;
-        }
-
-        .cl_big_title, .comunidade h1 , .cl_section h1{
-        text-align: left;
-        font-weight: var(--font-weight);
-        font-size: 2.1em;
-        margin-top: -4px;
-        font-family: var(--font-default), sans-serif;
-        color: #464b4e;
-        }
-
-        .cl_big_title{
-            padding-left:10px;
-        }
-
-
-
-        .main-form {
-            display: block;
-            /* background-color: #00659b; */
-            margin-bottom: 150px;
-            border-radius: 0px;
-        }
-
-
-        .main-form .form textarea {
-            height: 6.5em;
-        }
-
-        .main-form .form {
-            max-width: 80%;
-            margin: 10px auto;
-            min-height: 470px;
-        }
-
-        .main-form .form input[name="first_name"] {
-            width: 100%;
-        }
-
-        .form-row {
-            display: block;
-        }
-
-        /** BLOCO COMUNIDADE mobile*/
-        .comunidade,
-        .comunidade .dir .botoes {
-            display: unset;
-        }
-
-        .main_sev_prof .comunidade{
-            display: flex;
-            flex-direction: column-reverse;
-            padding:0px;
-
-        }
-
-        .comunidade .dir .botoes button {
-            margin: 10px auto;
-            max-width: 85%;
-            min-height: auto;
-        }
-
-        .comunidade .esq img {
-            width: 100%;
-            height: auto;
-        }
-
-        .comunidade .conteudo {
-            padding-top: 50px;
-            text-align: center;
-            /* background-color: greenyellow; */
-        }
-
-        .comunidade .conteudo h3 {
-            text-align: center;
-        }
-        .comunidade .conteudo h1{
-            text-align: center;
-        }
-
-        .comunidade .dir {
-            padding-right:5px;
-            padding-left:5px;
-        }
-
-        .comunidade .conteudo{
-            padding-top: 5px;
-            padding-bottom: 5px;
-        }
-
-
-
-        /** BLOCO MARKET PLACE mobile*/
-        .mkt_place {
-            display: block;
-        }
-
-        /** BLOCO SERVIÇOS INTEGRADOS*/
-        .integrado {
-            display: block;
-
-        }
-
-        /**BLOCO APÓS O VIDEO mobile */
-        .nh_content1_dir img {
-            width: 100%;
-            padding-top: 20px;
-        }
-
-        .nh_content1_dir .link {
-            /* background-color: #1B7A87; */
-            width: 100%;
-            margin-top: 35px;
-            margin-left: 0px;
-            text-align: center;
-
-        }
-
-        .nh_content1_esq {
-            width: 100%;
-            /*  background-color:tomato ; */
-            margin-left: 0px;
-        }
-
-        .nh_content1_dir {
-            width: 100%;
-            /*  background-color:greenyellow ; */
-
-        }
-
-        .nh_content1 {
-            display: block;
-        }
-
-        .nh_content1_esq .titulo {
-            color: #649FD5;
-            font-size: 3em;
-            font-weight: var(--font-weight);
-            text-align: left;
-            line-height: 1.1em;
-        }
-
-        .nh_content1_dir a {
-            font-weight: var(--font-weight);
-            font-size: 1.2em;
-
-        }
-
-        /**BLOCOS DE SERVIÇO mobile */
-        .nh_icon,
-        .dashicons,
-        .nh_link,
-        .nh_titulo {
-            text-align: center;
-        }
-
-        .nh_sevicos {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            /* background-color: tomato; */
-            padding-bottom: 20px;
-            padding-left: 0px;
-            left: 0;
-        }
-
-        .nh_bloco_sevicos {
-            width: 50%;
-            padding-top: 0px;
-            padding-bottom: 60px;
-            padding-left: 0px;
-            padding: 3px;
-        }
-
-        .nh_bloco_sevicos div {
-            /* background-color:yellowgreen; */
-        }
-
-        #bnt_servicos {
-            color: #fff;
-            background-color: #464b4e;
-            font-size: medium;
-            padding: 7px;
-            border-radius: 0px;
-            min-width: 85%;
-        }
-
-        #bnt_parceiros {
-            color: #fff;
-            background-color: #464b4e;
-            font-size: medium;
-            padding: 7px;
-            border-radius: 0px;
-            margin-top: 250px; /**Valeu to idealbiz 10px */
-            z-index:999;
-        }
-
-        /**TOPO DO SITE */
-        .cl_menu {
-            margin-top: -29px;
-        }
-
-        .img_head {
-            /* background-size: contain; */
-            background-size: auto;
-            margin-bottom: 0px;
-            background-color: #f2f2f2;
-            z-index: 1;
-        }
-
-        #myVideo{
-            height: 320px;
-            /* background-color: red; */
-        }
-
-        /*IN AJUSTE BOTÃO PLAY TOPO NO MOBILE */
-            .texto-img-head {
-            display:block;
-            justify-content: center;
-            min-height: 0px;
-            padding-top: 6px;
-            padding-bottom: 0px;
-        }
-
-        .cl-img-head img {
-            width: 100%;
-            max-width: 200px;
-            height: auto;
-            top:0px;
-        }
-        .wp-block-columns{
-            margin-bottom: -30px;
-        }
-        
-
-        .cl-div-img-head {
-            margin-left: 25%;
-
-        }
-        /*OUT AJUSTE BOTÃO PLAY TOPO NO MOBILE */
-
-        .texto-img-head {
-            justify-content: center;
-            min-height: 0px;
-            padding-top: 6px;
-            padding-bottom: 0px;
-        }
-
-        .cl-div-buscador {
-            display: none;
-        }
-
-        .cl_section {
-            min-width: 100%;
-            margin-top: 5px;
-            text-align: center;
-        }
-
-        .cl_section h1 {
-            text-align: center !important;
-        }
-
-
-
-
-        
-
-        /**  FIM DO CODIGO MOBILE */
-    }
-
-    
-
     #id_content_1 {
         margin-top: 0px !important;
     }
@@ -1420,8 +1037,351 @@ $cl_css = get_site_url() . '/wp-content/themes/idealbiz/assets/css/original_sub_
     .d-md-block h2{
     font-weight: 600 !important;
     font-size: 1.38em;
-}
+    }
 
+    @media only screen and (max-width: 1024px) {
+
+        .cl-buscador {
+            min-width: 900px;
+            max-width: 900px;
+        }
+
+        .search-form--header .text-global-search input {
+            width: 650px !important;
+        }
+    }
+
+    @media only screen and (max-width: 992px) {
+        .main-form .cl_big_title {
+            text-align: left !important;
+        }
+        .login-register{
+            white-space: nowrap !important;
+        }
+        .cl_content_elementor {
+            margin-top: 40px;
+        }
+/*         #cl_header_login_name{
+            margin-top: 0px;
+        } */
+        #cl_header_flag{
+            padding-top: 0px;
+        }
+        .custom-logo-link img{
+            max-height: 40px;
+        }
+        .comunidade{
+            padding:unset;
+        } 
+        .cl_menu {
+            margin-top: -29px;
+        }
+
+        .img_head {
+            background-size: contain;
+            background-size: 100% 100%;
+        }
+
+        .cl-img-head img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+        }
+
+        .cl-div-conteudo {
+            font-size: x-large;
+            text-align: center;
+            font-family: var(--font-default), sans-serif;
+        }
+
+        .cl-buscador {
+            min-width: 768px;
+            max-width: 768px;
+        }
+        .search-form--header .text-global-search input {
+        width: 768px;
+        }
+
+        .search-form--header .text-global-search input {
+            width: 543px !important;
+        }
+    }
+
+    @media only screen and (max-width: 860px), (max-width: 768px) {
+        .login-register{
+            white-space: nowrap !important;
+        }
+        .cl_content_elementor {
+            margin-top: 40px;
+        }
+        .icon_title{
+            justify-content: center;;
+        }
+       
+        .cl_big_title, .cl_section h1{
+        text-align: center !important;
+        font-weight: var(--font-weight);
+        font-size: 2.1em;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        font-family: var(--font-default), sans-serif;
+        color: #464b4e;
+        }
+
+        .comunidade h1 {
+        text-align: center !important;
+        font-weight: var(--font-weight);
+        font-size: 2.1em;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin-bottom: -35px;
+        font-family: var(--font-default), sans-serif;
+        color: #464b4e;
+        }
+
+        .cl_big_title{
+            padding:35px;
+            text-align: center;
+        }
+
+
+
+        .main-form {
+            display: block;
+            /* background-color: #00659b; */
+            margin-bottom: 150px;
+            border-radius: 0px;
+        }
+
+
+        .main-form .form textarea {
+            height: 6.5em;
+        }
+
+        .main-form .form {
+            max-width: 80%;
+            margin: 10px auto;
+            min-height: 470px;
+        }
+
+        .main-form .form input[name="first_name"] {
+            width: 100%;
+        }
+
+        .form-row {
+            display: block;
+        }
+
+        /** BLOCO COMUNIDADE mobile*/
+        .comunidade,
+        .comunidade .dir .botoes {
+            display: unset;
+        }
+
+        .main_sev_prof .comunidade{
+            display: flex;
+            flex-direction: column-reverse;
+            padding:0px;
+
+        }
+
+        .comunidade .dir .botoes button {
+            margin: 10px auto;
+            max-width: 85%;
+            min-height: auto;
+        }
+
+        .comunidade .esq img {
+            width: 100%;
+            height: auto;
+        }
+
+        .comunidade .conteudo {
+            padding-top: 50px;
+            text-align: center;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .comunidade .conteudo h3 {
+            text-align: center;
+        }
+
+        .comunidade .dir {
+            padding-right:5px;
+            padding-left:5px;
+            width: 100%;
+        }
+
+        /** BLOCO MARKET PLACE mobile*/
+        .mkt_place {
+            display: block;
+        }
+
+        /** BLOCO SERVIÇOS INTEGRADOS*/
+        .integrado {
+            display: block;
+
+        }
+
+        /**BLOCO APÓS O VIDEO mobile */
+        .nh_content1_dir img {
+            width: 100%;
+            padding-top: 20px;
+        }
+
+        .nh_content1_dir .link {
+            /* background-color: #1B7A87; */
+            width: 100%;
+            margin-top: 35px;
+            margin-left: 0px;
+            text-align: center;
+
+        }
+
+        .nh_content1_esq {
+            width: 100%;
+            /*  background-color:tomato ; */
+            margin-left: 0px;
+        }
+
+        .nh_content1_dir {
+            width: 100%;
+            /*  background-color:greenyellow ; */
+
+        }
+
+        .nh_content1 {
+            display: block;
+        }
+
+        .nh_content1_esq .titulo {
+            color: #649FD5;
+            font-size: 3em;
+            font-weight: var(--font-weight);
+            text-align: left;
+            line-height: 1.1em;
+        }
+
+        .nh_content1_dir a {
+            font-weight: var(--font-weight);
+            font-size: 1.2em;
+
+        }
+
+        /**BLOCOS DE SERVIÇO mobile */
+        .nh_icon,
+        .dashicons,
+        .nh_link,
+        .nh_titulo {
+            text-align: center;
+        }
+
+        .nh_sevicos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            /* background-color: tomato; */
+            padding-bottom: 20px;
+            padding-left: 0px;
+            left: 0;
+        }
+
+        .nh_bloco_sevicos {
+            width: 50%;
+            padding-top: 0px;
+            padding-bottom: 60px;
+            padding-left: 0px;
+            padding: 3px;
+        }
+
+
+        #bnt_servicos {
+            color: #fff;
+            background-color: #464b4e;
+            font-size: medium;
+            padding: 7px;
+            border-radius: 0px;
+            min-width: 85%;
+        }
+
+        #bnt_parceiros {
+            color: #fff;
+            background-color: #464b4e;
+            font-size: medium;
+            padding: 7px;
+            border-radius: 0px;
+            margin-top: 10px;
+            width: 80%;
+        }
+
+        /**TOPO DO SITE */
+        .cl_menu {
+            margin-top: -29px;
+        }
+
+        .img_head {
+            /* background-size: contain; */
+            background-size: auto;
+            margin-bottom: 0px;
+            background-color: #f2f2f2;
+            z-index: 1;
+        }
+
+
+        /*IN AJUSTE BOTÃO PLAY TOPO NO MOBILE */
+            .texto-img-head {
+            display:block;
+            justify-content: center;
+            min-height: 0px;
+            padding-top: 6px;
+            padding-bottom: 0px;
+        }
+
+        .cl-img-head img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            top:0px;
+        }
+        .wp-block-columns{
+            margin-bottom: -30px;
+        }
+
+
+        .cl-div-img-head {
+            margin-left: 25%;
+
+        }
+        /*OUT AJUSTE BOTÃO PLAY TOPO NO MOBILE */
+
+        .texto-img-head {
+            justify-content: center;
+            min-height: 0px;
+            padding-top: 6px;
+            padding-bottom: 0px;
+        }
+
+        .cl_section {
+            min-width: 100%;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+    }
+    @media only screen and (max-width: 768px) {
+        .login-register{
+            white-space: normal !important;
+        }
+    }
+    @media only screen and (max-width: 600px) {
+        .cl_section div>h3 {
+            font-size: medium;
+        }
+        .cl_content_elementor {
+            margin-top: -30px;
+        }  
+    }
 </style>
 
 
@@ -1445,42 +1405,11 @@ switch ($cl_blog_id) {
 
 ?>
 <?php $rand = rand(0, $cl_total_video) ?>
-
-<div class="img_head">
-    <div id="myVideo">
+<div class="cl_content_elementor" >
     <?php the_content(); ?>
-        <?php /* cl_alerta($os); */ ?>
-    <!-- NPMM - INICIO CODIGO COMENTADO POIS FOI FEITO A TROCA DE VIDEO PARA IMAGENS -->
-        <!-- <?php if ($os == 'iphone') { ?>
-            <div class="img-head-apple"><img src="https://idealbiz.io/pt/wp-content/uploads/sites/video/<?php echo $cl_blog_id ?>/idealbiz-img-topo-4.jpg"></div>
-
-        <?php } else { ?>
-
-            <video autoplay muted loop playsinline>
-                <source src="https://idealbiz.io/pt/wp-content/uploads/sites/video/<?php echo $cl_blog_id ?>/video-back-ground<?php echo $rand ?>.mp4" type="video/mp4">
-                Your browser does not support HTML5 video.
-            
-                
-            </video>
-
-        <?php } ?> -->
-
-    </div>
-    <!-- NPMM - FIM CODIGO COMENTADO POIS FOI FEITO A TROCA DE VIDEO PARA IMAGENS -->
-<!--     <div class="texto-img-head">
-        <div class="cl-div-conteudo">
-            
-        </div>
-        <div class="cl-div-img-head">
-            <?php if ($image_head_right) { ?>
-                <a href="<?php echo $link_image_head_right; ?>" target="<?php echo $link_image_head_right_window;  ?>">
-                    <div class="cl-img-head"><img src="<?php echo $image_head_right ?>" alt="Image Head Right iDealBiz"></div>
-                </a>
-            <?php } ?>
-        </div>
-    </div> -->
-    <div class="cl-buscador d-none">
-
+</div>
+<div class="img_head">
+    <div class="cl-buscador hidden-mobile">
         <div class="cl-div-buscador">
             <form id="search-form--header" class="search-form--header" action="<?php echo home_url('/'); ?>" method="get">
                 <label class="text-global-search border-blue b-t-l-r b-b-l-r">
@@ -1553,12 +1482,16 @@ switch ($cl_blog_id) {
 
 
 <!-- 1 INI MODULO DE CODIGO -->
+<?php if(get_field('content_1')){?>
 <div class="container">
-        <div class="cl_big_title" id="id_content_1"><?php echo get_field('title_content_1') ?></div>
+        <?php if(get_field('title_content_1') ){?>
+            <div class="cl_big_title" id="id_content_1"><?php echo get_field('title_content_1') ?></div>
+        <?php } ?>    
         <div class="cl_section">
             <?php echo get_field('content_1') ?>
         </div>
     </div>
+<?php } ?>    
 
 <!-- 1- INICIO EXIBE MODULOS SLIDERS listing ou membro ou cookies-->
 <?php    
@@ -1571,13 +1504,17 @@ switch ($cl_blog_id) {
  <!-- FIM 1 MODULO DE CODIGO -->  
 
 <!-- 2 INI MODULO DE CODIGO -->
+<?php if(get_field('content_2')){?>
     <div id='cl_bg_f2f2f2' class="w-100">
         <div class="container">
+        <?php if(get_field('title_content_2') ){?>
             <div class="cl_big_title"><?php echo get_field('title_content_2') ?></div>
-            <div class="cl_section">
-                <?php echo get_field('content_2') ?>
-            </div>
+        <?php } ?>    
+        <div class="cl_section">
+            <?php echo get_field('content_2') ?>
         </div>
+        </div>
+<?php } ?>        
 <!-- 2- INICIO EXIBE MODULOS SLIDERS listing ou membro ou cookies-->
 
 <?php    
@@ -1594,12 +1531,16 @@ switch ($cl_blog_id) {
 
 
 <!-- 3 INI MODULO DE CODIGO -->
+<?php if(get_field('content_3')){?>
     <div class="container p-t-30 p-b-30">
-        <div class="cl_big_title"><?php echo get_field('title_content_3') ?></div>
+        <?php if(get_field('title_content_3') ){?>
+            <div class="cl_big_title"><?php echo get_field('title_content_3') ?></div>
+        <?php } ?> 
         <div class="cl_section">
             <?php echo get_field('content_3') ?>
         </div>
     </div>
+<?php } ?>    
 <!-- 3- INICIO EXIBE MODULOS SLIDERS listing ou membro ou cookies-->
 <?php    
         
@@ -1612,14 +1553,18 @@ switch ($cl_blog_id) {
 <!-- FIM 3 MODULO DE CODIGO -->
 
 <!-- 4 INI MODULO DE CODIGO -->
+<?php if(get_field('content_4')){?>
     <div id='cl_bg_f2f2f2' class="w-100">
         <div class="container">
+        <?php if(get_field('title_content_4') ){?>
             <div class="cl_big_title"><?php echo get_field('title_content_4') ?></div>
-            <div class="cl_section">
-                <?php echo get_field('content_4') ?>
-            </div>
+        <?php } ?> 
+        <div class="cl_section">
+            <?php echo get_field('content_4') ?>
+        </div>
         </div>
     </div>
+<?php } ?>    
 <!-- 4- INICIO EXIBE MODULOS SLIDERS listing ou membro ou cookies-->
 <?php    
         
@@ -1632,12 +1577,16 @@ switch ($cl_blog_id) {
 <!-- FIM 4 MODULO DE CODIGO -->  
 
 <!-- 5 INI MODULO DE CODIGO -->
+<?php if(get_field('content_5')){?>
     <div class="container p-t-30 p-b-30">
-        <div class="cl_big_title"><?php echo get_field('title_content_5') ?></div>
+        <?php if(get_field('title_content_5') ){?>
+                <div class="cl_big_title"><?php echo get_field('title_content_5') ?></div>
+        <?php } ?> 
         <div class="cl_section">
             <?php echo get_field('content_5') ?>
         </div>
     </div>
+<?php } ?>    
 <!-- 5- INICIO EXIBE MODULOS SLIDERS listing ou membro ou cookies-->
 <?php    
         
@@ -1649,14 +1598,18 @@ switch ($cl_blog_id) {
 <!-- FIM 5 MODULO DE CODIGO -->
 
 <!-- 6 INI MODULO DE CODIGO -->
+<?php if(get_field('content_6')){?>
     <div id='cl_bg_f2f2f2' class="w-100">
         <div class="container">
-            <div class="cl_big_title"><?php echo get_field('title_content_6') ?></div>
+            <?php if(get_field('title_content_6') ){?>
+                <div class="cl_big_title"><?php echo get_field('title_content_6') ?></div>
+            <?php } ?> 
             <div class="cl_section">
                 <?php echo get_field('content_6') ?>
             </div>
         </div>
     </div>
+<?php } ?>    
 <!-- 6- INICIO EXIBE MODULOS SLIDERS listing ou membro ou cookies-->
 <?php    
         
@@ -1668,12 +1621,16 @@ switch ($cl_blog_id) {
 <!-- FIM 6 MODULO DE CODIGO -->    
 
 <!-- 7 INI MODULO DE CODIGO -->
+<?php if(get_field('content_7')){?>
     <div class="container p-t-30 p-b-30">
-        <div class="cl_big_title"><?php echo get_field('title_content_7') ?></div>
+        <?php if(get_field('title_content_7') ){?>
+                <div class="cl_big_title"><?php echo get_field('title_content_7') ?></div>
+        <?php } ?> 
         <div class="cl_section">
             <?php echo get_field('content_7') ?>
         </div>
     </div>
+<?php } ?>    
 <!-- 7- INICIO EXIBE MODULOS SLIDERS listing ou membro ou cookies-->
 <?php    
         
@@ -1685,14 +1642,18 @@ switch ($cl_blog_id) {
 <!-- FIM 7 MODULO DE CODIGO -->
 
 <!-- 8 INI MODULO DE CODIGO -->
+<?php if(get_field('content_8')){?>
     <div id='cl_bg_f2f2f2' class="w-100">
         <div class="container">
-            <div class="cl_big_title"><?php echo get_field('title_content_8') ?></div>
+            <?php if(get_field('title_content_8') ){?>
+                <div class="cl_big_title"><?php echo get_field('title_content_8') ?></div>
+            <?php } ?> 
             <div class="cl_section">
                 <?php echo get_field('content_8') ?>
             </div>
         </div>
     </div>
+<?php } ?>    
 <!-- 8- INICIO EXIBE MODULOS SLIDERS listing ou membro ou cookies-->
 <?php    
         
@@ -1704,14 +1665,18 @@ switch ($cl_blog_id) {
 <!-- FIM 8 MODULO DE CODIGO -->
 
 <!-- 9 INI MODULO DE CODIGO -->
+<?php if(get_field('content_9')){?>
     <div id='cl_bg_00659b' class="w-100">
         <div class="container p-t-30 p-b-30">
-            <div class="cl_big_title"><?php echo get_field('title_content_9') ?></div>
+            <?php if(get_field('title_content_9') ){?>
+                <div class="cl_big_title"><?php echo get_field('title_content_9') ?></div>
+            <?php } ?> 
             <div class="cl_section">
                 <?php echo get_field('content_9') ?>
             </div>
         </div>
     </div>
+<?php } ?>    
 <!-- 9- INICIO EXIBE MODULOS SLIDERS listing ou membro ou cookies-->
 <?php    
         
