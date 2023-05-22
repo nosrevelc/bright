@@ -37,7 +37,7 @@ define( 'DB_PASSWORD', 'WGfAgWFYf!U9XD');
 
 /* define( 'DB_HOST', 'db3tsmall20gb.caao8fi1xh1g.eu-west-2.rds.amazonaws.com:3306'); */
 
-define( 'DB_HOST', 'tgs3tsmall20gb.caao8fi1xh1g.eu-west-2.rds.amazonaws.com:3306');
+define( 'DB_HOST', 'bright3tsmicro20gb-eu-w-2b.caao8fi1xh1g.eu-west-2.rds.amazonaws.com:3306');
 
 
 
@@ -102,16 +102,16 @@ define( 'WP_DEBUG_DISPLAY', false );
 
 
 define( 'WPS_DEBUG', true );
-define('WP_HOME','https://tgs-business.io');
-define('WP_SITEURL','https://tgs-business.io');
+//define('WP_HOME','https://brightservices.io');
+//define('WP_SITEURL','https://brightservices.io');
 define('WP_ALLOW_MULTISITE', true);
 define('MULTISITE', true);
 define('SUBDOMAIN_INSTALL', false);
-define('DOMAIN_CURRENT_SITE', 'tgs-business.io');
+define('DOMAIN_CURRENT_SITE', 'brightservices.io');
 define('PATH_CURRENT_SITE', '/');
 define('SITE_ID_CURRENT_SITE', 1);
 define('BLOG_ID_CURRENT_SITE', 1);
-define( 'WP_DEFAULT_THEME', 'tgs-business' );
+define( 'WP_DEFAULT_THEME', 'idealbiz' );
 define( 'MYCRED_DEFAULT_TYPE_KEY', 'ibz-coin' );
 define( 'MYCRED_DEFAULT_LABEL', 'iDealBiz Coin' );
 define( 'CUSTOM_USER_TABLE', 'ib_users' );
