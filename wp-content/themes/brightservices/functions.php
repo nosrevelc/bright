@@ -10,28 +10,13 @@
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_styles');
 function my_theme_enqueue_styles()
 {
-  $parenthandle = 'parent-style';
-  $theme        = wp_get_theme();
-
   wp_enqueue_style(
-    'bootstrap-css',
-    'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'
-  );
-
-  wp_enqueue_style(
-    $parenthandle,
-    get_template_directory_uri() . '/assets/css/main.css',
-    array(),
-    $theme->parent()->get('Version')
-  );
-
-  wp_enqueue_style(
-    'child-style',
-    get_stylesheet_uri(),
-    array($parenthandle),
-    $theme->get('Version')
+    'bootstrap5-css',
+    'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css'
   );
 }
 
+
 /*  Add your own functions below this line.
     ======================================== */
+
