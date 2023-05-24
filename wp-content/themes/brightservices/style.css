@@ -1,13 +1,43 @@
 /* 
  Theme Name:   brightservices
- Theme URI:    
- Description:  
+ Theme URI:    https://brightservices.io/brightservices
+ Description:  Tema filho para personalizações do Tema Pai
  Author:       Cleverson Vieira
  Author URI:   https://brightservices.io/
  Template:     idealbiz
  Version:      1.0
 */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+.header{
+    background-color:#222A35 !important;
 
-/* .header {
-    background-color: #f57e29;
-} */
+}
+.header, .m-my-account, .account__user__name{
+    color:#E8E8E8 !important;
+}
+.my-account-header ul:after{
+    background:#F4FF1D !important ;
+}
+
+.my-account-header .menu-item{
+    border-bottom: 2px solid #222A35;
+}
+
+.my-account-header .menu-item :hover{
+    background:#222A35 !important ;
+    color: #E8E8E8;
+}
+
+.account__user__name{
+    color:#222A35 !important;
+    background-color: #F4FF1D;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+}
+.my-account-header i{
+    font-size: 1.4em !important;
+    line-height: 0px !important;
+}
+.where-menu li h4{
+    color:#222A35;
+}
