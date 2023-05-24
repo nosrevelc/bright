@@ -37,7 +37,60 @@
 .my-account-header i{
     font-size: 1.4em !important;
     line-height: 0px !important;
+    top:3px;
 }
 .where-menu li h4{
     color:#222A35;
 }
+.btn, .btn-blue{
+    color: #222A35 !important;
+}
+
+.search-bar .country-market span, .headerContacto{
+    color: #F4FF1D !important;
+}
+
+.search-form--header > button{
+    background: #F4FF1D;
+}
+
+.search-form--header > button:hover{
+    background: #e8e8e8;
+    color: #222A35;
+}
+
+.search-bar .contacts > a{
+    color: #F4FF1D !important;
+}
+
+.comunidade .conteudo h1 {
+    color: #222a35;
+    text-shadow: 1px 2px #cacaca;
+    font-family: "Yantramanav", Sans-serif;
+    font-weight: 400;
+}
+
+@media (max-width: 767px){
+    body .header .container .menu-container .m-header-btn .ham .burg{
+        background-color: #F4FF1D !important;
+    }
+    body .header .container .menu-container .m-header-btn{
+        color:#F4FF1D !important;
+    }
+    .account__user__name{
+        color:#222A35 !important;
+        background-color: #F4FF1D;
+        padding: 5px 10px 5px 10px;
+        border-radius: 0px;
+    }    
+    .my-account-header > ul{
+        border-radius: 0px !important;
+    }
+    .my-account-header > ul > li{
+        top:-12px !important;
+    }
+    i.icon.icon-search {
+        display: none;
+    }
+}
+
