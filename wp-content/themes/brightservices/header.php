@@ -225,7 +225,7 @@ body {
 								<li class="menu-bold menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2608">
 									<a class="menu-image-title-after pointer toggle-next">
 										<span class="img-icon"></span>
-										<span class="menu-image-title">'.__('Where?','idealbiz').'</span>
+										<span id="menu-image-title" class="menu-image-title">'.__('Where?','idealbiz').'</span>
 									</a>
 									<ul class="sub-menu">';
 										$continents = getContinents();
@@ -264,7 +264,7 @@ body {
 								case 'homepage_v2.php':
 								case 'homepage_v1.php':								
 							?>				        
-										<span><?php echo $cl_flag2; ?></span>
+										<span class="flagBlog"><?php echo $cl_flag2; ?></span>
 										
 
                             <?php
