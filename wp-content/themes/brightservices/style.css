@@ -45,6 +45,7 @@ html body{
     font-weight: 600;
 }
 
+
 .header{
     background-color:var(--midnight-blue)!important;
 }
@@ -80,7 +81,8 @@ html body{
 }
 .btn, .btn-blue{
     color: var(--midnight-blue) !important;
-    background-color: var(--midnight-blue) !important;
+    background-color: var(--yellow-lime) !important;
+    border: 1px solid var(--midnight-blue)!important;
 }
 
 .search-bar .country-market span, .headerContacto{
@@ -120,6 +122,33 @@ html body{
     font-size: 3em;
     color: var(--yellow-lime) !important;
 }
+.blue--hover:hover {
+    background-color: var(--midnight-blue) !important;
+}
+
+.blue_hover--color {
+    color: var(--midnight-blue)!important;
+}
+a:hover {
+    color:var(--midnight-blue)!important;
+}
+.listing-page .listings .pagination .page-numbers:not(.prev):not(.next):not(.dots).current{
+    background-color: var(--yellow-lime)!important;
+    color:var(--midnight-blue)!important;
+    border: 1px solid var(--midnight-blue)!important;
+}
+.listing-page .listings .pagination .page-numbers:not(.prev):not(.next):not(.dots):hover{
+    background-color: var(--light-gray)!important;
+    color:var(--midnight-blue)!important;
+    border: 1px solid var(--midnight-blue)!important;
+}
+#bnt_parceiros a{
+    color:var(--midnight-blue)!important;
+}
+#bnt_parceiros:hover, .cl_search .btn-blue:hover{
+    background: var(--light-gray)!important;
+}
+
 
 
         @media (max-width: 767px){

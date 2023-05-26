@@ -94,7 +94,7 @@ body {
                 <div class="col-md-2 col-sm-12 col-xs-12 text-xs-center d-flex menu-container">
 				<div class=" my-account-header">
 					<a href="#">
-    				<i class="hamburg bi bi-list"></i>
+    				<!-- <i class="hamburg bi bi-list"></i> -->
 					</a>
 				</div>	
 
