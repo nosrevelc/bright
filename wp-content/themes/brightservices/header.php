@@ -89,8 +89,15 @@ body {
 	?>
     <section class="header">
         <div class="container medium-width p-t-5">
+
             <div class="row">
                 <div class="col-md-2 col-sm-12 col-xs-12 text-xs-center d-flex menu-container">
+				<div class=" my-account-header">
+					<a href="#">
+    				<i class="hamburg bi bi-list"></i>
+					</a>
+				</div>	
+
                     <div class="d-flex">
                         <button class="m-header-btn o-menu" type="button" data-toggle="collapse"
                             data-target=".toggle-menu" aria-expanded="false"

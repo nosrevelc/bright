@@ -22,7 +22,7 @@ $first_name   = false;
     $first_name   = $current_user->first_name;
     ?>
 
-    <div class=" my-account-header">
+    <div class="my-account-header">
         <a href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>" title="<?php _e('My Account', 'idealbiz'); ?>">
         <div class="cl_user_img">
             <?php if ($first_name) {

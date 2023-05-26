@@ -113,53 +113,61 @@ html body{
     background: var(--midnight-blue)!important;
     color:var(--light-gray) !important;
 }
+.account__user__name{
+    color: var(--midnight-blue) !important;
+}
+.hamburg a{
+    font-size: 3em;
+    color: var(--yellow-lime) !important;
+}
 
-@media (max-width: 767px){
-    body .header .container .menu-container .m-header-btn .ham .burg{
-        background-color:var(--yellow-lime) !important;
-    }
-    body .header .container .menu-container .m-header-btn{
-        color:var(--yellow-lime) !important;
-    }
-    .account__user__name{
-        color:var(--midnight-blue) !important;
-        background-color:var(--yellow-lime) !important;
-        padding: 5px 10px 5px 10px;
-        border-radius: 0px;
-    }    
-    .my-account-header > ul{
-        border-radius: 0px !important;
-    }
-    .my-account-header > ul > li{
-        top:-12px !important;
-    }
-    i.icon.icon-search {
-        display: none;
-    }
-    html body .header .container #site-main-menu .m-my-account .my-account-header {
-        height: auto !important;
-        padding-bottom: 20px;
-        }
-    html body .header .container #site-main-menu>.row{
-        height: auto;
-        background-color: var(--yellow-lime);
-        color: var(--midnight-blue);
-    }
-    html body .header .container #site-main-menu .m-my-account{
-        background-color: var(--yellow-lime);
-    }
-    .flagBlog{
-        display: none;
-    }
-    .where-menu>li.show-next-ul>ul{
-        margin-bottom:20px;
-    }
-    #menu-image-title{
-        color: var(--midnight-blue)!important;
-        font-weight: 500;
-    }
-    body .header .container #site-main-menu>.row{
-        border-top: unset !important;
-    }
+
+        @media (max-width: 767px){
+            body .header .container .menu-container .m-header-btn .ham .burg{
+                background-color:var(--yellow-lime) !important;
+            }
+            body .header .container .menu-container .m-header-btn{
+                color:var(--yellow-lime) !important;
+            }
+            .account__user__name{
+                color:var(--midnight-blue) !important;
+                background-color:var(--yellow-lime) !important;
+                padding: 5px 10px 5px 10px;
+                border-radius: 0px;
+            }    
+            .my-account-header > ul{
+                border-radius: 0px !important;
+            }
+            .my-account-header > ul > li{
+                top:-12px !important;
+            }
+            i.icon.icon-search {
+                display: none;
+            }
+            html body .header .container #site-main-menu .m-my-account .my-account-header {
+                height: auto !important;
+                padding-bottom: 20px;
+                }
+            html body .header .container #site-main-menu>.row{
+                height: auto;
+                background-color: var(--yellow-lime);
+                color: var(--midnight-blue);
+            }
+            html body .header .container #site-main-menu .m-my-account{
+                background-color: var(--yellow-lime);
+            }
+            .flagBlog{
+                display: none;
+            }
+            .where-menu>li.show-next-ul>ul{
+                margin-bottom:20px;
+            }
+            #menu-image-title{
+                color: var(--midnight-blue)!important;
+                font-weight: 500;
+            }
+            body .header .container #site-main-menu>.row{
+                border-top: unset !important;
+            }
 }
 
