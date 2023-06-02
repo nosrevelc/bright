@@ -140,7 +140,7 @@ body {
                         <?php include("includes/my-account-widget.php"); ?>
                     </div>
                     <div class="row m-m-0 site-main-menu-inner-wrapper">
-                        <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div id="select_country" class="col-md-6 col-sm-12 col-xs-12">
 						<img style="width:41px!important;border-radius:3px;" src="<?php echo $country_flag; ?>" alt="<?php echo $country_name; ?>">
 						<span class="m-l-5"><?php echo $country_name; ?></span>
                             <?php
@@ -349,7 +349,7 @@ body {
             </div>
         </div>
 
-        <?php include('includes/search-bar.php'); ?>
+        <!-- <?php include('includes/search-bar.php'); ?> -->
 
     </section>
     <?php
