@@ -99,7 +99,14 @@ body {
 				</div>	
 
                     <div class="d-flex">
-                        <button class="m-header-btn o-menu" type="button" data-toggle="collapse"
+                        <!-- <a class="c-search toggle-search collapse" id="site-menu-b" href="#"><i
+                                class="icon icon-close"></i></a> -->
+                        <?php
+								/* the_custom_logo(); */
+								logoHeaderSite();
+							?>
+                        <?php country_market_only_flag() ?>
+						<button class="m-header-btn o-menu" type="button" data-toggle="collapse"
                             data-target=".toggle-menu" aria-expanded="false"
                             aria-controls="site-main-menu site-search-b">
                             <span class="ham">
@@ -108,13 +115,6 @@ body {
                                 <span class="burg"></span>
                             </span>
                         </button>
-                        <a class="c-search toggle-search collapse" id="site-menu-b" href="#"><i
-                                class="icon icon-close"></i></a>
-                        <?php
-								/* the_custom_logo(); */
-								logoHeaderSite();
-							?>
-                        <?php country_market_only_flag() ?>
                     </div>
                     <div class="d-flex">
                         <div class="wpml-ls hidden-desktop hidden-mobile">
@@ -125,10 +125,10 @@ body {
 									?>
                             </ul>
                         </div>
-                        <button class="m-header-btn o-search" type="button" data-toggle="collapse"
+                        <!-- <button class="m-header-btn o-search" type="button" data-toggle="collapse"
                             data-target=".toggle-search" aria-expanded="false" aria-controls="site-search site-menu-b">
                             <i class="icon icon-search"></i>
-                        </button>
+                        </button> -->
                     </div>
                     <a class="c-menu toggle-menu collapse" id="site-search-b" href="#"><i
                             class="icon icon-close"></i></a>
@@ -339,7 +339,7 @@ body {
 									?>
                                 </ul>
                             </div>
-                            <div class="separator-vertical d-none d-lg-block"></div>
+                            <!-- <div class="separator-vertical d-none d-lg-block"></div> -->
                             <?php include("includes/my-account-widget.php"); ?>
 							
                         </div>

@@ -56,25 +56,50 @@ html body{
     background:var(--yellow-lime) !important;
 }
 
+.my-account-header ul{
+    border-radius: unset !important;
+    right: 73px !important;
+    width: 300px !important;
+    padding: 0px 0px 0px 0px !important;
+}
+.my-account-header ul li a{
+    font-size:1.2em !important ;
+    line-height: 50px !important;
+    padding: 0px 10px 0px 10px !important;
+}
 .my-account-header .menu-item{
     border-bottom: 2px solid var(--midnight-blue) !important;
 }
 
 .my-account-header .menu-item :hover{
-    background:var(--midnight-blue) !important;
-    color: var(--light-gray) !important;
+    background:var(--light-gray) !important;
+    color: var(--midnight-blue) !important;
+    margin-top: -5px !important;
 }
 
-.account__user__name{
+.menu-item a:hover{
+    text-align: unset !important ;
+}
+
+.iconHamburgHome {
     color:var(--midnight-blue);
     background-color: var(--yellow-lime) !important;
-    border-radius: 5px;
-    padding: 5px 10px 5px 10px;
+    border-radius: 12px;
+    padding: 0px 5px 0px 5px;
+    margin-left: 20px;
 }
-.my-account-header i{
-    font-size: 1.4em !important;
+.account__user__name{
+    color: var(--yellow-lime) !important;
+    font-size: 1.5em;
+}
+.hamburg a{
+    font-size: 3em;
+    color: var(--yellow-lime) !important;
+}
+.my-account-header .bi-list {
     line-height: 0px !important;
     top:3px;
+    color: var(--midnight-blue) !important;
 }
 .where-menu li h4{
     color:var(--midnight-blue) !important;
@@ -115,13 +140,7 @@ html body{
     background: var(--midnight-blue)!important;
     color:var(--light-gray) !important;
 }
-.account__user__name{
-    color: var(--midnight-blue) !important;
-}
-.hamburg a{
-    font-size: 3em;
-    color: var(--yellow-lime) !important;
-}
+
 .blue--hover:hover {
     background-color: var(--midnight-blue) !important;
 }
@@ -129,8 +148,8 @@ html body{
 .blue_hover--color {
     color: var(--midnight-blue)!important;
 }
-a:hover {
-    color:var(--midnight-blue)!important;
+.cl_menu_membro a:hover {
+    color:var(--cobalt-blue)!important;
 }
 .listing-page .listings .pagination .page-numbers:not(.prev):not(.next):not(.dots).current{
     background-color: var(--yellow-lime)!important;
@@ -147,6 +166,43 @@ a:hover {
 }
 #bnt_parceiros:hover, .cl_search .btn-blue:hover{
     background: var(--light-gray)!important;
+}
+.elementor-89214 .elementor-element.elementor-element-dc43f63:not(.elementor-motion-effects-element-type-background){
+    background-color: var(--midnight-blue)!important;
+    color: var(--yellow-lime)!important;
+}
+
+.elementor-89214 .elementor-element.elementor-element-17b031d:not(.elementor-motion-effects-element-type-background){
+    background-color: var(--light-gray) !important;
+
+}
+.elementor-89214 .elementor-element.elementor-element-f51ccb4 .elementor-button[type="submit"]{
+    background-color: var(--midnight-blue)!important;
+}
+#elementor-popup-modal-89214 .dialog-widget-content{
+    border-color: var(--yellow-lime)!important;
+}
+.cky-notice-des a{
+    color: var(--light-gray)!important;
+    font-weight: 500;
+}
+.cky-notice-des a:hover{
+    color: var(--lime-green)!important;
+}
+.elementor-87336 .elementor-element.elementor-element-d143bc5 div.elementor-menu-toggle:hover {
+    color: var(--midnight-blue) !important;
+}
+.custom-logo-link img {
+    max-height: 100px !important;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+#select_country{
+    display: none;
+}
+.site-main-menu-inner-wrapper{
+    justify-content: end;
+    margin-top: 35px !important;
 }
 
 
@@ -166,6 +222,8 @@ a:hover {
             }    
             .my-account-header > ul{
                 border-radius: 0px !important;
+                right: -21px !important;
+                width: 90% !important;
             }
             .my-account-header > ul > li{
                 top:-12px !important;
@@ -197,6 +255,9 @@ a:hover {
             }
             body .header .container #site-main-menu>.row{
                 border-top: unset !important;
+            }
+            body .header {
+                height: 116px !important;
             }
 }
 

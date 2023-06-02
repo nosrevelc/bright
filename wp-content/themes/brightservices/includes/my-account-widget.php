@@ -30,13 +30,13 @@ $first_name   = false;
                         '<div class="account__user__name">%1$s %2$s %3$s</div>',
                         esc_html__('Hi!', 'idealbiz'),
                         esc_html__($first_name),
-                        '<i class="bi bi-list"></i>'
+                        '<i class="bi bi-list iconHamburgHome"></i>'
                     );
                 } ?><?php 
                 if($cl_image_url == Null){
                     echo get_avatar(
                                 get_current_user_id(),
-                                38,
+                                60,
                                 '',
                                 esc_html__('User avatar', 'i'),
                                 array('class' => 'account__user-image')
