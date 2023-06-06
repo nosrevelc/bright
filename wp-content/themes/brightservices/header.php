@@ -98,24 +98,26 @@ body {
 					</a>
 				</div>	
 
-                    <div class="d-flex">
+                    <div class="d-flex mr-auto">
                         <!-- <a class="c-search toggle-search collapse" id="site-menu-b" href="#"><i
                                 class="icon icon-close"></i></a> -->
-                        <?php
+                       <div>
+					   <?php
 								/* the_custom_logo(); */
 								logoHeaderSite();
 							?>
+						</div>	
                         <?php country_market_only_flag() ?>
+
+                    </div>
+					<div>
 						<button class="m-header-btn o-menu" type="button" data-toggle="collapse"
                             data-target=".toggle-menu" aria-expanded="false"
                             aria-controls="site-main-menu site-search-b">
-                            <span class="ham">
-                                <span class="burg"></span>
-                                <span class="burg"></span>
-                                <span class="burg"></span>
-                            </span>
+							<i class="bi bi-list iconHamburgHome toggle-menu collapse show"></i>
                         </button>
-                    </div>
+						<a class="c-menu toggle-menu collapse" id="site-search-b" href="#"><i class="icon icon-close"></i></a>
+						</div>
                     <div class="d-flex">
                         <div class="wpml-ls hidden-desktop hidden-mobile">
                             <ul>
@@ -130,8 +132,6 @@ body {
                             <i class="icon icon-search"></i>
                         </button> -->
                     </div>
-                    <a class="c-menu toggle-menu collapse" id="site-search-b" href="#"><i
-                            class="icon icon-close"></i></a>
                 </div>
                 <div class="col-md-10 col-sm-12 col-xs-12 collapse dont-collapse-sm toggle-menu p-t-10"
                     id="site-main-menu">

@@ -30,7 +30,7 @@ $first_name   = false;
                         '<div class="account__user__name">%1$s %2$s %3$s</div>',
                         esc_html__('Hi!', 'idealbiz'),
                         esc_html__($first_name),
-                        '<i class="bi bi-list iconHamburgHome"></i>'
+                        '<i class="bi bi-list iconHamburgHome hidden-mobile"></i>'
                     );
                 } ?><?php 
                 if($cl_image_url == Null){
@@ -204,7 +204,7 @@ $first_name   = false;
 
 
 <a class="login-register p-y-6 pointer register lrm-login"><?php _e('Login', 'idealbiz') ?></a>
-    <span class="p-y-6 d-none d-lg-block m-l-15">|</span>
+
     <a class="login-register p-y-6 pointer login lrm-register"><?php _e('Register', 'idealbiz') ?></a>
     <a class="my-account-header lrm-login pointer d-none d-md-block"><i class="icon-perfil"></i></a>
     <div class="pull-right d-md-none">

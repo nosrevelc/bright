@@ -50,7 +50,13 @@ html body{
     background-color:var(--midnight-blue)!important;
 }
 .header, .m-my-account, .account__user__name{
-    color:var(--light-gray) !important;
+    color:var(--yellow-lime) !important;
+}
+.lrm-login .icon-perfil{
+    font-size:50px !important;
+}
+.login-register{
+    font-size: 1.5em!important;
 }
 .my-account-header ul:after{
     background:var(--yellow-lime) !important;
@@ -204,10 +210,24 @@ html body{
     justify-content: end;
     margin-top: 35px !important;
 }
-
+.lrm-user-modal .lrm-user-modal-container .lrm-switcher a{
+    background-color: var(--midnight-blue)!important;
+    color: var(--yellow-lime)!important;
+}
+.lrm-user-modal .lrm-user-modal-container .lrm-switcher a.selected{
+    background-color: var(--light-gray)!important;
+    color: var(--midnight-blue)!important;
+}
+modal .lrm-user-modal-container .lrm-form button:hover, .lrm-user-modal .lrm-user-modal-container .lrm-form button[type=submit]:hover{
+    background-color: #222A35 !important;
+    color: var(--yellow-lime)!important;
+}
 
 
         @media (max-width: 767px){
+            body .header .container .menu-container {
+                padding-bottom: 9px !important;
+            }
             body .header .container .menu-container .m-header-btn .ham .burg{
                 background-color:var(--yellow-lime) !important;
             }
@@ -242,6 +262,7 @@ html body{
             }
             html body .header .container #site-main-menu .m-my-account{
                 background-color: var(--yellow-lime);
+                margin-left: -9px !important;
             }
             .flagBlog{
                 display: none;
@@ -258,6 +279,26 @@ html body{
             }
             body .header {
                 height: 116px !important;
+            }
+            .iconHamburgHome {
+                color: var(--midnight-blue);
+                background-color: var(--yellow-lime) !important;
+                border-radius: 12px;
+                padding: 10px 10px 10px 10px;
+                margin-left: -25px;
+                margin-top: 26px;
+            }
+            body .header .c-menu {
+                right: 30px !important;
+                top: 31px !important;
+                border-radius: 10px;
+                background-color: var(--yellow-lime) !important;
+            }
+            .my-account-header a .account__user__name {
+                margin-right: -7px !important;
+            }
+            body .header .container #site-main-menu .m-my-account>a.login-register {
+                color: var(--midnight-blue)!important;
             }
 }
 
